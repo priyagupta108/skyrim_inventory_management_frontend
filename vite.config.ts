@@ -9,4 +9,9 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
   },
+  build: {
+    rollupOptions: {
+      external: new RegExp('/.+\.(test|stories)\..+')
+    }
+  }
 })
