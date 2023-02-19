@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "coverage": "vitest run --coverage",
     "dev": "vite",
-    "format": "prettier",
+    "format": "prettier .",
     "format:fix": "prettier --write .",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
