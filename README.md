@@ -13,6 +13,8 @@ This is the rewritten frontend to Skyrim Inventory Management. The original fron
   - [Testing with Vitest](#testing-with-vitest)
   - [Deploying from a Local Environment](#deploying-from-a-local-environment)
   - [GitHub Actions](#github-actions)
+    - [Tests](#tests)
+    - [Deploys](#deploys)
 
 ## Overview
 
@@ -107,6 +109,8 @@ That's it!
 
 ### GitHub Actions
 
+#### Tests
+
 Vitest has been configured to run in CI with GitHub actions. It runs against all pull requests against `main`, as well as when `main` is merged. After merging new code, make sure the build has passed before deploying to Heroku.
 
 When working on an epic on a feature branch, you may want to configure GitHub Actions to run against PRs against the feature branch (or merges to that branch) and not just `main`. This can be done in the [pipeline definition file](/.github/workflows/ci.yml) by changing the following block:
@@ -118,3 +122,9 @@ on:
   pull_request:
     branches: [main, your-feature-branch]
 ```
+
+#### Deploys
+
+On merge to `main`, GitHub actions will build and deploy to Firebase. This is handled by the automatically generated `.github/workflows/firebase-hosting-merge.yml` file.
+
+**Note:** We do not have a staging environment in Firebase. So, when creating a feature branch, it is critical that you not update `.github/workflows/firebase-hosting-merge.yml` to include your feature branch like you can with the `ci.yml` file. Doing so will deploy anything merged to your feature branch directly to production.
