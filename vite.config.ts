@@ -11,7 +11,14 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: new RegExp('/.+\.(test|stories)\..+')
+      output: {
+        exclude: [
+          'src/**/*.test.ts',
+          'src/**/*.test.tsx',
+          'src/**/*.stories.ts',
+          'src/**/*.stories.tsx'
+        ]
+      }
     }
   }
 })
