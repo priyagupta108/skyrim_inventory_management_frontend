@@ -11,6 +11,7 @@ This is the rewritten frontend to Skyrim Inventory Management. The original fron
     - [Running the Front End](#running-the-front-end)
   - [Development Workflows](#development-workflows)
   - [Testing with Vitest](#testing-with-vitest)
+  - [Deploying from a Local Environment](#deploying-from-a-local-environment)
   - [GitHub Actions](#github-actions)
 
 ## Overview
@@ -76,6 +77,33 @@ To get test coverage metrics, run:
 ```
 yarn coverage
 ```
+
+### Deploying from a Local Environment
+
+To deploy from a local environment, you will need to have the following environment variables set to the correct values:
+
+- `FIREBASE_API_KEY`
+- `FIREBASE_AUTH_DOMAIN`
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_STORAGE_BUCKET`
+- `FIREBASE_MESSAGING_SENDER_ID`
+- `FIREBASE_APP_ID`
+
+In order to avoid committing secrets to Git, you should use a `.env` file (see [dotenv docs](https://www.npmjs.com/package/dotenv) for details) to define these variables.
+
+Once these variables have been set, you can run:
+
+```
+firebase login
+```
+
+This will take you to a login page in your browser where you pick your authorized Google account. Once you've authenticated, you can return to your terminal and run:
+
+```
+firebase deploy
+```
+
+That's it!
 
 ### GitHub Actions
 
