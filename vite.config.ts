@@ -8,5 +8,10 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
+  },
+  build: {
+    rollupOptions: {
+      external: /src\/.*\.(test|stories)\.(js|ts|jsx|tsx)/
+    }
   }
 })
