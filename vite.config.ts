@@ -11,14 +11,12 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      output: {
-        exclude: [
-          'src/**/*.test.ts',
-          'src/**/*.test.tsx',
-          'src/**/*.stories.ts',
-          'src/**/*.stories.tsx',
-        ],
-      },
+      external: [
+        'src/**/*.test.ts',
+        'src/**/*.test.tsx',
+        'src/**/*.stories.ts',
+        'src/**/*.stories.tsx',
+      ],
     },
   },
 })
