@@ -33,9 +33,9 @@ Since we were contemplating a rewrite anyway, it made sense to revisit the quest
 
 We considered React as well as three other, competing libraries:
 
-- Preact
-- Vue.js
-- Svelte
+- [Preact](https://preactjs.com)
+- [Vue.js](https://vuejs.org)
+- [Svelte](https://svelte.dev)
 
 In considering these libraries, we considered the following factors:
 
