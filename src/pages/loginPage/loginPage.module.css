@@ -14,11 +14,17 @@
 .link {
   margin: auto;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-decoration: none;
 }
 
 .link:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+@media (min-width: 1025px) {
+  .link {
+    font-size: 1.1rem;
+  }
 }
