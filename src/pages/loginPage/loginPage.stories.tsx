@@ -1,10 +1,10 @@
 import { BrowserRouter } from 'react-router-dom'
-import HomePage from './homePage'
+import LoginPage from './loginPage'
 
-export default { title: 'HomePage' }
+export default { title: 'LoginPage' }
 
 export const Default = () => (
   <BrowserRouter>
-    <HomePage />
+    <LoginPage />
   </BrowserRouter>
 )
