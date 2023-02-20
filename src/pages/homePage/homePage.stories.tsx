@@ -3,4 +3,8 @@ import HomePage from './homePage'
 
 export default { title: 'HomePage' }
 
-export const Default = () => <BrowserRouter><HomePage /></BrowserRouter>
+export const Default = () => (
+  <BrowserRouter>
+    <HomePage />
+  </BrowserRouter>
+)

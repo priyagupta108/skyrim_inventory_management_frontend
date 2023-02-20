@@ -31,8 +31,8 @@ const pages: Page[] = [
     title: `${siteTitle} Login`,
     description: 'Login to Skyrim Inventory Management',
     jsx: <LoginPage />,
-    path: paths.login
-  }
+    path: paths.login,
+  },
 ]
 
 const RouteContent = ({ title, description, jsx }: BasePage) => (
