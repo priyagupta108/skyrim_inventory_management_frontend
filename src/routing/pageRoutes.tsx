@@ -2,6 +2,7 @@ import { type ReactElement } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import HomePage from '../pages/homePage/homePage'
+import LoginPage from '../pages/loginPage/loginPage'
 import paths, { type PathString } from './paths'
 
 const siteTitle = 'Skyrim Inventory Management |'
@@ -25,6 +26,13 @@ const pages: Page[] = [
     jsx: <HomePage />,
     path: paths.home,
   },
+  {
+    pageId: 'login',
+    title: `${siteTitle} Login`,
+    description: 'Login to Skyrim Inventory Management',
+    jsx: <LoginPage />,
+    path: paths.login
+  }
 ]
 
 const RouteContent = ({ title, description, jsx }: BasePage) => (

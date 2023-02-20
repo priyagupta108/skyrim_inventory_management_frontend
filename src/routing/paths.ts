@@ -6,6 +6,7 @@ interface Paths {
 
 const paths: Paths = {
   home: '/',
+  login: '/login'
 }
 
 export default paths
