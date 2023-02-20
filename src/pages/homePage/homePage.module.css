@@ -1,0 +1,19 @@
+.root {
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  display: grid;
+}
+
+.container {
+  background-color: #000;
+  margin: auto;
+  display: grid;
+}
+
+.header {
+  font-family: 'Cinzel Decorative', Arial, Helvetica, sans-serif;
+  color: #fff;
+  margin: 0 auto 16px;
+  text-align: center;
+}
