@@ -23,8 +23,7 @@ We will use Firebase to build the new front end, and deploy to Firebase hosting 
 
 ## Context
 
-Several challenges have recently converged, pushing us to implement a full rewrite of the SIM front end. Most relevantly to this ADR, Google has deprecated its legacy Google Sign-In API, which SIM was using for authentication, and support for that API ends in March of 2023. Months of research into
-the new Sign in with Google API and a deep dive into the underlying OAuth 2.0 protocol still left us with doubts about our ability to implement the identity features we required.
+Several challenges have recently converged, pushing us to implement a full rewrite of the SIM front end. Most relevantly to this ADR, Google has deprecated its legacy Google Sign-In API, which SIM was using for authentication, and support for that API ends in March of 2023. Months of research into the new Sign in with Google API and a deep dive into the underlying OAuth 2.0 protocol still left us with doubts about our ability to implement the identity features we required.
 
 Google's Firebase SDK and hosting platform provide an out-of-the-box solution to this problem. Apps that use Firebase are able to easily integrate with Sign in with Google, providing a relatively easy solution to a problem that had been plaguing us for over a year.
 
