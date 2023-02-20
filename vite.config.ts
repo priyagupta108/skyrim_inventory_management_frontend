@@ -12,17 +12,17 @@ export default defineConfig({
         families: [
           {
             name: 'Cinzel Decorative',
-            styles: 'wght@700'
+            styles: 'wght@700',
           },
           {
-            name: 'Quattrocento Sans'
-          }
-        ]
-      }
-    })
+            name: 'Quattrocento Sans',
+          },
+        ],
+      },
+    }),
   ],
   test: {
     globals: true,
     environment: 'happy-dom',
-  }
+  },
 })

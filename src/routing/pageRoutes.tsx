@@ -7,14 +7,14 @@ import paths, { type PathString } from './paths'
 const siteTitle = 'Skyrim Inventory Management |'
 
 interface BasePage {
-  title: string;
-  description: string;
-  jsx: ReactElement;
+  title: string
+  description: string
+  jsx: ReactElement
 }
 
 interface Page extends BasePage {
-  pageId: string;
-  path: PathString;
+  pageId: string
+  path: PathString
 }
 
 const pages: Page[] = [
@@ -24,16 +24,16 @@ const pages: Page[] = [
     description: 'Manage your inventory across multiple properties in Skyrim',
     jsx: <HomePage />,
     path: paths.home,
-  }
+  },
 ]
 
 const RouteContent = ({ title, description, jsx }: BasePage) => (
   <>
     <Helmet>
-      <html lang='en' />
+      <html lang="en" />
 
       <title>{title}</title>
-      <meta name='description' content={description} />
+      <meta name="description" content={description} />
     </Helmet>
     {jsx}
   </>
@@ -42,11 +42,13 @@ const RouteContent = ({ title, description, jsx }: BasePage) => (
 const PageRoutes = () => (
   <Routes>
     {pages.map(({ pageId, title, description, jsx, path }: Page) => {
-      return(
+      return (
         <Route
           path={path}
           key={pageId}
-          element={<RouteContent title={title} description={description} jsx={jsx} />}
+          element={
+            <RouteContent title={title} description={description} jsx={jsx} />
+          }
         />
       )
     })}

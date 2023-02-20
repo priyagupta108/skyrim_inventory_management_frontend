@@ -1,11 +1,11 @@
 export type PathString = `/${string}`
 
 interface Paths {
-  [i: string]: PathString;
+  [i: string]: PathString
 }
 
 const paths: Paths = {
-  home: '/'
+  home: '/',
 }
 
 export default paths
