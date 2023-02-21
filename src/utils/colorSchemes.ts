@@ -1,4 +1,4 @@
-interface ColorScheme {
+export interface ColorScheme {
   schemeColorDarkest: string
   schemeColorDark: string
   schemeColorLight: string
