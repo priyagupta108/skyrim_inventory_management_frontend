@@ -1,12 +1,19 @@
-export type PathString = `/${string}`
+import { type RelativePath } from '../types/navigation'
 
 interface Paths {
-  [i: string]: PathString
+  home: RelativePath
+  login: RelativePath
+  dashboard: {
+    [i: string]: RelativePath
+  }
 }
 
 const paths: Paths = {
   home: '/',
   login: '/login',
+  dashboard: {
+    main: '/dashboard',
+  },
 }
 
 export default paths

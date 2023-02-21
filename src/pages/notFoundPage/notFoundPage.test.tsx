@@ -15,4 +15,9 @@ describe('<NotFoundPage />', () => {
     expect(a?.textContent).toBe('Go Back')
     expect(a?.href).toBe(paths.home)
   })
+
+  test('matches snapshot', () => {
+    const wrapper = renderWithRouter(<NotFoundPage />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })

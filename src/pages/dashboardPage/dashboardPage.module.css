@@ -1,0 +1,21 @@
+.root {
+  background-color: #f0f0f0;
+}
+
+@media (min-width: 601px) {
+  .root {
+    padding-top: 32px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .root {
+    padding-top: 64px;
+  }
+}
+
+@media (min-width: 1405px) {
+  .root {
+    padding-top: 132px;
+  }
+}

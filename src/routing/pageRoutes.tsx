@@ -1,10 +1,12 @@
 import { type ReactElement } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import { type RelativePath } from '../types/navigation'
 import HomePage from '../pages/homePage/homePage'
 import LoginPage from '../pages/loginPage/loginPage'
 import NotFoundPage from '../pages/notFoundPage/notFoundPage'
-import paths, { type PathString } from './paths'
+import DashboardPage from '../pages/dashboardPage/dashboardPage'
+import paths from './paths'
 
 const siteTitle = 'Skyrim Inventory Management |'
 
@@ -16,7 +18,7 @@ interface BasePage {
 
 interface Page extends BasePage {
   pageId: string
-  path: PathString
+  path: RelativePath
 }
 
 const notFoundPage: BasePage = {
@@ -39,6 +41,13 @@ const pages: Page[] = [
     description: 'Login to Skyrim Inventory Management',
     jsx: <LoginPage />,
     path: paths.login,
+  },
+  {
+    pageId: 'dashboard-main',
+    title: `${siteTitle} Dashboard`,
+    description: 'Manage your inventory across multiple properties in Skyrim',
+    jsx: <DashboardPage />,
+    path: paths.dashboard.main,
   },
 ]
 
