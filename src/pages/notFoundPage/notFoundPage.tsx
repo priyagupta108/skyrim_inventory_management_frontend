@@ -6,7 +6,9 @@ const NotFoundPage = () => (
   <div className={styles.root}>
     <div className={styles.container}>
       <h1 className={styles.header}>SIM: Page Not Found</h1>
-      <Link className={styles.link} to={paths.home}>Go Back</Link>
+      <Link className={styles.link} to={paths.home}>
+        Go Back
+      </Link>
     </div>
   </div>
 )

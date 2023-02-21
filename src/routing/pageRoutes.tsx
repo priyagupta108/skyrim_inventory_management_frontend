@@ -22,7 +22,7 @@ interface Page extends BasePage {
 const notFoundPage: BasePage = {
   title: '404 Not Found',
   description: 'Page Not Found',
-  jsx: <NotFoundPage />
+  jsx: <NotFoundPage />,
 }
 
 const pages: Page[] = [
@@ -67,7 +67,11 @@ const PageRoutes = () => (
         />
       )
     })}
-    <Route path='*' key='notFound' element={<RouteContent {...notFoundPage} />} />
+    <Route
+      path="*"
+      key="notFound"
+      element={<RouteContent {...notFoundPage} />}
+    />
   </Routes>
 )
 
