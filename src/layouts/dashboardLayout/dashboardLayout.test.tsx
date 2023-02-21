@@ -8,9 +8,7 @@ describe('<DashboardLayout>', () => {
   describe('when a title is given', () => {
     test('DashboardLayout renders the title and content', () => {
       const wrapper = renderWithRouter(
-        <DashboardLayout title='Page Title'>
-          Hello World
-        </DashboardLayout>
+        <DashboardLayout title="Page Title">Hello World</DashboardLayout>
       )
       expect(wrapper).toBeTruthy()
 
@@ -22,9 +20,7 @@ describe('<DashboardLayout>', () => {
 
     test('DashboardLayout renders the DashboardHeader', () => {
       const wrapper = renderWithRouter(
-        <DashboardLayout title='Page Title'>
-          Hello World
-        </DashboardLayout>
+        <DashboardLayout title="Page Title">Hello World</DashboardLayout>
       )
 
       const a = wrapper.container.querySelector('a')
@@ -36,9 +32,7 @@ describe('<DashboardLayout>', () => {
   describe('when no title is given', () => {
     test('DashboardLayout displays content but not an h2 or hr', () => {
       const wrapper = renderWithRouter(
-        <DashboardLayout>
-          Hello World
-        </DashboardLayout>
+        <DashboardLayout>Hello World</DashboardLayout>
       )
       expect(wrapper).toBeTruthy()
 
@@ -53,9 +47,7 @@ describe('<DashboardLayout>', () => {
 
     test('DashboardLayout renders the DashboardHeader', () => {
       const wrapper = renderWithRouter(
-        <DashboardLayout>
-          Hello World
-        </DashboardLayout>
+        <DashboardLayout>Hello World</DashboardLayout>
       )
 
       const a = wrapper.container.querySelector('a')

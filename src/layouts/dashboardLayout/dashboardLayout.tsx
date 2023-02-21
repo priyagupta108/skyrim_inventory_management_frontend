@@ -10,11 +10,12 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ title, children }: DashboardLayoutProps) => (
   <main className={styles.root}>
     <section className={styles.container}>
-      {title ?
-      <>
-        <h2 className={styles.title}>{title}</h2>
-        <hr className={styles.hr} />
-      </>: null}
+      {title ? (
+        <>
+          <h2 className={styles.title}>{title}</h2>
+          <hr className={styles.hr} />
+        </>
+      ) : null}
       {children}
     </section>
     <DashboardHeader />

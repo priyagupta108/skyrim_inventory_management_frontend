@@ -9,6 +9,8 @@ const useCustomContext = <T>(cxt: React.Context<T>, msg: string) => {
   return context
 }
 
-export const useColorScheme = () => (
-  useCustomContext(ColorContext, 'useColorScheme must be used within a ColorProvider')
-)
+export const useColorScheme = () =>
+  useCustomContext(
+    ColorContext,
+    'useColorScheme must be used within a ColorProvider'
+  )

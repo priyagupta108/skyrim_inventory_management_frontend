@@ -48,7 +48,7 @@ const pages: Page[] = [
     description: 'Manage your inventory across multiple properties in Skyrim',
     jsx: <DashboardPage />,
     path: paths.dashboard.main,
-  }
+  },
 ]
 
 const RouteContent = ({ title, description, jsx }: BasePage) => (

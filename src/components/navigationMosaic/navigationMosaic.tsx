@@ -8,9 +8,7 @@ const NavigationMosaic = ({ cardArray }: NavigationMosaicProps) => (
     {cardArray.map(({ colorScheme, href, children, key }) => (
       <div key={key} className={styles.card}>
         <ColorProvider colorScheme={colorScheme}>
-          <NavigationCard href={href}>
-            {children}
-          </NavigationCard>
+          <NavigationCard href={href}>{children}</NavigationCard>
         </ColorProvider>
       </div>
     ))}

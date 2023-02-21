@@ -51,7 +51,7 @@ export const BLUE: ColorScheme = {
   textColorPrimary: '#fff',
   textColorSecondary: '#fff',
   textColorTertiary: '#0d2e42',
-  borderColor: '#1b5c84'
+  borderColor: '#1b5c84',
 }
 
 export const GREEN: ColorScheme = {
@@ -65,7 +65,7 @@ export const GREEN: ColorScheme = {
   textColorPrimary: '#fff',
   textColorSecondary: '#fff',
   textColorTertiary: '#00410e',
-  borderColor: '#00821c'
+  borderColor: '#00821c',
 }
 
 export const AQUA: ColorScheme = {
@@ -79,15 +79,9 @@ export const AQUA: ColorScheme = {
   textColorPrimary: '#094345',
   textColorSecondary: '#094345',
   textColorTertiary: '#094345',
-  borderColor: '#19b4ba'
+  borderColor: '#19b4ba',
 }
 
-const colorSchemes: ColorScheme[] = [
-  YELLOW,
-  PINK,
-  BLUE,
-  GREEN,
-  AQUA
-]
+const colorSchemes: ColorScheme[] = [YELLOW, PINK, BLUE, GREEN, AQUA]
 
 export default colorSchemes

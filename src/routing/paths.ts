@@ -12,8 +12,8 @@ const paths: Paths = {
   home: '/',
   login: '/login',
   dashboard: {
-    main: '/dashboard'
-  }
+    main: '/dashboard',
+  },
 }
 
 export default paths

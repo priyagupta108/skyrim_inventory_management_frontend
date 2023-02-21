@@ -9,9 +9,7 @@ describe('NavigationCard component', () => {
   test('NavigationCard component displays properly', () => {
     const wrapper = renderWithRouter(
       <ColorProvider colorScheme={BLUE}>
-        <NavigationCard href={paths.home}>
-          Go Home!
-        </NavigationCard>
+        <NavigationCard href={paths.home}>Go Home!</NavigationCard>
       </ColorProvider>
     )
     expect(wrapper).toBeTruthy()
