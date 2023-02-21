@@ -4,7 +4,7 @@ import styles from './dashboardLayout.module.css'
 
 interface DashboardLayoutProps {
   title?: string
-  children: ReactElement | ReactElement[] | string
+  children: ReactElement | string
 }
 
 const DashboardLayout = ({ title, children }: DashboardLayoutProps) => (

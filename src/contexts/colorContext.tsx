@@ -5,7 +5,7 @@ const ColorContext = createContext<ColorScheme>(YELLOW)
 
 interface ProviderProps {
   colorScheme: ColorScheme
-  children: ReactElement | ReactElement[]
+  children: ReactElement
 }
 
 const ColorProvider = ({ colorScheme, children }: ProviderProps) => (

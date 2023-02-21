@@ -5,7 +5,7 @@ import { ColorScheme } from '../../utils/colorSchemes'
 export interface MosaicCardAttributes {
   colorScheme: ColorScheme
   href: RelativePath
-  children: ReactElement | ReactElement[] | string
+  children: ReactElement | string
   key: string
 }
 

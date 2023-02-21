@@ -6,7 +6,7 @@ import styles from './navigationCard.module.css'
 
 interface NavigationCardProps {
   href: RelativePath
-  children: ReactElement | ReactElement[] | string
+  children: ReactElement | string
 }
 
 const NavigationCard = ({ href, children }: NavigationCardProps) => {

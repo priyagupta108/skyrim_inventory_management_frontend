@@ -1,7 +1,7 @@
 import { type ReactElement } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import type { RelativePath } from '../types/navigation'
+import { type RelativePath } from '../types/navigation'
 import HomePage from '../pages/homePage/homePage'
 import LoginPage from '../pages/loginPage/loginPage'
 import NotFoundPage from '../pages/notFoundPage/notFoundPage'
