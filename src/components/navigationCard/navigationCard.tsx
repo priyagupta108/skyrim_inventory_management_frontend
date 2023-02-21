@@ -1,10 +1,11 @@
 import { type ReactElement } from 'react'
 import { Link } from 'react-router-dom'
+import { type RelativePath } from '../../types/navigation'
 import { useColorScheme } from '../../hooks/contexts'
 import styles from './navigationCard.module.css'
 
 interface NavigationCardProps {
-  href: `/${string}`,
+  href: RelativePath,
   children: ReactElement | ReactElement[] | string
 }
 

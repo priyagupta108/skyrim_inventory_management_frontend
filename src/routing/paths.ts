@@ -1,7 +1,7 @@
-export type PathString = `/${string}`
+import { type RelativePath } from '../types/navigation'
 
 interface Paths {
-  [i: string]: PathString
+  [i: string]: RelativePath
 }
 
 const paths: Paths = {
