@@ -1,5 +1,6 @@
 import { describe, test, expect } from 'vitest'
 import { renderWithRouter } from '../../setupTests'
+import paths from '../../routing/paths'
 import HomePage from './homePage'
 
 describe('<HomePage />', () => {
@@ -12,5 +13,6 @@ describe('<HomePage />', () => {
 
     const a = wrapper.container.querySelector('a')
     expect(a?.textContent).toBe('Sign in with Google')
+    expect(a?.href).toBe(paths.login)
   })
 })

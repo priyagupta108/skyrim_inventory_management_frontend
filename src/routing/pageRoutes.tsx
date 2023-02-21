@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import HomePage from '../pages/homePage/homePage'
 import LoginPage from '../pages/loginPage/loginPage'
+import NotFoundPage from '../pages/notFoundPage/notFoundPage'
 import paths, { type PathString } from './paths'
 
 const siteTitle = 'Skyrim Inventory Management |'
@@ -16,6 +17,12 @@ interface BasePage {
 interface Page extends BasePage {
   pageId: string
   path: PathString
+}
+
+const notFoundPage: BasePage = {
+  title: '404 Not Found',
+  description: 'Page Not Found',
+  jsx: <NotFoundPage />,
 }
 
 const pages: Page[] = [
@@ -60,6 +67,11 @@ const PageRoutes = () => (
         />
       )
     })}
+    <Route
+      path="*"
+      key="notFound"
+      element={<RouteContent {...notFoundPage} />}
+    />
   </Routes>
 )
 
