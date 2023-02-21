@@ -10,7 +10,7 @@
 
 @media (min-width: 769px) {
   .root {
-    grid-template: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     column-gap: 16px;
   }
 }
