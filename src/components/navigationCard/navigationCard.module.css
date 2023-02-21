@@ -1,0 +1,19 @@
+.root {
+  width: 320px;
+  height: 128px;
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-decoration: none;
+  font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
+  font-size: 1.5em;
+  display: grid;
+  text-align: center;
+  align-content: center;
+  cursor: pointer;
+}
+
+.root:hover {
+  text-decoration: underline;
+  background-color: var(--hover-color);
+}
