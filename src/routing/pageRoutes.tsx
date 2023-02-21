@@ -56,6 +56,11 @@ const RouteContent = ({ title, description, jsx }: BasePage) => (
 
 const PageRoutes = () => (
   <Routes>
+    <Route
+      path="*"
+      key="notFound"
+      element={<RouteContent {...notFoundPage} />}
+    />
     {pages.map(({ pageId, title, description, jsx, path }: Page) => {
       return (
         <Route
@@ -67,11 +72,6 @@ const PageRoutes = () => (
         />
       )
     })}
-    <Route
-      path="*"
-      key="notFound"
-      element={<RouteContent {...notFoundPage} />}
-    />
   </Routes>
 )
 
