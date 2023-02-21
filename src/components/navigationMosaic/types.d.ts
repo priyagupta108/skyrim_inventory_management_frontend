@@ -3,7 +3,7 @@ import { ColorScheme } from '../../utils/colorSchemes'
 
 export interface MosaicCardAttributes {
   colorScheme: ColorScheme
-  href: `/${string}`
+  href: `/${string}` | `#${string}`
   children: ReactElement | ReactElement[] | string
   key: string
 }
