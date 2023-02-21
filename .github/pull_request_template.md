@@ -19,3 +19,19 @@ An exhaustive list of manual test cases to ensure your code works and hasn't bro
 ## Screenshots and GIFs
 
 Any screenshots or animated GIFs to illustrate UI changes and how things work
+
+### 320px
+
+### 481px
+
+### 601px
+
+### 769px
+
+### 1025px
+
+### 1201px
+
+### 1405px
+
+### Large Desktop
