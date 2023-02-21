@@ -1,5 +1,5 @@
 .root {
-  width: 320px;
+  width: calc(320px - 32px);
   height: 128px;
   border-radius: 5px;
   background-color: var(--background-color);
@@ -16,4 +16,10 @@
 .root:hover {
   text-decoration: underline;
   background-color: var(--hover-color);
+}
+
+@media (min-width: 481px) {
+  .root {
+    width: 320px;
+  }
 }
