@@ -15,4 +15,9 @@ describe('NavigationMosaic component', () => {
     expect(screen.getByText('Green Card')).toHaveProperty('href', '/green')
     expect(screen.getByText('Aqua Card')).toHaveProperty('href', '/aqua')
   })
+
+  test('matches snapshot', () => {
+    const wrapper = renderWithRouter(<NavigationMosaic cardArray={testCards} />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })

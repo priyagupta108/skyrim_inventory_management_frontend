@@ -10,4 +10,9 @@ describe('<LoginPage />', () => {
     const a = wrapper.container.querySelector('a')
     expect(a?.textContent).toBe('Sign in with Google')
   })
+
+  test('matches snapshot', () => {
+    const wrapper = renderWithRouter(<LoginPage />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })

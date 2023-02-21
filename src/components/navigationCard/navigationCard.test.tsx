@@ -18,4 +18,14 @@ describe('NavigationCard component', () => {
     expect(a?.textContent).toBe('Go Home!')
     expect(a?.href).toBe(paths.home)
   })
+
+  test('matches snapshot', () => {
+    const wrapper = renderWithRouter(
+      <ColorProvider colorScheme={BLUE}>
+        <NavigationCard href={paths.home}>Go Home!</NavigationCard>
+      </ColorProvider>
+    )
+
+    expect(wrapper).toMatchSnapshot()
+  })
 })

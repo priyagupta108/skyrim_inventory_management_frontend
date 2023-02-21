@@ -27,6 +27,14 @@ describe('<DashboardLayout>', () => {
       expect(a?.textContent).toBe('Skyrim Inventory Management')
       expect(a?.href).toBe(paths.dashboard.main)
     })
+
+    test('matches snapshot', () => {
+      const wrapper = renderWithRouter(
+        <DashboardLayout title="Page Title">Hello World</DashboardLayout>
+      )
+
+      expect(wrapper).toMatchSnapshot()
+    })
   })
 
   describe('when no title is given', () => {
@@ -53,6 +61,14 @@ describe('<DashboardLayout>', () => {
       const a = wrapper.container.querySelector('a')
       expect(a?.textContent).toBe('Skyrim Inventory Management')
       expect(a?.href).toBe(paths.dashboard.main)
+    })
+
+    test('matches snapshot', () => {
+      const wrapper = renderWithRouter(
+        <DashboardLayout>Hello World</DashboardLayout>
+      )
+
+      expect(wrapper).toMatchSnapshot()
     })
   })
 })

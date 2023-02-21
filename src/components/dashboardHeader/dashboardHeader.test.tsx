@@ -11,4 +11,9 @@ describe('<DashboardHeader />', () => {
     const a = wrapper.container.querySelector('a')
     expect(a?.href).toBe(paths.dashboard.main)
   })
+
+  test('matches snapshot', () => {
+    const wrapper = renderWithRouter(<DashboardHeader />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })

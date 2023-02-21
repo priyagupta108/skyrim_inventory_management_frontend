@@ -1,0 +1,307 @@
+// Vitest Snapshot v1
+
+exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <main
+        class="_root_03d657"
+      >
+        <section
+          class="_container_03d657"
+        >
+          <h2
+            class="_title_03d657"
+          >
+            Page Title
+          </h2>
+          <hr
+            class="_hr_03d657"
+          />
+          Hello World
+        </section>
+        <header
+          class="_root_c29812"
+        >
+          <div
+            class="_bar_c29812"
+          >
+            <span
+              class="_headerContainer_c29812"
+            >
+              <h1
+                class="_header_c29812"
+              >
+                <a
+                  class="_headerLinkLarge_c29812"
+                  href="/dashboard"
+                >
+                  Skyrim Inventory
+                  <br
+                    class="_bp_c29812"
+                  />
+                   Management
+                </a>
+                <a
+                  class="_headerLinkSmall_c29812"
+                  href="/dashboard"
+                >
+                  S. I. M.
+                </a>
+              </h1>
+            </span>
+          </div>
+        </header>
+      </main>
+    </div>
+  </body>,
+  "container": <div>
+    <main
+      class="_root_03d657"
+    >
+      <section
+        class="_container_03d657"
+      >
+        <h2
+          class="_title_03d657"
+        >
+          Page Title
+        </h2>
+        <hr
+          class="_hr_03d657"
+        />
+        Hello World
+      </section>
+      <header
+        class="_root_c29812"
+      >
+        <div
+          class="_bar_c29812"
+        >
+          <span
+            class="_headerContainer_c29812"
+          >
+            <h1
+              class="_header_c29812"
+            >
+              <a
+                class="_headerLinkLarge_c29812"
+                href="/dashboard"
+              >
+                Skyrim Inventory
+                <br
+                  class="_bp_c29812"
+                />
+                 Management
+              </a>
+              <a
+                class="_headerLinkSmall_c29812"
+                href="/dashboard"
+              >
+                S. I. M.
+              </a>
+            </h1>
+          </span>
+        </div>
+      </header>
+    </main>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <main
+        class="_root_03d657"
+      >
+        <section
+          class="_container_03d657"
+        >
+          Hello World
+        </section>
+        <header
+          class="_root_c29812"
+        >
+          <div
+            class="_bar_c29812"
+          >
+            <span
+              class="_headerContainer_c29812"
+            >
+              <h1
+                class="_header_c29812"
+              >
+                <a
+                  class="_headerLinkLarge_c29812"
+                  href="/dashboard"
+                >
+                  Skyrim Inventory
+                  <br
+                    class="_bp_c29812"
+                  />
+                   Management
+                </a>
+                <a
+                  class="_headerLinkSmall_c29812"
+                  href="/dashboard"
+                >
+                  S. I. M.
+                </a>
+              </h1>
+            </span>
+          </div>
+        </header>
+      </main>
+    </div>
+  </body>,
+  "container": <div>
+    <main
+      class="_root_03d657"
+    >
+      <section
+        class="_container_03d657"
+      >
+        Hello World
+      </section>
+      <header
+        class="_root_c29812"
+      >
+        <div
+          class="_bar_c29812"
+        >
+          <span
+            class="_headerContainer_c29812"
+          >
+            <h1
+              class="_header_c29812"
+            >
+              <a
+                class="_headerLinkLarge_c29812"
+                href="/dashboard"
+              >
+                Skyrim Inventory
+                <br
+                  class="_bp_c29812"
+                />
+                 Management
+              </a>
+              <a
+                class="_headerLinkSmall_c29812"
+                href="/dashboard"
+              >
+                S. I. M.
+              </a>
+            </h1>
+          </span>
+        </div>
+      </header>
+    </main>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -15,4 +15,9 @@ describe('<HomePage />', () => {
     expect(a?.textContent).toBe('Sign in with Google')
     expect(a?.href).toBe(paths.login)
   })
+
+  test('matches snapshot', () => {
+    const wrapper = renderWithRouter(<HomePage />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })

@@ -25,4 +25,9 @@ describe('<DashboardPage />', () => {
     expect(screen.getByText('Nav Link 4')).toBeTruthy()
     expect(screen.getByText('Nav Link 5')).toBeTruthy()
   })
+
+  test('matches snapshot', () => {
+    const wrapper = renderWithRouter(<DashboardPage />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })

@@ -1,0 +1,270 @@
+// Vitest Snapshot v1
+
+exports[`<DashboardPage /> > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <main
+        class="_root_03d657"
+      >
+        <section
+          class="_container_03d657"
+        >
+          <div
+            class="_root_30a763"
+          >
+            <div
+              class="_root_dcf87f"
+            >
+              <div
+                class="_card_dcf87f"
+              >
+                <a
+                  class="_root_396ea1"
+                  href="blank"
+                  style="--background-color: #ffbf00; --hover-color: #e5ab00; --text-color: #4c3900;"
+                >
+                  Your Games
+                </a>
+              </div>
+              <div
+                class="_card_dcf87f"
+              >
+                <a
+                  class="_root_396ea1"
+                  href="blank"
+                  style="--background-color: #e83f6f; --hover-color: #d03863; --text-color: #fff;"
+                >
+                  Your Shopping Lists
+                </a>
+              </div>
+              <div
+                class="_card_dcf87f"
+              >
+                <a
+                  class="_root_396ea1"
+                  href="blank"
+                  style="--background-color: #2274a5; --hover-color: #1e6894; --text-color: #fff;"
+                >
+                  Your Inventory
+                </a>
+              </div>
+              <div
+                class="_card_dcf87f"
+              >
+                <a
+                  class="_root_396ea1"
+                  href="blank"
+                  style="--background-color: #00a323; --hover-color: #00921f; --text-color: #fff;"
+                >
+                  Nav Link 4
+                </a>
+              </div>
+              <div
+                class="_card_dcf87f"
+              >
+                <a
+                  class="_root_396ea1"
+                  href="blank"
+                  style="--background-color: #20e2e9; --hover-color: #11cbd1; --text-color: #094345;"
+                >
+                  Nav Link 5
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <header
+          class="_root_c29812"
+        >
+          <div
+            class="_bar_c29812"
+          >
+            <span
+              class="_headerContainer_c29812"
+            >
+              <h1
+                class="_header_c29812"
+              >
+                <a
+                  class="_headerLinkLarge_c29812"
+                  href="/dashboard"
+                >
+                  Skyrim Inventory
+                  <br
+                    class="_bp_c29812"
+                  />
+                   Management
+                </a>
+                <a
+                  class="_headerLinkSmall_c29812"
+                  href="/dashboard"
+                >
+                  S. I. M.
+                </a>
+              </h1>
+            </span>
+          </div>
+        </header>
+      </main>
+    </div>
+  </body>,
+  "container": <div>
+    <main
+      class="_root_03d657"
+    >
+      <section
+        class="_container_03d657"
+      >
+        <div
+          class="_root_30a763"
+        >
+          <div
+            class="_root_dcf87f"
+          >
+            <div
+              class="_card_dcf87f"
+            >
+              <a
+                class="_root_396ea1"
+                href="blank"
+                style="--background-color: #ffbf00; --hover-color: #e5ab00; --text-color: #4c3900;"
+              >
+                Your Games
+              </a>
+            </div>
+            <div
+              class="_card_dcf87f"
+            >
+              <a
+                class="_root_396ea1"
+                href="blank"
+                style="--background-color: #e83f6f; --hover-color: #d03863; --text-color: #fff;"
+              >
+                Your Shopping Lists
+              </a>
+            </div>
+            <div
+              class="_card_dcf87f"
+            >
+              <a
+                class="_root_396ea1"
+                href="blank"
+                style="--background-color: #2274a5; --hover-color: #1e6894; --text-color: #fff;"
+              >
+                Your Inventory
+              </a>
+            </div>
+            <div
+              class="_card_dcf87f"
+            >
+              <a
+                class="_root_396ea1"
+                href="blank"
+                style="--background-color: #00a323; --hover-color: #00921f; --text-color: #fff;"
+              >
+                Nav Link 4
+              </a>
+            </div>
+            <div
+              class="_card_dcf87f"
+            >
+              <a
+                class="_root_396ea1"
+                href="blank"
+                style="--background-color: #20e2e9; --hover-color: #11cbd1; --text-color: #094345;"
+              >
+                Nav Link 5
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <header
+        class="_root_c29812"
+      >
+        <div
+          class="_bar_c29812"
+        >
+          <span
+            class="_headerContainer_c29812"
+          >
+            <h1
+              class="_header_c29812"
+            >
+              <a
+                class="_headerLinkLarge_c29812"
+                href="/dashboard"
+              >
+                Skyrim Inventory
+                <br
+                  class="_bp_c29812"
+                />
+                 Management
+              </a>
+              <a
+                class="_headerLinkSmall_c29812"
+                href="/dashboard"
+              >
+                S. I. M.
+              </a>
+            </h1>
+          </span>
+        </div>
+      </header>
+    </main>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
