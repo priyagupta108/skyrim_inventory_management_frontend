@@ -1,0 +1,45 @@
+.root {
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.background {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-image: url(./img/btn_mobile_normal.png);
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.root:focus .background {
+  background-image: url(./img/btn_mobile_focus.png);
+}
+
+.root:active .background {
+  background-image: url(./img/btn_mobile_pressed.png);
+}
+
+@media (min-width: 481px) {
+  .root {
+    width: 191px;
+    height: 46px;
+  }
+
+  .background {
+    background-image: url(./img/btn_normal.png);
+  }
+
+  .root:focus .background {
+    background-image: url(./img/btn_focus.png);
+  }
+
+  .root:active .background {
+    background-image: url(./img/btn_pressed.png);
+  }
+}
