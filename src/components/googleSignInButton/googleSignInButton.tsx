@@ -7,7 +7,7 @@ interface GoogleSignInButtonProps {
 
 const GoogleSignInButton = ({ onClick }: GoogleSignInButtonProps) => (
   <button className={styles.root} value='Sign in with Google' onClick={onClick}>
-    <img className={styles.background} />
+    <div className={styles.background}></div>
   </button>
 )
 
