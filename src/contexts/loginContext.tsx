@@ -13,7 +13,10 @@ interface ProviderProps {
   children: ReactElement | string
 }
 
-const LoginContext = createContext<LoginContextType>({ user: null, authLoading: true })
+const LoginContext = createContext<LoginContextType>({
+  user: null,
+  authLoading: true,
+})
 
 const LoginProvider = ({ children }: ProviderProps) => {
   const [user, authLoading, authError] = useAuthState(auth)
@@ -21,14 +24,10 @@ const LoginProvider = ({ children }: ProviderProps) => {
   const value = {
     user,
     authLoading,
-    authError
+    authError,
   }
 
-  return (
-    <LoginContext.Provider value={value}>
-      {children}
-    </LoginContext.Provider>
-  )
+  return <LoginContext.Provider value={value}>{children}</LoginContext.Provider>
 }
 
 export { LoginContext, LoginProvider }

@@ -5,7 +5,7 @@ import {
   signInWithPopup,
   signOut,
   type User,
-  type UserCredential
+  type UserCredential,
 } from 'firebase/auth'
 
 // SIM's Firebase configuration
