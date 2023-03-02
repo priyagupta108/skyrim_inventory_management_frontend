@@ -1,0 +1,68 @@
+.root {
+  display: inline-block;
+}
+
+.main {
+  display: contents;
+}
+
+.button {
+  height: 100%;
+  display: flex;
+  cursor: pointer;
+}
+
+.info {
+  display: none;
+}
+
+.name,
+.email {
+  margin: 0;
+}
+
+.img {
+  margin: 8px auto;
+  height: calc(100% - 16px);
+  border-radius: 50%;
+}
+
+.dropdown {
+  display: none;
+}
+
+.dropdown.active {
+  color: black;
+  display: block;
+  position: fixed;
+  right: 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 8px 24px;
+  box-shadow: -4px 4px 4px #d0d0d0;
+  cursor: pointer;
+  opacity: 80%;
+}
+
+.dropdown.active:hover,
+.dropdown.active:focus,
+.dropdown.active:active {
+  background-color: #e0e0e0;
+  opacity: 80%;
+}
+
+@media (min-width: 601px) {
+  .info {
+    max-height: 100%;
+    padding: 8px 12px 8px 0;
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .dropdown.active {
+    opacity: 100%;
+  }
+}
