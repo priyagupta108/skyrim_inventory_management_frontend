@@ -15,12 +15,14 @@ export const Default = () => (
 
 const userWithAnonymousAvatar = {
   ...testUser,
-  photoURL: null
+  photoURL: null,
 }
 
 export const WithAnonymousAvatar = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: userWithAnonymousAvatar, authLoading: false }}>
+    <LoginContext.Provider
+      value={{ user: userWithAnonymousAvatar, authLoading: false }}
+    >
       <DashboardHeader />
     </LoginContext.Provider>
   </BrowserRouter>

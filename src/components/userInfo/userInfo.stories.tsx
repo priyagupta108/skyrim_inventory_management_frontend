@@ -5,7 +5,7 @@ import UserInfo from './userInfo'
 
 const userWithAnonymousAvatar = {
   ...testUser,
-  photoURL: null
+  photoURL: null,
 }
 
 export default { title: 'UserInfo' }
@@ -22,7 +22,9 @@ export const WithPhoto = () => (
 
 export const WithAnonymousAvatar = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: userWithAnonymousAvatar, authLoading: false }}>
+    <LoginContext.Provider
+      value={{ user: userWithAnonymousAvatar, authLoading: false }}
+    >
       <div style={{ height: '64px', display: 'flex' }}>
         <UserInfo />
       </div>
