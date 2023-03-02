@@ -65,7 +65,8 @@
     text-align: end;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
   }
 
   .img {

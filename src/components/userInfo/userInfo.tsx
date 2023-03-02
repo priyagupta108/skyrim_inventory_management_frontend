@@ -28,7 +28,7 @@ const UserInfo = () => {
               <p className={styles.name}>{displayName}</p>
               <p className={styles.email}>{email}</p>
             </span>
-            <img className={styles.img} src={photoURL || anonymousAvatar} />
+            <img className={styles.img} src={photoURL || anonymousAvatar} alt='User profile image' />
           </div>
         </div>
         <menu className={classnames(styles.dropdown, { [styles.active]: dropdownVisible })}>
@@ -42,7 +42,14 @@ const UserInfo = () => {
   } else {
     return (
       <div className={styles.main}>
-        <img className={styles.img} src={anonymousAvatar} />å
+        <div className={styles.button}>
+          <FontAwesomeIcon icon={faBars} className={styles.hamburger} />
+          <span className={styles.info}>
+            <p className={styles.name}>Unknown User</p>
+            <p className={styles.email}>Unknown</p>
+          </span>
+          <img className={styles.img} src={anonymousAvatar} alt='User profile image' />
+        </div>
       </div>
     )
   }

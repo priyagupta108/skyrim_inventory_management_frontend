@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import paths from '../../routing/paths'
+import UserInfo from '../userInfo/userInfo'
 import styles from './dashboardHeader.module.css'
 
 const DashboardHeader = () => (
@@ -16,6 +17,7 @@ const DashboardHeader = () => (
           </Link>
         </h1>
       </span>
+      <UserInfo />
     </div>
   </header>
 )

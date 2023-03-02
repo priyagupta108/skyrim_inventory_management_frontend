@@ -25,9 +25,6 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    console.log(user)
-    console.log(authLoading)
-
     if (user) navigate(paths.dashboard.main)
   }, [user])
 

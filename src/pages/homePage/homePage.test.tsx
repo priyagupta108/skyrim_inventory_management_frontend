@@ -1,23 +1,28 @@
 import { describe, test, expect } from 'vitest'
-import { renderWithRouter } from '../../setupTests'
-import paths from '../../routing/paths'
+import { renderUnauthenticated } from '../../setupTests'
 import HomePage from './homePage'
 
 describe('<HomePage />', () => {
-  test('HomePage displays properly', () => {
-    const wrapper = renderWithRouter(<HomePage />)
-    expect(wrapper).toBeTruthy()
+  // When authenticated, the homepage should redirect to the
+  // dashboard. Unfortunately, testing this key functionality
+  // with Vitest and Testing Library proved extremely impractical
+  // in light of TypeScript's constraints on the `history` prop
+  // that can be passed to a `Router` component.
+  describe('when unauthenticated', () => {
+    test('HomePage displays properly', () => {
+      const wrapper = renderUnauthenticated(<HomePage />)
+      expect(wrapper).toBeTruthy()
 
-    const h1 = wrapper.container.querySelector('h1')
-    expect(h1?.textContent).toBe('Skyrim Inventory Management')
+      const h1 = wrapper.container.querySelector('h1')
+      expect(h1?.textContent).toBe('Skyrim Inventory Management')
 
-    const a = wrapper.container.querySelector('a')
-    expect(a?.textContent).toBe('Sign in with Google')
-    expect(a?.href).toBe(paths.login)
-  })
+      const btn = wrapper.container.querySelector('button')
+      expect(btn?.value).toBe('Sign in with Google')
+    })
 
-  test('matches snapshot', () => {
-    const wrapper = renderWithRouter(<HomePage />)
-    expect(wrapper).toMatchSnapshot()
+    test('matches snapshot', () => {
+      const wrapper = renderUnauthenticated(<HomePage />)
+      expect(wrapper).toMatchSnapshot()
+    })
   })
 })
