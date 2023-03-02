@@ -1,8 +1,8 @@
 import { describe, test, expect } from 'vitest'
+import { screen } from '@testing-library/react'
 import { renderAuthenticated } from '../../setupTests'
 import paths from '../../routing/paths'
 import DashboardHeader from './dashboardHeader'
-import { screen } from '@testing-library/react'
 
 describe('<DashboardHeader />', () => {
   test('Dashboard header contains a link to the main dashboard', () => {
