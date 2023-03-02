@@ -1,7 +1,7 @@
 import { type MouseEventHandler, useState } from 'react'
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { signOutWithGoogle } from '../../firebase'
 import { useGoogleLogin } from '../../hooks/contexts'
 import anonymousAvatar from './anonymousAvatar.jpg'
@@ -23,6 +23,7 @@ const UserInfo = () => {
       <span className={styles.root}>
         <div className={styles.main}>
           <div className={styles.button} role='button' onClick={toggleDropdown}>
+            <FontAwesomeIcon icon={faBars} className={styles.hamburger} />
             <span className={styles.info}>
               <p className={styles.name}>{displayName}</p>
               <p className={styles.email}>{email}</p>

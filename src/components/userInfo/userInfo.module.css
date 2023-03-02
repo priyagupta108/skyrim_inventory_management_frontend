@@ -10,21 +10,22 @@
   height: 100%;
   display: flex;
   cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.info {
+.hamburger {
+  height: 1.5rem;
+}
+
+.info,
+.img {
   display: none;
 }
 
 .name,
 .email {
   margin: 0;
-}
-
-.img {
-  margin: 8px auto;
-  height: calc(100% - 16px);
-  border-radius: 50%;
 }
 
 .dropdown {
@@ -53,6 +54,11 @@
 }
 
 @media (min-width: 601px) {
+  .button {
+    flex-direction: row;
+    justify-content: auto;
+  }
+
   .info {
     max-height: 100%;
     padding: 8px 12px 8px 0;
@@ -62,7 +68,14 @@
     justify-content: space-between;
   }
 
-  .dropdown.active {
-    opacity: 100%;
+  .img {
+    display: inline;
+    margin: 8px auto;
+    height: calc(100% - 16px);
+    border-radius: 50%;
+  }
+
+  .hamburger {
+    display: none;
   }
 }
