@@ -14,12 +14,11 @@ const HomePage = () => {
   const onClickLoginButton: MouseEventHandler = (e) => {
     e.preventDefault()
 
-    signInWithGoogle()
-      .catch((e: Error) => {
-        if (process.env.NODE_ENV === 'development') {
-          console.error(`Error ${e.name}: ${e.message}`)
-        }
-      })
+    signInWithGoogle().catch((e: Error) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Error ${e.name}: ${e.message}`)
+      }
+    })
   }
 
   useEffect(() => {
