@@ -23,11 +23,6 @@
   display: none;
 }
 
-.name,
-.email {
-  margin: 0;
-}
-
 .dropdown {
   display: none;
 }
@@ -67,6 +62,11 @@
     flex-direction: column;
     justify-content: center;
     font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
+  }
+
+  .name,
+  .email {
+    margin: 0;
   }
 
   .img {

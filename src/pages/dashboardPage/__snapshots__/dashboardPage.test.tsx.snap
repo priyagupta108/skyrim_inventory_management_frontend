@@ -154,9 +154,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               <menu
                 class="_dropdown_d263fb"
               >
-                <div
-                  class="_signOut_d263fb"
-                >
+                <div>
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -331,9 +329,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             <menu
               class="_dropdown_d263fb"
             >
-              <div
-                class="_signOut_d263fb"
-              >
+              <div>
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "

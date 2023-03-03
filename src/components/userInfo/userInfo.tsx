@@ -16,8 +16,7 @@ const UserInfo = () => {
   }
 
   if (user) {
-    const { displayName, email } = user
-    const photoURL = user.photoURL
+    const { displayName, email, photoURL } = user
 
     return (
       <span className={styles.root}>
@@ -40,7 +39,7 @@ const UserInfo = () => {
             [styles.active]: dropdownVisible,
           })}
         >
-          <div className={styles.signOut} onClick={signOutWithGoogle}>
+          <div onClick={signOutWithGoogle}>
             <FontAwesomeIcon icon={faRightFromBracket} />
             Sign Out
           </div>

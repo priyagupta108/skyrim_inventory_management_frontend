@@ -12,7 +12,7 @@ const HomePage = () => {
   const { user, authLoading } = useGoogleLogin()
   const navigate = useNavigate()
 
-  const onClickLoginButton: MouseEventHandler = async (e) => {
+  const onClickLoginButton: MouseEventHandler = (e) => {
     e.preventDefault()
 
     signInWithGoogle()

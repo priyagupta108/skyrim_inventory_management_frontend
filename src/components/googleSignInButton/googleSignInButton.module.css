@@ -32,10 +32,3 @@
 .root:disabled .background {
   background-image: url(./img/btn_disabled.png);
 }
-
-@media (min-width: 481px) {
-  .root {
-    width: 191px;
-    height: 46px;
-  }
-}

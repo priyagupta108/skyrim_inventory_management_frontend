@@ -31,3 +31,13 @@ export const WithAnonymousAvatar = () => (
     </LoginContext.Provider>
   </BrowserRouter>
 )
+
+export const AuthLoading = () => (
+  <BrowserRouter>
+    <LoginContext.Provider value={{ user: null, authLoading: true }}>
+      <div style={{ height: '64px', display: 'flex' }}>
+        <UserInfo />
+      </div>
+    </LoginContext.Provider>
+  </BrowserRouter>
+)

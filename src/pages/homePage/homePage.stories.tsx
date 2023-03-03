@@ -1,5 +1,4 @@
 import { BrowserRouter } from 'react-router-dom'
-import { type User } from 'firebase/auth'
 import { LoginContext } from '../../contexts/loginContext'
 import HomePage from './homePage'
 export default { title: 'HomePage' }
