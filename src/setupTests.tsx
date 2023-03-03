@@ -35,8 +35,8 @@ export const renderUnauthenticated = (ui: ReactElement) =>
   )
 
 export const renderAuthLoading = (ui: ReactElement) =>
-    renderWithRouter(
-      <LoginContext.Provider value={{ user: null, authLoading: true }}>
-        {ui}
-      </LoginContext.Provider>
-    )
+  renderWithRouter(
+    <LoginContext.Provider value={{ user: null, authLoading: true }}>
+      {ui}
+    </LoginContext.Provider>
+  )
