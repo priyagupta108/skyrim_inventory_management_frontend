@@ -52,10 +52,6 @@ const UserInfo = () => {
       <div className={styles.main}>
         <div className={styles.button}>
           <FontAwesomeIcon icon={faBars} className={styles.hamburger} />
-          <span className={styles.info}>
-            <p className={styles.name}>Unknown User</p>
-            <p className={styles.email}>Unknown</p>
-          </span>
           <img
             className={styles.img}
             src={anonymousAvatar}
