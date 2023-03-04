@@ -24,7 +24,7 @@ describe('<DashboardPage />', () => {
 
     const img = wrapper.container.querySelector('img')
     expect(img).toBeTruthy()
-    expect(img?.src).toEqual('/src/testProfileImg.png')
+    expect(img?.src).toEqual('/src/support/testProfileImg.png')
   })
 
   test('DashboardPage displays the navigation mosaic', () => {

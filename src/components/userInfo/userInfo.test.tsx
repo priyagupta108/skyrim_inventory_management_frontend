@@ -12,7 +12,7 @@ describe('<UserInfo />', () => {
     expect(screen.getByText('edna@gmail.com')).toBeTruthy()
 
     const img = wrapper.container.querySelector('img')
-    expect(img?.src).toBe('/src/testProfileImg.png')
+    expect(img?.src).toBe('/src/support/testProfileImg.png')
   })
 
   test('UserInfo matches snapshot', () => {

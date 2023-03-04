@@ -93,7 +93,7 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
-                    src="/src/testProfileImg.png"
+                    src="/src/support/testProfileImg.png"
                   />
                 </div>
               </div>
@@ -214,7 +214,7 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
-                  src="/src/testProfileImg.png"
+                  src="/src/support/testProfileImg.png"
                 />
               </div>
             </div>
@@ -384,7 +384,7 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
-                    src="/src/testProfileImg.png"
+                    src="/src/support/testProfileImg.png"
                   />
                 </div>
               </div>
@@ -497,7 +497,7 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
-                  src="/src/testProfileImg.png"
+                  src="/src/support/testProfileImg.png"
                 />
               </div>
             </div>

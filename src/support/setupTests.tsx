@@ -5,18 +5,25 @@ import { LoginContext } from '../contexts/loginContext'
 import { User } from 'firebase/auth'
 import testProfileImg from './testProfileImg.png'
 
+export const requireLogin = () => { /* noop */ }
+
+const getIdToken = (): Promise<string> => {
+  return new Promise<string>((resolve, _reject) => {
+    resolve('xxxxxxx')
+  })
+}
+
 export const testUser = {
   uid: 'edna',
   displayName: 'Edna St. Vincent Millay',
   email: 'edna@gmail.com',
   photoURL: testProfileImg,
   emailVerified: true,
+  getIdToken,
 } as User
 
 export const renderWithRouter = (ui: ReactElement) =>
   render(<BrowserRouter>{ui}</BrowserRouter>)
-
-const requireLogin = () => { /* noop */ }
 
 export const renderAuthenticated = (
   ui: ReactElement,
