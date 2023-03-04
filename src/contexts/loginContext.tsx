@@ -1,16 +1,14 @@
 import { createContext, type ReactElement } from 'react'
 import { type User } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '../firebase'
+import { auth, signOutWithGoogle } from '../firebase'
+import { ProviderProps } from '../types/contexts'
+import paths from '../routing/paths'
 
 interface LoginContextType {
   authLoading: boolean
   user?: User | null
   authError?: Error
-}
-
-interface ProviderProps {
-  children: ReactElement | string
 }
 
 const LoginContext = createContext<LoginContextType>({
