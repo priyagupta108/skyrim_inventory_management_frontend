@@ -14,6 +14,22 @@ export class AuthorizationError extends Error {
   }
 }
 
+export class NotFoundError extends Error {
+  readonly code: 404
+  readonly message: string
+  readonly name: 'NotFoundError'
+
+  constructor(message: string = '404 Not Found') {
+    super(message)
+
+    this.code = 404
+    this.name = 'NotFoundError'
+    this.message = message
+
+    Object.setPrototypeOf(this, NotFoundError.prototype)
+  }
+}
+
 export class UnprocessableEntityError extends Error {
   readonly code: 422
   readonly message: string
