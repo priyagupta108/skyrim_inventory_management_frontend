@@ -7,9 +7,9 @@ on:
     branches: [ main ]
 
 env:
-  FIREBASE_API_KEY: '${{ secrets.FIREBASE_API_KEY }}'
-  FIREBASE_MESSAGING_SENDER_ID: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}'
-  FIREBASE_APP_ID: '${{ secrets.FIREBASE_APP_ID }}'
+  VITE_FIREBASE_API_KEY: '${{ secrets.FIREBASE_API_KEY }}'
+  VITE_FIREBASE_MESSAGING_SENDER_ID: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}'
+  VITE_FIREBASE_APP_ID: '${{ secrets.FIREBASE_APP_ID }}'
 
 jobs:
   build:
