@@ -60,6 +60,7 @@ const DashboardPage = () => {
           <PulseLoader
             color={YELLOW.schemeColorDark}
             cssOverride={loaderStyles}
+            data-testid='pulseLoader'
           />
         ) : (
           <NavigationMosaic cardArray={navigationCards} />
