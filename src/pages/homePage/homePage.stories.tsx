@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import { requireLogin } from '../../support/setupTests'
+import { requireLogin } from '../../support/testUtils'
 import { LoginContext } from '../../contexts/loginContext'
 import HomePage from './homePage'
 export default { title: 'HomePage' }

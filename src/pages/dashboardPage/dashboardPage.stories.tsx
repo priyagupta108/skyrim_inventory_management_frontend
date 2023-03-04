@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { LoginContext } from '../../contexts/loginContext'
-import { testUser, requireLogin } from '../../support/setupTests'
+import { testUser, requireLogin } from '../../support/testUtils'
 import DashboardPage from './dashboardPage'
 
 export default { title: 'DashboardPage' }

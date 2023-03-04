@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { renderAuthenticated } from '../../support/setupTests'
+import { renderAuthenticated } from '../../support/testUtils'
 import DashboardLayout from './dashboardLayout'
 import paths from '../../routing/paths'
 

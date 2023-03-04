@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import { testUser } from '../../support/setupTests'
+import { testUser } from '../../support/testUtils'
 import { LoginContext } from '../../contexts/loginContext'
 import DashboardHeader from './dashboardHeader'
 
