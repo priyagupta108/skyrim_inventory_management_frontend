@@ -1,29 +1,33 @@
 import { BrowserRouter } from 'react-router-dom'
 import { testUser } from '../../setupTests'
 import { LoginContext } from '../../contexts/loginContext'
-import DashboardHeader from './dashboardHeader'
-
-export default { title: 'DashboardHeader' }
-
-export const Default = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={{ user: testUser, authLoading: false }}>
-      <DashboardHeader />
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+import UserInfo from './userInfo'
 
 const userWithAnonymousAvatar = {
   ...testUser,
   photoURL: null,
 }
 
+export default { title: 'UserInfo' }
+
+export const WithPhoto = () => (
+  <BrowserRouter>
+    <LoginContext.Provider value={{ user: testUser, authLoading: false }}>
+      <div style={{ height: '64px', display: 'flex' }}>
+        <UserInfo />
+      </div>
+    </LoginContext.Provider>
+  </BrowserRouter>
+)
+
 export const WithAnonymousAvatar = () => (
   <BrowserRouter>
     <LoginContext.Provider
       value={{ user: userWithAnonymousAvatar, authLoading: false }}
     >
-      <DashboardHeader />
+      <div style={{ height: '64px', display: 'flex' }}>
+        <UserInfo />
+      </div>
     </LoginContext.Provider>
   </BrowserRouter>
 )
@@ -31,7 +35,9 @@ export const WithAnonymousAvatar = () => (
 export const AuthLoading = () => (
   <BrowserRouter>
     <LoginContext.Provider value={{ user: null, authLoading: true }}>
-      <DashboardHeader />
+      <div style={{ height: '64px', display: 'flex' }}>
+        <UserInfo />
+      </div>
     </LoginContext.Provider>
   </BrowserRouter>
 )

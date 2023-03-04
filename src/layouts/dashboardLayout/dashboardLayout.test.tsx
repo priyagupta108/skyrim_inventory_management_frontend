@@ -1,13 +1,13 @@
 import { describe, test, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { renderWithRouter } from '../../setupTests'
+import { renderAuthenticated } from '../../setupTests'
 import DashboardLayout from './dashboardLayout'
 import paths from '../../routing/paths'
 
 describe('<DashboardLayout>', () => {
   describe('when a title is given', () => {
     test('DashboardLayout renders the title and content', () => {
-      const wrapper = renderWithRouter(
+      const wrapper = renderAuthenticated(
         <DashboardLayout title="Page Title">Hello World</DashboardLayout>
       )
       expect(wrapper).toBeTruthy()
@@ -19,17 +19,20 @@ describe('<DashboardLayout>', () => {
     })
 
     test('DashboardLayout renders the DashboardHeader', () => {
-      const wrapper = renderWithRouter(
+      const wrapper = renderAuthenticated(
         <DashboardLayout title="Page Title">Hello World</DashboardLayout>
       )
 
       const a = wrapper.container.querySelector('a')
       expect(a?.textContent).toBe('Skyrim Inventory Management')
       expect(a?.href).toBe(paths.dashboard.main)
+
+      expect(screen.getByText('Edna St. Vincent Millay')).toBeTruthy()
+      expect(screen.getByText('edna@gmail.com')).toBeTruthy()
     })
 
     test('matches snapshot', () => {
-      const wrapper = renderWithRouter(
+      const wrapper = renderAuthenticated(
         <DashboardLayout title="Page Title">Hello World</DashboardLayout>
       )
 
@@ -39,7 +42,7 @@ describe('<DashboardLayout>', () => {
 
   describe('when no title is given', () => {
     test('DashboardLayout displays content but not an h2 or hr', () => {
-      const wrapper = renderWithRouter(
+      const wrapper = renderAuthenticated(
         <DashboardLayout>Hello World</DashboardLayout>
       )
       expect(wrapper).toBeTruthy()
@@ -54,17 +57,20 @@ describe('<DashboardLayout>', () => {
     })
 
     test('DashboardLayout renders the DashboardHeader', () => {
-      const wrapper = renderWithRouter(
+      const wrapper = renderAuthenticated(
         <DashboardLayout>Hello World</DashboardLayout>
       )
 
       const a = wrapper.container.querySelector('a')
       expect(a?.textContent).toBe('Skyrim Inventory Management')
       expect(a?.href).toBe(paths.dashboard.main)
+
+      expect(screen.getByText('Edna St. Vincent Millay')).toBeTruthy()
+      expect(screen.getByText('edna@gmail.com')).toBeTruthy()
     })
 
     test('matches snapshot', () => {
-      const wrapper = renderWithRouter(
+      const wrapper = renderAuthenticated(
         <DashboardLayout>Hello World</DashboardLayout>
       )
 

@@ -2,8 +2,8 @@ import { type ReactElement } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { type RelativePath } from '../types/navigation'
+import { LoginProvider } from '../contexts/loginContext'
 import HomePage from '../pages/homePage/homePage'
-import LoginPage from '../pages/loginPage/loginPage'
 import NotFoundPage from '../pages/notFoundPage/notFoundPage'
 import DashboardPage from '../pages/dashboardPage/dashboardPage'
 import paths from './paths'
@@ -36,13 +36,6 @@ const pages: Page[] = [
     path: paths.home,
   },
   {
-    pageId: 'login',
-    title: `${siteTitle} Login`,
-    description: 'Login to Skyrim Inventory Management',
-    jsx: <LoginPage />,
-    path: paths.login,
-  },
-  {
     pageId: 'dashboard-main',
     title: `${siteTitle} Dashboard`,
     description: 'Manage your inventory across multiple properties in Skyrim',
@@ -64,24 +57,26 @@ const RouteContent = ({ title, description, jsx }: BasePage) => (
 )
 
 const PageRoutes = () => (
-  <Routes>
-    <Route
-      path="*"
-      key="notFound"
-      element={<RouteContent {...notFoundPage} />}
-    />
-    {pages.map(({ pageId, title, description, jsx, path }: Page) => {
-      return (
-        <Route
-          path={path}
-          key={pageId}
-          element={
-            <RouteContent title={title} description={description} jsx={jsx} />
-          }
-        />
-      )
-    })}
-  </Routes>
+  <LoginProvider>
+    <Routes>
+      <Route
+        path="*"
+        key="notFound"
+        element={<RouteContent {...notFoundPage} />}
+      />
+      {pages.map(({ pageId, title, description, jsx, path }: Page) => {
+        return (
+          <Route
+            path={path}
+            key={pageId}
+            element={
+              <RouteContent title={title} description={description} jsx={jsx} />
+            }
+          />
+        )
+      })}
+    </Routes>
+  </LoginProvider>
 )
 
 export default PageRoutes

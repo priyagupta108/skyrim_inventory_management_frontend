@@ -21,10 +21,6 @@
 }
 
 .login {
-  font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  color: #fff;
-  text-decoration: none;
   margin: 0 auto;
 }
 
@@ -36,6 +32,7 @@
 @media (min-width: 769px) {
   .header {
     line-height: 1;
+    margin-bottom: 24px;
   }
 }
 
