@@ -1,3 +1,19 @@
+export class AuthorizationError extends Error {
+  readonly code: 401
+  readonly message: string
+  readonly name: 'AuthorizationError'
+
+  constructor(message: string = '401 Unauthorized') {
+    super(message)
+
+    this.code = 401
+    this.name = 'AuthorizationError'
+    this.message = message
+
+    Object.setPrototypeOf(this, AuthorizationError.prototype)
+  }
+}
+
 export class UnprocessableEntityError extends Error {
   readonly code: 422
   readonly message: string
