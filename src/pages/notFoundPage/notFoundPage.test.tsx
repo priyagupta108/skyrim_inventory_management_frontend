@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { renderWithRouter } from '../../setupTests'
+import { renderWithRouter } from '../../support/setupTests'
 import paths from '../../routing/paths'
 import NotFoundPage from './notFoundPage'
 

@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { LoginContext } from '../../contexts/loginContext'
-import { testUser } from '../../setupTests'
+import { testUser } from '../../support/setupTests'
 import DashboardPage from './dashboardPage'
 
 export default { title: 'DashboardPage' }

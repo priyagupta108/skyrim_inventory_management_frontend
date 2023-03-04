@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { renderWithRouter } from '../../setupTests'
+import { renderWithRouter } from '../../support/setupTests'
 import { BLUE } from '../../utils/colorSchemes'
 import { ColorProvider } from '../../contexts/colorContext'
 import paths from '../../routing/paths'
