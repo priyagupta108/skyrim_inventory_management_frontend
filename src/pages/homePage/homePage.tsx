@@ -2,7 +2,6 @@ import { useEffect, type MouseEventHandler } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { User } from 'firebase/auth'
 import { signInWithGoogle } from '../../firebase'
-import { identifyUser } from '../../utils/simApi'
 import { useGoogleLogin } from '../../hooks/contexts'
 import GoogleSignInButton from '../../components/googleSignInButton/googleSignInButton'
 import paths from '../../routing/paths'
@@ -15,13 +14,11 @@ const HomePage = () => {
   const onClickLoginButton: MouseEventHandler = (e) => {
     e.preventDefault()
 
-    signInWithGoogle()
-      .then((u: User) => identifyUser(u))
-      .catch((e: Error) => {
-        if (process.env.NODE_ENV === 'development') {
-          console.error(`Error ${e.name}: ${e.message}`)
-        }
-      })
+    signInWithGoogle().catch((e: Error) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Error ${e.name}: ${e.message}`)
+      }
+    })
   }
 
   useEffect(() => {
