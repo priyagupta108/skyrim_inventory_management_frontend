@@ -1,4 +1,3 @@
-import dotenv from 'dotenv'
 import { initializeApp } from 'firebase/app'
 import {
   GoogleAuthProvider,
@@ -8,8 +7,6 @@ import {
   type User,
   type UserCredential,
 } from 'firebase/auth'
-
-dotenv.config()
 
 // SIM's Firebase configuration
 const firebaseConfig = {
