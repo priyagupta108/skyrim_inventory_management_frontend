@@ -70,7 +70,11 @@ exports[`<UserInfo /> > UserInfo matches snapshot 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Sign Out
+            <p
+              class="_signOutText_d263fb"
+            >
+              Sign Out
+            </p>
           </div>
         </menu>
       </span>
@@ -142,7 +146,11 @@ exports[`<UserInfo /> > UserInfo matches snapshot 1`] = `
               fill="currentColor"
             />
           </svg>
-          Sign Out
+          <p
+            class="_signOutText_d263fb"
+          >
+            Sign Out
+          </p>
         </div>
       </menu>
     </span>

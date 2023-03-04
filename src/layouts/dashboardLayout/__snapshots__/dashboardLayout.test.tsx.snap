@@ -116,7 +116,11 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
                       fill="currentColor"
                     />
                   </svg>
-                  Sign Out
+                  <p
+                    class="_signOutText_d263fb"
+                  >
+                    Sign Out
+                  </p>
                 </div>
               </menu>
             </span>
@@ -237,7 +241,11 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
                     fill="currentColor"
                   />
                 </svg>
-                Sign Out
+                <p
+                  class="_signOutText_d263fb"
+                >
+                  Sign Out
+                </p>
               </div>
             </menu>
           </span>
@@ -407,7 +415,11 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
                       fill="currentColor"
                     />
                   </svg>
-                  Sign Out
+                  <p
+                    class="_signOutText_d263fb"
+                  >
+                    Sign Out
+                  </p>
                 </div>
               </menu>
             </span>
@@ -520,7 +532,11 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
                     fill="currentColor"
                   />
                 </svg>
-                Sign Out
+                <p
+                  class="_signOutText_d263fb"
+                >
+                  Sign Out
+                </p>
               </div>
             </menu>
           </span>

@@ -1,7 +1,6 @@
 import { type ReactElement } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
-import createFetchMock from 'vitest-fetch-mock'
 import { LoginContext } from '../contexts/loginContext'
 import { User } from 'firebase/auth'
 import testProfileImg from './testProfileImg.png'
