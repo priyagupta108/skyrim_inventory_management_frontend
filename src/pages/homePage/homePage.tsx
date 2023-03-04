@@ -15,7 +15,7 @@ const HomePage = () => {
     e.preventDefault()
 
     signInWithGoogle().catch((e: Error) => {
-      if (process && process.env.NODE_ENV === 'development') {
+      if (import.meta.env.DEV) {
         console.error(`Error ${e.name}: ${e.message}`)
       }
     })
