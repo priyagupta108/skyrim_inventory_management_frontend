@@ -11,9 +11,9 @@ import {
 // SIM's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.FIREBASE_API_KEY,
-  authDomain: import.meta.env.FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.FIREBASE_STORAGE_BUCKET,
+  authDomain: 'skyrim-inventory-management.firebaseapp.com',
+  projectId: 'skyrim-inventory-management',
+  storageBucket: 'skyrim-inventory-management.appspot.com',
   messagingSenderId: import.meta.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.FIREBASE_APP_ID,
 }
