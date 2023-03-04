@@ -1,13 +1,13 @@
 import { BrowserRouter } from 'react-router-dom'
 import { LoginContext } from '../../contexts/loginContext'
-import { testUser } from '../../support/setupTests'
+import { testUser, requireLogin } from '../../support/setupTests'
 import DashboardPage from './dashboardPage'
 
 export default { title: 'DashboardPage' }
 
 export const Default = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: testUser, authLoading: false }}>
+    <LoginContext.Provider value={{ user: testUser, token: 'xxxxxxx', authLoading: false, requireLogin }}>
       <DashboardPage />
     </LoginContext.Provider>
   </BrowserRouter>
@@ -15,7 +15,7 @@ export const Default = () => (
 
 export const AuthLoading = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: null, authLoading: true }}>
+    <LoginContext.Provider value={{ user: null, token: null, authLoading: true, requireLogin }}>
       <DashboardPage />
     </LoginContext.Provider>
   </BrowserRouter>
