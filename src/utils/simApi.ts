@@ -7,8 +7,8 @@ const contentTypeHeader = { 'Content-Type': 'application/json' }
 const authHeader = (token: string) => ({ 'Authorization': `Bearer ${token}` })
 const combinedHeaders = (token: string) => ({ ...contentTypeHeader, ...authHeader(token) })
 
-export const getGames = (uid: string, token: string) => {
-  const uri = `${baseUri}/users/${uid}/games`
+export const getGames = (token: string) => {
+  const uri = `${baseUri}/games`
   const headers = combinedHeaders(token)
 
   return (

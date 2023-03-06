@@ -34,7 +34,7 @@ const GamesProvider = ({ children }: ProviderProps) => {
 
   const fetchGames = useCallback(() => {
     if (user && token) {
-      getGames(user.uid, token)
+      getGames(token)
         .then(({ json }) => {
           setGames(json)
           setGamesLoadingState(DONE)
