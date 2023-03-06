@@ -3,9 +3,11 @@ import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { type RelativePath } from '../types/navigation'
 import { LoginProvider } from '../contexts/loginContext'
+import { GamesProvider } from '../contexts/gamesContext'
 import HomePage from '../pages/homePage/homePage'
 import NotFoundPage from '../pages/notFoundPage/notFoundPage'
 import DashboardPage from '../pages/dashboardPage/dashboardPage'
+import GamesPage from '../pages/gamesPage/gamesPage'
 import paths from './paths'
 
 const siteTitle = 'Skyrim Inventory Management |'
@@ -38,9 +40,16 @@ const pages: Page[] = [
   {
     pageId: 'dashboard-main',
     title: `${siteTitle} Dashboard`,
-    description: 'Manage your inventory across multiple properties in Skyrim',
+    description: 'Skyrim Inventory Management User Dashboard',
     jsx: <DashboardPage />,
     path: paths.dashboard.main,
+  },
+  {
+    pageId: 'dashboard-games',
+    title: `${siteTitle} Your Games`,
+    description: 'Manage Skyrim Games',
+    jsx: <GamesProvider><GamesPage /></GamesProvider>,
+    path: paths.dashboard.games,
   },
 ]
 
