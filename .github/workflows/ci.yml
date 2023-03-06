@@ -2,9 +2,9 @@ name: Skyrim Inventory Management Frontend CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, 231-rewrite-games-page-feature-branch ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, 231-rewrite-games-page-feature-branch ]
 
 jobs:
   build:
