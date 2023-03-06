@@ -10,7 +10,7 @@ interface GameLineItemProps {
   description?: string
 }
 
-const GameLineItem = ({ name, description = DEFAULT_DESCRIPTION }: GameLineItemProps) => {
+const GameLineItem = ({ name, description }: GameLineItemProps) => {
   const [descriptionExpanded, setDescriptionExpanded] = useState(false)
 
   const toggleDescription: MouseEventHandler = (e) => {
@@ -25,7 +25,7 @@ const GameLineItem = ({ name, description = DEFAULT_DESCRIPTION }: GameLineItemP
         height={descriptionExpanded ? 'auto' : 0}
       >
         <div className={classNames(styles.collapsible, { [styles.expanded]: descriptionExpanded })}>
-          <p className={styles.description}>{description}</p>
+          <p className={styles.description}>{description || DEFAULT_DESCRIPTION}</p>
         </div>
       </AnimateHeight>
     </div>
