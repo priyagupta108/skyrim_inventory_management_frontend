@@ -36,7 +36,12 @@ const GamesPage = () => {
         {games.length > 0 && gamesLoadingState === DONE && (
           <>
             {games.map(({ id, name, description }: Game) => (
-              <GameLineItem key={id} name={name} description={description} />
+              <GameLineItem
+                key={id}
+                gameId={id}
+                name={name}
+                description={description}
+              />
             ))}
           </>
         )}

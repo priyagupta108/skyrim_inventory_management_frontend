@@ -1,6 +1,16 @@
-import { describe, test, expect, beforeEach, afterEach } from 'vitest'
-import { screen, waitFor } from '@testing-library/react'
-import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
+import { describe, test, expect, beforeEach, afterEach, vitest } from 'vitest'
+import {
+  screen,
+  act,
+  waitFor,
+  waitForElementToBeRemoved,
+  cleanup,
+} from '@testing-library/react'
+import {
+  renderAuthenticated,
+  renderAuthLoading,
+  testUser,
+} from '../../support/testUtils'
 import { emptyGames, allGames } from '../../support/data/games'
 import { internalServerErrorResponse } from '../../support/data/errors'
 import { PageProvider } from '../../contexts/pageContext'
@@ -10,6 +20,7 @@ import GamesPage from './gamesPage'
 describe('<GamesPage />', () => {
   afterEach(() => {
     fetch.resetMocks()
+    cleanup()
   })
 
   describe('viewing games', () => {
