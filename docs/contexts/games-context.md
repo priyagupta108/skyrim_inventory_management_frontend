@@ -4,6 +4,7 @@ The `GamesContext` enables us to keep track of all of a user's games as well as 
 
 - `games`: array of [`Game`](/src/types/games.d.ts) objects, the games returned from the API for the signed-in user, initialized as an empty array (i.e., this object will never be `null` or `undefined`)
 - `gamesLoadingStatus`: string of either `'LOADING'`, `'ERROR'`, or `'DONE'`, indicating whether games have loaded successfully from the API, initialized as `'LOADING'`
+- `destroyGame`: function that takes a game ID as an argument and destroys the game with that ID at the API, updating the `games` array accordingly
 
 Accessing games requires a user to be authenticated, so the `GamesProvider` can only be rendered inside a [`LoginProvider`](/docs/contexts/login-context.md). Note that the `GamesProvider` itself calls the `requireLogin` function provided by the login context, so this function should not be called in any `GamesContext` consumers.
 
