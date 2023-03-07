@@ -88,26 +88,27 @@ describe('<GamesPage />', () => {
         </PageProvider>
       )
 
-      const firstTitle = await screen.findByText('My Game 1')
-      expect(firstTitle).toBeTruthy()
-      expect(screen.getByText('This is a game with a description')).toBeTruthy()
+      await waitFor(() => {
+        expect(screen.findByText('My Game 1')).toBeTruthy()
+        expect(screen.findByText('This is a game with a description')).toBeTruthy()
 
-      expect(screen.getByText('My Game 2')).toBeTruthy()
-      expect(screen.getByText('This game has no description.')).toBeTruthy()
+        expect(screen.findByText('My Game 2')).toBeTruthy()
+        expect(screen.findByText('This game has no description.')).toBeTruthy()
 
-      expect(
-        screen.getByText(
-          'Game with a really really really really really long name'
-        )
-      ).toBeTruthy()
-      expect(
-        screen.getByText(
-          /Cum audissem Antiochum, Brute, ut solebam, cum M\. Pisone/
-        )
-      ).toBeTruthy()
+        expect(
+          screen.getByText(
+            'Game with a really really really really really long name'
+          )
+        ).toBeTruthy()
+        expect(
+          screen.getByText(
+            /Cum audissem Antiochum, Brute, ut solebam, cum M\. Pisone/
+          )
+        ).toBeTruthy()
 
-      expect(screen.queryByTestId('pulseLoader')).toBeFalsy()
-      expect(screen.queryByText('You have no games.')).toBeFalsy()
+        expect(screen.queryByTestId('pulseLoader')).toBeFalsy()
+        expect(screen.queryByText('You have no games.')).toBeFalsy()
+      })
     })
 
     test('matches snapshot', () => {
