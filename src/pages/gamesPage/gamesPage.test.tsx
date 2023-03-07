@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach } from 'vitest'
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import { GamesProvider } from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
@@ -46,9 +46,10 @@ describe('<GamesPage />', () => {
       )
       expect(wrapper).toBeTruthy()
 
-      const el = await screen.findByText('You have no games.')
-      expect(el).toBeTruthy()
-      expect(screen.queryByTestId('pulseLoader')).toBeFalsy()
+      await waitFor(() => {
+        expect(screen.findByText('You have no games.')).toBeTruthy()
+        expect(screen.queryByTestId('pulseLoader')).toBeFalsy()
+      })
     })
 
     test('matches snapshot', () => {
