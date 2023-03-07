@@ -22,7 +22,6 @@ export const getGames = (token: string) => {
 
   return fetch(uri, { headers }).then((res: Response) => {
     if (res.status === 401) throw new AuthorizationError()
-    if (res.status === 404) throw new NotFoundError()
     if (res.status === 500) throw new InternalServerError()
     return res.json().then((json: Game[]) => ({ status: res.status, json }))
   })
