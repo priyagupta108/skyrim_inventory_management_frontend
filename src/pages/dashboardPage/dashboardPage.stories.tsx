@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { LoginContext } from '../../contexts/loginContext'
+import { PageProvider } from '../../contexts/pageContext'
 import { testUser, requireLogin } from '../../support/testUtils'
 import DashboardPage from './dashboardPage'
 
@@ -15,7 +16,9 @@ export const Default = () => (
         requireLogin,
       }}
     >
-      <DashboardPage />
+      <PageProvider>
+        <DashboardPage />
+      </PageProvider>
     </LoginContext.Provider>
   </BrowserRouter>
 )
@@ -25,7 +28,9 @@ export const AuthLoading = () => (
     <LoginContext.Provider
       value={{ user: null, token: null, authLoading: true, requireLogin }}
     >
-      <DashboardPage />
+      <PageProvider>
+        <DashboardPage />
+      </PageProvider>
     </LoginContext.Provider>
   </BrowserRouter>
 )

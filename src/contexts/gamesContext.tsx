@@ -2,10 +2,10 @@ import { createContext, useCallback, useEffect, useState } from 'react'
 import { signOutWithGoogle } from '../firebase'
 import { type Game } from '../types/games'
 import { type ProviderProps } from '../types/contexts'
+import { useGoogleLogin, usePageContext } from '../hooks/contexts'
 import { ApiError } from '../types/errors'
 import { LOADING, DONE, ERROR, type LoadingState } from '../utils/loadingStates'
 import { getGames } from '../utils/simApi'
-import { useGoogleLogin } from '../hooks/contexts'
 
 // TODO: Add default values for context provider as follows:
 //       const createGame = (game: Game) => {
@@ -31,6 +31,7 @@ const GamesProvider = ({ children }: ProviderProps) => {
   const { user, token, authLoading, requireLogin } = useGoogleLogin()
   const [gamesLoadingState, setGamesLoadingState] = useState(LOADING)
   const [games, setGames] = useState<Game[]>([])
+  const { setFlashProps } = usePageContext()
 
   const fetchGames = useCallback(() => {
     if (user && token) {
@@ -48,6 +49,11 @@ const GamesProvider = ({ children }: ProviderProps) => {
           } else {
             setGames([])
             setGamesLoadingState(ERROR)
+            setFlashProps({
+              type: 'error',
+              message: e.message,
+              hidden: false,
+            })
           }
         })
     }

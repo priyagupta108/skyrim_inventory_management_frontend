@@ -22,7 +22,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/games"
                   style="--background-color: #ffbf00; --hover-color: #e5ab00; --text-color: #4c3900;"
                 >
                   Your Games
@@ -180,6 +180,10 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             </span>
           </div>
         </header>
+        <div
+          class="_root_91d025 _hidden_91d025"
+          style="--text-color: #4e6d83;"
+        />
       </main>
     </div>
   </body>,
@@ -201,7 +205,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/games"
                 style="--background-color: #ffbf00; --hover-color: #e5ab00; --text-color: #4c3900;"
               >
                 Your Games
@@ -359,6 +363,10 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
           </span>
         </div>
       </header>
+      <div
+        class="_root_91d025 _hidden_91d025"
+        style="--text-color: #4e6d83;"
+      />
     </main>
   </div>,
   "debug": [Function],
@@ -505,6 +513,10 @@ exports[`<DashboardPage /> > when auth is loading > matches snapshot 1`] = `
             </div>
           </div>
         </header>
+        <div
+          class="_root_91d025 _hidden_91d025"
+          style="--text-color: #4e6d83;"
+        />
       </main>
     </div>
   </body>,
@@ -594,6 +606,10 @@ exports[`<DashboardPage /> > when auth is loading > matches snapshot 1`] = `
           </div>
         </div>
       </header>
+      <div
+        class="_root_91d025 _hidden_91d025"
+        style="--text-color: #4e6d83;"
+      />
     </main>
   </div>,
   "debug": [Function],
