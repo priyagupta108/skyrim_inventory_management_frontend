@@ -96,6 +96,10 @@ exports[`<GamesPage /> > when loading > matches snapshot 1`] = `
             </div>
           </div>
         </header>
+        <div
+          class="_root_91d025 _hidden_91d025"
+          style="--text-color: #4e6d83;"
+        />
       </main>
     </div>
   </body>,
@@ -191,6 +195,10 @@ exports[`<GamesPage /> > when loading > matches snapshot 1`] = `
           </div>
         </div>
       </header>
+      <div
+        class="_root_91d025 _hidden_91d025"
+        style="--text-color: #4e6d83;"
+      />
     </main>
   </div>,
   "debug": [Function],
@@ -388,6 +396,10 @@ exports[`<GamesPage /> > when there are multiple games > matches snapshot 1`] = 
             </span>
           </div>
         </header>
+        <div
+          class="_root_91d025 _hidden_91d025"
+          style="--text-color: #4e6d83;"
+        />
       </main>
     </div>
   </body>,
@@ -528,6 +540,10 @@ exports[`<GamesPage /> > when there are multiple games > matches snapshot 1`] = 
           </span>
         </div>
       </header>
+      <div
+        class="_root_91d025 _hidden_91d025"
+        style="--text-color: #4e6d83;"
+      />
     </main>
   </div>,
   "debug": [Function],
@@ -725,6 +741,10 @@ exports[`<GamesPage /> > when there are no games > matches snapshot 1`] = `
             </span>
           </div>
         </header>
+        <div
+          class="_root_91d025 _hidden_91d025"
+          style="--text-color: #4e6d83;"
+        />
       </main>
     </div>
   </body>,
@@ -865,6 +885,10 @@ exports[`<GamesPage /> > when there are no games > matches snapshot 1`] = `
           </span>
         </div>
       </header>
+      <div
+        class="_root_91d025 _hidden_91d025"
+        style="--text-color: #4e6d83;"
+      />
     </main>
   </div>,
   "debug": [Function],

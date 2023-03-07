@@ -1,9 +1,11 @@
 import { BrowserRouter } from 'react-router-dom'
 import { testUser, requireLogin } from '../../support/testUtils'
 import { allGames, emptyGames } from '../../support/data/games'
+import { internalServerErrorResponse } from '../../support/data/errors'
 import { LoginContext } from '../../contexts/loginContext'
-import GamesPage from './gamesPage'
+import { PageProvider } from '../../contexts/pageContext'
 import { GamesProvider } from '../../contexts/gamesContext'
+import GamesPage from './gamesPage'
 
 const GAMES_URI = 'http://localhost:3000/games'
 
@@ -21,9 +23,11 @@ export const NoGames = () => (
         requireLogin,
       }}
     >
-      <GamesProvider>
-        <GamesPage />
-      </GamesProvider>
+      <PageProvider>
+        <GamesProvider>
+          <GamesPage />
+        </GamesProvider>
+      </PageProvider>
     </LoginContext.Provider>
   </BrowserRouter>
 )
@@ -49,9 +53,11 @@ export const WithGames = () => (
         requireLogin,
       }}
     >
-      <GamesProvider>
-        <GamesPage />
-      </GamesProvider>
+      <PageProvider>
+        <GamesProvider>
+          <GamesPage />
+        </GamesProvider>
+      </PageProvider>
     </LoginContext.Provider>
   </BrowserRouter>
 )
@@ -72,9 +78,41 @@ export const AuthLoading = () => (
     <LoginContext.Provider
       value={{ user: null, token: null, authLoading: true, requireLogin }}
     >
-      <GamesProvider>
-        <GamesPage />
-      </GamesProvider>
+      <PageProvider>
+        <GamesProvider>
+          <GamesPage />
+        </GamesProvider>
+      </PageProvider>
     </LoginContext.Provider>
   </BrowserRouter>
 )
+
+export const ServerError = () => (
+  <BrowserRouter>
+    <LoginContext.Provider
+      value={{
+        user: testUser,
+        token: 'xxxxxxx',
+        authLoading: false,
+        requireLogin,
+      }}
+    >
+      <PageProvider>
+        <GamesProvider>
+          <GamesPage />
+        </GamesProvider>
+      </PageProvider>
+    </LoginContext.Provider>
+  </BrowserRouter>
+)
+
+ServerError.parameters = {
+  mockData: [
+    {
+      url: GAMES_URI,
+      method: 'GET',
+      status: 500,
+      response: internalServerErrorResponse,
+    },
+  ],
+}

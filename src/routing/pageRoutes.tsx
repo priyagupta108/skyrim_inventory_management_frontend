@@ -9,6 +9,7 @@ import NotFoundPage from '../pages/notFoundPage/notFoundPage'
 import DashboardPage from '../pages/dashboardPage/dashboardPage'
 import GamesPage from '../pages/gamesPage/gamesPage'
 import paths from './paths'
+import { PageProvider } from '../contexts/pageContext'
 
 const siteTitle = 'Skyrim Inventory Management |'
 
@@ -41,7 +42,11 @@ const pages: Page[] = [
     pageId: 'dashboard-main',
     title: `${siteTitle} Dashboard`,
     description: 'Skyrim Inventory Management User Dashboard',
-    jsx: <DashboardPage />,
+    jsx: (
+      <PageProvider>
+        <DashboardPage />
+      </PageProvider>
+    ),
     path: paths.dashboard.main,
   },
   {
@@ -49,9 +54,11 @@ const pages: Page[] = [
     title: `${siteTitle} Your Games`,
     description: 'Manage Skyrim Games',
     jsx: (
-      <GamesProvider>
-        <GamesPage />
-      </GamesProvider>
+      <PageProvider>
+        <GamesProvider>
+          <GamesPage />
+        </GamesProvider>
+      </PageProvider>
     ),
     path: paths.dashboard.games,
   },

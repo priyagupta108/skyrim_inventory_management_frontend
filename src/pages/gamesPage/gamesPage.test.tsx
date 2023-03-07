@@ -1,6 +1,7 @@
 import { describe, test, expect, beforeEach } from 'vitest'
 import { screen, waitFor } from '@testing-library/react'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
+import { PageProvider } from '../../contexts/pageContext'
 import { GamesProvider } from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
 import { emptyGames, allGames } from '../../support/data/games'
@@ -13,9 +14,11 @@ describe('<GamesPage />', () => {
   describe('when loading', () => {
     test('displays the loader', () => {
       const wrapper = renderAuthLoading(
-        <GamesProvider>
-          <GamesPage />
-        </GamesProvider>
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
       )
       expect(wrapper).toBeTruthy()
 
@@ -24,9 +27,11 @@ describe('<GamesPage />', () => {
 
     test('matches snapshot', () => {
       const wrapper = renderAuthLoading(
-        <GamesProvider>
-          <GamesPage />
-        </GamesProvider>
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
       )
 
       expect(wrapper).toMatchSnapshot()
@@ -40,9 +45,11 @@ describe('<GamesPage />', () => {
 
     test('games page displays a message that there are no games', async () => {
       const wrapper = renderAuthenticated(
-        <GamesProvider>
-          <GamesPage />
-        </GamesProvider>
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
       )
       expect(wrapper).toBeTruthy()
 
@@ -54,9 +61,11 @@ describe('<GamesPage />', () => {
 
     test('matches snapshot', () => {
       const wrapper = renderAuthenticated(
-        <GamesProvider>
-          <GamesPage />
-        </GamesProvider>
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
       )
       expect(wrapper).toMatchSnapshot()
     })
@@ -71,9 +80,11 @@ describe('<GamesPage />', () => {
     // that, as noted in the test file for the GameLineItem component.
     test('displays the title and description of each game', async () => {
       renderAuthenticated(
-        <GamesProvider>
-          <GamesPage />
-        </GamesProvider>
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
       )
 
       const firstTitle = await screen.findByText('My Game 1')
@@ -100,9 +111,11 @@ describe('<GamesPage />', () => {
 
     test('matches snapshot', () => {
       const wrapper = renderAuthenticated(
-        <GamesProvider>
-          <GamesPage />
-        </GamesProvider>
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
       )
       expect(wrapper).toMatchSnapshot()
     })

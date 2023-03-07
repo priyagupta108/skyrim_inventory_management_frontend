@@ -1,11 +1,16 @@
 import { describe, test, expect } from 'vitest'
 import { screen } from '@testing-library/react'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
+import { PageProvider } from '../../contexts/pageContext'
 import DashboardPage from './dashboardPage'
 
 describe('<DashboardPage />', () => {
   test('DashboardPage displays the header', () => {
-    const wrapper = renderAuthenticated(<DashboardPage />)
+    const wrapper = renderAuthenticated(
+      <PageProvider>
+        <DashboardPage />
+      </PageProvider>
+    )
     expect(wrapper).toBeTruthy()
 
     const h1 = wrapper.container.querySelector('h1')
@@ -17,7 +22,11 @@ describe('<DashboardPage />', () => {
   })
 
   test('DashboardPage displays user info', () => {
-    const wrapper = renderAuthenticated(<DashboardPage />)
+    const wrapper = renderAuthenticated(
+      <PageProvider>
+        <DashboardPage />
+      </PageProvider>
+    )
 
     expect(screen.getByText('Edna St. Vincent Millay')).toBeTruthy()
     expect(screen.getByText('edna@gmail.com')).toBeTruthy()
@@ -28,7 +37,11 @@ describe('<DashboardPage />', () => {
   })
 
   test('DashboardPage displays the navigation mosaic', () => {
-    renderAuthenticated(<DashboardPage />)
+    renderAuthenticated(
+      <PageProvider>
+        <DashboardPage />
+      </PageProvider>
+    )
 
     expect(screen.getByText('Your Games')).toBeTruthy()
     expect(screen.getByText('Your Shopping Lists')).toBeTruthy()
@@ -38,19 +51,31 @@ describe('<DashboardPage />', () => {
   })
 
   test('matches snapshot', () => {
-    const wrapper = renderAuthenticated(<DashboardPage />)
+    const wrapper = renderAuthenticated(
+      <PageProvider>
+        <DashboardPage />
+      </PageProvider>
+    )
     expect(wrapper).toMatchSnapshot()
   })
 
   describe('when auth is loading', () => {
     test('DashboardPage displays the pulse loader', () => {
-      renderAuthLoading(<DashboardPage />)
+      renderAuthLoading(
+        <PageProvider>
+          <DashboardPage />
+        </PageProvider>
+      )
 
       expect(screen.getByTestId('pulseLoader')).toBeTruthy()
     })
 
     test('matches snapshot', () => {
-      const wrapper = renderAuthLoading(<DashboardPage />)
+      const wrapper = renderAuthLoading(
+        <PageProvider>
+          <DashboardPage />
+        </PageProvider>
+      )
 
       expect(wrapper).toMatchSnapshot()
     })
