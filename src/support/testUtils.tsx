@@ -11,7 +11,9 @@ import testProfileImg from './testProfileImg.png'
  *
  */
 
-export const requireLogin = () => { /* noop */ }
+export const requireLogin = () => {
+  /* noop */
+}
 
 export const testUser = {
   uid: 'edna',
@@ -19,7 +21,8 @@ export const testUser = {
   email: 'edna@gmail.com',
   photoURL: testProfileImg,
   emailVerified: true,
-  getIdToken: () => new Promise<string>((resolve, _reject) => resolve('xxxxxxx'))
+  getIdToken: () =>
+    new Promise<string>((resolve, _reject) => resolve('xxxxxxx')),
 } as User
 
 /*
@@ -31,26 +34,29 @@ export const testUser = {
 export const renderWithRouter = (ui: ReactElement) =>
   render(<BrowserRouter>{ui}</BrowserRouter>)
 
-export const renderAuthenticated = (
-  ui: ReactElement,
-  authLoading = false
-) =>
+export const renderAuthenticated = (ui: ReactElement, authLoading = false) =>
   renderWithRouter(
-    <LoginContext.Provider value={{ user: testUser, token: 'xxxxxxx', requireLogin, authLoading }}>
+    <LoginContext.Provider
+      value={{ user: testUser, token: 'xxxxxxx', requireLogin, authLoading }}
+    >
       {ui}
     </LoginContext.Provider>
   )
 
 export const renderUnauthenticated = (ui: ReactElement) =>
   renderWithRouter(
-    <LoginContext.Provider value={{ user: null, token: null, authLoading: false, requireLogin }}>
+    <LoginContext.Provider
+      value={{ user: null, token: null, authLoading: false, requireLogin }}
+    >
       {ui}
     </LoginContext.Provider>
   )
 
 export const renderAuthLoading = (ui: ReactElement) =>
   renderWithRouter(
-    <LoginContext.Provider value={{ user: null, token: null, authLoading: true, requireLogin }}>
+    <LoginContext.Provider
+      value={{ user: null, token: null, authLoading: true, requireLogin }}
+    >
       {ui}
     </LoginContext.Provider>
   )

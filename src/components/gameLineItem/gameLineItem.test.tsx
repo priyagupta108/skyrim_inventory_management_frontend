@@ -9,7 +9,12 @@ import GameLineItem from './gameLineItem'
 // way to test whether the user can see the description or not.
 describe('GameLineItem', () => {
   test('matches snapshot', () => {
-    const wrapper = render(<GameLineItem name='De finibus bonorum et malorum' description='This is my game' />)
+    const wrapper = render(
+      <GameLineItem
+        name="De finibus bonorum et malorum"
+        description="This is my game"
+      />
+    )
     expect(wrapper).toBeTruthy()
     expect(wrapper).toMatchSnapshot()
   })

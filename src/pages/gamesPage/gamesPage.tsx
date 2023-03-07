@@ -8,7 +8,7 @@ import DashboardLayout from '../../layouts/dashboardLayout/dashboardLayout'
 import GameLineItem from '../../components/gameLineItem/gameLineItem'
 
 const loaderStyles: CSSProperties = {
-  textAlign: 'center'
+  textAlign: 'center',
 }
 
 const GamesPage = () => {
@@ -25,13 +25,25 @@ const GamesPage = () => {
   }, [authLoading, gamesLoadingState])
 
   return (
-    <DashboardLayout title='Your Games'>
+    <DashboardLayout title="Your Games">
       <div>
-        {loading && <PulseLoader color={YELLOW.schemeColorDark} cssOverride={loaderStyles} data-testid='pulseLoader' />}
-        {games.length === 0 && gamesLoadingState === DONE && <p>You have no games.</p>}
-        {games.length > 0 && gamesLoadingState === DONE && <>
-          {games.map(({ id, name, description }: Game) => <GameLineItem key={id} name={name} description={description} />)}
-        </>}
+        {loading && (
+          <PulseLoader
+            color={YELLOW.schemeColorDark}
+            cssOverride={loaderStyles}
+            data-testid="pulseLoader"
+          />
+        )}
+        {games.length === 0 && gamesLoadingState === DONE && (
+          <p>You have no games.</p>
+        )}
+        {games.length > 0 && gamesLoadingState === DONE && (
+          <>
+            {games.map(({ id, name, description }: Game) => (
+              <GameLineItem key={id} name={name} description={description} />
+            ))}
+          </>
+        )}
       </div>
     </DashboardLayout>
   )

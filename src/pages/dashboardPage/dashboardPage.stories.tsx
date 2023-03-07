@@ -7,7 +7,14 @@ export default { title: 'DashboardPage' }
 
 export const Default = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: testUser, token: 'xxxxxxx', authLoading: false, requireLogin }}>
+    <LoginContext.Provider
+      value={{
+        user: testUser,
+        token: 'xxxxxxx',
+        authLoading: false,
+        requireLogin,
+      }}
+    >
       <DashboardPage />
     </LoginContext.Provider>
   </BrowserRouter>
@@ -15,7 +22,9 @@ export const Default = () => (
 
 export const AuthLoading = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: null, token: null, authLoading: true, requireLogin }}>
+    <LoginContext.Provider
+      value={{ user: null, token: null, authLoading: true, requireLogin }}
+    >
       <DashboardPage />
     </LoginContext.Provider>
   </BrowserRouter>

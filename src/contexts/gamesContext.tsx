@@ -1,4 +1,10 @@
-import { createContext, useCallback, useEffect, useState, type ReactElement } from 'react'
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useState,
+  type ReactElement,
+} from 'react'
 import { signOutWithGoogle } from '../firebase'
 import { type Game } from '../types/games'
 import { type ProviderProps } from '../types/contexts'
@@ -24,7 +30,7 @@ interface GamesContextType {
 
 const GamesContext = createContext<GamesContextType>({
   games: [],
-  gamesLoadingState: LOADING
+  gamesLoadingState: LOADING,
 })
 
 const GamesProvider = ({ children }: ProviderProps) => {
@@ -40,7 +46,8 @@ const GamesProvider = ({ children }: ProviderProps) => {
           setGamesLoadingState(DONE)
         })
         .catch((e: ApiError) => {
-          if (import.meta.env.DEV) console.error(`Error ${e.name}: ${e.message}`)
+          if (import.meta.env.DEV)
+            console.error(`Error ${e.name}: ${e.message}`)
 
           // If the error code is 404, that means the back end couldn't find the user
           // in the system. This shouldn't be possible for a user who has previously
@@ -57,7 +64,7 @@ const GamesProvider = ({ children }: ProviderProps) => {
 
   const value = {
     games,
-    gamesLoadingState
+    gamesLoadingState,
   }
 
   useEffect(() => {

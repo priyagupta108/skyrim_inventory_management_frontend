@@ -42,7 +42,7 @@ const LoginProvider = ({ children }: ProviderProps) => {
     if (authError) signOutWithGoogle()
 
     if (user) {
-      user.getIdToken(true).then(token => setToken(token))
+      user.getIdToken(true).then((token) => setToken(token))
     }
   }, [user, authError])
 

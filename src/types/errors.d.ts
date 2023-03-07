@@ -1,3 +1,12 @@
-import { AuthorizationError, NotFoundError, UnprocessableEntityError, InternalServerError } from '../utils/apiErrors'
+import {
+  AuthorizationError,
+  NotFoundError,
+  UnprocessableEntityError,
+  InternalServerError,
+} from '../utils/apiErrors'
 
-export type ApiError = AuthorizationError | NotFoundError | UnprocessableEntityError | InternalServerError
+export type ApiError =
+  | AuthorizationError
+  | NotFoundError
+  | UnprocessableEntityError
+  | InternalServerError

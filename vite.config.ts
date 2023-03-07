@@ -24,8 +24,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
-    setupFiles: [
-      './src/support/setupFetchMocks.ts',
-    ],
+    setupFiles: ['./src/support/setupFetchMocks.ts'],
   },
 })

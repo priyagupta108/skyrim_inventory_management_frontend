@@ -8,12 +8,19 @@ import { GamesProvider } from '../../contexts/gamesContext'
 const GAMES_URI = 'http://localhost:3000/games'
 
 export default {
-  title: 'GamesPage'
+  title: 'GamesPage',
 }
 
 export const NoGames = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: testUser, token: 'xxxxxxx', authLoading: false, requireLogin }}>
+    <LoginContext.Provider
+      value={{
+        user: testUser,
+        token: 'xxxxxxx',
+        authLoading: false,
+        requireLogin,
+      }}
+    >
       <GamesProvider>
         <GamesPage />
       </GamesProvider>
@@ -29,12 +36,19 @@ NoGames.parameters = {
       status: 200,
       response: emptyGames,
     },
-  ]
+  ],
 }
 
 export const WithGames = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: testUser, token: 'xxxxxxx', authLoading: false, requireLogin }}>
+    <LoginContext.Provider
+      value={{
+        user: testUser,
+        token: 'xxxxxxx',
+        authLoading: false,
+        requireLogin,
+      }}
+    >
       <GamesProvider>
         <GamesPage />
       </GamesProvider>
@@ -50,12 +64,14 @@ WithGames.parameters = {
       status: 200,
       response: allGames,
     },
-  ]
+  ],
 }
 
 export const AuthLoading = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: null, token: null, authLoading: true, requireLogin }}>
+    <LoginContext.Provider
+      value={{ user: null, token: null, authLoading: true, requireLogin }}
+    >
       <GamesProvider>
         <GamesPage />
       </GamesProvider>

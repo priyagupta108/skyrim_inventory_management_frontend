@@ -48,7 +48,11 @@ const pages: Page[] = [
     pageId: 'dashboard-games',
     title: `${siteTitle} Your Games`,
     description: 'Manage Skyrim Games',
-    jsx: <GamesProvider><GamesPage /></GamesProvider>,
+    jsx: (
+      <GamesProvider>
+        <GamesPage />
+      </GamesProvider>
+    ),
     path: paths.dashboard.games,
   },
 ]

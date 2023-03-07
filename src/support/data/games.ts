@@ -17,13 +17,14 @@ export const allGames: Game[] = [
     name: 'My Game 2',
     description: null,
     created_at: new Date(),
-    updated_at: new Date()
+    updated_at: new Date(),
   },
   {
     id: 77,
     user_id: 412,
     name: 'Game with a really really really really really long name',
-    description: 'Cum audissem Antiochum, Brute, ut solebam, cum M. Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q. frater et T. Pomponius postmeridianam conficeremus in Academia',
+    description:
+      'Cum audissem Antiochum, Brute, ut solebam, cum M. Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q. frater et T. Pomponius postmeridianam conficeremus in Academia',
     created_at: new Date(),
     updated_at: new Date(),
   },
