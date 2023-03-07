@@ -1,7 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { testUser, requireLogin } from '../../support/testUtils'
 import { allGames, emptyGames } from '../../support/data/games'
-import { authorizationErrorResponse, internalServerErrorResponse } from '../../support/data/errors'
 import { LoginContext } from '../../contexts/loginContext'
 import GamesPage from './gamesPage'
 import { GamesProvider } from '../../contexts/gamesContext'
@@ -9,30 +8,7 @@ import { GamesProvider } from '../../contexts/gamesContext'
 const GAMES_URI = 'http://localhost:3000/games'
 
 export default {
-  title: 'GamesPage',
-  // component: GamesPage,
-  // parameters: {
-  //   mockData: [
-  //     {
-  //       url: GAMES_URI,
-  //       method: 'GET',
-  //       status: 200,
-  //       response: allGames,
-  //     },
-  //     {
-  //       url: GAMES_URI,
-  //       method: 'GET',
-  //       status: 401,
-  //       response: authorizationErrorResponse,
-  //     },
-  //     {
-  //       url: GAMES_URI,
-  //       method: 'GET',
-  //       status: 500,
-  //       response: internalServerErrorResponse,
-  //     },
-  //   ]
-  // }
+  title: 'GamesPage'
 }
 
 export const NoGames = () => (

@@ -7,7 +7,7 @@ const DEFAULT_DESCRIPTION = 'This game has no description.'
 
 interface GameLineItemProps {
   name: string
-  description?: string
+  description?: string | null
 }
 
 const GameLineItem = ({ name, description }: GameLineItemProps) => {
