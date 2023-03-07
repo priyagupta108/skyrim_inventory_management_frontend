@@ -1,10 +1,11 @@
 import { describe, test, expect, beforeEach } from 'vitest'
 import { screen, waitFor } from '@testing-library/react'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
+import { emptyGames, allGames } from '../../support/data/games'
+import { internalServerErrorResponse } from '../../support/data/errors'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesProvider } from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
-import { emptyGames, allGames } from '../../support/data/games'
 
 describe('<GamesPage />', () => {
   beforeEach(() => {
@@ -117,6 +118,50 @@ describe('<GamesPage />', () => {
           </GamesProvider>
         </PageProvider>
       )
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
+
+  describe('when the server returns an error', () => {
+    beforeEach(() => {
+      fetch.mockResponseOnce(JSON.stringify(internalServerErrorResponse), { status: 500 })
+    })
+
+    test('displays error content', async () => {
+      renderAuthenticated(
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
+      )
+
+      await waitFor(() => {
+        expect(screen.findByText('500 Internal Server Error')).toBeTruthy()
+      })
+    })
+
+    test("doesn't break the dashboard", () => {
+      renderAuthenticated(
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
+      )
+
+      expect(screen.getByText('Your Games')).toBeTruthy()
+    })
+
+    test('matches snapshot', () => {
+      const wrapper = renderAuthenticated(
+        <PageProvider>
+          <GamesProvider>
+            <GamesPage />
+          </GamesProvider>
+        </PageProvider>
+      )
+
       expect(wrapper).toMatchSnapshot()
     })
   })
