@@ -124,7 +124,9 @@ describe('<GamesPage />', () => {
 
   describe('when the server returns an error', () => {
     beforeEach(() => {
-      fetch.mockResponseOnce(JSON.stringify(internalServerErrorResponse), { status: 500 })
+      fetch.mockResponseOnce(JSON.stringify(internalServerErrorResponse), {
+        status: 500,
+      })
     })
 
     test('displays error content', async () => {
