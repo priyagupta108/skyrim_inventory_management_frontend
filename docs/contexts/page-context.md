@@ -32,7 +32,11 @@ The `PageProvider` ensures that the flash message is hidden after a period of ti
 ## Example
 
 ```tsx
-// /src/components/parent/parent.tsx
+/*
+ *
+ * /src/components/parent/parent.tsx
+ *
+ */
 
 import { PageProvider } from '../../contexts/pageContext'
 import { LoginProvider } from '../../contexts/loginContext'
@@ -48,7 +52,11 @@ const Parent = () => (
 
 export default Parent
 
-// /src/components/child/child.tsx
+/*
+ *
+ * /src/components/child/child.tsx
+ *
+ */
 
 import { useState, useEffect } from 'react'
 import { signOutWithGoogle } from '../../firebase'

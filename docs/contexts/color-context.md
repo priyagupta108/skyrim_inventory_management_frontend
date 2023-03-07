@@ -3,7 +3,12 @@
 The `ColorContext` keeps track of colour schemes. Set the colour scheme in the provider and then access it in the child/consumer component:
 
 ```tsx
-// /src/components/parent/parent.tsx
+/*
+ *
+ * /src/components/parent/parent.tsx
+ *
+ */
+
 import { ColorProvider } from '../../contexts/colorContext'
 import { GREEN } from '../../utils/colorSchemes'
 import Child from '../child/child'
@@ -16,7 +21,12 @@ const Parent = () => (
 
 export default Parent
 
-// /src/components/child/child.tsx
+/*
+ *
+ * /src/components/child/child.tsx
+ *
+ */
+
 import { useColorScheme } from '../../hooks/contexts'
 import styles from './child.module.css'
 
@@ -44,6 +54,7 @@ The variables you set in `styleVars` can then be used in the child's CSS:
 
 ```css
 /* /src/components/child/child.module.css */
+
 .root {
   color: var(--text-color);
   background-color: var(--background-color);

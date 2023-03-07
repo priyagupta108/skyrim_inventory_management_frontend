@@ -12,7 +12,11 @@ The `LoginProvider`'s value makes the following values available:
 ## Example
 
 ```tsx
-// /src/components/parent/parent.tsx
+/*
+ *
+ * /src/components/parent/parent.tsx
+ *
+ */
 
 import { LoginProvider } from '../../contexts/loginContext'
 import Child from '../child/child'
@@ -25,7 +29,12 @@ const Parent = () => (
 
 export default Parent
 
-// /src/components/child/child.tsx
+/*
+ *
+ * /src/components/child/child.tsx
+ *
+ */
+
 import { useEffect } from 'react'
 import { useGoogleLogin } from '../../hooks/contexts'
 import { PulseLoader } from 'react-spinners'
@@ -60,4 +69,4 @@ In this example, the login context identifies the signed-in user, if any, and pr
 
 ## Types
 
-The `LoginProvider` takes no props other than `children`, which can be react elements or string types.
+The `LoginProvider` takes no props other than `children`, which can be React (TSX) elements or string types.

@@ -10,7 +10,11 @@ Accessing games requires a user to be authenticated, so the `GamesProvider` can 
 ## Example
 
 ```tsx
-// /src/components/parent/parent.tsx
+/*
+ *
+ * /src/components/parent/parent.tsx
+ *
+ */
 
 import { LoginProvider } from './contexts/loginContext'
 import { GamesProvider } from './contexts/gamesContext'
@@ -26,7 +30,11 @@ const Parent = () => (
 
 export default Parent
 
-// /src/components/child/child.tsx
+/*
+ *
+ * /src/components/child/child.tsx
+ *
+ */
 
 import { type Game } from '../../types/games.d.ts'
 import { useGamesContext } from '../../hooks/contexts'
