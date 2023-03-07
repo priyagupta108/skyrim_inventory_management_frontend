@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { renderAuthenticated } from '../../setupTests'
+import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import DashboardPage from './dashboardPage'
 
 describe('<DashboardPage />', () => {
@@ -24,7 +24,7 @@ describe('<DashboardPage />', () => {
 
     const img = wrapper.container.querySelector('img')
     expect(img).toBeTruthy()
-    expect(img?.src).toEqual('/src/testProfileImg.png')
+    expect(img?.src).toEqual('/src/support/testProfileImg.png')
   })
 
   test('DashboardPage displays the navigation mosaic', () => {
@@ -40,5 +40,19 @@ describe('<DashboardPage />', () => {
   test('matches snapshot', () => {
     const wrapper = renderAuthenticated(<DashboardPage />)
     expect(wrapper).toMatchSnapshot()
+  })
+
+  describe('when auth is loading', () => {
+    test('DashboardPage displays the pulse loader', () => {
+      renderAuthLoading(<DashboardPage />)
+
+      expect(screen.getByTestId('pulseLoader')).toBeTruthy()
+    })
+
+    test('matches snapshot', () => {
+      const wrapper = renderAuthLoading(<DashboardPage />)
+
+      expect(wrapper).toMatchSnapshot()
+    })
   })
 })

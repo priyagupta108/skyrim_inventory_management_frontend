@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { renderUnauthenticated } from '../../setupTests'
+import { renderUnauthenticated } from '../../support/testUtils'
 import HomePage from './homePage'
 
 describe('<HomePage />', () => {

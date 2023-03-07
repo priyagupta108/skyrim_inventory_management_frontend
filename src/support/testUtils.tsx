@@ -1,9 +1,19 @@
 import { type ReactElement } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
-import { LoginContext } from './contexts/loginContext'
+import { LoginContext } from '../contexts/loginContext'
 import { User } from 'firebase/auth'
 import testProfileImg from './testProfileImg.png'
+
+/*
+ *
+ * Global Test Data
+ *
+ */
+
+export const requireLogin = () => {
+  /* noop */
+}
 
 export const testUser = {
   uid: 'edna',
@@ -11,32 +21,42 @@ export const testUser = {
   email: 'edna@gmail.com',
   photoURL: testProfileImg,
   emailVerified: true,
+  getIdToken: () =>
+    new Promise<string>((resolve, _reject) => resolve('xxxxxxx')),
 } as User
+
+/*
+ *
+ * Test Renderers
+ *
+ */
 
 export const renderWithRouter = (ui: ReactElement) =>
   render(<BrowserRouter>{ui}</BrowserRouter>)
 
-export const renderAuthenticated = (
-  ui: ReactElement,
-  authLoading = false,
-  authError = undefined
-) =>
+export const renderAuthenticated = (ui: ReactElement, authLoading = false) =>
   renderWithRouter(
-    <LoginContext.Provider value={{ user: testUser, authLoading, authError }}>
+    <LoginContext.Provider
+      value={{ user: testUser, token: 'xxxxxxx', requireLogin, authLoading }}
+    >
       {ui}
     </LoginContext.Provider>
   )
 
 export const renderUnauthenticated = (ui: ReactElement) =>
   renderWithRouter(
-    <LoginContext.Provider value={{ user: null, authLoading: false }}>
+    <LoginContext.Provider
+      value={{ user: null, token: null, authLoading: false, requireLogin }}
+    >
       {ui}
     </LoginContext.Provider>
   )
 
 export const renderAuthLoading = (ui: ReactElement) =>
   renderWithRouter(
-    <LoginContext.Provider value={{ user: null, authLoading: true }}>
+    <LoginContext.Provider
+      value={{ user: null, token: null, authLoading: true, requireLogin }}
+    >
       {ui}
     </LoginContext.Provider>
   )

@@ -28,6 +28,7 @@
 }
 
 .dropdown.active {
+  font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
   color: black;
   display: block;
   position: fixed;
@@ -46,6 +47,11 @@
 .dropdown.active:active {
   background-color: #e0e0e0;
   opacity: 80%;
+}
+
+.signOutText {
+  display: inline;
+  margin: 0 0 0 8px;
 }
 
 @media (min-width: 601px) {

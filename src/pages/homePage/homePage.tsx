@@ -1,6 +1,5 @@
 import { useEffect, type MouseEventHandler } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { User } from 'firebase/auth'
 import { signInWithGoogle } from '../../firebase'
 import { useGoogleLogin } from '../../hooks/contexts'
 import GoogleSignInButton from '../../components/googleSignInButton/googleSignInButton'

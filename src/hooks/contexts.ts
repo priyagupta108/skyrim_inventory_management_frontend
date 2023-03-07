@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { ColorContext } from '../contexts/colorContext'
+import { GamesContext } from '../contexts/gamesContext'
 import { LoginContext } from '../contexts/loginContext'
 
 const useCustomContext = <T>(cxt: React.Context<T>, msg: string) => {
@@ -20,4 +21,10 @@ export const useGoogleLogin = () =>
   useCustomContext(
     LoginContext,
     'useGoogleLogin must be used within a LoginProvider'
+  )
+
+export const useGamesContext = () =>
+  useCustomContext(
+    GamesContext,
+    'useGamesContext must be used within a GamesProvider'
   )

@@ -1,5 +1,4 @@
 import { useEffect, CSSProperties } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { PulseLoader } from 'react-spinners'
 import { type RelativePath } from '../../types/navigation'
 import { YELLOW, PINK, BLUE, GREEN, AQUA } from '../../utils/colorSchemes'
@@ -7,7 +6,6 @@ import { useGoogleLogin } from '../../hooks/contexts'
 import DashboardLayout from '../../layouts/dashboardLayout/dashboardLayout'
 import NavigationMosaic from '../../components/navigationMosaic/navigationMosaic'
 import styles from './dashboardPage.module.css'
-import paths from '../../routing/paths'
 
 const PLACEHOLDER_HREF: RelativePath = '#'
 
@@ -49,14 +47,11 @@ const loaderStyles: CSSProperties = {
 }
 
 const DashboardPage = () => {
-  const { user, authLoading, authError } = useGoogleLogin()
-  const navigate = useNavigate()
+  const { authLoading, requireLogin } = useGoogleLogin()
 
   useEffect(() => {
-    if (authError || (!user && !authLoading)) {
-      navigate(paths.home)
-    }
-  }, [user, authLoading, authError])
+    requireLogin()
+  }, [requireLogin])
 
   return (
     <DashboardLayout>
@@ -65,6 +60,7 @@ const DashboardPage = () => {
           <PulseLoader
             color={YELLOW.schemeColorDark}
             cssOverride={loaderStyles}
+            data-testid="pulseLoader"
           />
         ) : (
           <NavigationMosaic cardArray={navigationCards} />

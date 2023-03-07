@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { renderWithRouter } from '../../setupTests'
+import { renderWithRouter } from '../../support/testUtils'
 import testCards from './testCards'
 import NavigationMosaic from './navigationMosaic'
 
