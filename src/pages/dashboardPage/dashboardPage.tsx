@@ -5,6 +5,7 @@ import { YELLOW, PINK, BLUE, GREEN, AQUA } from '../../utils/colorSchemes'
 import { useGoogleLogin } from '../../hooks/contexts'
 import DashboardLayout from '../../layouts/dashboardLayout/dashboardLayout'
 import NavigationMosaic from '../../components/navigationMosaic/navigationMosaic'
+import paths from '../../routing/paths'
 import styles from './dashboardPage.module.css'
 
 const PLACEHOLDER_HREF: RelativePath = '#'
@@ -12,7 +13,7 @@ const PLACEHOLDER_HREF: RelativePath = '#'
 const navigationCards = [
   {
     colorScheme: YELLOW,
-    href: PLACEHOLDER_HREF,
+    href: paths.dashboard.games,
     children: 'Your Games',
     key: 'games',
   },
