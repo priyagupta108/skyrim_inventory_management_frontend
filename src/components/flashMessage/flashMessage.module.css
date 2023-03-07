@@ -3,7 +3,7 @@
   font-size: 1.1rem;
   color: var(--text-color);
   line-height: 1.25;
-  background-color: rgba(255, 255, 2550.92);
+  background-color: rgba(255, 255, 255, 0.85);
   border: 1px solid #dedede;
   padding: 16px;
   text-align: center;
@@ -19,7 +19,8 @@
 
 .hidden {
   visibility: hidden;
-  transition: visibility 300ms linear;
+  opacity: 0;
+  transition: opacity 500ms linear, visibility 500ms linear;
 }
 
 .header {
