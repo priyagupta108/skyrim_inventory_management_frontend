@@ -33,11 +33,10 @@ export const renderWithRouter = (ui: ReactElement) =>
 
 export const renderAuthenticated = (
   ui: ReactElement,
-  authLoading = false,
-  authError = undefined
+  authLoading = false
 ) =>
   renderWithRouter(
-    <LoginContext.Provider value={{ user: testUser, token: 'xxxxxxx', requireLogin, authLoading, authError }}>
+    <LoginContext.Provider value={{ user: testUser, token: 'xxxxxxx', requireLogin, authLoading }}>
       {ui}
     </LoginContext.Provider>
   )

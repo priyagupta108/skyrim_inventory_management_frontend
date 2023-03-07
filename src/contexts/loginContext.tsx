@@ -11,7 +11,6 @@ interface LoginContextType {
   token: string | null
   requireLogin: () => void
   user?: User | null
-  authError?: Error
 }
 
 const LoginContext = createContext<LoginContextType>({
@@ -37,7 +36,6 @@ const LoginProvider = ({ children }: ProviderProps) => {
     token,
     requireLogin,
     authLoading,
-    authError,
   }
 
   useEffect(() => {
@@ -46,7 +44,7 @@ const LoginProvider = ({ children }: ProviderProps) => {
     if (user) {
       user.getIdToken(true).then(token => setToken(token))
     }
-  }, [user])
+  }, [user, authError])
 
   return <LoginContext.Provider value={value}>{children}</LoginContext.Provider>
 }
