@@ -1,12 +1,3 @@
-import {
-  AuthorizationError,
-  NotFoundError,
-  UnprocessableEntityError,
-  InternalServerError,
-} from '../utils/apiErrors'
-
-export type ApiError =
-  | AuthorizationError
-  | NotFoundError
-  | UnprocessableEntityError
-  | InternalServerError
+export interface ApiError extends Error {
+  code: 401 | 404 | 422 | 500
+}

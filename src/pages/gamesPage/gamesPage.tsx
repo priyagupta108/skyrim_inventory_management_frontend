@@ -12,13 +12,9 @@ const loaderStyles: CSSProperties = {
 }
 
 const GamesPage = () => {
-  const { authLoading, requireLogin } = useGoogleLogin()
+  const { authLoading } = useGoogleLogin()
   const { games, gamesLoadingState } = useGamesContext()
   const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    requireLogin()
-  }, [requireLogin])
 
   useEffect(() => {
     setLoading(authLoading || gamesLoadingState === LOADING)

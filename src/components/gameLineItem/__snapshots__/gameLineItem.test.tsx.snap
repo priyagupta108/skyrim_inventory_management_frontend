@@ -21,15 +21,11 @@ exports[`GameLineItem > matches snapshot 1`] = `
           <div
             style="display: none;"
           >
-            <div
-              class="_collapsible_fd0dcf"
+            <p
+              class="_description_fd0dcf"
             >
-              <p
-                class="_description_fd0dcf"
-              >
-                This is my game
-              </p>
-            </div>
+              This is my game
+            </p>
           </div>
         </div>
       </div>
@@ -52,15 +48,11 @@ exports[`GameLineItem > matches snapshot 1`] = `
         <div
           style="display: none;"
         >
-          <div
-            class="_collapsible_fd0dcf"
+          <p
+            class="_description_fd0dcf"
           >
-            <p
-              class="_description_fd0dcf"
-            >
-              This is my game
-            </p>
-          </div>
+            This is my game
+          </p>
         </div>
       </div>
     </div>

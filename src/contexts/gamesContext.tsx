@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useEffect,
-  useState,
-  type ReactElement,
-} from 'react'
+import { createContext, useCallback, useEffect, useState } from 'react'
 import { signOutWithGoogle } from '../firebase'
 import { type Game } from '../types/games'
 import { type ProviderProps } from '../types/contexts'
@@ -49,10 +43,7 @@ const GamesProvider = ({ children }: ProviderProps) => {
           if (import.meta.env.DEV)
             console.error(`Error ${e.name}: ${e.message}`)
 
-          // If the error code is 404, that means the back end couldn't find the user
-          // in the system. This shouldn't be possible for a user who has previously
-          // logged in, so we should log them out if it happens.
-          if (e.code === 401 || e.code === 404) {
+          if (e.code === 401) {
             signOutWithGoogle()
           } else {
             setGames([])

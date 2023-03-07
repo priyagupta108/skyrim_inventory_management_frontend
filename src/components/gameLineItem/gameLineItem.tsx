@@ -1,5 +1,4 @@
 import { useState, type MouseEventHandler } from 'react'
-import classNames from 'classnames'
 import AnimateHeight from 'react-animate-height'
 import styles from './gameLineItem.module.css'
 
@@ -23,15 +22,9 @@ const GameLineItem = ({ name, description }: GameLineItemProps) => {
         {name}
       </h3>
       <AnimateHeight duration={200} height={descriptionExpanded ? 'auto' : 0}>
-        <div
-          className={classNames(styles.collapsible, {
-            [styles.expanded]: descriptionExpanded,
-          })}
-        >
-          <p className={styles.description}>
-            {description || DEFAULT_DESCRIPTION}
-          </p>
-        </div>
+        <p className={styles.description}>
+          {description || DEFAULT_DESCRIPTION}
+        </p>
       </AnimateHeight>
     </div>
   )
