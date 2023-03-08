@@ -7,7 +7,12 @@ export default { title: 'HomePage' }
 export const Default = () => (
   <BrowserRouter>
     <LoginContext.Provider
-      value={{ user: null, token: null, authLoading: false, requireLogin }}
+      value={{
+        user: null,
+        token: null,
+        authLoading: false,
+        requireLogin,
+      }}
     >
       <HomePage />
     </LoginContext.Provider>
