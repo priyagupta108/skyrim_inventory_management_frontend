@@ -31,6 +31,7 @@ const UserInfo = () => {
               className={styles.img}
               src={photoURL || anonymousAvatar}
               alt="User profile image"
+              referrerPolicy="no-referrer"
             />
           </div>
         </div>

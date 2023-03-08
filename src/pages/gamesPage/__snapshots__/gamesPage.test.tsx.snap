@@ -363,6 +363,7 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
+                    referrerpolicy="no-referrer"
                     src="/src/support/testProfileImg.png"
                   />
                 </div>
@@ -507,6 +508,7 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
+                  referrerpolicy="no-referrer"
                   src="/src/support/testProfileImg.png"
                 />
               </div>
@@ -708,6 +710,7 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
+                    referrerpolicy="no-referrer"
                     src="/src/support/testProfileImg.png"
                   />
                 </div>
@@ -852,6 +855,7 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
+                  referrerpolicy="no-referrer"
                   src="/src/support/testProfileImg.png"
                 />
               </div>
@@ -1053,6 +1057,7 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
+                    referrerpolicy="no-referrer"
                     src="/src/support/testProfileImg.png"
                   />
                 </div>
@@ -1197,6 +1202,7 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
+                  referrerpolicy="no-referrer"
                   src="/src/support/testProfileImg.png"
                 />
               </div>
