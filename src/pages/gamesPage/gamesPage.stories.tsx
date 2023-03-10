@@ -7,7 +7,7 @@ import { PageProvider } from '../../contexts/pageContext'
 import { GamesProvider } from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
 
-const GAMES_URI = 'http://localhost:3000/games'
+const GAMES_URI = '/api/games'
 
 export default {
   title: 'GamesPage',
@@ -71,19 +71,19 @@ WithGamesHappy.parameters = {
       response: allGames,
     },
     {
-      url: 'http://localhost:3000/games/32',
+      url: '/api/games/32',
       method: 'DELETE',
       status: 204,
       response: {},
     },
     {
-      url: 'http://localhost:3000/games/51',
+      url: '/api/games/51',
       method: 'DELETE',
       status: 204,
       response: {},
     },
     {
-      url: 'http://localhost:3000/games/77',
+      url: '/api/games/77',
       method: 'DELETE',
       status: 204,
       response: {},
