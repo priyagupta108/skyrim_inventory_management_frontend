@@ -2,7 +2,7 @@ import { useState, type MouseEventHandler } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import AnimateHeight from 'react-animate-height'
-import { useGamesContext } from '../../hooks/contexts'
+import { useGamesContext, usePageContext } from '../../hooks/contexts'
 import styles from './gameLineItem.module.css'
 
 const DEFAULT_DESCRIPTION = 'This game has no description.'
@@ -17,6 +17,7 @@ interface GameLineItemProps {
 
 const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
   const { destroyGame } = useGamesContext()
+  const { setFlashProps } = usePageContext()
   const [descriptionExpanded, setDescriptionExpanded] = useState(false)
 
   const toggleDescription: MouseEventHandler = (e) => {
@@ -30,7 +31,15 @@ const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
 
     const confirm = window.confirm(DESTROY_CONFIRMATION)
 
-    if (confirm) destroyGame(gameId)
+    if (confirm) {
+      destroyGame(gameId)
+    } else {
+      setFlashProps({
+        hidden: false,
+        type: 'info',
+        message: 'OK, your game will not be destroyed.'
+      })
+    }
   }
 
   return (
