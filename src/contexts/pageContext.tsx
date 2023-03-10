@@ -25,7 +25,7 @@ const PageProvider = ({ children }: ProviderProps) => {
 
   useEffect(() => {
     if (flashProps.hidden === false) {
-      setTimeout(() => setFlashProps({ ...flashProps, hidden: true }), 3000)
+      setTimeout(() => setFlashProps({ ...flashProps, hidden: true }), 4000)
     }
   }, [flashProps])
 
