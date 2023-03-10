@@ -17,10 +17,10 @@ const combinedHeaders = (token: string) => ({
   ...authHeader(token),
 })
 
-const throwInternalServerError = (json: Game[] | ErrorObject) => {
+const throwInternalServerError = (json: Game[] | ErrorObject | null) => {
   // This will always be true if the status code was 500 but TypeScript
   // doesn't know that.
-  if (typeof json === 'object' && 'errors' in json)
+  if (json && typeof json === 'object' && 'errors' in json)
     throw new InternalServerError(json.errors.join('\n'))
 }
 
@@ -31,13 +31,20 @@ const throwInternalServerError = (json: Game[] | ErrorObject) => {
  */
 
 // GET /games
-export const getGames = (token: string) => {
+
+interface GetGamesResponse {
+  status: number
+  json?: Game[] | ErrorObject | null
+}
+
+export const getGames = (token: string): Promise<GetGamesResponse> | never => {
   const uri = `${baseUri}/games`
   const headers = combinedHeaders(token)
 
   return fetch(uri, { headers }).then((res: Response) => {
     if (res.status === 401) throw new AuthorizationError()
     if (res.status === 500) throw new InternalServerError()
+
     return res.json().then((json: ErrorObject | null) => {
       if (res.status === 500 && json !== null)
         throw new InternalServerError(json.errors.join('\n'))
@@ -48,19 +55,26 @@ export const getGames = (token: string) => {
 }
 
 // DELETE /games/:id
-export const deleteGame = (gameId: number, token: string) => {
+
+interface DeleteGameResponse {
+  status: number
+  json?: ErrorObject | null
+}
+
+export const deleteGame = (gameId: number, token: string): Promise<DeleteGameResponse> | never => {
   const uri = `${baseUri}/games/${gameId}`
   const headers = combinedHeaders(token)
 
   return fetch(uri, { method: 'DELETE', headers }).then((res: Response) => {
     if (res.status === 401) throw new AuthorizationError()
+    if (res.status === 204) return { status: res.status }
 
-    return res.json().then((json: Game[] | ErrorObject) => {
+    return res.json().then((json: ErrorObject | null) => {
       if (res.status === 500) throwInternalServerError(json)
       if (res.status === 404)
         throw new NotFoundError(
           `Game doesn't exist, or doesn't belong to current user.`
-        )
+          )
 
       return { status: res.status, json }
     })
