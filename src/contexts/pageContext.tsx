@@ -15,7 +15,7 @@ const defaultFlashProps: FlashProps = {
 
 const PageContext = createContext<PageContextType>({
   flashProps: defaultFlashProps,
-  setFlashProps(this: PageContextType, _props: FlashProps) {},
+  setFlashProps: () => {},
 })
 
 const PageProvider = ({ children }: ProviderProps) => {
