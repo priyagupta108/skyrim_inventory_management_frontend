@@ -37,7 +37,7 @@ const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
       setFlashProps({
         hidden: false,
         type: 'info',
-        message: 'OK, your game will not be destroyed.'
+        message: 'OK, your game will not be destroyed.',
       })
     }
   }

@@ -61,7 +61,10 @@ interface DeleteGameResponse {
   json?: ErrorObject | null
 }
 
-export const deleteGame = (gameId: number, token: string): Promise<DeleteGameResponse> | never => {
+export const deleteGame = (
+  gameId: number,
+  token: string
+): Promise<DeleteGameResponse> | never => {
   const uri = `${baseUri}/games/${gameId}`
   const headers = combinedHeaders(token)
 
