@@ -67,14 +67,11 @@ export const deleteGame = (gameId: number, token: string): Promise<DeleteGameRes
 
   return fetch(uri, { method: 'DELETE', headers }).then((res: Response) => {
     if (res.status === 401) throw new AuthorizationError()
+    if (res.status === 404) throw new NotFoundError()
     if (res.status === 204) return { status: res.status }
 
     return res.json().then((json: ErrorObject | null) => {
       if (res.status === 500) throwInternalServerError(json)
-      if (res.status === 404)
-        throw new NotFoundError(
-          `Game doesn't exist, or doesn't belong to current user.`
-          )
 
       return { status: res.status, json }
     })

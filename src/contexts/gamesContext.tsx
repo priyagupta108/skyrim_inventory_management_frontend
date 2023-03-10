@@ -96,7 +96,9 @@ export const GamesProvider = ({ children }: ProviderProps) => {
           })
           .catch((e: ApiError) => {
             if (import.meta.env.DEV)
-              console.log(`Error ${e.name}: ${e.message}`)
+              console.error(`Error ${e.name}: ${e.message}`)
+
+            if (e.code === 401) signOutWithGoogle()
 
             const message =
               e.code === 404 ? NOT_FOUND_MESSAGE : UNEXPECTED_ERROR_MESSAGE
