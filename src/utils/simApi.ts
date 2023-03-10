@@ -8,7 +8,7 @@ import {
 
 const baseUri = import.meta.env.PROD
   ? 'https://sim-api.danascheider.com'
-  : 'http://localhost:3000'
+  : '/api'
 
 const contentTypeHeader = { 'Content-Type': 'application/json' }
 const authHeader = (token: string) => ({ Authorization: `Bearer ${token}` })
