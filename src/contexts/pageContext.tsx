@@ -15,9 +15,7 @@ const defaultFlashProps: FlashProps = {
 
 const PageContext = createContext<PageContextType>({
   flashProps: defaultFlashProps,
-  setFlashProps(this: PageContextType, props: FlashProps) {
-    this.flashProps = props
-  },
+  setFlashProps: () => {},
 })
 
 const PageProvider = ({ children }: ProviderProps) => {
@@ -25,7 +23,7 @@ const PageProvider = ({ children }: ProviderProps) => {
 
   useEffect(() => {
     if (flashProps.hidden === false) {
-      setTimeout(() => setFlashProps({ ...flashProps, hidden: true }), 3000)
+      setTimeout(() => setFlashProps({ ...flashProps, hidden: true }), 4000)
     }
   }, [flashProps])
 

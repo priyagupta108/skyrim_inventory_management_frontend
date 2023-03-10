@@ -21,7 +21,7 @@ export const testUser = {
   email: 'edna@gmail.com',
   photoURL: testProfileImg,
   emailVerified: true,
-  getIdToken: () =>
+  getIdtoken: () =>
     new Promise<string>((resolve, _reject) => resolve('xxxxxxx')),
 } as User
 
@@ -37,7 +37,12 @@ export const renderWithRouter = (ui: ReactElement) =>
 export const renderAuthenticated = (ui: ReactElement, authLoading = false) =>
   renderWithRouter(
     <LoginContext.Provider
-      value={{ user: testUser, token: 'xxxxxxx', requireLogin, authLoading }}
+      value={{
+        user: testUser,
+        token: 'xxxxxxx',
+        requireLogin,
+        authLoading,
+      }}
     >
       {ui}
     </LoginContext.Provider>
@@ -46,7 +51,12 @@ export const renderAuthenticated = (ui: ReactElement, authLoading = false) =>
 export const renderUnauthenticated = (ui: ReactElement) =>
   renderWithRouter(
     <LoginContext.Provider
-      value={{ user: null, token: null, authLoading: false, requireLogin }}
+      value={{
+        user: null,
+        token: null,
+        authLoading: false,
+        requireLogin,
+      }}
     >
       {ui}
     </LoginContext.Provider>

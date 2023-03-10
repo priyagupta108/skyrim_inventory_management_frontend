@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`<GamesPage /> > when loading > matches snapshot 1`] = `
+exports[`<GamesPage /> > viewing games > when loading > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -255,7 +255,7 @@ exports[`<GamesPage /> > when loading > matches snapshot 1`] = `
 }
 `;
 
-exports[`<GamesPage /> > when the server returns an error > matches snapshot 1`] = `
+exports[`<GamesPage /> > viewing games > when the server returns an error > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -363,6 +363,7 @@ exports[`<GamesPage /> > when the server returns an error > matches snapshot 1`]
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
+                    referrerpolicy="no-referrer"
                     src="/src/support/testProfileImg.png"
                   />
                 </div>
@@ -507,6 +508,7 @@ exports[`<GamesPage /> > when the server returns an error > matches snapshot 1`]
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
+                  referrerpolicy="no-referrer"
                   src="/src/support/testProfileImg.png"
                 />
               </div>
@@ -600,7 +602,7 @@ exports[`<GamesPage /> > when the server returns an error > matches snapshot 1`]
 }
 `;
 
-exports[`<GamesPage /> > when there are multiple games > matches snapshot 1`] = `
+exports[`<GamesPage /> > viewing games > when there are multiple games > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -708,6 +710,7 @@ exports[`<GamesPage /> > when there are multiple games > matches snapshot 1`] = 
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
+                    referrerpolicy="no-referrer"
                     src="/src/support/testProfileImg.png"
                   />
                 </div>
@@ -852,6 +855,7 @@ exports[`<GamesPage /> > when there are multiple games > matches snapshot 1`] = 
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
+                  referrerpolicy="no-referrer"
                   src="/src/support/testProfileImg.png"
                 />
               </div>
@@ -945,7 +949,7 @@ exports[`<GamesPage /> > when there are multiple games > matches snapshot 1`] = 
 }
 `;
 
-exports[`<GamesPage /> > when there are no games > matches snapshot 1`] = `
+exports[`<GamesPage /> > viewing games > when there are no games > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -1053,6 +1057,7 @@ exports[`<GamesPage /> > when there are no games > matches snapshot 1`] = `
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
+                    referrerpolicy="no-referrer"
                     src="/src/support/testProfileImg.png"
                   />
                 </div>
@@ -1197,6 +1202,7 @@ exports[`<GamesPage /> > when there are no games > matches snapshot 1`] = `
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
+                  referrerpolicy="no-referrer"
                   src="/src/support/testProfileImg.png"
                 />
               </div>

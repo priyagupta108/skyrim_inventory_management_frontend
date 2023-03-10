@@ -7,7 +7,7 @@ import { PageProvider } from '../../contexts/pageContext'
 import { GamesProvider } from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
 
-const GAMES_URI = 'http://localhost:3000/games'
+const GAMES_URI = '/api/games'
 
 export default {
   title: 'GamesPage',
@@ -43,7 +43,7 @@ NoGames.parameters = {
   ],
 }
 
-export const WithGames = () => (
+export const WithGamesHappy = () => (
   <BrowserRouter>
     <LoginContext.Provider
       value={{
@@ -62,13 +62,31 @@ export const WithGames = () => (
   </BrowserRouter>
 )
 
-WithGames.parameters = {
+WithGamesHappy.parameters = {
   mockData: [
     {
       url: GAMES_URI,
       method: 'GET',
       status: 200,
       response: allGames,
+    },
+    {
+      url: '/api/games/32',
+      method: 'DELETE',
+      status: 204,
+      response: {},
+    },
+    {
+      url: '/api/games/51',
+      method: 'DELETE',
+      status: 204,
+      response: {},
+    },
+    {
+      url: '/api/games/77',
+      method: 'DELETE',
+      status: 204,
+      response: {},
     },
   ],
 }
