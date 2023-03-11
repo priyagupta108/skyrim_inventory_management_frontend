@@ -1,6 +1,10 @@
 import { type Game } from '../types/games'
 import { type ErrorObject } from '../types/apiData'
 import {
+  throwInternalServerError,
+  throwUnprocessableEntityError,
+} from './errorFunctions'
+import {
   AuthorizationError,
   InternalServerError,
   NotFoundError,
@@ -17,18 +21,41 @@ const combinedHeaders = (token: string) => ({
   ...authHeader(token),
 })
 
-const throwInternalServerError = (json: Game[] | ErrorObject | null) => {
-  // This will always be true if the status code was 500 but TypeScript
-  // doesn't know that.
-  if (json && typeof json === 'object' && 'errors' in json)
-    throw new InternalServerError(json.errors.join('\n'))
-}
-
 /*
  *
  * Game Endpoints
  *
  */
+
+// POST /games
+
+interface PostGamesResponse {
+  status: number
+  json: Game | ErrorObject
+}
+
+export const postGames = (
+  body: Game,
+  token: string
+): Promise<PostGamesResponse> | never => {
+  const uri = `${baseUri}/games`
+  const headers = combinedHeaders(token)
+
+  return fetch(uri, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers,
+  }).then((res: Response) => {
+    if (res.status === 401) throw new AuthorizationError()
+
+    return res.json().then((json: Game | ErrorObject) => {
+      if (res.status === 500) throwInternalServerError(json)
+      if (res.status === 422) throwUnprocessableEntityError(json)
+
+      return { status: res.status, json }
+    })
+  })
+}
 
 // GET /games
 

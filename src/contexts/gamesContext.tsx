@@ -2,10 +2,11 @@ import { createContext, useCallback, useEffect, useState } from 'react'
 import { signOutWithGoogle } from '../firebase'
 import { type Game } from '../types/games'
 import { type ProviderProps } from '../types/contexts'
+import { type CallbackFunction } from '../types/functions'
 import { useGoogleLogin, usePageContext } from '../hooks/contexts'
 import { ApiError } from '../types/errors'
 import { LOADING, DONE, ERROR, type LoadingState } from '../utils/loadingStates'
-import { getGames, deleteGame } from '../utils/simApi'
+import { postGames, getGames, deleteGame } from '../utils/simApi'
 
 // TODO: Add default values for context provider as follows:
 //       const createGame = (game: Game) => {
@@ -42,6 +43,65 @@ export const GamesProvider = ({ children }: ProviderProps) => {
 
   /*
    *
+   * General handler for any ApiError
+   *
+   */
+
+  const handleApiError = (e: ApiError) => {
+    if (import.meta.env.DEV) console.error(e.message)
+
+    if (e.code === 401) signOutWithGoogle()
+
+    if (Array.isArray(e.message)) {
+      setFlashProps({
+        hidden: false,
+        type: 'error',
+        header: `${e.message.length} errors prevented your game from being saved:`,
+        message: e.message,
+      })
+    } else {
+      const message =
+        e.code === 404 ? NOT_FOUND_MESSAGE : UNEXPECTED_ERROR_MESSAGE
+      setFlashProps({
+        hidden: false,
+        type: 'error',
+        message: message,
+      })
+    }
+  }
+
+  /*
+   *
+   * Create a new game at the API and update the `games` array
+   *
+   */
+
+  const createGame = useCallback(
+    (body: Game, onSuccess?: CallbackFunction, onError?: CallbackFunction) => {
+      if (user && token) {
+        postGames(body, token)
+          .then(({ json }) => {
+            if ('name' in json) {
+              setGames([json, ...games])
+              setFlashProps({
+                hidden: false,
+                type: 'success',
+                message: 'Success! Your game has been created.',
+              })
+              onSuccess && onSuccess()
+            }
+          })
+          .catch((e: ApiError) => {
+            handleApiError(e)
+            onError && onError()
+          })
+      }
+    },
+    [user, token]
+  )
+
+  /*
+   *
    * Retrieve all the current user's games from the API
    *
    */
@@ -56,20 +116,9 @@ export const GamesProvider = ({ children }: ProviderProps) => {
           }
         })
         .catch((e: ApiError) => {
-          if (import.meta.env.DEV)
-            console.error(`Error ${e.name}: ${e.message}`)
-
-          if (e.code === 401) {
-            signOutWithGoogle()
-          } else {
-            setGames([])
-            setGamesLoadingState(ERROR)
-            setFlashProps({
-              type: 'error',
-              message: e.message,
-              hidden: false,
-            })
-          }
+          handleApiError(e)
+          setGames([])
+          setGamesLoadingState(ERROR)
         })
     }
   }, [user, token])
@@ -95,21 +144,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               })
             }
           })
-          .catch((e: ApiError) => {
-            if (import.meta.env.DEV)
-              console.error(`Error ${e.name}: ${e.message}`)
-
-            if (e.code === 401) signOutWithGoogle()
-
-            const message =
-              e.code === 404 ? NOT_FOUND_MESSAGE : UNEXPECTED_ERROR_MESSAGE
-
-            setFlashProps({
-              hidden: false,
-              type: 'error',
-              message,
-            })
-          })
+          .catch(handleApiError)
       }
     },
     [user, token, games]
@@ -119,7 +154,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     games,
     gamesLoadingState,
     destroyGame,
-    createGame: () => {},
+    createGame,
   }
 
   useEffect(() => {
