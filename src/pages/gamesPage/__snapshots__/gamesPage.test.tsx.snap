@@ -34,6 +34,71 @@ exports[`<GamesPage /> > viewing games > when loading > matches snapshot 1`] = `
                 style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
               />
             </span>
+            <div
+              class="_root_83bedb"
+              style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+            >
+              <h3
+                aria-controls="gameCreateForm"
+                aria-expanded="false"
+                class="_toggle_83bedb"
+                role="button"
+              >
+                Create Game...
+              </h3>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="gameCreateForm"
+                style="height: 0; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <form
+                    class="_form_83bedb"
+                    data-testid="gameCreateFormForm"
+                  >
+                    <fieldset
+                      class="_fieldset_83bedb"
+                      disabled=""
+                    >
+                      <input
+                        aria-label="Name"
+                        class="_input_83bedb"
+                        data-testid="nameField"
+                        name="name"
+                        pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                        placeholder="Name"
+                        title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                        type="text"
+                      />
+                    </fieldset>
+                    <fieldset
+                      class="_fieldset_83bedb"
+                      disabled=""
+                    >
+                      <input
+                        aria-label="Description"
+                        class="_input_83bedb"
+                        data-testid="descriptionField"
+                        name="description"
+                        placeholder="Description"
+                        type="text"
+                      />
+                    </fieldset>
+                    <button
+                      class="_button_83bedb"
+                      data-testid="createGameSubmit"
+                      disabled=""
+                      type="submit"
+                    >
+                      Create
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
         <header
@@ -133,6 +198,71 @@ exports[`<GamesPage /> > viewing games > when loading > matches snapshot 1`] = `
               style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
             />
           </span>
+          <div
+            class="_root_83bedb"
+            style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+          >
+            <h3
+              aria-controls="gameCreateForm"
+              aria-expanded="false"
+              class="_toggle_83bedb"
+              role="button"
+            >
+              Create Game...
+            </h3>
+            <div
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero "
+              id="gameCreateForm"
+              style="height: 0; overflow: hidden;"
+            >
+              <div
+                style="display: none;"
+              >
+                <form
+                  class="_form_83bedb"
+                  data-testid="gameCreateFormForm"
+                >
+                  <fieldset
+                    class="_fieldset_83bedb"
+                    disabled=""
+                  >
+                    <input
+                      aria-label="Name"
+                      class="_input_83bedb"
+                      data-testid="nameField"
+                      name="name"
+                      pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                      placeholder="Name"
+                      title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                      type="text"
+                    />
+                  </fieldset>
+                  <fieldset
+                    class="_fieldset_83bedb"
+                    disabled=""
+                  >
+                    <input
+                      aria-label="Description"
+                      class="_input_83bedb"
+                      data-testid="descriptionField"
+                      name="description"
+                      placeholder="Description"
+                      type="text"
+                    />
+                  </fieldset>
+                  <button
+                    class="_button_83bedb"
+                    data-testid="createGameSubmit"
+                    disabled=""
+                    type="submit"
+                  >
+                    Create
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <header
@@ -289,6 +419,71 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
                 style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
               />
             </span>
+            <div
+              class="_root_83bedb"
+              style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+            >
+              <h3
+                aria-controls="gameCreateForm"
+                aria-expanded="false"
+                class="_toggle_83bedb"
+                role="button"
+              >
+                Create Game...
+              </h3>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="gameCreateForm"
+                style="height: 0; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <form
+                    class="_form_83bedb"
+                    data-testid="gameCreateFormForm"
+                  >
+                    <fieldset
+                      class="_fieldset_83bedb"
+                      disabled=""
+                    >
+                      <input
+                        aria-label="Name"
+                        class="_input_83bedb"
+                        data-testid="nameField"
+                        name="name"
+                        pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                        placeholder="Name"
+                        title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                        type="text"
+                      />
+                    </fieldset>
+                    <fieldset
+                      class="_fieldset_83bedb"
+                      disabled=""
+                    >
+                      <input
+                        aria-label="Description"
+                        class="_input_83bedb"
+                        data-testid="descriptionField"
+                        name="description"
+                        placeholder="Description"
+                        type="text"
+                      />
+                    </fieldset>
+                    <button
+                      class="_button_83bedb"
+                      data-testid="createGameSubmit"
+                      disabled=""
+                      type="submit"
+                    >
+                      Create
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
         <header
@@ -434,6 +629,71 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
               style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
             />
           </span>
+          <div
+            class="_root_83bedb"
+            style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+          >
+            <h3
+              aria-controls="gameCreateForm"
+              aria-expanded="false"
+              class="_toggle_83bedb"
+              role="button"
+            >
+              Create Game...
+            </h3>
+            <div
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero "
+              id="gameCreateForm"
+              style="height: 0; overflow: hidden;"
+            >
+              <div
+                style="display: none;"
+              >
+                <form
+                  class="_form_83bedb"
+                  data-testid="gameCreateFormForm"
+                >
+                  <fieldset
+                    class="_fieldset_83bedb"
+                    disabled=""
+                  >
+                    <input
+                      aria-label="Name"
+                      class="_input_83bedb"
+                      data-testid="nameField"
+                      name="name"
+                      pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                      placeholder="Name"
+                      title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                      type="text"
+                    />
+                  </fieldset>
+                  <fieldset
+                    class="_fieldset_83bedb"
+                    disabled=""
+                  >
+                    <input
+                      aria-label="Description"
+                      class="_input_83bedb"
+                      data-testid="descriptionField"
+                      name="description"
+                      placeholder="Description"
+                      type="text"
+                    />
+                  </fieldset>
+                  <button
+                    class="_button_83bedb"
+                    data-testid="createGameSubmit"
+                    disabled=""
+                    type="submit"
+                  >
+                    Create
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <header
@@ -636,6 +896,71 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
                 style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
               />
             </span>
+            <div
+              class="_root_83bedb"
+              style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+            >
+              <h3
+                aria-controls="gameCreateForm"
+                aria-expanded="false"
+                class="_toggle_83bedb"
+                role="button"
+              >
+                Create Game...
+              </h3>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="gameCreateForm"
+                style="height: 0; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <form
+                    class="_form_83bedb"
+                    data-testid="gameCreateFormForm"
+                  >
+                    <fieldset
+                      class="_fieldset_83bedb"
+                      disabled=""
+                    >
+                      <input
+                        aria-label="Name"
+                        class="_input_83bedb"
+                        data-testid="nameField"
+                        name="name"
+                        pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                        placeholder="Name"
+                        title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                        type="text"
+                      />
+                    </fieldset>
+                    <fieldset
+                      class="_fieldset_83bedb"
+                      disabled=""
+                    >
+                      <input
+                        aria-label="Description"
+                        class="_input_83bedb"
+                        data-testid="descriptionField"
+                        name="description"
+                        placeholder="Description"
+                        type="text"
+                      />
+                    </fieldset>
+                    <button
+                      class="_button_83bedb"
+                      data-testid="createGameSubmit"
+                      disabled=""
+                      type="submit"
+                    >
+                      Create
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
         <header
@@ -781,6 +1106,71 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
               style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
             />
           </span>
+          <div
+            class="_root_83bedb"
+            style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+          >
+            <h3
+              aria-controls="gameCreateForm"
+              aria-expanded="false"
+              class="_toggle_83bedb"
+              role="button"
+            >
+              Create Game...
+            </h3>
+            <div
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero "
+              id="gameCreateForm"
+              style="height: 0; overflow: hidden;"
+            >
+              <div
+                style="display: none;"
+              >
+                <form
+                  class="_form_83bedb"
+                  data-testid="gameCreateFormForm"
+                >
+                  <fieldset
+                    class="_fieldset_83bedb"
+                    disabled=""
+                  >
+                    <input
+                      aria-label="Name"
+                      class="_input_83bedb"
+                      data-testid="nameField"
+                      name="name"
+                      pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                      placeholder="Name"
+                      title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                      type="text"
+                    />
+                  </fieldset>
+                  <fieldset
+                    class="_fieldset_83bedb"
+                    disabled=""
+                  >
+                    <input
+                      aria-label="Description"
+                      class="_input_83bedb"
+                      data-testid="descriptionField"
+                      name="description"
+                      placeholder="Description"
+                      type="text"
+                    />
+                  </fieldset>
+                  <button
+                    class="_button_83bedb"
+                    data-testid="createGameSubmit"
+                    disabled=""
+                    type="submit"
+                  >
+                    Create
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <header
@@ -983,6 +1373,71 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
                 style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
               />
             </span>
+            <div
+              class="_root_83bedb"
+              style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+            >
+              <h3
+                aria-controls="gameCreateForm"
+                aria-expanded="false"
+                class="_toggle_83bedb"
+                role="button"
+              >
+                Create Game...
+              </h3>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="gameCreateForm"
+                style="height: 0; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <form
+                    class="_form_83bedb"
+                    data-testid="gameCreateFormForm"
+                  >
+                    <fieldset
+                      class="_fieldset_83bedb"
+                      disabled=""
+                    >
+                      <input
+                        aria-label="Name"
+                        class="_input_83bedb"
+                        data-testid="nameField"
+                        name="name"
+                        pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                        placeholder="Name"
+                        title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                        type="text"
+                      />
+                    </fieldset>
+                    <fieldset
+                      class="_fieldset_83bedb"
+                      disabled=""
+                    >
+                      <input
+                        aria-label="Description"
+                        class="_input_83bedb"
+                        data-testid="descriptionField"
+                        name="description"
+                        placeholder="Description"
+                        type="text"
+                      />
+                    </fieldset>
+                    <button
+                      class="_button_83bedb"
+                      data-testid="createGameSubmit"
+                      disabled=""
+                      type="submit"
+                    >
+                      Create
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
         <header
@@ -1128,6 +1583,71 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
               style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
             />
           </span>
+          <div
+            class="_root_83bedb"
+            style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+          >
+            <h3
+              aria-controls="gameCreateForm"
+              aria-expanded="false"
+              class="_toggle_83bedb"
+              role="button"
+            >
+              Create Game...
+            </h3>
+            <div
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero "
+              id="gameCreateForm"
+              style="height: 0; overflow: hidden;"
+            >
+              <div
+                style="display: none;"
+              >
+                <form
+                  class="_form_83bedb"
+                  data-testid="gameCreateFormForm"
+                >
+                  <fieldset
+                    class="_fieldset_83bedb"
+                    disabled=""
+                  >
+                    <input
+                      aria-label="Name"
+                      class="_input_83bedb"
+                      data-testid="nameField"
+                      name="name"
+                      pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                      placeholder="Name"
+                      title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                      type="text"
+                    />
+                  </fieldset>
+                  <fieldset
+                    class="_fieldset_83bedb"
+                    disabled=""
+                  >
+                    <input
+                      aria-label="Description"
+                      class="_input_83bedb"
+                      data-testid="descriptionField"
+                      name="description"
+                      placeholder="Description"
+                      type="text"
+                    />
+                  </fieldset>
+                  <button
+                    class="_button_83bedb"
+                    data-testid="createGameSubmit"
+                    disabled=""
+                    type="submit"
+                  >
+                    Create
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <header

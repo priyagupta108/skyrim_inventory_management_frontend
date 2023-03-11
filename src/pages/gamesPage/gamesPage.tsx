@@ -1,10 +1,11 @@
 import { useState, useEffect, type CSSProperties } from 'react'
 import { PulseLoader } from 'react-spinners'
 import { type Game } from '../../types/games'
-import { DONE, LOADING } from '../../utils/loadingStates'
+import { DONE, LOADING, ERROR } from '../../utils/loadingStates'
 import { YELLOW } from '../../utils/colorSchemes'
 import { useGamesContext, useGoogleLogin } from '../../hooks/contexts'
 import DashboardLayout from '../../layouts/dashboardLayout/dashboardLayout'
+import GameCreateForm from '../../components/gameCreateForm/gameCreateForm'
 import GameLineItem from '../../components/gameLineItem/gameLineItem'
 
 const loaderStyles: CSSProperties = {
@@ -30,9 +31,11 @@ const GamesPage = () => {
             data-testid="pulseLoader"
           />
         )}
-        {games.length === 0 && gamesLoadingState === DONE && (
-          <p>You have no games.</p>
-        )}
+        <GameCreateForm
+          disabled={
+            gamesLoadingState === LOADING || gamesLoadingState === ERROR
+          }
+        />
         {games.length > 0 && gamesLoadingState === DONE && (
           <>
             {games.map(({ id, name, description }: Game) => (

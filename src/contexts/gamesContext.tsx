@@ -22,7 +22,7 @@ const UNEXPECTED_ERROR_MESSAGE =
 export interface GamesContextType {
   games: Game[]
   gamesLoadingState: LoadingState
-  // createGame: (game: Game) => void
+  createGame: (game: Game) => void
   // updateGame: (gameId: number, attrs: Game) => void
   destroyGame: (gameId: number) => void
 }
@@ -30,6 +30,7 @@ export interface GamesContextType {
 export const GamesContext = createContext<GamesContextType>({
   games: [],
   gamesLoadingState: LOADING,
+  createGame: () => {},
   destroyGame: () => {},
 })
 
@@ -118,6 +119,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     games,
     gamesLoadingState,
     destroyGame,
+    createGame: () => {},
   }
 
   useEffect(() => {

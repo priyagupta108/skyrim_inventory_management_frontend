@@ -1,16 +1,6 @@
-import { describe, test, expect, beforeEach, afterEach, vitest } from 'vitest'
-import {
-  screen,
-  act,
-  waitFor,
-  waitForElementToBeRemoved,
-  cleanup,
-} from '@testing-library/react'
-import {
-  renderAuthenticated,
-  renderAuthLoading,
-  testUser,
-} from '../../support/testUtils'
+import { describe, test, expect, beforeEach, afterEach } from 'vitest'
+import { screen, waitFor, cleanup } from '@testing-library/react'
+import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import { emptyGames, allGames } from '../../support/data/games'
 import { internalServerErrorResponse } from '../../support/data/errors'
 import { PageProvider } from '../../contexts/pageContext'
@@ -67,8 +57,8 @@ describe('<GamesPage />', () => {
         expect(wrapper).toBeTruthy()
 
         await waitFor(() => {
-          expect(screen.findByText('You have no games.')).toBeTruthy()
-          expect(screen.queryByTestId('pulseLoader')).toBeFalsy()
+          expect(screen.findByText('Create Game...')).toBeTruthy()
+          expect(screen.findByTestId('gameCreateFormForm')).toBeTruthy()
         })
       })
 
