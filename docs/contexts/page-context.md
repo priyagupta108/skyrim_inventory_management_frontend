@@ -60,7 +60,7 @@ export default Parent
 
 import { useState, useEffect } from 'react'
 import { signOutWithGoogle } from '../../firebase'
-import { type Game } from '../../types/games'
+import { type ResponseGame as Game } from '../../types/apiData'
 import { type ApiError } from '../../types/errors'
 import { useGoogleLogin, usePageContext } from '../../hooks/contexts'
 import { getGames } from '../../utils/simApi'

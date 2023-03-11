@@ -37,7 +37,7 @@ export default Parent
  *
  */
 
-import { type Game } from '../../types/games.d.ts'
+import { type ResponseGame as Game } from '../../types/apiData'
 import { useGamesContext } from '../../hooks/contexts'
 import { PulseLoader } from 'react-spinners'
 import styles from './child.module.css'

@@ -1,6 +1,6 @@
 import { useState, useEffect, type CSSProperties } from 'react'
 import { PulseLoader } from 'react-spinners'
-import { type Game } from '../../types/games'
+import { type ResponseGame as Game } from '../../types/apiData'
 import { DONE, LOADING, ERROR } from '../../utils/loadingStates'
 import { YELLOW } from '../../utils/colorSchemes'
 import { useGamesContext, useGoogleLogin } from '../../hooks/contexts'

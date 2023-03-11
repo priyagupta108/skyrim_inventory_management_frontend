@@ -1,14 +1,10 @@
-import { type Game } from '../types/games'
+import { type BaseGame, ResponseGame } from '../types/apiData'
 import { type ErrorObject } from '../types/apiData'
 import {
   throwInternalServerError,
   throwUnprocessableEntityError,
 } from './errorFunctions'
-import {
-  AuthorizationError,
-  InternalServerError,
-  NotFoundError,
-} from './apiErrors'
+import { AuthorizationError, NotFoundError } from './apiErrors'
 
 const baseUri = import.meta.env.PROD
   ? 'https://sim-api.danascheider.com'
@@ -31,11 +27,11 @@ const combinedHeaders = (token: string) => ({
 
 interface PostGamesResponse {
   status: number
-  json: Game | ErrorObject
+  json: ResponseGame | ErrorObject
 }
 
 export const postGames = (
-  body: Game,
+  body: BaseGame,
   token: string
 ): Promise<PostGamesResponse> | never => {
   const uri = `${baseUri}/games`
@@ -48,7 +44,7 @@ export const postGames = (
   }).then((res: Response) => {
     if (res.status === 401) throw new AuthorizationError()
 
-    return res.json().then((json: Game | ErrorObject) => {
+    return res.json().then((json: ResponseGame | ErrorObject) => {
       if (res.status === 500) throwInternalServerError(json)
       if (res.status === 422) throwUnprocessableEntityError(json)
 
@@ -61,7 +57,7 @@ export const postGames = (
 
 interface GetGamesResponse {
   status: number
-  json?: Game[] | ErrorObject | null
+  json?: ResponseGame[] | ErrorObject | null
 }
 
 export const getGames = (token: string): Promise<GetGamesResponse> | never => {
@@ -70,11 +66,9 @@ export const getGames = (token: string): Promise<GetGamesResponse> | never => {
 
   return fetch(uri, { headers }).then((res: Response) => {
     if (res.status === 401) throw new AuthorizationError()
-    if (res.status === 500) throw new InternalServerError()
 
-    return res.json().then((json: ErrorObject | null) => {
-      if (res.status === 500 && json !== null)
-        throw new InternalServerError(json.errors.join('\n'))
+    return res.json().then((json: ResponseGame[] | ErrorObject | null) => {
+      if (res.status === 500) throwInternalServerError(json)
 
       return { status: res.status, json }
     })

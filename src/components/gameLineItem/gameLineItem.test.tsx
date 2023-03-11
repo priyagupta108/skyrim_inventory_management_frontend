@@ -19,7 +19,8 @@ const contextValue: GamesContextType = {
     },
   ],
   gamesLoadingState: 'DONE',
-  destroyGame: vitest.fn().mockImplementation((_gameId: number) => {}),
+  createGame: () => {},
+  destroyGame: () => {},
 }
 
 // This component can't really be tested because Vitest fucking sucks.
@@ -46,6 +47,9 @@ describe('GameLineItem', () => {
     const ogWindowConfirm = window.confirm
 
     beforeEach(() => {
+      contextValue.destroyGame = vitest
+        .fn()
+        .mockImplementation((_gameId: number) => {})
       fetch.mockResponseOnce(JSON.stringify(contextValue.games), {
         status: 200,
       })
@@ -73,7 +77,8 @@ describe('GameLineItem', () => {
       const xIcon = screen.getByTestId('destroyGame4')
       act(() => xIcon.click())
 
-      expect(contextValue.destroyGame).toBeCalledWith(4)
+      expect(contextValue.destroyGame).toHaveBeenCalledOnce()
+      expect(contextValue.destroyGame).toHaveBeenLastCalledWith(4)
     })
 
     test("doesn't destroy the game when the user cancels", () => {
@@ -92,7 +97,7 @@ describe('GameLineItem', () => {
       const xIcon = screen.getByTestId('destroyGame4')
       act(() => xIcon.click())
 
-      expect(contextValue.destroyGame).toBeCalled()
+      expect(contextValue.destroyGame).not.toHaveBeenCalled()
     })
   })
 })
