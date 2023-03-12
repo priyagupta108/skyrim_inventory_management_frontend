@@ -15,14 +15,16 @@ export interface ErrorObject {
  *
  */
 
-export interface BaseGame {
-  name: string
-  description: string | null
+export interface RequestGame {
+  name?: string | null
+  description?: string | null
 }
 
-export interface ResponseGame extends BaseGame {
+export interface ResponseGame {
   id: number
   user_id: number
+  name: string
+  description: string | null
   created_at: Date
   updated_at: Date
 }

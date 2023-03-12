@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState } from 'react'
 import { signOutWithGoogle } from '../firebase'
-import { type BaseGame, type ResponseGame as Game } from '../types/apiData'
+import { type RequestGame, type ResponseGame as Game } from '../types/apiData'
 import { type ProviderProps } from '../types/contexts'
 import { type CallbackFunction } from '../types/functions'
 import { useGoogleLogin, usePageContext } from '../hooks/contexts'
@@ -24,7 +24,7 @@ export interface GamesContextType {
   games: Game[]
   gamesLoadingState: LoadingState
   createGame: (
-    game: BaseGame,
+    game: RequestGame,
     onSuccess?: () => void,
     onError?: () => void
   ) => void
@@ -82,7 +82,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
 
   const createGame = useCallback(
     (
-      body: BaseGame,
+      body: RequestGame,
       onSuccess?: CallbackFunction,
       onError?: CallbackFunction
     ) => {

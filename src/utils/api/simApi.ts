@@ -1,4 +1,4 @@
-import { type BaseGame } from '../../types/apiData'
+import { type RequestGame } from '../../types/apiData'
 import {
   type PostGamesResponse,
   type PostGamesReturnValue,
@@ -34,7 +34,7 @@ const combinedHeaders = (token: string) => ({
 // POST /games
 
 export const postGames = (
-  body: BaseGame,
+  body: RequestGame,
   token: string
 ): Promise<PostGamesReturnValue> | never => {
   const uri = `${baseUri}/games`

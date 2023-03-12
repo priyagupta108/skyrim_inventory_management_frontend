@@ -5,7 +5,7 @@ import {
   type FormEventHandler,
 } from 'react'
 import AnimateHeight from 'react-animate-height'
-import { type BaseGame as Game } from '../../types/apiData'
+import { type RequestGame as Game } from '../../types/apiData'
 import { BLUE } from '../../utils/colorSchemes'
 import { useGamesContext } from '../../hooks/contexts'
 import styles from './gameCreateForm.module.css'
