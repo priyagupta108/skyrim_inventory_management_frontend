@@ -1,5 +1,6 @@
 import { useState, useRef, type ReactElement, type CSSProperties } from 'react'
 import AnimateHeight from 'react-animate-height'
+import { type BaseGame as Game } from '../../types/apiData'
 import { BLUE } from '../../utils/colorSchemes'
 import { usePageContext, useGamesContext } from '../../hooks/contexts'
 import styles from './gameCreateForm.module.css'

@@ -1,5 +1,5 @@
-import { type BaseGame, ResponseGame } from '../types/apiData'
-import { type ErrorObject } from '../types/apiData'
+import { type BaseGame, ResponseGame } from '../../types/apiData'
+import { type ErrorObject } from '../../types/apiData'
 import {
   throwInternalServerError,
   throwUnprocessableEntityError,

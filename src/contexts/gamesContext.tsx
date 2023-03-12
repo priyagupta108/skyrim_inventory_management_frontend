@@ -6,7 +6,7 @@ import { type CallbackFunction } from '../types/functions'
 import { useGoogleLogin, usePageContext } from '../hooks/contexts'
 import { ApiError } from '../types/errors'
 import { LOADING, DONE, ERROR, type LoadingState } from '../utils/loadingStates'
-import { postGames, getGames, deleteGame } from '../utils/simApi'
+import { postGames, getGames, deleteGame } from '../utils/api/simApi'
 
 // TODO: Add default values for context provider as follows:
 //       const createGame = (game: Game) => {
