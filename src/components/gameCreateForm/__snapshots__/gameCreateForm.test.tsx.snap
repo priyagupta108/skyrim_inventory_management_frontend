@@ -21,7 +21,7 @@ exports[`<GameCreateForm /> > when disabled > matches snapshot 1`] = `
           aria-hidden="true"
           class="rah-static rah-static--height-zero "
           id="gameCreateForm"
-          style="height: 0; overflow: hidden;"
+          style="height: 0px; overflow: hidden;"
         >
           <div
             style="display: none;"
@@ -89,7 +89,7 @@ exports[`<GameCreateForm /> > when disabled > matches snapshot 1`] = `
         aria-hidden="true"
         class="rah-static rah-static--height-zero "
         id="gameCreateForm"
-        style="height: 0; overflow: hidden;"
+        style="height: 0px; overflow: hidden;"
       >
         <div
           style="display: none;"
@@ -214,7 +214,7 @@ exports[`<GameCreateForm /> > when enabled > matches snapshot 1`] = `
           aria-hidden="true"
           class="rah-static rah-static--height-zero "
           id="gameCreateForm"
-          style="height: 0; overflow: hidden;"
+          style="height: 0px; overflow: hidden;"
         >
           <div
             style="display: none;"
@@ -279,7 +279,7 @@ exports[`<GameCreateForm /> > when enabled > matches snapshot 1`] = `
         aria-hidden="true"
         class="rah-static rah-static--height-zero "
         id="gameCreateForm"
-        style="height: 0; overflow: hidden;"
+        style="height: 0px; overflow: hidden;"
       >
         <div
           style="display: none;"
