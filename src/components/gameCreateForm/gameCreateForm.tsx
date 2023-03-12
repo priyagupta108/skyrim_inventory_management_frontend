@@ -1,8 +1,13 @@
-import { useState, useRef, type ReactElement, type CSSProperties } from 'react'
+import {
+  useState,
+  useRef,
+  type CSSProperties,
+  type FormEventHandler,
+} from 'react'
 import AnimateHeight from 'react-animate-height'
 import { type BaseGame as Game } from '../../types/apiData'
 import { BLUE } from '../../utils/colorSchemes'
-import { usePageContext, useGamesContext } from '../../hooks/contexts'
+import { useGamesContext } from '../../hooks/contexts'
 import styles from './gameCreateForm.module.css'
 
 interface GameCreateFormProps {
@@ -10,7 +15,7 @@ interface GameCreateFormProps {
 }
 
 const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
-  const { setFlashProps } = usePageContext()
+  const { createGame } = useGamesContext()
   const [formExpanded, setFormExpanded] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -24,6 +29,29 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
 
   const focusInputIfExpanded = () => {
     formExpanded ? inputRef.current?.focus() : inputRef.current?.blur()
+  }
+
+  const extractGame = (formData: FormData): Game => {
+    const values = Object.fromEntries(Array.from(formData.entries())) as Record<
+      string,
+      string
+    >
+    return { name: values.name, description: values.description }
+  }
+
+  const submitForm: FormEventHandler = (e) => {
+    e.preventDefault()
+
+    if (!formRef.current) return
+
+    const formData = new FormData(formRef.current)
+    const game = extractGame(formData)
+
+    createGame(game, () => {
+      formRef.current?.reset()
+      formRef.current?.blur()
+      setFormExpanded(false)
+    })
   }
 
   return (
@@ -47,6 +75,7 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
           ref={formRef}
           className={styles.form}
           data-testid="gameCreateFormForm"
+          onSubmit={submitForm}
         >
           <fieldset className={styles.fieldset} disabled={disabled}>
             <input

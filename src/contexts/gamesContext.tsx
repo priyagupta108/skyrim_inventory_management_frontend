@@ -23,7 +23,11 @@ const UNEXPECTED_ERROR_MESSAGE =
 export interface GamesContextType {
   games: Game[]
   gamesLoadingState: LoadingState
-  createGame: (game: Game) => void
+  createGame: (
+    game: BaseGame,
+    onSuccess?: () => void,
+    onError?: () => void
+  ) => void
   // updateGame: (gameId: number, attrs: Game) => void
   destroyGame: (gameId: number) => void
 }

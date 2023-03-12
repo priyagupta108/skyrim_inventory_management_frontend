@@ -31,11 +31,13 @@ const GamesPage = () => {
             data-testid="pulseLoader"
           />
         )}
-        <GameCreateForm
-          disabled={
-            gamesLoadingState === LOADING || gamesLoadingState === ERROR
-          }
-        />
+        {gamesLoadingState === DONE && (
+          <GameCreateForm
+            disabled={
+              gamesLoadingState === LOADING || gamesLoadingState === ERROR
+            }
+          />
+        )}
         {games.length > 0 && gamesLoadingState === DONE && (
           <>
             {games.map(({ id, name, description }: Game) => (
