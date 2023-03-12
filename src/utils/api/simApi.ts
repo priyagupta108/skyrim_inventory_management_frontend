@@ -1,10 +1,18 @@
-import { type BaseGame, ResponseGame } from '../../types/apiData'
-import { type ErrorObject } from '../../types/apiData'
+import { type BaseGame } from '../../types/apiData'
 import {
-  throwInternalServerError,
-  throwUnprocessableEntityError,
-} from './errorFunctions'
-import { AuthorizationError, NotFoundError } from './apiErrors'
+  type PostGamesResponse,
+  type PostGamesReturnValue,
+  type GetGamesResponse,
+  type GetGamesReturnValue,
+  type DeleteGameResponse,
+  type DeleteGameReturnValue,
+} from './returnValues'
+import {
+  AuthorizationError,
+  InternalServerError,
+  NotFoundError,
+  UnprocessableEntityError,
+} from './apiErrors'
 
 const baseUri = import.meta.env.PROD
   ? 'https://sim-api.danascheider.com'
@@ -25,15 +33,10 @@ const combinedHeaders = (token: string) => ({
 
 // POST /games
 
-interface PostGamesResponse {
-  status: number
-  json: ResponseGame | ErrorObject
-}
-
 export const postGames = (
   body: BaseGame,
   token: string
-): Promise<PostGamesResponse> | never => {
+): Promise<PostGamesReturnValue> | never => {
   const uri = `${baseUri}/games`
   const headers = combinedHeaders(token)
 
@@ -41,63 +44,66 @@ export const postGames = (
     method: 'POST',
     body: JSON.stringify(body),
     headers,
-  }).then((res: Response) => {
-    if (res.status === 401) throw new AuthorizationError()
+  }).then((res) => {
+    const response = res as PostGamesResponse
 
-    return res.json().then((json: ResponseGame | ErrorObject) => {
-      if (res.status === 500) throwInternalServerError(json)
-      if (res.status === 422) throwUnprocessableEntityError(json)
+    if (response.status === 401) throw new AuthorizationError()
 
-      return { status: res.status, json }
+    return response.json().then((json) => {
+      const returnValue = { status: response.status, json }
+
+      if (returnValue.status === 500)
+        throw new InternalServerError(json.errors.join(', '))
+      if (returnValue.status === 422)
+        throw new UnprocessableEntityError(json.errors)
+
+      return returnValue
     })
   })
 }
 
 // GET /games
 
-interface GetGamesResponse {
-  status: number
-  json?: ResponseGame[] | ErrorObject | null
-}
-
-export const getGames = (token: string): Promise<GetGamesResponse> | never => {
+export const getGames = (
+  token: string
+): Promise<GetGamesReturnValue> | never => {
   const uri = `${baseUri}/games`
   const headers = combinedHeaders(token)
 
   return fetch(uri, { headers }).then((res: Response) => {
-    if (res.status === 401) throw new AuthorizationError()
+    const response = res as GetGamesResponse
 
-    return res.json().then((json: ResponseGame[] | ErrorObject | null) => {
-      if (res.status === 500) throwInternalServerError(json)
+    if (response.status === 401) throw new AuthorizationError()
 
-      return { status: res.status, json }
+    return response.json().then((json) => {
+      const returnValue = { status: response.status, json }
+
+      if (returnValue.status === 500)
+        throw new InternalServerError(json.errors.join(', '))
+
+      return returnValue
     })
   })
 }
 
 // DELETE /games/:id
 
-interface DeleteGameResponse {
-  status: number
-  json?: ErrorObject | null
-}
-
 export const deleteGame = (
   gameId: number,
   token: string
-): Promise<DeleteGameResponse> | never => {
+): Promise<DeleteGameReturnValue> | never => {
   const uri = `${baseUri}/games/${gameId}`
   const headers = combinedHeaders(token)
 
   return fetch(uri, { method: 'DELETE', headers }).then((res: Response) => {
-    if (res.status === 401) throw new AuthorizationError()
-    if (res.status === 404) throw new NotFoundError()
-    if (res.status === 204) return { status: res.status }
+    const response = res as DeleteGameResponse
 
-    return res.json().then((json: ErrorObject | null) => {
-      if (res.status === 500) throwInternalServerError(json)
+    if (response.status === 401) throw new AuthorizationError()
+    if (response.status === 404) throw new NotFoundError()
+    if (response.status === 204) return { status: response.status }
 
-      return { status: res.status, json }
+    return res.json().then((json) => {
+      throw new InternalServerError(json.errors.join(', '))
     })
   })
 }

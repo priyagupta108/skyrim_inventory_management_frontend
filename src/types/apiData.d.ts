@@ -16,13 +16,13 @@ export interface ErrorObject {
  */
 
 export interface BaseGame {
-  user_id: number
   name: string
   description: string | null
 }
 
 export interface ResponseGame extends BaseGame {
   id: number
+  user_id: number
   created_at: Date
   updated_at: Date
 }
