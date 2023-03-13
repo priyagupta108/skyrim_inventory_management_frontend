@@ -1,5 +1,5 @@
 import { describe, test, expect, vitest, afterEach, beforeEach } from 'vitest'
-import { screen, render, act } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
 import {
   GamesContext,
   type GamesContextType,
@@ -62,8 +62,6 @@ describe('GameLineItem', () => {
     })
 
     test('destroys the game when the button is clicked', () => {
-      window.confirm = vitest.fn().mockImplementation(() => true)
-
       const wrapper = renderAuthenticated(
         <GamesContext.Provider value={contextValue}>
           <GameLineItem
@@ -73,17 +71,16 @@ describe('GameLineItem', () => {
           />
         </GamesContext.Provider>
       )
+
+      window.confirm = vitest.fn().mockImplementation(() => true)
 
       const xIcon = wrapper.getByTestId('destroyGame4')
       act(() => xIcon.click())
 
-      // TODO
-      // expect(contextValue.destroyGame).toHaveBeenCalledWith(4)
+      expect(contextValue.destroyGame).toHaveBeenCalledWith(4)
     })
 
     test("doesn't destroy the game when the user cancels", () => {
-      window.confirm = vitest.fn().mockImplementation(() => false)
-
       const wrapper = renderAuthenticated(
         <GamesContext.Provider value={contextValue}>
           <GameLineItem
@@ -93,6 +90,8 @@ describe('GameLineItem', () => {
           />
         </GamesContext.Provider>
       )
+
+      window.confirm = vitest.fn().mockImplementation(() => false)
 
       const xIcon = wrapper.getByTestId('destroyGame4')
       act(() => xIcon.click())
