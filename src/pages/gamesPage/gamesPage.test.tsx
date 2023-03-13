@@ -399,8 +399,92 @@ describe('<GamesPage />', () => {
       })
     })
 
-    describe('when the server returns an Unprocessable Entity response')
+    describe('when the server returns an Unprocessable Entity response', () => {
+      const mockServer = setupServer(getGamesAllSuccess, postGamesUnprocessable)
 
-    describe('when the server returns a 500 error response')
+      beforeAll(() => mockServer.listen())
+      beforeEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('displays an error message', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        await waitFor(() => {
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+        })
+
+        const button = (await wrapper.findByTestId(
+          'createGameSubmit'
+        )) as HTMLButtonElement
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // There should be an error message
+          expect(
+            wrapper.getByText(/Name can only contain alphanumeric characters/)
+          ).toBeTruthy()
+
+          // All the other games should still be there
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+          expect(wrapper.getByText('My Game 2')).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              'Game with a really really really really really long name'
+            )
+          ).toBeTruthy()
+        })
+      })
+    })
+
+    describe('when the server returns a 500 error response', () => {
+      const mockServer = setupServer(getGamesAllSuccess, postGamesServerError)
+
+      beforeAll(() => mockServer.listen())
+      beforeEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('displays an error message', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        await waitFor(() => {
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+        })
+
+        const button = (await wrapper.findByTestId(
+          'createGameSubmit'
+        )) as HTMLButtonElement
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // There should be an error message
+          expect(
+            wrapper.getByText(/Something unexpected went wrong/)
+          ).toBeTruthy()
+
+          // All the other games should still be there
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+          expect(wrapper.getByText('My Game 2')).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              'Game with a really really really really really long name'
+            )
+          ).toBeTruthy()
+        })
+      })
+    })
   })
 })
