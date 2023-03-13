@@ -52,13 +52,13 @@
     "dotenv": "^16.0.3",
     "eslint": "^8.34.0",
     "jsdom": "^21.1.1",
+    "msw": "^1.1.0",
     "prettier": "2.8.4",
     "storybook-addon-mock": "^3.2.0",
     "typescript": "^4.9.5",
     "vite": "^4.1.4",
     "vite-plugin-fonts": "^0.7.0",
-    "vitest": "^0.29.2",
-    "vitest-fetch-mock": "^0.2.2"
+    "vitest": "^0.29.2"
   },
   "eslintConfig": {
     "root": true,

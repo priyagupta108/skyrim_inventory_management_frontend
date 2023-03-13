@@ -1,15 +1,34 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
-import { waitFor, act, cleanup, waitForElementToBeRemoved } from '@testing-library/react'
+import {
+  waitFor,
+  act,
+  cleanup,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
+import { setupServer } from 'msw/node'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
-import { emptyGames, allGames } from '../../support/data/games'
-import { internalServerErrorResponse } from '../../support/data/errors'
+import {
+  postGamesSuccess,
+  postGamesUnprocessable,
+  postGamesServerError,
+  getGamesEmptySuccess,
+  getGamesAllSuccess,
+  getGamesServerError,
+  deleteGameSuccess,
+  deleteGameNotFound,
+  deleteGameServerError,
+} from '../../support/msw/games'
+import { allGames } from '../../support/data/games'
 import { PageProvider } from '../../contexts/pageContext'
-import { GamesContext, GamesContextType, GamesProvider } from '../../contexts/gamesContext'
+import {
+  GamesContext,
+  GamesContextType,
+  GamesProvider,
+} from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
 
 describe('<GamesPage />', () => {
   afterEach(() => {
-    fetch.resetMocks()
     cleanup()
   })
 
@@ -42,8 +61,16 @@ describe('<GamesPage />', () => {
     })
 
     describe('when there are no games', () => {
-      beforeEach(() => {
-        fetch.mockResponseOnce(JSON.stringify(emptyGames), { status: 200 })
+      const mockServer = setupServer(getGamesEmptySuccess)
+
+      beforeAll(() => {
+        mockServer.listen()
+      })
+
+      afterEach(() => mockServer.resetHandlers())
+
+      afterAll(() => {
+        mockServer.close()
       })
 
       test('games page displays a message that there are no games', async () => {
@@ -57,8 +84,8 @@ describe('<GamesPage />', () => {
         expect(wrapper).toBeTruthy()
 
         await waitFor(() => {
-          expect(wrapper.findByText('Create Game...')).toBeTruthy()
-          expect(wrapper.findByTestId('gameCreateFormForm')).toBeTruthy()
+          expect(wrapper.getByText('Create Game...')).toBeTruthy()
+          expect(wrapper.getByTestId('gameCreateFormForm')).toBeTruthy()
         })
       })
 
@@ -75,9 +102,11 @@ describe('<GamesPage />', () => {
     })
 
     describe('when there are multiple games', () => {
-      beforeEach(() => {
-        fetch.mockResponseOnce(JSON.stringify(allGames), { status: 200 })
-      })
+      const mockServer = setupServer(getGamesAllSuccess)
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
 
       // Descriptions should be hidden by default but Vitest has no way of knowing
       // that, as noted in the test file for the GameLineItem component.
@@ -91,14 +120,14 @@ describe('<GamesPage />', () => {
         )
 
         await waitFor(() => {
-          expect(wrapper.findByText('My Game 1')).toBeTruthy()
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
           expect(
-            wrapper.findByText('This is a game with a description')
+            wrapper.getByText('This is a game with a description')
           ).toBeTruthy()
 
-          expect(wrapper.findByText('My Game 2')).toBeTruthy()
+          expect(wrapper.getByText('My Game 2')).toBeTruthy()
           expect(
-            wrapper.findByText('This game has no description.')
+            wrapper.getByText('This game has no description.')
           ).toBeTruthy()
 
           expect(
@@ -130,11 +159,15 @@ describe('<GamesPage />', () => {
     })
 
     describe('when the server returns an error', () => {
-      beforeEach(() => {
-        fetch.mockResponseOnce(JSON.stringify(internalServerErrorResponse), {
-          status: 500,
-        })
+      const mockServer = setupServer(getGamesServerError)
+
+      beforeAll(() => {
+        mockServer.listen()
       })
+
+      afterEach(() => mockServer.resetHandlers())
+
+      afterAll(() => mockServer.close())
 
       test('displays error content', async () => {
         const wrapper = renderAuthenticated(
@@ -146,7 +179,11 @@ describe('<GamesPage />', () => {
         )
 
         await waitFor(() => {
-          expect(wrapper.findByText('500 Internal Server Error')).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              "Oops! Something unexpected went wrong. We're sorry! Please try again later."
+            )
+          ).toBeTruthy()
         })
       })
 
@@ -178,10 +215,15 @@ describe('<GamesPage />', () => {
 
   describe('destroying a game', () => {
     describe('when the user confirms deletion', () => {
-      beforeEach(() => {
-        fetch.mockResponseOnce(JSON.stringify(allGames), { status: 200 })
-        fetch.mockResponseOnce(null, { status: 204 })
+      const mockServer = setupServer(getGamesAllSuccess, deleteGameSuccess)
+
+      beforeAll(() => {
+        mockServer.listen()
       })
+
+      afterEach(() => mockServer.resetHandlers())
+
+      afterAll(() => mockServer.close())
 
       test('destroys the game and removes it from the DOM', async () => {
         const wrapper = renderAuthenticated(
@@ -207,11 +249,14 @@ describe('<GamesPage />', () => {
       })
     })
 
-    describe('when the back end returns an error', () => {
-      beforeEach(() => {
-        fetch.mockResponseOnce(JSON.stringify(allGames), { status: 200 })
-        fetch.mockResponseOnce(null, { status: 404 })
-      })
+    describe('when the back end returns a 404 error', () => {
+      const mockServer = setupServer(getGamesAllSuccess, deleteGameNotFound)
+
+      beforeAll(() => mockServer.listen())
+
+      afterEach(() => mockServer.resetHandlers())
+
+      afterAll(() => mockServer.close())
 
       test('leaves the game in the DOM and displays error message', async () => {
         const wrapper = renderAuthenticated(
@@ -230,7 +275,46 @@ describe('<GamesPage />', () => {
 
         await waitFor(() => {
           expect(wrapper.getByText('My Game 2')).toBeTruthy()
-          expect(wrapper.getByText("Oops! We couldn't find the game you're looking for. Please refresh and try again.")).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              "Oops! We couldn't find the game you're looking for. Please refresh and try again."
+            )
+          ).toBeTruthy()
+        })
+      })
+    })
+
+    describe('when the back end returns a 500 error', () => {
+      const mockServer = setupServer(getGamesAllSuccess, deleteGameServerError)
+
+      beforeAll(() => mockServer.listen())
+
+      afterEach(() => mockServer.resetHandlers())
+
+      afterAll(() => mockServer.close())
+
+      test('leaves the game in the DOM and displays error message', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        window.confirm = vitest.fn().mockImplementation(() => true)
+
+        const deleteButton = await wrapper.findByTestId('destroyGame51')
+
+        act(() => deleteButton.click())
+
+        await waitFor(() => {
+          expect(wrapper.getByText('My Game 2')).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              "Oops! Something unexpected went wrong. We're sorry! Please try again later."
+            )
+          ).toBeTruthy()
         })
       })
     })
@@ -241,7 +325,7 @@ describe('<GamesPage />', () => {
           games: allGames,
           gamesLoadingState: 'DONE',
           createGame: () => {},
-          destroyGame: vitest.fn().mockImplementation((_gameId: number) => {})
+          destroyGame: vitest.fn().mockImplementation((_gameId: number) => {}),
         } as GamesContextType
 
         const wrapper = renderAuthenticated(

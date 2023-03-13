@@ -1,5 +1,7 @@
 import { describe, test, expect, vitest, afterEach, beforeEach } from 'vitest'
 import { render, act } from '@testing-library/react'
+import { setupServer } from 'msw/node'
+import { deleteGameSuccess, getGamesAllSuccess } from '../../support/msw/games'
 import {
   GamesContext,
   type GamesContextType,
@@ -44,18 +46,16 @@ describe('GameLineItem', () => {
   })
 
   describe('destroying the game', () => {
+    const mockServer = setupServer(getGamesAllSuccess, deleteGameSuccess)
+
+    beforeAll(() => mockServer.listen())
+    afterEach(() => mockServer.resetHandlers())
+    afterAll(() => mockServer.close())
+
     beforeEach(() => {
       contextValue.destroyGame = vitest
         .fn()
         .mockImplementation((_gameId: number) => {})
-      fetch.mockResponseOnce(JSON.stringify(contextValue.games), {
-        status: 200,
-      })
-      fetch.mockResponseOnce(null, { status: 204 })
-    })
-
-    afterEach(() => {
-      fetch.resetMocks()
     })
 
     test('destroys the game when the button is clicked', () => {

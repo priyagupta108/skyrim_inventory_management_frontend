@@ -1,4 +1,4 @@
-import { Game } from '../../types/games'
+import { ResponseGame as Game } from '../../types/apiData'
 
 export const emptyGames: Game[] = []
 

@@ -14,8 +14,10 @@ import {
   UnprocessableEntityError,
 } from './apiErrors'
 
-const baseUri = import.meta.env.PROD
+const BASE_URI = import.meta.env.PROD
   ? 'https://sim-api.danascheider.com'
+  : import.meta.env.MODE === 'test'
+  ? 'http://localhost:3000'
   : '/api'
 
 const contentTypeHeader = { 'Content-Type': 'application/json' }
@@ -37,7 +39,7 @@ export const postGames = (
   body: RequestGame,
   token: string
 ): Promise<PostGamesReturnValue> | never => {
-  const uri = `${baseUri}/games`
+  const uri = `${BASE_URI}/games`
   const headers = combinedHeaders(token)
 
   return fetch(uri, {
@@ -67,7 +69,7 @@ export const postGames = (
 export const getGames = (
   token: string
 ): Promise<GetGamesReturnValue> | never => {
-  const uri = `${baseUri}/games`
+  const uri = `${BASE_URI}/games`
   const headers = combinedHeaders(token)
 
   return fetch(uri, { headers }).then((res: Response) => {
@@ -92,7 +94,7 @@ export const deleteGame = (
   gameId: number,
   token: string
 ): Promise<DeleteGameReturnValue> | never => {
-  const uri = `${baseUri}/games/${gameId}`
+  const uri = `${BASE_URI}/games/${gameId}`
   const headers = combinedHeaders(token)
 
   return fetch(uri, { method: 'DELETE', headers }).then((res: Response) => {

@@ -34,6 +34,5 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/support/setupFetchMocks.ts'],
   },
 })

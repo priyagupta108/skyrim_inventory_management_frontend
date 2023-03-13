@@ -2,18 +2,12 @@ import { describe, test, expect, beforeEach, afterEach, vitest } from 'vitest'
 import { cleanup, act, fireEvent } from '@testing-library/react'
 import { RequestGame } from '../../types/apiData'
 import { renderAuthenticated } from '../../support/testUtils'
-import { emptyGames } from '../../support/data/games'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext, GamesProvider } from '../../contexts/gamesContext'
 import GameCreateForm from './gameCreateForm'
 
 describe('<GameCreateForm />', () => {
-  beforeEach(() => {
-    fetch.mockResponseOnce(JSON.stringify(emptyGames), { status: 200 })
-  })
-
   afterEach(() => {
-    fetch.resetMocks()
     cleanup()
   })
 
