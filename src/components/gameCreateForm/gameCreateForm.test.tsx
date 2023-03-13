@@ -1,5 +1,6 @@
 import { describe, test, expect, beforeEach, afterEach, vitest } from 'vitest'
-import { screen, cleanup } from '@testing-library/react'
+import { cleanup, act, fireEvent } from '@testing-library/react'
+import { RequestGame } from '../../types/apiData'
 import { renderAuthenticated } from '../../support/testUtils'
 import { emptyGames } from '../../support/data/games'
 import { PageProvider } from '../../contexts/pageContext'
@@ -28,8 +29,8 @@ describe('<GameCreateForm />', () => {
 
       expect(wrapper).toBeTruthy()
 
-      expect(screen.getByText('Create Game...')).toBeTruthy()
-      expect(screen.getByTestId('gameCreateFormForm')).toBeTruthy()
+      expect(wrapper.getByText('Create Game...')).toBeTruthy()
+      expect(wrapper.getByTestId('gameCreateFormForm')).toBeTruthy()
     })
 
     test('matches snapshot', () => {
@@ -45,29 +46,40 @@ describe('<GameCreateForm />', () => {
     })
 
     describe('creating a game', () => {
-      test('calls the createGame function on the Games provider', () => {
-        const createGame = vitest.fn()
-        const destroyGame = () => {}
+      // Both form values are optional so this shouldn't be an issue
+      describe('when the form has no values', () => {
+        test('calls the createGame function on the Games provider', () => {
+          const createGame = vitest
+            .fn()
+            .mockImplementation((_game: RequestGame) => {})
+          const destroyGame = () => {}
 
-        const wrapper = renderAuthenticated(
-          <PageProvider>
-            <GamesContext.Provider
-              value={{
-                createGame,
-                destroyGame,
-                games: [],
-                gamesLoadingState: 'DONE',
-              }}
-            >
-              <GameCreateForm />
-            </GamesContext.Provider>
-          </PageProvider>
-        )
+          const wrapper = renderAuthenticated(
+            <PageProvider>
+              <GamesContext.Provider
+                value={{
+                  createGame,
+                  destroyGame,
+                  games: [],
+                  gamesLoadingState: 'DONE',
+                }}
+              >
+                <GameCreateForm />
+              </GamesContext.Provider>
+            </PageProvider>
+          )
 
-        const button = wrapper.container.querySelector('button')
-        button?.click()
+          const form = wrapper.getByTestId('gameCreateFormForm')
 
-        expect(createGame).toHaveBeenCalled()
+          act(() => {
+            fireEvent.submit(form)
+          })
+
+          expect(createGame).toHaveBeenCalledWith(
+            { name: null, description: null },
+            expect.any(Function)
+          )
+        })
       })
     })
   })

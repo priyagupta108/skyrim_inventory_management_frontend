@@ -25,7 +25,7 @@ describe('<GamesPage />', () => {
         )
         expect(wrapper).toBeTruthy()
 
-        expect(screen.getByTestId('pulseLoader')).toBeTruthy()
+        expect(wrapper.getByTestId('pulseLoader')).toBeTruthy()
       })
 
       test('matches snapshot', () => {
@@ -57,8 +57,8 @@ describe('<GamesPage />', () => {
         expect(wrapper).toBeTruthy()
 
         await waitFor(() => {
-          expect(screen.findByText('Create Game...')).toBeTruthy()
-          expect(screen.findByTestId('gameCreateFormForm')).toBeTruthy()
+          expect(wrapper.findByText('Create Game...')).toBeTruthy()
+          expect(wrapper.findByTestId('gameCreateFormForm')).toBeTruthy()
         })
       })
 
@@ -82,7 +82,7 @@ describe('<GamesPage />', () => {
       // Descriptions should be hidden by default but Vitest has no way of knowing
       // that, as noted in the test file for the GameLineItem component.
       test('displays the title and description of each game', async () => {
-        renderAuthenticated(
+        const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
               <GamesPage />
@@ -91,29 +91,29 @@ describe('<GamesPage />', () => {
         )
 
         await waitFor(() => {
-          expect(screen.findByText('My Game 1')).toBeTruthy()
+          expect(wrapper.findByText('My Game 1')).toBeTruthy()
           expect(
-            screen.findByText('This is a game with a description')
+            wrapper.findByText('This is a game with a description')
           ).toBeTruthy()
 
-          expect(screen.findByText('My Game 2')).toBeTruthy()
+          expect(wrapper.findByText('My Game 2')).toBeTruthy()
           expect(
-            screen.findByText('This game has no description.')
+            wrapper.findByText('This game has no description.')
           ).toBeTruthy()
 
           expect(
-            screen.getByText(
+            wrapper.getByText(
               'Game with a really really really really really long name'
             )
           ).toBeTruthy()
           expect(
-            screen.getByText(
+            wrapper.getByText(
               /Cum audissem Antiochum, Brute, ut solebam, cum M\. Pisone/
             )
           ).toBeTruthy()
 
-          expect(screen.queryByTestId('pulseLoader')).toBeFalsy()
-          expect(screen.queryByText('You have no games.')).toBeFalsy()
+          expect(wrapper.queryByTestId('pulseLoader')).toBeFalsy()
+          expect(wrapper.queryByText('You have no games.')).toBeFalsy()
         })
       })
 
@@ -137,7 +137,7 @@ describe('<GamesPage />', () => {
       })
 
       test('displays error content', async () => {
-        renderAuthenticated(
+        const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
               <GamesPage />
@@ -146,12 +146,12 @@ describe('<GamesPage />', () => {
         )
 
         await waitFor(() => {
-          expect(screen.findByText('500 Internal Server Error')).toBeTruthy()
+          expect(wrapper.findByText('500 Internal Server Error')).toBeTruthy()
         })
       })
 
       test("doesn't break the dashboard", () => {
-        renderAuthenticated(
+        const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
               <GamesPage />
@@ -159,7 +159,7 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        expect(screen.getByText('Your Games')).toBeTruthy()
+        expect(wrapper.getByText('Your Games')).toBeTruthy()
       })
 
       test('matches snapshot', () => {

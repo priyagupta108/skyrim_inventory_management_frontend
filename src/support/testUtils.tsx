@@ -1,9 +1,30 @@
 import { type ReactElement } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { JSDOM } from 'jsdom'
 import { render } from '@testing-library/react'
 import { LoginContext } from '../contexts/loginContext'
 import { User } from 'firebase/auth'
 import testProfileImg from './testProfileImg.png'
+
+export const BASE_APP_URI = 'http://localhost:5173'
+
+declare global {
+  namespace NodeJS {
+    interface Global {
+      document: Document
+      window: Window
+    }
+  }
+}
+
+const setDom = () => {
+  const dom = new JSDOM('<!doctype html><html><body></body></html>', {
+    url: 'http://localhost:5173',
+  })
+
+  global.window = dom.window as unknown as Window & typeof globalThis
+  global.document = dom.window.document
+}
 
 /*
  *
@@ -31,8 +52,14 @@ export const testUser = {
  *
  */
 
+const renderWithJSDOM = (ui: ReactElement) => {
+  setDom()
+
+  return render(ui)
+}
+
 export const renderWithRouter = (ui: ReactElement) =>
-  render(<BrowserRouter>{ui}</BrowserRouter>)
+  renderWithJSDOM(<BrowserRouter>{ui}</BrowserRouter>)
 
 export const renderAuthenticated = (ui: ReactElement, authLoading = false) =>
   renderWithRouter(

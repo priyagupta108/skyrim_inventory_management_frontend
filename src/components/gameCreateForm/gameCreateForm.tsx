@@ -36,7 +36,10 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
       string,
       string
     >
-    return { name: values.name, description: values.description }
+    return {
+      name: values.name || null,
+      description: values.description || null,
+    }
   }
 
   const submitForm: FormEventHandler = (e) => {

@@ -1,6 +1,10 @@
 import { describe, test, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
+import {
+  BASE_APP_URI,
+  renderAuthenticated,
+  renderAuthLoading,
+} from '../../support/testUtils'
 import { PageProvider } from '../../contexts/pageContext'
 import DashboardPage from './dashboardPage'
 
@@ -28,26 +32,26 @@ describe('<DashboardPage />', () => {
       </PageProvider>
     )
 
-    expect(screen.getByText('Edna St. Vincent Millay')).toBeTruthy()
-    expect(screen.getByText('edna@gmail.com')).toBeTruthy()
+    expect(wrapper.getByText('Edna St. Vincent Millay')).toBeTruthy()
+    expect(wrapper.getByText('edna@gmail.com')).toBeTruthy()
 
     const img = wrapper.container.querySelector('img')
     expect(img).toBeTruthy()
-    expect(img?.src).toEqual('/src/support/testProfileImg.png')
+    expect(img?.src).toEqual(`${BASE_APP_URI}/src/support/testProfileImg.png`)
   })
 
   test('DashboardPage displays the navigation mosaic', () => {
-    renderAuthenticated(
+    const wrapper = renderAuthenticated(
       <PageProvider>
         <DashboardPage />
       </PageProvider>
     )
 
-    expect(screen.getByText('Your Games')).toBeTruthy()
-    expect(screen.getByText('Your Shopping Lists')).toBeTruthy()
-    expect(screen.getByText('Your Inventory')).toBeTruthy()
-    expect(screen.getByText('Nav Link 4')).toBeTruthy()
-    expect(screen.getByText('Nav Link 5')).toBeTruthy()
+    expect(wrapper.getByText('Your Games')).toBeTruthy()
+    expect(wrapper.getByText('Your Shopping Lists')).toBeTruthy()
+    expect(wrapper.getByText('Your Inventory')).toBeTruthy()
+    expect(wrapper.getByText('Nav Link 4')).toBeTruthy()
+    expect(wrapper.getByText('Nav Link 5')).toBeTruthy()
   })
 
   test('matches snapshot', () => {
@@ -61,13 +65,13 @@ describe('<DashboardPage />', () => {
 
   describe('when auth is loading', () => {
     test('DashboardPage displays the pulse loader', () => {
-      renderAuthLoading(
+      const wrapper = renderAuthLoading(
         <PageProvider>
           <DashboardPage />
         </PageProvider>
       )
 
-      expect(screen.getByTestId('pulseLoader')).toBeTruthy()
+      expect(wrapper.getByTestId('pulseLoader')).toBeTruthy()
     })
 
     test('matches snapshot', () => {
