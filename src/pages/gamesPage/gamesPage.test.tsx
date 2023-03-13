@@ -347,4 +347,60 @@ describe('<GamesPage />', () => {
       })
     })
   })
+
+  describe('creating a game', () => {
+    describe('when successful', () => {
+      const mockServer = setupServer(getGamesAllSuccess, postGamesSuccess)
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('adds the game to the list', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        await waitFor(() => {
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+        })
+
+        const button = (await wrapper.findByTestId(
+          'createGameSubmit'
+        )) as HTMLButtonElement
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // There should be a success message
+          expect(
+            wrapper.getByText('Success! Your game has been created.')
+          ).toBeTruthy()
+
+          // The new game should be present in the DOM
+          expect(wrapper.getByText('My Game 3')).toBeTruthy()
+          expect(
+            wrapper.getByText('This description is just for illustration.')
+          ).toBeTruthy()
+
+          // All the other games should still be there too
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+          expect(wrapper.getByText('My Game 2')).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              'Game with a really really really really really long name'
+            )
+          ).toBeTruthy()
+        })
+      })
+    })
+
+    describe('when the server returns an Unprocessable Entity response')
+
+    describe('when the server returns a 500 error response')
+  })
 })
