@@ -1,27 +1,26 @@
-import { describe, test, expect, afterEach, vitest } from 'vitest'
-import { cleanup, act, fireEvent } from '@testing-library/react'
-import { setupServer } from 'msw/node'
-import { getGamesAllSuccess } from '../../support/msw/games'
+import { describe, test, expect, vitest } from 'vitest'
+import { act, fireEvent } from '@testing-library/react'
 import { RequestGame } from '../../types/apiData'
 import { renderAuthenticated } from '../../support/testUtils'
 import { PageProvider } from '../../contexts/pageContext'
-import { GamesContext, GamesProvider } from '../../contexts/gamesContext'
+import { GamesContext } from '../../contexts/gamesContext'
 import GameCreateForm from './gameCreateForm'
 
 describe('<GameCreateForm />', () => {
-  const mockServer = setupServer(getGamesAllSuccess)
-
-  beforeAll(() => mockServer.listen())
-  afterEach(() => mockServer.resetHandlers())
-  afterAll(() => mockServer.close())
-
   describe('when enabled', () => {
     test('displays the correct fields', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
-          <GamesProvider>
+          <GamesContext.Provider
+            value={{
+              games: [],
+              gamesLoadingState: 'DONE',
+              createGame: () => {},
+              destroyGame: () => {},
+            }}
+          >
             <GameCreateForm />
-          </GamesProvider>
+          </GamesContext.Provider>
         </PageProvider>
       )
 
@@ -34,9 +33,16 @@ describe('<GameCreateForm />', () => {
     test('matches snapshot', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
-          <GamesProvider>
+          <GamesContext.Provider
+            value={{
+              games: [],
+              gamesLoadingState: 'DONE',
+              createGame: () => {},
+              destroyGame: () => {},
+            }}
+          >
             <GameCreateForm />
-          </GamesProvider>
+          </GamesContext.Provider>
         </PageProvider>
       )
 
@@ -132,9 +138,16 @@ describe('<GameCreateForm />', () => {
     test('matches snapshot', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
-          <GamesProvider>
+          <GamesContext.Provider
+            value={{
+              games: [],
+              gamesLoadingState: 'DONE',
+              createGame: () => {},
+              destroyGame: () => {},
+            }}
+          >
             <GameCreateForm disabled />
-          </GamesProvider>
+          </GamesContext.Provider>
         </PageProvider>
       )
 
