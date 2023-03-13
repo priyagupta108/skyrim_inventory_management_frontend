@@ -12,7 +12,7 @@ class UnauthorizedResponse extends ApiResponse {
   }
 }
 
-/*
+/**
  *
  * Types used for POST /games endpoint
  *
@@ -48,7 +48,7 @@ export type PostGamesReturnValue =
   | { status: 422 | 500; json: ErrorObject }
   | { status: 201; json: ResponseGame }
 
-/*
+/**
  *
  * Types used for GET /games endpoint
  *
@@ -84,7 +84,7 @@ export type GetGamesReturnValue =
   | { status: 200; json: ResponseGame[] }
   | { status: 500; json: ErrorObject }
 
-/*
+/**
  *
  * Types used for DELETE /games/:id endpoint
  *

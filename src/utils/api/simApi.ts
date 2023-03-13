@@ -27,7 +27,7 @@ const combinedHeaders = (token: string) => ({
   ...authHeader(token),
 })
 
-/*
+/**
  *
  * Game Endpoints
  *

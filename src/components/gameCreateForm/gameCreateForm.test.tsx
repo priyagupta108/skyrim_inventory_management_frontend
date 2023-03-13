@@ -1,5 +1,7 @@
-import { describe, test, expect, beforeEach, afterEach, vitest } from 'vitest'
+import { describe, test, expect, afterEach, vitest } from 'vitest'
 import { cleanup, act, fireEvent } from '@testing-library/react'
+import { setupServer } from 'msw/node'
+import { getGamesAllSuccess } from '../../support/msw/games'
 import { RequestGame } from '../../types/apiData'
 import { renderAuthenticated } from '../../support/testUtils'
 import { PageProvider } from '../../contexts/pageContext'
@@ -7,9 +9,11 @@ import { GamesContext, GamesProvider } from '../../contexts/gamesContext'
 import GameCreateForm from './gameCreateForm'
 
 describe('<GameCreateForm />', () => {
-  afterEach(() => {
-    cleanup()
-  })
+  const mockServer = setupServer(getGamesAllSuccess)
+
+  beforeAll(() => mockServer.listen())
+  afterEach(() => mockServer.resetHandlers())
+  afterAll(() => mockServer.close())
 
   describe('when enabled', () => {
     test('displays the correct fields', () => {

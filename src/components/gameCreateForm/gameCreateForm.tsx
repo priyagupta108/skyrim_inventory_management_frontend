@@ -80,7 +80,7 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
           data-testid="gameCreateFormForm"
           onSubmit={submitForm}
         >
-          <fieldset className={styles.fieldset} disabled={disabled}>
+          <fieldset className={styles.fieldset}>
             <input
               ref={inputRef}
               className={styles.input}
@@ -91,9 +91,10 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
               data-testid="nameField"
               pattern="^\s*[A-Za-z0-9 \-',]*\s*$"
               title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+              disabled={disabled}
             />
           </fieldset>
-          <fieldset className={styles.fieldset} disabled={disabled}>
+          <fieldset className={styles.fieldset}>
             <input
               className={styles.input}
               type="text"
@@ -101,6 +102,7 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
               placeholder="Description"
               aria-label="Description"
               data-testid="descriptionField"
+              disabled={disabled}
             />
           </fieldset>
           <button

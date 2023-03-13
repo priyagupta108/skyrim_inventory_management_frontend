@@ -1,4 +1,4 @@
-/*
+/**
  *
  * Define possible response values for the SIM API.
  *

@@ -24,11 +24,6 @@
   max-width: 100%;
 }
 
-.fieldset:disabled * {
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
 .input {
   background-color: #fff;
   font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
@@ -36,6 +31,11 @@
   border: 1px solid #5f5f5f;
   border-radius: 3px;
   width: calc(100% - 24px); /* make it 100% of the parent including padding */
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .button {

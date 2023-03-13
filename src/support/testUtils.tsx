@@ -26,7 +26,7 @@ const setDom = () => {
   global.document = dom.window.document
 }
 
-/*
+/**
  *
  * Global Test Data
  *
@@ -46,7 +46,7 @@ export const testUser = {
     new Promise<string>((resolve, _reject) => resolve('xxxxxxx')),
 } as unknown as User
 
-/*
+/**
  *
  * Test Renderers
  *

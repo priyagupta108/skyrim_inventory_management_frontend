@@ -32,12 +32,12 @@ exports[`<GameCreateForm /> > when disabled > matches snapshot 1`] = `
             >
               <fieldset
                 class="_fieldset_83bedb"
-                disabled=""
               >
                 <input
                   aria-label="Name"
                   class="_input_83bedb"
                   data-testid="nameField"
+                  disabled=""
                   name="name"
                   pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
                   placeholder="Name"
@@ -47,12 +47,12 @@ exports[`<GameCreateForm /> > when disabled > matches snapshot 1`] = `
               </fieldset>
               <fieldset
                 class="_fieldset_83bedb"
-                disabled=""
               >
                 <input
                   aria-label="Description"
                   class="_input_83bedb"
                   data-testid="descriptionField"
+                  disabled=""
                   name="description"
                   placeholder="Description"
                   type="text"
@@ -100,12 +100,12 @@ exports[`<GameCreateForm /> > when disabled > matches snapshot 1`] = `
           >
             <fieldset
               class="_fieldset_83bedb"
-              disabled=""
             >
               <input
                 aria-label="Name"
                 class="_input_83bedb"
                 data-testid="nameField"
+                disabled=""
                 name="name"
                 pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
                 placeholder="Name"
@@ -115,12 +115,12 @@ exports[`<GameCreateForm /> > when disabled > matches snapshot 1`] = `
             </fieldset>
             <fieldset
               class="_fieldset_83bedb"
-              disabled=""
             >
               <input
                 aria-label="Description"
                 class="_input_83bedb"
                 data-testid="descriptionField"
+                disabled=""
                 name="description"
                 placeholder="Description"
                 type="text"

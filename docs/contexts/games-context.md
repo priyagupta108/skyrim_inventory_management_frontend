@@ -11,7 +11,7 @@ Accessing games requires a user to be authenticated, so the `GamesProvider` can 
 ## Example
 
 ```tsx
-/*
+/**
  *
  * /src/components/parent/parent.tsx
  *
@@ -31,7 +31,7 @@ const Parent = () => (
 
 export default Parent
 
-/*
+/**
  *
  * /src/components/child/child.tsx
  *

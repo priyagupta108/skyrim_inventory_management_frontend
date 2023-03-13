@@ -1,4 +1,4 @@
-/*
+/**
  *
  * Generic type for the JSON body of any error response
  * that has a JSON body
@@ -9,7 +9,7 @@ export interface ErrorObject {
   errors: string[]
 }
 
-/*
+/**
  *
  * Game
  *

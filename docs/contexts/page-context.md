@@ -32,7 +32,7 @@ The `PageProvider` ensures that the flash message is hidden after a period of ti
 ## Example
 
 ```tsx
-/*
+/**
  *
  * /src/components/parent/parent.tsx
  *
@@ -52,7 +52,7 @@ const Parent = () => (
 
 export default Parent
 
-/*
+/**
  *
  * /src/components/child/child.tsx
  *

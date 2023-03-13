@@ -46,12 +46,6 @@ describe('GameLineItem', () => {
   })
 
   describe('destroying the game', () => {
-    const mockServer = setupServer(getGamesAllSuccess, deleteGameSuccess)
-
-    beforeAll(() => mockServer.listen())
-    afterEach(() => mockServer.resetHandlers())
-    afterAll(() => mockServer.close())
-
     beforeEach(() => {
       contextValue.destroyGame = vitest
         .fn()

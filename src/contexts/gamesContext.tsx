@@ -45,7 +45,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
   const [games, setGames] = useState<Game[]>([])
   const { setFlashProps } = usePageContext()
 
-  /*
+  /**
    *
    * General handler for any ApiError
    *
@@ -74,7 +74,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     }
   }
 
-  /*
+  /**
    *
    * Create a new game at the API and update the `games` array
    *
@@ -108,7 +108,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     [user, token, games]
   )
 
-  /*
+  /**
    *
    * Retrieve all the current user's games from the API
    *
@@ -131,7 +131,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     }
   }, [user, token])
 
-  /*
+  /**
    *
    * Destroy the requested game and update the `games` array
    *

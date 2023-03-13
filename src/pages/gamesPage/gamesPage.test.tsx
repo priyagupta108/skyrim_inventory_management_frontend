@@ -1,10 +1,5 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
-import {
-  waitFor,
-  act,
-  cleanup,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import { waitFor, act, waitForElementToBeRemoved } from '@testing-library/react'
 import { setupServer } from 'msw/node'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import {
@@ -28,10 +23,6 @@ import {
 import GamesPage from './gamesPage'
 
 describe('<GamesPage />', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   describe('viewing games', () => {
     describe('when loading', () => {
       test('displays the loader', () => {
@@ -63,15 +54,9 @@ describe('<GamesPage />', () => {
     describe('when there are no games', () => {
       const mockServer = setupServer(getGamesEmptySuccess)
 
-      beforeAll(() => {
-        mockServer.listen()
-      })
-
+      beforeAll(() => mockServer.listen())
       afterEach(() => mockServer.resetHandlers())
-
-      afterAll(() => {
-        mockServer.close()
-      })
+      afterAll(() => mockServer.close())
 
       test('games page displays a message that there are no games', async () => {
         const wrapper = renderAuthenticated(
@@ -161,12 +146,8 @@ describe('<GamesPage />', () => {
     describe('when the server returns an error', () => {
       const mockServer = setupServer(getGamesServerError)
 
-      beforeAll(() => {
-        mockServer.listen()
-      })
-
+      beforeAll(() => mockServer.listen())
       afterEach(() => mockServer.resetHandlers())
-
       afterAll(() => mockServer.close())
 
       test('displays error content', async () => {
@@ -217,12 +198,8 @@ describe('<GamesPage />', () => {
     describe('when the user confirms deletion', () => {
       const mockServer = setupServer(getGamesAllSuccess, deleteGameSuccess)
 
-      beforeAll(() => {
-        mockServer.listen()
-      })
-
+      beforeAll(() => mockServer.listen())
       afterEach(() => mockServer.resetHandlers())
-
       afterAll(() => mockServer.close())
 
       test('destroys the game and removes it from the DOM', async () => {
@@ -253,9 +230,7 @@ describe('<GamesPage />', () => {
       const mockServer = setupServer(getGamesAllSuccess, deleteGameNotFound)
 
       beforeAll(() => mockServer.listen())
-
       afterEach(() => mockServer.resetHandlers())
-
       afterAll(() => mockServer.close())
 
       test('leaves the game in the DOM and displays error message', async () => {
@@ -288,9 +263,7 @@ describe('<GamesPage />', () => {
       const mockServer = setupServer(getGamesAllSuccess, deleteGameServerError)
 
       beforeAll(() => mockServer.listen())
-
       afterEach(() => mockServer.resetHandlers())
-
       afterAll(() => mockServer.close())
 
       test('leaves the game in the DOM and displays error message', async () => {
@@ -320,7 +293,7 @@ describe('<GamesPage />', () => {
     })
 
     describe('when the user cancels deletion', () => {
-      test("doesn't destroy the game", () => {
+      test("doesn't destroy the game", async () => {
         const contextValue = {
           games: allGames,
           gamesLoadingState: 'DONE',
@@ -344,6 +317,11 @@ describe('<GamesPage />', () => {
 
         expect(contextValue.destroyGame).not.toHaveBeenCalled()
         expect(wrapper.getByText('My Game 2')).toBeTruthy()
+
+        // The flash info message should be displayed
+        expect(
+          wrapper.getByText('OK, your game will not be destroyed.')
+        ).toBeTruthy()
       })
     })
   })
