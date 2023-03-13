@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
-import { screen, waitFor, cleanup } from '@testing-library/react'
+import { waitFor, cleanup } from '@testing-library/react'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import { emptyGames, allGames } from '../../support/data/games'
 import { internalServerErrorResponse } from '../../support/data/errors'
