@@ -1,0 +1,64 @@
+.root {
+  font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
+  padding: 8px 16px;
+  margin: 0 auto;
+  max-width: 90%;
+  background-color: #f0f0f0;
+}
+
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 4px 0;
+  display: grid;
+}
+
+.fieldset:first-of-type {
+  margin-top: 8px;
+}
+
+.fieldset:last-of-type {
+  margin-bottom: 16px;
+}
+
+.label {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.label:first-of-type {
+  margin-top: 0;
+}
+
+.input {
+  font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #e0e0e0;
+  padding: 8px;
+  border-radius: 3px;
+  line-height: 1.25;
+}
+
+.submit {
+  font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border: 1px solid var(--button-border-color);
+  border-radius: 3px;
+  padding: 8px 16px;
+  margin-bottom: 1.5rem;
+}
+
+.submit:hover {
+  background-color: var(--button-hover-color);
+}
+
+@media (min-width: 769px) {
+  .root {
+    max-width: 70%;
+  }
+}
