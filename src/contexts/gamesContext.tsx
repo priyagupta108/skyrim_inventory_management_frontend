@@ -60,7 +60,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
       setFlashProps({
         hidden: false,
         type: 'error',
-        header: `${e.message.length} errors prevented your game from being saved:`,
+        header: `${e.message.length} error(s) prevented your game from being saved:`,
         message: e.message,
       })
     } else {
