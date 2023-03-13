@@ -44,7 +44,6 @@ describe('<GameCreateForm />', () => {
     })
 
     describe('creating a game', () => {
-      // Both form values are optional so this shouldn't be an issue
       describe('when the form has no values', () => {
         test('calls the createGame function on the Games provider', () => {
           const createGame = vitest
@@ -75,6 +74,47 @@ describe('<GameCreateForm />', () => {
 
           expect(createGame).toHaveBeenCalledWith(
             { name: null, description: null },
+            expect.any(Function)
+          )
+        })
+      })
+
+      describe('when the form has been filled out', () => {
+        test('calls the createGame function on the Games provider', () => {
+          const createGame = vitest
+            .fn()
+            .mockImplementation((_game: RequestGame) => {})
+          const destroyGame = () => {}
+
+          const wrapper = renderAuthenticated(
+            <PageProvider>
+              <GamesContext.Provider
+                value={{
+                  createGame,
+                  destroyGame,
+                  games: [],
+                  gamesLoadingState: 'DONE',
+                }}
+              >
+                <GameCreateForm />
+              </GamesContext.Provider>
+            </PageProvider>
+          )
+
+          const nameInput = wrapper.getByTestId('nameField')
+          const descInput = wrapper.getByTestId('descriptionField')
+          const form = wrapper.getByTestId('gameCreateFormForm')
+
+          act(() => {
+            fireEvent.change(nameInput, { target: { value: 'Skyrim' } })
+            fireEvent.change(descInput, {
+              target: { value: 'Custom description' },
+            })
+            fireEvent.submit(form)
+          })
+
+          expect(createGame).toHaveBeenCalledWith(
+            { name: 'Skyrim', description: 'Custom description' },
             expect.any(Function)
           )
         })
