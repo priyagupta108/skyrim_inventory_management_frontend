@@ -1,0 +1,381 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<GameCreateForm /> > when disabled > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_root_83bedb"
+        style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+      >
+        <h3
+          aria-controls="gameCreateForm"
+          aria-expanded="false"
+          class="_toggle_83bedb"
+          role="button"
+        >
+          Create Game...
+        </h3>
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero "
+          id="gameCreateForm"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="display: none;"
+          >
+            <form
+              class="_form_83bedb"
+              data-testid="gameCreateFormForm"
+            >
+              <fieldset
+                class="_fieldset_83bedb"
+              >
+                <input
+                  aria-label="Name"
+                  class="_input_83bedb"
+                  data-testid="nameField"
+                  disabled=""
+                  name="name"
+                  pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                  placeholder="Name"
+                  title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                  type="text"
+                />
+              </fieldset>
+              <fieldset
+                class="_fieldset_83bedb"
+              >
+                <input
+                  aria-label="Description"
+                  class="_input_83bedb"
+                  data-testid="descriptionField"
+                  disabled=""
+                  name="description"
+                  placeholder="Description"
+                  type="text"
+                />
+              </fieldset>
+              <button
+                class="_button_83bedb"
+                data-testid="createGameSubmit"
+                disabled=""
+                type="submit"
+              >
+                Create
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_root_83bedb"
+      style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+    >
+      <h3
+        aria-controls="gameCreateForm"
+        aria-expanded="false"
+        class="_toggle_83bedb"
+        role="button"
+      >
+        Create Game...
+      </h3>
+      <div
+        aria-hidden="true"
+        class="rah-static rah-static--height-zero "
+        id="gameCreateForm"
+        style="height: 0px; overflow: hidden;"
+      >
+        <div
+          style="display: none;"
+        >
+          <form
+            class="_form_83bedb"
+            data-testid="gameCreateFormForm"
+          >
+            <fieldset
+              class="_fieldset_83bedb"
+            >
+              <input
+                aria-label="Name"
+                class="_input_83bedb"
+                data-testid="nameField"
+                disabled=""
+                name="name"
+                pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                placeholder="Name"
+                title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                type="text"
+              />
+            </fieldset>
+            <fieldset
+              class="_fieldset_83bedb"
+            >
+              <input
+                aria-label="Description"
+                class="_input_83bedb"
+                data-testid="descriptionField"
+                disabled=""
+                name="description"
+                placeholder="Description"
+                type="text"
+              />
+            </fieldset>
+            <button
+              class="_button_83bedb"
+              data-testid="createGameSubmit"
+              disabled=""
+              type="submit"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`<GameCreateForm /> > when enabled > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_root_83bedb"
+        style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+      >
+        <h3
+          aria-controls="gameCreateForm"
+          aria-expanded="false"
+          class="_toggle_83bedb"
+          role="button"
+        >
+          Create Game...
+        </h3>
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero "
+          id="gameCreateForm"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="display: none;"
+          >
+            <form
+              class="_form_83bedb"
+              data-testid="gameCreateFormForm"
+            >
+              <fieldset
+                class="_fieldset_83bedb"
+              >
+                <input
+                  aria-label="Name"
+                  class="_input_83bedb"
+                  data-testid="nameField"
+                  name="name"
+                  pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                  placeholder="Name"
+                  title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                  type="text"
+                />
+              </fieldset>
+              <fieldset
+                class="_fieldset_83bedb"
+              >
+                <input
+                  aria-label="Description"
+                  class="_input_83bedb"
+                  data-testid="descriptionField"
+                  name="description"
+                  placeholder="Description"
+                  type="text"
+                />
+              </fieldset>
+              <button
+                class="_button_83bedb"
+                data-testid="createGameSubmit"
+                type="submit"
+              >
+                Create
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_root_83bedb"
+      style="--button-color: #4e8fb7; --button-text-color: #fff; --button-border-color: #1b5c84; --button-hover-color: #3881ae;"
+    >
+      <h3
+        aria-controls="gameCreateForm"
+        aria-expanded="false"
+        class="_toggle_83bedb"
+        role="button"
+      >
+        Create Game...
+      </h3>
+      <div
+        aria-hidden="true"
+        class="rah-static rah-static--height-zero "
+        id="gameCreateForm"
+        style="height: 0px; overflow: hidden;"
+      >
+        <div
+          style="display: none;"
+        >
+          <form
+            class="_form_83bedb"
+            data-testid="gameCreateFormForm"
+          >
+            <fieldset
+              class="_fieldset_83bedb"
+            >
+              <input
+                aria-label="Name"
+                class="_input_83bedb"
+                data-testid="nameField"
+                name="name"
+                pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                placeholder="Name"
+                title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                type="text"
+              />
+            </fieldset>
+            <fieldset
+              class="_fieldset_83bedb"
+            >
+              <input
+                aria-label="Description"
+                class="_input_83bedb"
+                data-testid="descriptionField"
+                name="description"
+                placeholder="Description"
+                type="text"
+              />
+            </fieldset>
+            <button
+              class="_button_83bedb"
+              data-testid="createGameSubmit"
+              type="submit"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

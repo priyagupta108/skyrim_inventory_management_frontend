@@ -11,7 +11,7 @@ Accessing games requires a user to be authenticated, so the `GamesProvider` can 
 ## Example
 
 ```tsx
-/*
+/**
  *
  * /src/components/parent/parent.tsx
  *
@@ -31,13 +31,13 @@ const Parent = () => (
 
 export default Parent
 
-/*
+/**
  *
  * /src/components/child/child.tsx
  *
  */
 
-import { type Game } from '../../types/games.d.ts'
+import { type ResponseGame as Game } from '../../types/apiData'
 import { useGamesContext } from '../../hooks/contexts'
 import { PulseLoader } from 'react-spinners'
 import styles from './child.module.css'

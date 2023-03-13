@@ -4,6 +4,7 @@ export default { title: 'GameLineItem' }
 
 export const WithDescription = () => (
   <GameLineItem
+    gameId={4}
     name="My Game 1"
     description="This is a custom description created by the user."
   />
@@ -11,11 +12,15 @@ export const WithDescription = () => (
 
 export const WithLongDescription = () => (
   <GameLineItem
+    gameId={4}
     name="De finibus bonorum et malorum"
     description="Cum audissem Antiochum, Brute, ut solebam, cum M. Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q. frater et T. Pomponius postmeridianam conficeremus in Academia"
   />
 )
 
 export const NoDescription = () => (
-  <GameLineItem name="This game has a really really really really really long name for testing purposes" />
+  <GameLineItem
+    gameId={4}
+    name="This game has a really really really really really long name for testing purposes"
+  />
 )

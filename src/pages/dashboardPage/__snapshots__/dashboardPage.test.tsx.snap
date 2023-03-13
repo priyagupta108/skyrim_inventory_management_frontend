@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<DashboardPage /> > matches snapshot 1`] = `
 {
@@ -33,7 +33,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/"
                   style="--background-color: #e83f6f; --hover-color: #d03863; --text-color: #fff;"
                 >
                   Your Shopping Lists
@@ -44,7 +44,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/"
                   style="--background-color: #2274a5; --hover-color: #1e6894; --text-color: #fff;"
                 >
                   Your Inventory
@@ -55,7 +55,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/"
                   style="--background-color: #00a323; --hover-color: #00921f; --text-color: #fff;"
                 >
                   Nav Link 4
@@ -66,7 +66,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/"
                   style="--background-color: #20e2e9; --hover-color: #11cbd1; --text-color: #094345;"
                 >
                   Nav Link 5
@@ -217,7 +217,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/"
                 style="--background-color: #e83f6f; --hover-color: #d03863; --text-color: #fff;"
               >
                 Your Shopping Lists
@@ -228,7 +228,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/"
                 style="--background-color: #2274a5; --hover-color: #1e6894; --text-color: #fff;"
               >
                 Your Inventory
@@ -239,7 +239,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/"
                 style="--background-color: #00a323; --hover-color: #00921f; --text-color: #fff;"
               >
                 Nav Link 4
@@ -250,7 +250,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/"
                 style="--background-color: #20e2e9; --hover-color: #11cbd1; --text-color: #094345;"
               >
                 Nav Link 5
@@ -444,13 +444,13 @@ exports[`<DashboardPage /> > when auth is loading > matches snapshot 1`] = `
               style="display: inherit; text-align: center;"
             >
               <span
-                style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+                style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
               />
               <span
-                style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+                style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
               />
               <span
-                style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+                style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
               />
             </span>
           </div>
@@ -537,13 +537,13 @@ exports[`<DashboardPage /> > when auth is loading > matches snapshot 1`] = `
             style="display: inherit; text-align: center;"
           >
             <span
-              style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+              style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
             />
             <span
-              style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+              style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
             />
             <span
-              style="background-color: #ffcb32; width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+              style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
             />
           </span>
         </div>

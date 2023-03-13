@@ -1,4 +1,4 @@
-import { type ApiError } from '../types/errors'
+import { type ApiError } from '../../types/errors'
 
 export class AuthorizationError implements ApiError {
   readonly code: 401
@@ -30,10 +30,10 @@ export class NotFoundError implements ApiError {
 
 export class UnprocessableEntityError implements ApiError {
   readonly code: 422
-  readonly message: string
+  readonly message: string | string[]
   readonly name: 'UnprocessableEntityError'
 
-  constructor(message: string = '422 Unprocessable Entity') {
+  constructor(message: string | string[] = '422 Unprocessable Entity') {
     this.code = 422
     this.name = 'UnprocessableEntityError'
     this.message = message

@@ -1,5 +1,7 @@
 import { describe, test, expect, vitest, afterEach, beforeEach } from 'vitest'
-import { screen, render, act } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
+import { setupServer } from 'msw/node'
+import { deleteGameSuccess, getGamesAllSuccess } from '../../support/msw/games'
 import {
   GamesContext,
   type GamesContextType,
@@ -19,7 +21,8 @@ const contextValue: GamesContextType = {
     },
   ],
   gamesLoadingState: 'DONE',
-  destroyGame: vitest.fn().mockImplementation((_gameId: number) => {}),
+  createGame: () => {},
+  destroyGame: () => {},
 }
 
 // This component can't really be tested because Vitest fucking sucks.
@@ -43,24 +46,14 @@ describe('GameLineItem', () => {
   })
 
   describe('destroying the game', () => {
-    const ogWindowConfirm = window.confirm
-
     beforeEach(() => {
-      fetch.mockResponseOnce(JSON.stringify(contextValue.games), {
-        status: 200,
-      })
-      fetch.mockResponseOnce(null, { status: 204 })
-    })
-
-    afterEach(() => {
-      fetch.resetMocks()
-      window.confirm = ogWindowConfirm
+      contextValue.destroyGame = vitest
+        .fn()
+        .mockImplementation((_gameId: number) => {})
     })
 
     test('destroys the game when the button is clicked', () => {
-      window.confirm = vitest.fn().mockImplementation(() => true)
-
-      renderAuthenticated(
+      const wrapper = renderAuthenticated(
         <GamesContext.Provider value={contextValue}>
           <GameLineItem
             gameId={4}
@@ -70,16 +63,16 @@ describe('GameLineItem', () => {
         </GamesContext.Provider>
       )
 
-      const xIcon = screen.getByTestId('destroyGame4')
+      window.confirm = vitest.fn().mockImplementation(() => true)
+
+      const xIcon = wrapper.getByTestId('destroyGame4')
       act(() => xIcon.click())
 
-      expect(contextValue.destroyGame).toBeCalledWith(4)
+      expect(contextValue.destroyGame).toHaveBeenCalledWith(4)
     })
 
     test("doesn't destroy the game when the user cancels", () => {
-      window.confirm = vitest.fn().mockImplementation(() => false)
-
-      renderAuthenticated(
+      const wrapper = renderAuthenticated(
         <GamesContext.Provider value={contextValue}>
           <GameLineItem
             gameId={4}
@@ -89,10 +82,12 @@ describe('GameLineItem', () => {
         </GamesContext.Provider>
       )
 
-      const xIcon = screen.getByTestId('destroyGame4')
+      window.confirm = vitest.fn().mockImplementation(() => false)
+
+      const xIcon = wrapper.getByTestId('destroyGame4')
       act(() => xIcon.click())
 
-      expect(contextValue.destroyGame).toBeCalled()
+      expect(contextValue.destroyGame).not.toHaveBeenCalled()
     })
   })
 })

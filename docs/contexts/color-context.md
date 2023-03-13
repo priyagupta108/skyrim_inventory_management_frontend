@@ -3,7 +3,7 @@
 The `ColorContext` keeps track of colour schemes. Set the colour scheme in the provider and then access it in the child/consumer component:
 
 ```tsx
-/*
+/**
  *
  * /src/components/parent/parent.tsx
  *
@@ -21,7 +21,7 @@ const Parent = () => (
 
 export default Parent
 
-/*
+/**
  *
  * /src/components/child/child.tsx
  *

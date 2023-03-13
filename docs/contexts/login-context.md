@@ -12,7 +12,7 @@ The `LoginProvider`'s value makes the following values available:
 ## Example
 
 ```tsx
-/*
+/**
  *
  * /src/components/parent/parent.tsx
  *
@@ -29,7 +29,7 @@ const Parent = () => (
 
 export default Parent
 
-/*
+/**
  *
  * /src/components/child/child.tsx
  *
