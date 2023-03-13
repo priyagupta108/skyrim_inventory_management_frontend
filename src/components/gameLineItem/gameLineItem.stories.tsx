@@ -19,5 +19,8 @@ export const WithLongDescription = () => (
 )
 
 export const NoDescription = () => (
-  <GameLineItem gameId={4} name="This game has a really really really really really long name for testing purposes" />
+  <GameLineItem
+    gameId={4}
+    name="This game has a really really really really really long name for testing purposes"
+  />
 )
