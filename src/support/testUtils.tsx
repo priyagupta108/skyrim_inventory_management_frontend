@@ -44,7 +44,7 @@ export const testUser = {
   emailVerified: true,
   getIdtoken: () =>
     new Promise<string>((resolve, _reject) => resolve('xxxxxxx')),
-} as User
+} as unknown as User
 
 /*
  *
