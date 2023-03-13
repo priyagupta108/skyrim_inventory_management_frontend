@@ -1,10 +1,10 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
-import { waitFor, cleanup } from '@testing-library/react'
+import { waitFor, act, cleanup, waitForElementToBeRemoved } from '@testing-library/react'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import { emptyGames, allGames } from '../../support/data/games'
 import { internalServerErrorResponse } from '../../support/data/errors'
 import { PageProvider } from '../../contexts/pageContext'
-import { GamesProvider } from '../../contexts/gamesContext'
+import { GamesContext, GamesContextType, GamesProvider } from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
 
 describe('<GamesPage />', () => {
@@ -172,6 +172,94 @@ describe('<GamesPage />', () => {
         )
 
         expect(wrapper).toMatchSnapshot()
+      })
+    })
+  })
+
+  describe('destroying a game', () => {
+    describe('when the user confirms deletion', () => {
+      beforeEach(() => {
+        fetch.mockResponseOnce(JSON.stringify(allGames), { status: 200 })
+        fetch.mockResponseOnce(null, { status: 204 })
+      })
+
+      test('destroys the game and removes it from the DOM', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        window.confirm = vitest.fn().mockImplementation(() => true)
+
+        const game51 = await wrapper.findByText('My Game 2')
+        const deleteButton = await wrapper.findByTestId('destroyGame51')
+
+        act(() => deleteButton.click())
+
+        await waitForElementToBeRemoved(game51)
+        const flash = await wrapper.findByText(/game has been deleted/)
+
+        expect(wrapper.queryByText('My Game 2')).toBeFalsy()
+        expect(flash).toBeTruthy()
+      })
+    })
+
+    describe('when the back end returns an error', () => {
+      beforeEach(() => {
+        fetch.mockResponseOnce(JSON.stringify(allGames), { status: 200 })
+        fetch.mockResponseOnce(null, { status: 404 })
+      })
+
+      test('leaves the game in the DOM and displays error message', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        window.confirm = vitest.fn().mockImplementation(() => true)
+
+        const deleteButton = await wrapper.findByTestId('destroyGame51')
+
+        act(() => deleteButton.click())
+
+        await waitFor(() => {
+          expect(wrapper.getByText('My Game 2')).toBeTruthy()
+          expect(wrapper.getByText("Oops! We couldn't find the game you're looking for. Please refresh and try again.")).toBeTruthy()
+        })
+      })
+    })
+
+    describe('when the user cancels deletion', () => {
+      test("doesn't destroy the game", () => {
+        const contextValue = {
+          games: allGames,
+          gamesLoadingState: 'DONE',
+          createGame: () => {},
+          destroyGame: vitest.fn().mockImplementation((_gameId: number) => {})
+        } as GamesContextType
+
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesContext.Provider value={contextValue}>
+              <GamesPage />
+            </GamesContext.Provider>
+          </PageProvider>
+        )
+
+        window.confirm = vitest.fn().mockImplementation(() => false)
+
+        const button = wrapper.getByTestId('destroyGame51')
+
+        act(() => button.click())
+
+        expect(contextValue.destroyGame).not.toHaveBeenCalled()
+        expect(wrapper.getByText('My Game 2')).toBeTruthy()
       })
     })
   })

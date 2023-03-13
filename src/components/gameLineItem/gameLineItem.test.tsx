@@ -44,8 +44,6 @@ describe('GameLineItem', () => {
   })
 
   describe('destroying the game', () => {
-    const ogWindowConfirm = window.confirm
-
     beforeEach(() => {
       contextValue.destroyGame = vitest
         .fn()
@@ -58,7 +56,6 @@ describe('GameLineItem', () => {
 
     afterEach(() => {
       fetch.resetMocks()
-      window.confirm = ogWindowConfirm
     })
 
     test('destroys the game when the button is clicked', () => {
