@@ -105,7 +105,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token]
+    [user, token, games]
   )
 
   /*
