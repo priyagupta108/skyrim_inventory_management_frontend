@@ -4,6 +4,8 @@ import {
   type CSSProperties,
   type FormEventHandler,
 } from 'react'
+import { RequestGame as Game } from '../../types/apiData'
+import { useGamesContext } from '../../hooks/contexts'
 import colorSchemes, { ColorScheme } from '../../utils/colorSchemes'
 import styles from './gameEditForm.module.css'
 
@@ -20,6 +22,7 @@ const GameEditForm = ({
   description,
   buttonColor,
 }: GameEditFormProps) => {
+  const { updateGame } = useGamesContext()
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -35,7 +38,37 @@ const GameEditForm = ({
     '--button-border-color': colorRef.current.borderColor,
   } as CSSProperties
 
-  const onSubmit: FormEventHandler = () => {}
+  const extractAttributes = (formData: FormData): Game => {
+    const values = Object.fromEntries(Array.from(formData.entries())) as Record<
+      string,
+      string
+    >
+    const attributes: Game = {}
+
+    if (values.name !== name) attributes.name = values.name
+    if (values.description !== description)
+      attributes.description = values.description
+
+    return attributes
+  }
+
+  const onSubmit: FormEventHandler = (e) => {
+    e.preventDefault()
+
+    if (!formRef.current) return
+
+    const formData = new FormData(formRef.current)
+    const game = extractAttributes(formData)
+
+    const onSuccess = () => {
+      /* clear form, hide modal, show flash success */
+    }
+    const onError = () => {
+      /* show flash error */
+    }
+
+    updateGame(gameId, game, onSuccess, onError)
+  }
 
   useEffect(() => {
     inputRef.current?.focus()

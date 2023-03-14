@@ -76,6 +76,26 @@ describe('GameEditForm', () => {
           </GamesContext.Provider>
         </PageProvider>
       )
+
+      const nameInput = wrapper.getByTestId('nameField') as HTMLInputElement
+      const descInput = wrapper.getByTestId(
+        'descriptionField'
+      ) as HTMLInputElement
+      const button = wrapper.getByTestId(
+        'submitGameEditForm'
+      ) as HTMLButtonElement
+
+      fireEvent.change(nameInput, { target: { value: 'Something new' } })
+      fireEvent.change(descInput, { target: { value: 'New description' } })
+
+      act(() => button.click())
+
+      expect(contextValue.updateGame).toHaveBeenCalledWith(
+        game.id,
+        { name: 'Something new', description: 'New description' },
+        expect.any(Function),
+        expect.any(Function)
+      )
     })
   })
 })
