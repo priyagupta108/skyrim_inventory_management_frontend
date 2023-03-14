@@ -6,14 +6,7 @@ import { type CallbackFunction } from '../types/functions'
 import { useGoogleLogin, usePageContext } from '../hooks/contexts'
 import { ApiError } from '../types/errors'
 import { LOADING, DONE, ERROR, type LoadingState } from '../utils/loadingStates'
-import { postGames, getGames, deleteGame } from '../utils/api/simApi'
-
-// TODO: Add default values for context provider as follows:
-//       const createGame = (game: Game) => {
-//                                            postGames(game: Game, token: '')
-//                                              .then((status: number, json: string) => /* noop */)
-//                                          }
-//       This will be useful in Storybook.
+import { postGames, getGames, deleteGame, patchGame } from '../utils/api/simApi'
 
 const NOT_FOUND_MESSAGE =
   "Oops! We couldn't find the game you're looking for. Please refresh and try again."
@@ -25,10 +18,15 @@ export interface GamesContextType {
   gamesLoadingState: LoadingState
   createGame: (
     game: RequestGame,
-    onSuccess?: () => void,
-    onError?: () => void
+    onSuccess?: CallbackFunction,
+    onError?: CallbackFunction
   ) => void
-  // updateGame: (gameId: number, attrs: Game) => void
+  updateGame: (
+    gameId: number,
+    attributes: RequestGame,
+    onSuccess?: CallbackFunction,
+    onError?: CallbackFunction
+  ) => void
   destroyGame: (gameId: number) => void
 }
 
@@ -36,6 +34,7 @@ export const GamesContext = createContext<GamesContextType>({
   games: [],
   gamesLoadingState: LOADING,
   createGame: () => {},
+  updateGame: () => {},
   destroyGame: () => {},
 })
 
@@ -133,6 +132,41 @@ export const GamesProvider = ({ children }: ProviderProps) => {
 
   /**
    *
+   * Update the requested game at the API and in the `games` array
+   *
+   */
+
+  const updateGame = useCallback(
+    (
+      gameId: number,
+      attributes: RequestGame,
+      onSuccess?: CallbackFunction,
+      onError?: CallbackFunction
+    ) => {
+      if (user && token) {
+        patchGame(gameId, attributes, token)
+          .then(({ status, json }) => {
+            if (status === 200) {
+              const newGames = games
+              const index = newGames.findIndex((el) => el.id === gameId)
+              newGames[index] = json
+              setGames(newGames)
+              setFlashProps({
+                hidden: false,
+                type: 'success',
+                message: 'Success! Your game has been updated.',
+              })
+              onSuccess && onSuccess()
+            }
+          })
+          .catch(handleApiError)
+      }
+    },
+    [user, token, games]
+  )
+
+  /**
+   *
    * Destroy the requested game and update the `games` array
    *
    */
@@ -161,8 +195,9 @@ export const GamesProvider = ({ children }: ProviderProps) => {
   const value = {
     games,
     gamesLoadingState,
-    destroyGame,
     createGame,
+    updateGame,
+    destroyGame,
   }
 
   useEffect(() => {

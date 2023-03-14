@@ -2,6 +2,7 @@ import { describe, test, expect, vitest } from 'vitest'
 import { act, fireEvent } from '@testing-library/react'
 import { RequestGame } from '../../types/apiData'
 import { renderAuthenticated } from '../../support/testUtils'
+import { gamesContextValue } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
 import GameCreateForm from './gameCreateForm'
@@ -11,14 +12,7 @@ describe('<GameCreateForm />', () => {
     test('displays the correct fields', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
-          <GamesContext.Provider
-            value={{
-              games: [],
-              gamesLoadingState: 'DONE',
-              createGame: () => {},
-              destroyGame: () => {},
-            }}
-          >
+          <GamesContext.Provider value={gamesContextValue}>
             <GameCreateForm />
           </GamesContext.Provider>
         </PageProvider>
@@ -33,14 +27,7 @@ describe('<GameCreateForm />', () => {
     test('matches snapshot', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
-          <GamesContext.Provider
-            value={{
-              games: [],
-              gamesLoadingState: 'DONE',
-              createGame: () => {},
-              destroyGame: () => {},
-            }}
-          >
+          <GamesContext.Provider value={gamesContextValue}>
             <GameCreateForm />
           </GamesContext.Provider>
         </PageProvider>
@@ -55,17 +42,11 @@ describe('<GameCreateForm />', () => {
           const createGame = vitest
             .fn()
             .mockImplementation((_game: RequestGame) => {})
-          const destroyGame = () => {}
 
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesContext.Provider
-                value={{
-                  createGame,
-                  destroyGame,
-                  games: [],
-                  gamesLoadingState: 'DONE',
-                }}
+                value={{ ...gamesContextValue, createGame }}
               >
                 <GameCreateForm />
               </GamesContext.Provider>
@@ -91,16 +72,12 @@ describe('<GameCreateForm />', () => {
             .fn()
             .mockImplementation((_game: RequestGame) => {})
           const destroyGame = () => {}
+          const updateGame = () => {}
 
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesContext.Provider
-                value={{
-                  createGame,
-                  destroyGame,
-                  games: [],
-                  gamesLoadingState: 'DONE',
-                }}
+                value={{ ...gamesContextValue, createGame }}
               >
                 <GameCreateForm />
               </GamesContext.Provider>
@@ -138,14 +115,7 @@ describe('<GameCreateForm />', () => {
     test('matches snapshot', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
-          <GamesContext.Provider
-            value={{
-              games: [],
-              gamesLoadingState: 'DONE',
-              createGame: () => {},
-              destroyGame: () => {},
-            }}
-          >
+          <GamesContext.Provider value={gamesContextValue}>
             <GameCreateForm disabled />
           </GamesContext.Provider>
         </PageProvider>

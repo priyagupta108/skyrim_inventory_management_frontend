@@ -1,5 +1,4 @@
 import { describe, test, expect } from 'vitest'
-import { screen } from '@testing-library/react'
 import {
   BASE_APP_URI,
   renderAuthenticated,

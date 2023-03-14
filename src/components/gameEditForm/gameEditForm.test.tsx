@@ -1,19 +1,13 @@
 import { describe, test, expect, vitest } from 'vitest'
 import { act, fireEvent } from '@testing-library/react'
+import { RequestGame } from '../../types/apiData'
 import { renderAuthenticated } from '../../support/testUtils'
 import { allGames as games } from '../../support/data/games'
-import { DONE } from '../../utils/loadingStates'
+import { gamesContextValue } from '../../support/data/contextValues'
 import { GREEN } from '../../utils/colorSchemes'
 import { GamesContext } from '../../contexts/gamesContext'
 import { PageProvider } from '../../contexts/pageContext'
 import GameEditForm from './gameEditForm'
-
-const contextValue = {
-  games,
-  gamesLoadingState: DONE,
-  createGame: () => {},
-  destroyGame: () => {},
-}
 
 describe('GameEditForm', () => {
   test('displays the inputs and submit button', () => {
@@ -21,7 +15,7 @@ describe('GameEditForm', () => {
 
     const wrapper = renderAuthenticated(
       <PageProvider>
-        <GamesContext.Provider value={contextValue}>
+        <GamesContext.Provider value={gamesContextValue}>
           <GameEditForm
             gameId={game.id}
             name={game.name}
@@ -44,7 +38,7 @@ describe('GameEditForm', () => {
 
     const wrapper = renderAuthenticated(
       <PageProvider>
-        <GamesContext.Provider value={contextValue}>
+        <GamesContext.Provider value={gamesContextValue}>
           <GameEditForm
             gameId={game.id}
             name={game.name}
@@ -61,6 +55,14 @@ describe('GameEditForm', () => {
   describe('submitting the form', () => {
     test('calls the update function', () => {
       const game = games[0]
+      const contextValue = {
+        ...gamesContextValue,
+        updateGame: vitest
+          .fn()
+          .mockImplementation(
+            (_gameId: number, _attributes: RequestGame) => {}
+          ),
+      }
 
       const wrapper = renderAuthenticated(
         <PageProvider>

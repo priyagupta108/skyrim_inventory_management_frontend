@@ -13,13 +13,9 @@ import {
   deleteGameNotFound,
   deleteGameServerError,
 } from '../../support/msw/games'
-import { allGames } from '../../support/data/games'
+import { gamesContextValue } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
-import {
-  GamesContext,
-  GamesContextType,
-  GamesProvider,
-} from '../../contexts/gamesContext'
+import { GamesContext, GamesProvider } from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
 
 describe('<GamesPage />', () => {
@@ -295,11 +291,9 @@ describe('<GamesPage />', () => {
     describe('when the user cancels deletion', () => {
       test("doesn't destroy the game", async () => {
         const contextValue = {
-          games: allGames,
-          gamesLoadingState: 'DONE',
-          createGame: () => {},
+          ...gamesContextValue,
           destroyGame: vitest.fn().mockImplementation((_gameId: number) => {}),
-        } as GamesContextType
+        }
 
         const wrapper = renderAuthenticated(
           <PageProvider>

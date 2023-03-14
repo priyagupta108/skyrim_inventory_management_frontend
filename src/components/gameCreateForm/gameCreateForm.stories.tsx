@@ -1,23 +1,13 @@
-import { allGames } from '../../support/data/games'
-import { DONE } from '../../utils/loadingStates'
+import { gamesContextValue } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
 import GameCreateForm from './gameCreateForm'
-
-const noop = () => {}
-
-const providerValue = {
-  games: allGames,
-  gamesLoadingState: DONE,
-  destroyGame: noop,
-  createGame: noop,
-}
 
 export default { title: 'GameCreateForm' }
 
 export const Default = () => (
   <PageProvider>
-    <GamesContext.Provider value={providerValue}>
+    <GamesContext.Provider value={gamesContextValue}>
       <GameCreateForm />
     </GamesContext.Provider>
   </PageProvider>
@@ -25,7 +15,7 @@ export const Default = () => (
 
 export const Disabled = () => (
   <PageProvider>
-    <GamesContext.Provider value={providerValue}>
+    <GamesContext.Provider value={gamesContextValue}>
       <GameCreateForm disabled />
     </GamesContext.Provider>
   </PageProvider>

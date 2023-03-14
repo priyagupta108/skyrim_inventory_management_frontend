@@ -1,19 +1,15 @@
 import { BrowserRouter } from 'react-router-dom'
-import { requireLogin } from '../../support/testUtils'
 import { LoginContext } from '../../contexts/loginContext'
+import {
+  loadingLoginContextValue,
+  unauthenticatedLoginContextValue,
+} from '../../support/data/contextValues'
 import HomePage from './homePage'
 export default { title: 'HomePage' }
 
 export const Default = () => (
   <BrowserRouter>
-    <LoginContext.Provider
-      value={{
-        user: null,
-        token: null,
-        authLoading: false,
-        requireLogin,
-      }}
-    >
+    <LoginContext.Provider value={unauthenticatedLoginContextValue}>
       <HomePage />
     </LoginContext.Provider>
   </BrowserRouter>
@@ -21,9 +17,7 @@ export const Default = () => (
 
 export const AuthLoading = () => (
   <BrowserRouter>
-    <LoginContext.Provider
-      value={{ user: null, token: null, authLoading: true, requireLogin }}
-    >
+    <LoginContext.Provider value={loadingLoginContextValue}>
       <HomePage />
     </LoginContext.Provider>
   </BrowserRouter>
