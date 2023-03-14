@@ -106,7 +106,6 @@ const GameEditForm = ({
           </label>
           <input
             className={styles.input}
-            ref={inputRef}
             name="description"
             aria-label="Description"
             data-testid="descriptionField"
