@@ -1,3 +1,5 @@
+import { type ReactElement } from 'react'
+
 export type FlashMessageType = 'success' | 'error' | 'warning' | 'info'
 
 export interface FlashProps {
@@ -12,4 +14,9 @@ export interface FlashColors {
   error: `#${string}`
   warning: `#${string}`
   info: `#${string}`
+}
+
+export interface ModalProps {
+  hidden: boolean
+  children: ReactElement
 }

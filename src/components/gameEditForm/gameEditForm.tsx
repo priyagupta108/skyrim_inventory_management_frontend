@@ -72,7 +72,7 @@ const GameEditForm = ({
 
   useEffect(() => {
     inputRef.current?.focus()
-  }, [inputRef])
+  })
 
   return (
     <div className={styles.root}>

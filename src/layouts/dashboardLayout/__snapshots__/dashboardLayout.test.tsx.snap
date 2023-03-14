@@ -131,6 +131,13 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
           class="_root_91d025 _hidden_91d025"
           style="--text-color: #4e6d83;"
         />
+        <div
+          class="_root_753dd0 _hidden_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </main>
     </div>
   </body>,
@@ -261,6 +268,13 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
         class="_root_91d025 _hidden_91d025"
         style="--text-color: #4e6d83;"
       />
+      <div
+        class="_root_753dd0 _hidden_753dd0"
+      >
+        <div
+          class="_content_753dd0"
+        />
+      </div>
     </main>
   </div>,
   "debug": [Function],
@@ -440,6 +454,13 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
           class="_root_91d025 _hidden_91d025"
           style="--text-color: #4e6d83;"
         />
+        <div
+          class="_root_753dd0 _hidden_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </main>
     </div>
   </body>,
@@ -562,6 +583,13 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
         class="_root_91d025 _hidden_91d025"
         style="--text-color: #4e6d83;"
       />
+      <div
+        class="_root_753dd0 _hidden_753dd0"
+      >
+        <div
+          class="_content_753dd0"
+        />
+      </div>
     </main>
   </div>,
   "debug": [Function],

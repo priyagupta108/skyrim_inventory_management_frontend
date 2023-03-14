@@ -2,6 +2,7 @@ import { type ReactElement } from 'react'
 import { usePageContext } from '../../hooks/contexts'
 import DashboardHeader from '../../components/dashboardHeader/dashboardHeader'
 import FlashMessage from '../../components/flashMessage/flashMessage'
+import Modal from '../../components/modal/modal'
 import styles from './dashboardLayout.module.css'
 
 interface DashboardLayoutProps {
@@ -10,7 +11,7 @@ interface DashboardLayoutProps {
 }
 
 const DashboardLayout = ({ title, children }: DashboardLayoutProps) => {
-  const { flashProps } = usePageContext()
+  const { flashProps, modalProps } = usePageContext()
 
   return (
     <main className={styles.root}>
@@ -25,6 +26,7 @@ const DashboardLayout = ({ title, children }: DashboardLayoutProps) => {
       </section>
       <DashboardHeader />
       <FlashMessage {...flashProps} />
+      <Modal {...modalProps} />
     </main>
   )
 }
