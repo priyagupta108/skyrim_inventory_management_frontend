@@ -84,8 +84,8 @@ describe('<GameCreateForm />', () => {
             </PageProvider>
           )
 
-          const nameInput = wrapper.getByTestId('nameField')
-          const descInput = wrapper.getByTestId('descriptionField')
+          const nameInput = wrapper.getByTestId('createNameField')
+          const descInput = wrapper.getByTestId('createDescriptionField')
           const form = wrapper.getByTestId('gameCreateFormForm')
 
           act(() => {

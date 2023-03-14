@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
-import { waitFor, act, waitForElementToBeRemoved } from '@testing-library/react'
+import { waitFor, act, waitForElementToBeRemoved, fireEvent } from '@testing-library/react'
 import { setupServer } from 'msw/node'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import {
@@ -527,6 +527,33 @@ describe('<GamesPage />', () => {
         act(() => { form.click() })
 
         expect(wrapper.getByText('Update Game')).toBeTruthy()
+      })
+
+      test('updates the item on the list', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
+        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'Distinctive New Name' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          expect(wrapper.queryByText('My Game 1')).toBeFalsy()
+          expect(wrapper.getByText('Distinctive New Name')).toBeTruthy()
+          expect(wrapper.getByText('This is a game with a description')).toBeTruthy()
+        })
       })
     })
   })

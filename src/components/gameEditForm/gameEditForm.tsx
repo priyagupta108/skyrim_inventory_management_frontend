@@ -94,7 +94,7 @@ const GameEditForm = ({
             type="text"
             name="name"
             aria-label="Name"
-            data-testid="nameField"
+            data-testid="editNameField"
             defaultValue={name}
             pattern="^\s*[A-Za-z0-9 \-',]*\s*$"
             title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
@@ -108,7 +108,7 @@ const GameEditForm = ({
             className={styles.input}
             name="description"
             aria-label="Description"
-            data-testid="descriptionField"
+            data-testid="editDescriptionField"
             placeholder="Description"
             defaultValue={description || undefined}
           />

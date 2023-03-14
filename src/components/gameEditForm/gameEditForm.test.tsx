@@ -28,8 +28,8 @@ describe('GameEditForm', () => {
 
     expect(wrapper).toBeTruthy()
 
-    expect(wrapper.getByTestId('nameField')).toBeTruthy()
-    expect(wrapper.getByTestId('descriptionField')).toBeTruthy()
+    expect(wrapper.getByTestId('editNameField')).toBeTruthy()
+    expect(wrapper.getByTestId('editDescriptionField')).toBeTruthy()
     expect(wrapper.getByTestId('submitGameEditForm')).toBeTruthy()
   })
 
@@ -77,9 +77,9 @@ describe('GameEditForm', () => {
         </PageProvider>
       )
 
-      const nameInput = wrapper.getByTestId('nameField') as HTMLInputElement
+      const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
       const descInput = wrapper.getByTestId(
-        'descriptionField'
+        'editDescriptionField'
       ) as HTMLInputElement
       const button = wrapper.getByTestId(
         'submitGameEditForm'

@@ -82,22 +82,31 @@ export const getGamesServerError = rest.get(
  *
  */
 
+const newOrExistingGame = (id: number): ResponseGame => {
+  const existingGame = allGames.find((game) => game.id === id)
+
+  if (existingGame) return existingGame
+
+  return {
+    id,
+    user_id: 412,
+    name: 'Skyrim Game',
+    description: null,
+    created_at: new Date(),
+    updated_at: new Date()
+  }
+}
+
 export const patchGameSuccess = rest.patch(
   `${BASE_URI}/games/:id`,
   async (req, res, ctx) => {
+    const id = Number(req.params.id)
     const body = await req.json()
-    const updatedGame: ResponseGame = {
-      id: Number(req.params.id),
-      user_id: 412,
-      name: body.name,
-      description: body.description,
-      created_at: new Date(),
-      updated_at: new Date()
-    }
+    const game = newOrExistingGame(id)
 
     return res(
       ctx.status(200),
-      ctx.json(updatedGame)
+      ctx.json({ ...game, ...body })
     )
   }
 )

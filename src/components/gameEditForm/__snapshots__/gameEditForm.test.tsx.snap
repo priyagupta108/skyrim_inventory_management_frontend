@@ -30,7 +30,7 @@ exports[`GameEditForm > matches snapshot 1`] = `
             <input
               aria-label="Name"
               class="_input_bc52a1"
-              data-testid="nameField"
+              data-testid="editNameField"
               name="name"
               pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
               title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
@@ -50,7 +50,7 @@ exports[`GameEditForm > matches snapshot 1`] = `
             <input
               aria-label="Description"
               class="_input_bc52a1"
-              data-testid="descriptionField"
+              data-testid="editDescriptionField"
               name="description"
               placeholder="Description"
               value="This is a game with a description"
@@ -93,7 +93,7 @@ exports[`GameEditForm > matches snapshot 1`] = `
           <input
             aria-label="Name"
             class="_input_bc52a1"
-            data-testid="nameField"
+            data-testid="editNameField"
             name="name"
             pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
             title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
@@ -113,7 +113,7 @@ exports[`GameEditForm > matches snapshot 1`] = `
           <input
             aria-label="Description"
             class="_input_bc52a1"
-            data-testid="descriptionField"
+            data-testid="editDescriptionField"
             name="description"
             placeholder="Description"
             value="This is a game with a description"
