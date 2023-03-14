@@ -80,9 +80,63 @@ export type GetGamesResponse =
   | UnauthorizedResponse
   | GetGamesErrorResponse
   | GetGamesSuccessResponse
+
 export type GetGamesReturnValue =
   | { status: 200; json: ResponseGame[] }
   | { status: 500; json: ErrorObject }
+
+/**
+ *
+ * Types used for PUT|PATCH /games/:id endpoint
+ *
+ */
+
+class PatchGameSuccessResponse extends ApiResponse {
+  status: 200
+
+  constructor(
+    body,
+    options: { status: 200; statusText?: string; headers?: HTTPHeaders }
+  ) {
+    super(body, options)
+  }
+}
+
+class PatchGameErrorResponse extends ApiResponse {
+  status: 422 | 500
+
+  constructor(
+    body,
+    options: {
+      status: 422 | 500
+      statusText?: string
+      headers?: HTTPHeaders
+    }
+  ) {
+    super(body, options)
+  }
+}
+
+class PatchGameNotFoundResponse extends ApiResponse {
+  status: 404
+
+  constructor(
+    body?: null,
+    options: { status: 404; statusText?: string; headers?: HTTPHeaders }
+  ) {
+    super(body, options)
+  }
+}
+
+export type PatchGameResponse =
+  | UnauthorizedResponse
+  | PatchGameSuccessResponse
+  | PatchGameErrorResponse
+  | PatchGameNotFoundResponse
+
+export type PatchGameReturnValue =
+  | { status: 200; json: ResponseGame }
+  | { status: 422 | 500; json: ErrorObject }
 
 /**
  *
@@ -116,6 +170,7 @@ export type DeleteGameResponse =
   | UnauthorizedResponse
   | DeleteGameSuccessResponse
   | DeleteGameErrorResponse
+
 export type DeleteGameReturnValue =
   | { status: 204 }
   | { status: 500; json: ErrorObject }
