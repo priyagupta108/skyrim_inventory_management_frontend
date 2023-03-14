@@ -102,6 +102,7 @@ exports[`<GamesPage /> > viewing games > when loading > matches snapshot 1`] = `
         />
         <div
           class="_root_753dd0 _hidden_753dd0"
+          data-testid="modal"
         >
           <div
             class="_content_753dd0"
@@ -208,6 +209,7 @@ exports[`<GamesPage /> > viewing games > when loading > matches snapshot 1`] = `
       />
       <div
         class="_root_753dd0 _hidden_753dd0"
+        data-testid="modal"
       >
         <div
           class="_content_753dd0"
@@ -417,6 +419,7 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
         />
         <div
           class="_root_753dd0 _hidden_753dd0"
+          data-testid="modal"
         >
           <div
             class="_content_753dd0"
@@ -569,6 +572,7 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
       />
       <div
         class="_root_753dd0 _hidden_753dd0"
+        data-testid="modal"
       >
         <div
           class="_content_753dd0"
@@ -778,6 +782,7 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
         />
         <div
           class="_root_753dd0 _hidden_753dd0"
+          data-testid="modal"
         >
           <div
             class="_content_753dd0"
@@ -930,6 +935,7 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
       />
       <div
         class="_root_753dd0 _hidden_753dd0"
+        data-testid="modal"
       >
         <div
           class="_content_753dd0"
@@ -1139,6 +1145,7 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
         />
         <div
           class="_root_753dd0 _hidden_753dd0"
+          data-testid="modal"
         >
           <div
             class="_content_753dd0"
@@ -1291,6 +1298,7 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
       />
       <div
         class="_root_753dd0 _hidden_753dd0"
+        data-testid="modal"
       >
         <div
           class="_content_753dd0"

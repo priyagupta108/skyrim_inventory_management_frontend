@@ -1,4 +1,5 @@
 import { rest } from 'msw'
+import { ResponseGame } from '../../types/apiData'
 import { emptyGames, allGames } from '../data/games'
 
 const BASE_URI = 'http://localhost:3000'
@@ -72,6 +73,32 @@ export const getGamesServerError = rest.get(
   `${BASE_URI}/games`,
   (req, res, ctx) => {
     return res(ctx.status(500), ctx.json({ errors: ['Something went wrong'] }))
+  }
+)
+
+/**
+ *
+ * PATCH /games/:id
+ *
+ */
+
+export const patchGameSuccess = rest.patch(
+  `${BASE_URI}/games/:id`,
+  async (req, res, ctx) => {
+    const body = await req.json()
+    const updatedGame: ResponseGame = {
+      id: Number(req.params.id),
+      user_id: 412,
+      name: body.name,
+      description: body.description,
+      created_at: new Date(),
+      updated_at: new Date()
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json(updatedGame)
+    )
   }
 )
 

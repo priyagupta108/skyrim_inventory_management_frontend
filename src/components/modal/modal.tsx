@@ -17,6 +17,7 @@ const Modal = ({ hidden, children }: ModalProps) => {
     <div
       className={classNames(styles.root, { [styles.hidden]: hidden })}
       onClick={hideModal}
+      data-testid="modal"
     >
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
         {children}

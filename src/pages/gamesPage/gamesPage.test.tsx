@@ -9,6 +9,7 @@ import {
   getGamesEmptySuccess,
   getGamesAllSuccess,
   getGamesServerError,
+  patchGameSuccess,
   deleteGameSuccess,
   deleteGameNotFound,
   deleteGameServerError,
@@ -456,6 +457,76 @@ describe('<GamesPage />', () => {
             )
           ).toBeTruthy()
         })
+      })
+    })
+  })
+
+  describe('editing a game', () => {
+    describe('when successful', () => {
+      const mockServer = setupServer(getGamesAllSuccess, patchGameSuccess)
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('displays the edit form', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
+      })
+
+      test('hides the modal and form when clicking outside the form', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
+
+        const modal = wrapper.getByTestId('modal') as HTMLDivElement
+
+        act(() => { modal.click() })
+
+        expect(wrapper.queryByText('Update Game')).toBeFalsy()
+      })
+
+      test("doesn't hide the modal and form when clicking inside the form", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
+
+        const form = wrapper.getByTestId('editGame32Form') as HTMLFormElement
+
+        act(() => { form.click() })
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
       })
     })
   })
