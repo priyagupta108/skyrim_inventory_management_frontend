@@ -176,7 +176,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
    */
 
   const destroyGame = useCallback(
-    (gameId: number) => {
+    (gameId: number, onSuccess?: CallbackFunction, onError?: CallbackFunction) => {
       if (user && token) {
         deleteGame(gameId, token)
           .then(({ status }) => {
@@ -188,9 +188,15 @@ export const GamesProvider = ({ children }: ProviderProps) => {
                 type: 'success',
                 message: 'Success! Your game has been deleted.',
               })
+
+              onSuccess && onSuccess()
             }
           })
-          .catch(handleApiError)
+          .catch((e) => {
+            handleApiError
+
+            onError && onError()
+          })
       }
     },
     [user, token, games]
