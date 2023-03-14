@@ -111,6 +111,34 @@ export const patchGameSuccess = rest.patch(
   }
 )
 
+export const patchGameUnprocessableEntity = rest.patch(
+  `${BASE_URI}/games/:id`,
+  (req, res, ctx) => {
+  return res(
+    ctx.status(422),
+    ctx.json({ errors: ['Name must be unique'] })
+  )
+})
+
+export const patchGameNotFound = rest.patch(
+  `${BASE_URI}/games/:id`,
+  (req, res, ctx) => {
+    return res(
+      ctx.status(404)
+    )
+  }
+)
+
+export const patchGameServerError = rest.patch(
+  `${BASE_URI}/games/:id`,
+  (req, res, ctx) => {
+    return res(
+      ctx.status(500),
+      ctx.json({ errors: ['oh noes'] })
+    )
+  }
+)
+
 /**
  *
  * DELETE /games/:id
