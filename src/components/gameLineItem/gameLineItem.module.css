@@ -16,6 +16,16 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.icon:first-child {
+  margin-left: 0;
+}
+
+.icon:last-child {
+  margin-right: 0;
 }
 
 .header {

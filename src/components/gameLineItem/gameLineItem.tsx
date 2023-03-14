@@ -1,9 +1,10 @@
 import { useState, type MouseEventHandler } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import AnimateHeight from 'react-animate-height'
 import { useGamesContext, usePageContext } from '../../hooks/contexts'
 import styles from './gameLineItem.module.css'
+import GameEditForm from '../gameEditForm/gameEditForm'
 
 const DEFAULT_DESCRIPTION = 'This game has no description.'
 const DESTROY_CONFIRMATION =
@@ -12,12 +13,12 @@ const DESTROY_CONFIRMATION =
 interface GameLineItemProps {
   gameId: number
   name: string
-  description?: string | null
+  description: string | null
 }
 
 const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
   const { destroyGame } = useGamesContext()
-  const { setFlashProps } = usePageContext()
+  const { setFlashProps, setModalProps } = usePageContext()
   const [descriptionExpanded, setDescriptionExpanded] = useState(false)
 
   const toggleDescription: MouseEventHandler = (e) => {
@@ -42,16 +43,34 @@ const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
     }
   }
 
+  const showEditForm: MouseEventHandler = (e) => {
+    e.preventDefault()
+
+    setModalProps({
+      hidden: false,
+      children: <GameEditForm gameId={gameId} name={name} description={description} />
+    })
+  }
+
   return (
     <div className={styles.root}>
       <div className={styles.summary}>
-        <button
-          className={styles.icon}
-          onClick={destroy}
-          data-testid={`destroyGame${gameId}`}
-        >
-          <FontAwesomeIcon className={styles.fa} icon={faXmark} />
-        </button>
+        <span>
+          <button
+            className={styles.icon}
+            onClick={destroy}
+            data-testid={`destroyGame${gameId}`}
+          >
+            <FontAwesomeIcon className={styles.fa} icon={faXmark} />
+          </button>
+          <button
+            className={styles.icon}
+            onClick={showEditForm}
+            data-testid={`editGame${gameId}`}
+          >
+            <FontAwesomeIcon className={styles.fa} icon={faPenToSquare} />
+          </button>
+        </span>
         <h3
           role="button"
           aria-expanded={descriptionExpanded}

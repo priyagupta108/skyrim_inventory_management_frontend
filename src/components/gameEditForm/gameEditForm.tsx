@@ -82,7 +82,7 @@ const GameEditForm = ({
         className={styles.form}
         style={colorVars}
         onSubmit={onSubmit}
-        data-testid={`editGame${gameId}`}
+        data-testid={`editGame${gameId}Form`}
       >
         <fieldset className={styles.fieldset}>
           <label className={styles.label} htmlFor="name">

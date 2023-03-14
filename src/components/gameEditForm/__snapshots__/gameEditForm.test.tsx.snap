@@ -15,7 +15,7 @@ exports[`GameEditForm > matches snapshot 1`] = `
         </h3>
         <form
           class="_form_bc52a1"
-          data-testid="editGame32"
+          data-testid="editGame32Form"
           style="--button-background-color: #00a323; --button-text-color: #fff; --button-hover-color: #00921f; --button-border-color: #00821c;"
         >
           <fieldset
@@ -78,7 +78,7 @@ exports[`GameEditForm > matches snapshot 1`] = `
       </h3>
       <form
         class="_form_bc52a1"
-        data-testid="editGame32"
+        data-testid="editGame32Form"
         style="--button-background-color: #00a323; --button-text-color: #fff; --button-hover-color: #00921f; --button-border-color: #00821c;"
       >
         <fieldset

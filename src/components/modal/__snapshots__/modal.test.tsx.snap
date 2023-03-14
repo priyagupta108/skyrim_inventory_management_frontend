@@ -21,7 +21,7 @@ exports[`Modal > matches snapshot 1`] = `
             </h3>
             <form
               class="_form_bc52a1"
-              data-testid="editGame4"
+              data-testid="editGame4Form"
               style="--button-background-color: #ffbf00; --button-text-color: #4c3900; --button-hover-color: #e5ab00; --button-border-color: #cc9800;"
             >
               <fieldset
@@ -92,7 +92,7 @@ exports[`Modal > matches snapshot 1`] = `
           </h3>
           <form
             class="_form_bc52a1"
-            data-testid="editGame4"
+            data-testid="editGame4Form"
             style="--button-background-color: #ffbf00; --button-text-color: #4c3900; --button-hover-color: #e5ab00; --button-border-color: #cc9800;"
           >
             <fieldset

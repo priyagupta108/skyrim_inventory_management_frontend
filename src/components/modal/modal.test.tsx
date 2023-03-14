@@ -18,7 +18,7 @@ describe('Modal', () => {
     )
 
     expect(wrapper).toBeTruthy()
-    expect(wrapper.getByTestId('editGame4')).toBeTruthy()
+    expect(wrapper.getByTestId('editGame4Form')).toBeTruthy()
   })
 
   test('matches snapshot', () => {
