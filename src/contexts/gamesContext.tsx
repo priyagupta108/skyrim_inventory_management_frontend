@@ -42,7 +42,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
   const { user, token, authLoading, requireLogin } = useGoogleLogin()
   const [gamesLoadingState, setGamesLoadingState] = useState(LOADING)
   const [games, setGames] = useState<Game[]>([])
-  const { setFlashProps } = usePageContext()
+  const { setFlashProps, setModalProps } = usePageContext()
 
   /**
    *
@@ -151,6 +151,10 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               const index = newGames.findIndex((el) => el.id === gameId)
               newGames[index] = json
               setGames(newGames)
+              setModalProps({
+                hidden: true,
+                children: <></>,
+              })
               setFlashProps({
                 hidden: false,
                 type: 'success',

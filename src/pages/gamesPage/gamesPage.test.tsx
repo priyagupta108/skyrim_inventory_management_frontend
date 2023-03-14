@@ -1,5 +1,10 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
-import { waitFor, act, waitForElementToBeRemoved, fireEvent } from '@testing-library/react'
+import {
+  waitFor,
+  act,
+  waitForElementToBeRemoved,
+  fireEvent,
+} from '@testing-library/react'
 import { setupServer } from 'msw/node'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import {
@@ -481,7 +486,9 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
@@ -497,7 +504,9 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
@@ -505,7 +514,9 @@ describe('<GamesPage />', () => {
 
         const modal = wrapper.getByTestId('modal') as HTMLDivElement
 
-        act(() => { modal.click() })
+        act(() => {
+          modal.click()
+        })
 
         expect(wrapper.queryByText('Update Game')).toBeFalsy()
       })
@@ -519,7 +530,9 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
@@ -527,12 +540,14 @@ describe('<GamesPage />', () => {
 
         const form = wrapper.getByTestId('editGame32Form') as HTMLFormElement
 
-        act(() => { form.click() })
+        act(() => {
+          form.click()
+        })
 
         expect(wrapper.getByText('Update Game')).toBeTruthy()
       })
 
-      test('updates the item on the list', async () => {
+      test('updates the item on the list and hides the modal', async () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
@@ -541,27 +556,41 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
-        fireEvent.change(nameInput, { target: { value: 'Distinctive New Name' } })
+        fireEvent.change(nameInput, {
+          target: { value: 'Distinctive New Name' },
+        })
 
         act(() => button.click())
 
         await waitFor(() => {
           expect(wrapper.queryByText('My Game 1')).toBeFalsy()
           expect(wrapper.getByText('Distinctive New Name')).toBeTruthy()
-          expect(wrapper.getByText('This is a game with a description')).toBeTruthy()
+          expect(
+            wrapper.getByText('This is a game with a description')
+          ).toBeTruthy()
+          expect(wrapper.queryByTestId('editGame32Form')).toBeFalsy()
         })
       })
     })
 
     describe('when the server returns an Unprocessable Entity response', () => {
-      const mockServer = setupServer(getGamesAllSuccess, patchGameUnprocessableEntity)
+      const mockServer = setupServer(
+        getGamesAllSuccess,
+        patchGameUnprocessableEntity
+      )
 
       beforeAll(() => mockServer.listen())
       afterEach(() => mockServer.resetHandlers())
@@ -576,12 +605,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 
@@ -602,12 +637,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 
@@ -615,7 +656,11 @@ describe('<GamesPage />', () => {
 
         await waitFor(() => {
           // The flash error message should be displayed
-          expect(wrapper.getByText('1 error(s) prevented your game from being saved:')).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              '1 error(s) prevented your game from being saved:'
+            )
+          ).toBeTruthy()
           expect(wrapper.getByText('Name must be unique')).toBeTruthy()
         })
       })
@@ -629,12 +674,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 
@@ -664,12 +715,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 
@@ -690,12 +747,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 
@@ -703,7 +766,11 @@ describe('<GamesPage />', () => {
 
         await waitFor(() => {
           // The flash error message should be displayed
-          expect(wrapper.getByText("Oops! We couldn't find the game you're looking for. Please refresh and try again.")).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              "Oops! We couldn't find the game you're looking for. Please refresh and try again."
+            )
+          ).toBeTruthy()
         })
       })
 
@@ -716,12 +783,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 
@@ -751,12 +824,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 
@@ -777,12 +856,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 
@@ -790,7 +875,11 @@ describe('<GamesPage />', () => {
 
         await waitFor(() => {
           // The flash error message should be displayed
-          expect(wrapper.getByText("Oops! Something unexpected went wrong. We're sorry! Please try again later.")).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              "Oops! Something unexpected went wrong. We're sorry! Please try again later."
+            )
+          ).toBeTruthy()
         })
       })
 
@@ -803,12 +892,18 @@ describe('<GamesPage />', () => {
           </PageProvider>
         )
 
-        const editButton = await wrapper.findByTestId('editGame32') as HTMLButtonElement
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
-        const button = wrapper.getByTestId('submitGameEditForm') as HTMLButtonElement
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
 

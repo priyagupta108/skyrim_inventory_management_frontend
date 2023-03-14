@@ -48,7 +48,9 @@ const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
 
     setModalProps({
       hidden: false,
-      children: <GameEditForm gameId={gameId} name={name} description={description} />
+      children: (
+        <GameEditForm gameId={gameId} name={name} description={description} />
+      ),
     })
   }
 

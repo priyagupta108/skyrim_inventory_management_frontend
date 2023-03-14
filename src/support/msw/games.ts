@@ -93,7 +93,7 @@ const newOrExistingGame = (id: number): ResponseGame => {
     name: 'Skyrim Game',
     description: null,
     created_at: new Date(),
-    updated_at: new Date()
+    updated_at: new Date(),
   }
 }
 
@@ -104,38 +104,28 @@ export const patchGameSuccess = rest.patch(
     const body = await req.json()
     const game = newOrExistingGame(id)
 
-    return res(
-      ctx.status(200),
-      ctx.json({ ...game, ...body })
-    )
+    return res(ctx.status(200), ctx.json({ ...game, ...body }))
   }
 )
 
 export const patchGameUnprocessableEntity = rest.patch(
   `${BASE_URI}/games/:id`,
   (req, res, ctx) => {
-  return res(
-    ctx.status(422),
-    ctx.json({ errors: ['Name must be unique'] })
-  )
-})
+    return res(ctx.status(422), ctx.json({ errors: ['Name must be unique'] }))
+  }
+)
 
 export const patchGameNotFound = rest.patch(
   `${BASE_URI}/games/:id`,
   (req, res, ctx) => {
-    return res(
-      ctx.status(404)
-    )
+    return res(ctx.status(404))
   }
 )
 
 export const patchGameServerError = rest.patch(
   `${BASE_URI}/games/:id`,
   (req, res, ctx) => {
-    return res(
-      ctx.status(500),
-      ctx.json({ errors: ['oh noes'] })
-    )
+    return res(ctx.status(500), ctx.json({ errors: ['oh noes'] }))
   }
 )
 

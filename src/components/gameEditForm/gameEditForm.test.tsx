@@ -90,12 +90,10 @@ describe('GameEditForm', () => {
 
       act(() => button.click())
 
-      expect(contextValue.updateGame).toHaveBeenCalledWith(
-        game.id,
-        { name: 'Something new', description: 'New description' },
-        expect.any(Function),
-        expect.any(Function)
-      )
+      expect(contextValue.updateGame).toHaveBeenCalledWith(game.id, {
+        name: 'Something new',
+        description: 'New description',
+      })
     })
   })
 })

@@ -60,14 +60,7 @@ const GameEditForm = ({
     const formData = new FormData(formRef.current)
     const game = extractAttributes(formData)
 
-    const onSuccess = () => {
-      /* clear form, hide modal, show flash success */
-    }
-    const onError = () => {
-      /* show flash error */
-    }
-
-    updateGame(gameId, game, onSuccess, onError)
+    updateGame(gameId, game)
   }
 
   useEffect(() => {
