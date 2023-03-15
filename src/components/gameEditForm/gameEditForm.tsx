@@ -44,10 +44,12 @@ const GameEditForm = ({
       string
     >
     const attributes: Game = {}
+    const newName = values.name || null
+    const newDescription = values.description || null
 
-    if (values.name !== name) attributes.name = values.name
-    if (values.description !== description)
-      attributes.description = values.description
+    if (newName !== name) attributes.name = newName
+    if (newDescription !== description)
+      attributes.description = newDescription
 
     return attributes
   }
