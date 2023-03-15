@@ -547,6 +547,32 @@ describe('<GamesPage />', () => {
         expect(wrapper.getByText('Update Game')).toBeTruthy()
       })
 
+      test('hides the modal and form when pressing the Escape key', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
+
+        const modal = wrapper.getByTestId('modal') as HTMLDivElement
+
+        act(() => {
+          fireEvent.keyUp(modal, { key: 'Escape' })
+        })
+
+        expect(wrapper.queryByText('Update Game')).toBeFalsy()
+      })
+
       test('updates the item on the list and hides the modal', async () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
