@@ -510,12 +510,13 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        expect(wrapper.getByText('Update Game')).toBeTruthy()
+        const form = wrapper.getByText('Update Game')
+        expect(form).toBeTruthy()
 
         const modal = wrapper.getByTestId('modal') as HTMLDivElement
 
         act(() => {
-          modal.click()
+          fireEvent.mouseDown(modal)
         })
 
         expect(wrapper.queryByText('Update Game')).toBeFalsy()
@@ -541,7 +542,7 @@ describe('<GamesPage />', () => {
         const form = wrapper.getByTestId('editGame32Form') as HTMLFormElement
 
         act(() => {
-          form.click()
+          fireEvent.mouseDown(form)
         })
 
         expect(wrapper.getByText('Update Game')).toBeTruthy()

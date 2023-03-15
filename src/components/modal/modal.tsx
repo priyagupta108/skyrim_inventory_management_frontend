@@ -16,10 +16,10 @@ const Modal = ({ hidden, children }: ModalProps) => {
   return (
     <div
       className={classNames(styles.root, { [styles.hidden]: hidden })}
-      onClick={hideModal}
+      onMouseDown={hideModal}
       data-testid="modal"
     >
-      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.content} onMouseDown={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>

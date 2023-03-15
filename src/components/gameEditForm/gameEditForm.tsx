@@ -48,8 +48,7 @@ const GameEditForm = ({
     const newDescription = values.description || null
 
     if (newName !== name) attributes.name = newName
-    if (newDescription !== description)
-      attributes.description = newDescription
+    if (newDescription !== description) attributes.description = newDescription
 
     return attributes
   }
