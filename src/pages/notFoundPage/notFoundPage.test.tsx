@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { renderWithRouter } from '../../setupTests'
+import { BASE_APP_URI, renderWithRouter } from '../../support/testUtils'
 import paths from '../../routing/paths'
 import NotFoundPage from './notFoundPage'
 
@@ -13,7 +13,7 @@ describe('<NotFoundPage />', () => {
 
     const a = wrapper.container.querySelector('a')
     expect(a?.textContent).toBe('Go Back')
-    expect(a?.href).toBe(paths.home)
+    expect(a?.href).toBe(`${BASE_APP_URI}${paths.home}`)
   })
 
   test('matches snapshot', () => {

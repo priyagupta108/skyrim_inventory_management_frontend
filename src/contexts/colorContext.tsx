@@ -1,14 +1,14 @@
-import { createContext, ReactElement } from 'react'
+import { createContext } from 'react'
+import { type ProviderProps } from '../types/contexts'
 import { YELLOW, type ColorScheme } from '../utils/colorSchemes'
 
 const ColorContext = createContext<ColorScheme>(YELLOW)
 
-interface ProviderProps {
+interface ColorProviderProps extends ProviderProps {
   colorScheme: ColorScheme
-  children: ReactElement
 }
 
-const ColorProvider = ({ colorScheme, children }: ProviderProps) => (
+const ColorProvider = ({ colorScheme, children }: ColorProviderProps) => (
   <ColorContext.Provider value={colorScheme}>{children}</ColorContext.Provider>
 )
 

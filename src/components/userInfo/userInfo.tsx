@@ -31,6 +31,7 @@ const UserInfo = () => {
               className={styles.img}
               src={photoURL || anonymousAvatar}
               alt="User profile image"
+              referrerPolicy="no-referrer"
             />
           </div>
         </div>
@@ -41,7 +42,7 @@ const UserInfo = () => {
         >
           <div onClick={signOutWithGoogle}>
             <FontAwesomeIcon icon={faRightFromBracket} />
-            Sign Out
+            <p className={styles.signOutText}>Sign Out</p>
           </div>
         </menu>
       </span>

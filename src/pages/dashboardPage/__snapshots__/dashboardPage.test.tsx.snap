@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<DashboardPage /> > matches snapshot 1`] = `
 {
@@ -22,7 +22,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/games"
                   style="--background-color: #ffbf00; --hover-color: #e5ab00; --text-color: #4c3900;"
                 >
                   Your Games
@@ -33,7 +33,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/"
                   style="--background-color: #e83f6f; --hover-color: #d03863; --text-color: #fff;"
                 >
                   Your Shopping Lists
@@ -44,7 +44,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/"
                   style="--background-color: #2274a5; --hover-color: #1e6894; --text-color: #fff;"
                 >
                   Your Inventory
@@ -55,7 +55,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/"
                   style="--background-color: #00a323; --hover-color: #00921f; --text-color: #fff;"
                 >
                   Nav Link 4
@@ -66,7 +66,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
               >
                 <a
                   class="_root_396ea1"
-                  href="blank"
+                  href="/"
                   style="--background-color: #20e2e9; --hover-color: #11cbd1; --text-color: #094345;"
                 >
                   Nav Link 5
@@ -147,7 +147,8 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
                   <img
                     alt="User profile image"
                     class="_img_d263fb"
-                    src="/src/testProfileImg.png"
+                    referrerpolicy="no-referrer"
+                    src="/src/support/testProfileImg.png"
                   />
                 </div>
               </div>
@@ -170,12 +171,28 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
                       fill="currentColor"
                     />
                   </svg>
-                  Sign Out
+                  <p
+                    class="_signOutText_d263fb"
+                  >
+                    Sign Out
+                  </p>
                 </div>
               </menu>
             </span>
           </div>
         </header>
+        <div
+          class="_root_91d025 _hidden_91d025"
+          style="--text-color: #4e6d83;"
+        />
+        <div
+          class="_root_753dd0 _hidden_753dd0"
+          data-testid="modal"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </main>
     </div>
   </body>,
@@ -197,7 +214,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/games"
                 style="--background-color: #ffbf00; --hover-color: #e5ab00; --text-color: #4c3900;"
               >
                 Your Games
@@ -208,7 +225,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/"
                 style="--background-color: #e83f6f; --hover-color: #d03863; --text-color: #fff;"
               >
                 Your Shopping Lists
@@ -219,7 +236,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/"
                 style="--background-color: #2274a5; --hover-color: #1e6894; --text-color: #fff;"
               >
                 Your Inventory
@@ -230,7 +247,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/"
                 style="--background-color: #00a323; --hover-color: #00921f; --text-color: #fff;"
               >
                 Nav Link 4
@@ -241,7 +258,7 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
             >
               <a
                 class="_root_396ea1"
-                href="blank"
+                href="/"
                 style="--background-color: #20e2e9; --hover-color: #11cbd1; --text-color: #094345;"
               >
                 Nav Link 5
@@ -322,7 +339,8 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
                 <img
                   alt="User profile image"
                   class="_img_d263fb"
-                  src="/src/testProfileImg.png"
+                  referrerpolicy="no-referrer"
+                  src="/src/support/testProfileImg.png"
                 />
               </div>
             </div>
@@ -345,12 +363,287 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
                     fill="currentColor"
                   />
                 </svg>
-                Sign Out
+                <p
+                  class="_signOutText_d263fb"
+                >
+                  Sign Out
+                </p>
               </div>
             </menu>
           </span>
         </div>
       </header>
+      <div
+        class="_root_91d025 _hidden_91d025"
+        style="--text-color: #4e6d83;"
+      />
+      <div
+        class="_root_753dd0 _hidden_753dd0"
+        data-testid="modal"
+      >
+        <div
+          class="_content_753dd0"
+        />
+      </div>
+    </main>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`<DashboardPage /> > when auth is loading > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <main
+        class="_root_03d657"
+      >
+        <section
+          class="_container_03d657"
+        >
+          <div
+            class="_root_30a763"
+          >
+            <span
+              data-testid="pulseLoader"
+              style="display: inherit; text-align: center;"
+            >
+              <span
+                style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+              />
+              <span
+                style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+              />
+              <span
+                style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+              />
+            </span>
+          </div>
+        </section>
+        <header
+          class="_root_c29812"
+        >
+          <div
+            class="_bar_c29812"
+          >
+            <span
+              class="_headerContainer_c29812"
+            >
+              <h1
+                class="_header_c29812"
+              >
+                <a
+                  class="_headerLinkLarge_c29812"
+                  href="/dashboard"
+                >
+                  Skyrim Inventory
+                  <br
+                    class="_bp_c29812"
+                  />
+                   Management
+                </a>
+                <a
+                  class="_headerLinkSmall_c29812"
+                  href="/dashboard"
+                >
+                  S. I. M.
+                </a>
+              </h1>
+            </span>
+            <div
+              class="_main_d263fb"
+            >
+              <div
+                class="_button_d263fb"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-bars _hamburger_d263fb"
+                  data-icon="bars"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <img
+                  alt="User profile image"
+                  class="_img_d263fb"
+                  src="/src/components/userInfo/anonymousAvatar.jpg"
+                />
+              </div>
+            </div>
+          </div>
+        </header>
+        <div
+          class="_root_91d025 _hidden_91d025"
+          style="--text-color: #4e6d83;"
+        />
+        <div
+          class="_root_753dd0 _hidden_753dd0"
+          data-testid="modal"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
+      </main>
+    </div>
+  </body>,
+  "container": <div>
+    <main
+      class="_root_03d657"
+    >
+      <section
+        class="_container_03d657"
+      >
+        <div
+          class="_root_30a763"
+        >
+          <span
+            data-testid="pulseLoader"
+            style="display: inherit; text-align: center;"
+          >
+            <span
+              style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+            />
+            <span
+              style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+            />
+            <span
+              style="background-color: rgb(255, 203, 50); width: 15px; height: 15px; margin: 2px; border-radius: 100%; display: inline-block; animation: react-spinners-PulseLoader-pulse 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08); animation-fill-mode: both;"
+            />
+          </span>
+        </div>
+      </section>
+      <header
+        class="_root_c29812"
+      >
+        <div
+          class="_bar_c29812"
+        >
+          <span
+            class="_headerContainer_c29812"
+          >
+            <h1
+              class="_header_c29812"
+            >
+              <a
+                class="_headerLinkLarge_c29812"
+                href="/dashboard"
+              >
+                Skyrim Inventory
+                <br
+                  class="_bp_c29812"
+                />
+                 Management
+              </a>
+              <a
+                class="_headerLinkSmall_c29812"
+                href="/dashboard"
+              >
+                S. I. M.
+              </a>
+            </h1>
+          </span>
+          <div
+            class="_main_d263fb"
+          >
+            <div
+              class="_button_d263fb"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-bars _hamburger_d263fb"
+                data-icon="bars"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+                  fill="currentColor"
+                />
+              </svg>
+              <img
+                alt="User profile image"
+                class="_img_d263fb"
+                src="/src/components/userInfo/anonymousAvatar.jpg"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+      <div
+        class="_root_91d025 _hidden_91d025"
+        style="--text-color: #4e6d83;"
+      />
+      <div
+        class="_root_753dd0 _hidden_753dd0"
+        data-testid="modal"
+      >
+        <div
+          class="_content_753dd0"
+        />
+      </div>
     </main>
   </div>,
   "debug": [Function],
