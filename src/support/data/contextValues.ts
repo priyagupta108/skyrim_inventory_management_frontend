@@ -8,7 +8,7 @@ const noop = () => {}
 
 /**
  *
- * Default value for Login context
+ * Default values for Login context
  *
  */
 

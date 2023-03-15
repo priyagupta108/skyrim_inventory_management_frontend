@@ -612,6 +612,59 @@ describe('<GamesPage />', () => {
       })
     })
 
+    describe('when setting a field to null', () => {
+      const mockServer = setupServer(getGamesAllSuccess, patchGameSuccess)
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('updates the game on the list and hides the modal', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const descInput = wrapper.getByTestId(
+          'editDescriptionField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, {
+          target: { value: 'Distinctive New Name' },
+        })
+
+        fireEvent.change(descInput, {
+          target: { value: '' },
+        })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          expect(wrapper.queryByText('My Game 1')).toBeFalsy()
+          expect(wrapper.getByText('Distinctive New Name')).toBeTruthy()
+          expect(
+            wrapper.getAllByText('This game has no description.').length
+          ).toEqual(2)
+          expect(wrapper.queryByTestId('editGame32Form')).toBeFalsy()
+        })
+      })
+    })
+
     describe('when the server returns an Unprocessable Entity response', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
@@ -754,7 +807,7 @@ describe('<GamesPage />', () => {
           'submitGameEditForm'
         ) as HTMLButtonElement
 
-        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
 
         act(() => button.click())
 
@@ -786,7 +839,7 @@ describe('<GamesPage />', () => {
           'submitGameEditForm'
         ) as HTMLButtonElement
 
-        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
 
         act(() => button.click())
 
@@ -822,14 +875,14 @@ describe('<GamesPage />', () => {
           'submitGameEditForm'
         ) as HTMLButtonElement
 
-        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
 
         act(() => button.click())
 
         await waitFor(() => {
           // The name should not be changed
           expect(wrapper.getByText('My Game 1')).toBeTruthy()
-          expect(wrapper.getAllByText('My Game 2').length).toEqual(1)
+          expect(wrapper.queryByText('New Name')).toBeFalsy()
         })
       })
     })
@@ -863,7 +916,7 @@ describe('<GamesPage />', () => {
           'submitGameEditForm'
         ) as HTMLButtonElement
 
-        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
 
         act(() => button.click())
 
@@ -895,7 +948,7 @@ describe('<GamesPage />', () => {
           'submitGameEditForm'
         ) as HTMLButtonElement
 
-        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
 
         act(() => button.click())
 
@@ -931,14 +984,14 @@ describe('<GamesPage />', () => {
           'submitGameEditForm'
         ) as HTMLButtonElement
 
-        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
 
         act(() => button.click())
 
         await waitFor(() => {
           // The name should not be changed
           expect(wrapper.getByText('My Game 1')).toBeTruthy()
-          expect(wrapper.getAllByText('My Game 2').length).toEqual(1)
+          expect(wrapper.queryByText('New Name')).toBeFalsy()
         })
       })
     })

@@ -1,6 +1,9 @@
 import { BrowserRouter } from 'react-router-dom'
 import { testUser } from '../../support/data/users'
-import { loginContextValue } from '../../support/data/contextValues'
+import {
+  loginContextValue,
+  loadingLoginContextValue,
+} from '../../support/data/contextValues'
 import { LoginContext } from '../../contexts/loginContext'
 import UserInfo from './userInfo'
 
@@ -35,9 +38,7 @@ export const WithAnonymousAvatar = () => (
 
 export const AuthLoading = () => (
   <BrowserRouter>
-    <LoginContext.Provider
-      value={{ ...loginContextValue, user: null, authLoading: true }}
-    >
+    <LoginContext.Provider value={loadingLoginContextValue}>
       <div style={{ height: '64px', display: 'flex' }}>
         <UserInfo />
       </div>

@@ -26,7 +26,7 @@ const GameEditForm = ({
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Set the button to a random color
+  // Set the button to a random color if it hasn't been explicitly set
   const colorRef = useRef<ColorScheme>(
     buttonColor || colorSchemes[Math.floor(Math.random() * colorSchemes.length)]
   )
@@ -69,10 +69,9 @@ const GameEditForm = ({
 
   return (
     <div className={styles.root}>
-      <h3 className={styles.header}>Update Game</h3>
+      <h3>Update Game</h3>
       <form
         ref={formRef}
-        className={styles.form}
         style={colorVars}
         onSubmit={onSubmit}
         data-testid={`editGame${gameId}Form`}

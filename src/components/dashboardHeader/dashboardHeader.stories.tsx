@@ -1,6 +1,9 @@
 import { BrowserRouter } from 'react-router-dom'
 import { testUser } from '../../support/data/users'
-import { loginContextValue } from '../../support/data/contextValues'
+import {
+  loadingLoginContextValue,
+  loginContextValue,
+} from '../../support/data/contextValues'
 import { LoginContext } from '../../contexts/loginContext'
 import DashboardHeader from './dashboardHeader'
 
@@ -31,9 +34,7 @@ export const WithAnonymousAvatar = () => (
 
 export const AuthLoading = () => (
   <BrowserRouter>
-    <LoginContext.Provider
-      value={{ ...loginContextValue, user: null, authLoading: true }}
-    >
+    <LoginContext.Provider value={loadingLoginContextValue}>
       <DashboardHeader />
     </LoginContext.Provider>
   </BrowserRouter>

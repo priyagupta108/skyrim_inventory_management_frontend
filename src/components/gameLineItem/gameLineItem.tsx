@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import AnimateHeight from 'react-animate-height'
 import { useGamesContext, usePageContext } from '../../hooks/contexts'
-import styles from './gameLineItem.module.css'
 import GameEditForm from '../gameEditForm/gameEditForm'
+import styles from './gameLineItem.module.css'
 
 const DEFAULT_DESCRIPTION = 'This game has no description.'
 const DESTROY_CONFIRMATION =
@@ -63,14 +63,14 @@ const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
             onClick={destroy}
             data-testid={`destroyGame${gameId}`}
           >
-            <FontAwesomeIcon className={styles.fa} icon={faXmark} />
+            <FontAwesomeIcon icon={faXmark} />
           </button>
           <button
             className={styles.icon}
             onClick={showEditForm}
             data-testid={`editGame${gameId}`}
           >
-            <FontAwesomeIcon className={styles.fa} icon={faPenToSquare} />
+            <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </span>
         <h3

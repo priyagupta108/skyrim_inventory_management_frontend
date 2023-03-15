@@ -18,7 +18,7 @@ exports[`GameLineItem > matches snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-xmark _fa_fd0dcf"
+                class="svg-inline--fa fa-xmark "
                 data-icon="xmark"
                 data-prefix="fas"
                 focusable="false"
@@ -38,7 +38,7 @@ exports[`GameLineItem > matches snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-pen-to-square _fa_fd0dcf"
+                class="svg-inline--fa fa-pen-to-square "
                 data-icon="pen-to-square"
                 data-prefix="fas"
                 focusable="false"
@@ -95,7 +95,7 @@ exports[`GameLineItem > matches snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-xmark _fa_fd0dcf"
+              class="svg-inline--fa fa-xmark "
               data-icon="xmark"
               data-prefix="fas"
               focusable="false"
@@ -115,7 +115,7 @@ exports[`GameLineItem > matches snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-pen-to-square _fa_fd0dcf"
+              class="svg-inline--fa fa-pen-to-square "
               data-icon="pen-to-square"
               data-prefix="fas"
               focusable="false"

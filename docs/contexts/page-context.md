@@ -25,6 +25,15 @@ If the message passed is an array, each string in the array will be displayed as
 
 ### The `Modal` Component
 
+The second global component is the `Modal`. This component fills the screen with a transparent dark overlay, with an arbitrary child element displayed in the centre. When the modal is visible, clicking on the overlay will cause it to be hidden. Clicking inside the child element will not hide the modal (as long as the entire click event - `mouseDown` and `mouseUp` - occurs within the child element). Additionally, pressing the `Escape` key when the modal is visible will cause it to be hidden.
+
+The modal component has just two props:
+
+- `hidden` (boolean): whether the modal should be hidden
+- `children` (`ReactElement`): the element that should be displayed in the modal
+
+Note that the `children` prop is not optional, but may be set to an empty fragment (`<></>`), and is by default.
+
 ## The `PageContext`
 
 The `PageProvider` exposes four values to the user:

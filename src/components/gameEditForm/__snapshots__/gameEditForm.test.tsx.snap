@@ -8,13 +8,10 @@ exports[`GameEditForm > matches snapshot 1`] = `
       <div
         class="_root_bc52a1"
       >
-        <h3
-          class="_header_bc52a1"
-        >
+        <h3>
           Update Game
         </h3>
         <form
-          class="_form_bc52a1"
           data-testid="editGame32Form"
           style="--button-background-color: #00a323; --button-text-color: #fff; --button-hover-color: #00921f; --button-border-color: #00821c;"
         >
@@ -71,13 +68,10 @@ exports[`GameEditForm > matches snapshot 1`] = `
     <div
       class="_root_bc52a1"
     >
-      <h3
-        class="_header_bc52a1"
-      >
+      <h3>
         Update Game
       </h3>
       <form
-        class="_form_bc52a1"
         data-testid="editGame32Form"
         style="--button-background-color: #00a323; --button-text-color: #fff; --button-hover-color: #00921f; --button-border-color: #00821c;"
       >
