@@ -163,7 +163,11 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               onSuccess && onSuccess()
             }
           })
-          .catch(handleApiError)
+          .catch((e) => {
+            handleApiError(e)
+
+            onError && onError()
+          })
       }
     },
     [user, token, games]
@@ -176,7 +180,11 @@ export const GamesProvider = ({ children }: ProviderProps) => {
    */
 
   const destroyGame = useCallback(
-    (gameId: number, onSuccess?: CallbackFunction, onError?: CallbackFunction) => {
+    (
+      gameId: number,
+      onSuccess?: CallbackFunction,
+      onError?: CallbackFunction
+    ) => {
       if (user && token) {
         deleteGame(gameId, token)
           .then(({ status }) => {
@@ -193,7 +201,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e) => {
-            handleApiError
+            handleApiError(e)
 
             onError && onError()
           })
