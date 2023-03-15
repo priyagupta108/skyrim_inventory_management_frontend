@@ -88,7 +88,7 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
               name="name"
               placeholder="Name"
               aria-label="Name"
-              data-testid="nameField"
+              data-testid="createNameField"
               pattern="^\s*[A-Za-z0-9 \-',]*\s*$"
               title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
               disabled={disabled}
@@ -101,7 +101,7 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
               name="description"
               placeholder="Description"
               aria-label="Description"
-              data-testid="descriptionField"
+              data-testid="createDescriptionField"
               disabled={disabled}
             />
           </fieldset>

@@ -1,9 +1,11 @@
-import { type RequestGame } from '../../types/apiData'
+import { ErrorObject, type RequestGame } from '../../types/apiData'
 import {
   type PostGamesResponse,
   type PostGamesReturnValue,
   type GetGamesResponse,
   type GetGamesReturnValue,
+  type PatchGameResponse,
+  type PatchGameReturnValue,
   type DeleteGameResponse,
   type DeleteGameReturnValue,
 } from './returnValues'
@@ -82,6 +84,39 @@ export const getGames = (
 
       if (returnValue.status === 500)
         throw new InternalServerError(json.errors.join(', '))
+
+      return returnValue
+    })
+  })
+}
+
+// PATCH /games
+
+export const patchGame = (
+  gameId: number,
+  body: RequestGame,
+  token: string
+): Promise<PatchGameReturnValue> | never => {
+  const uri = `${BASE_URI}/games/${gameId}`
+  const headers = combinedHeaders(token)
+
+  return fetch(uri, {
+    method: 'PATCH',
+    body: JSON.stringify(body),
+    headers,
+  }).then((res) => {
+    const response = res as PatchGameResponse
+
+    if (response.status === 401) throw new AuthorizationError()
+    if (response.status === 404) throw new NotFoundError()
+
+    return response.json().then((json) => {
+      const returnValue = { status: response.status, json }
+
+      if (returnValue.status === 500)
+        throw new InternalServerError(json.errors.join(', '))
+      if (returnValue.status === 422)
+        throw new UnprocessableEntityError(json.errors)
 
       return returnValue
     })

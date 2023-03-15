@@ -4,7 +4,11 @@ The `GamesContext` enables us to keep track of all of a user's games as well as 
 
 - `games`: array of [`Game`](/src/types/games.d.ts) objects, the games returned from the API for the signed-in user, initialized as an empty array (i.e., this object will never be `null` or `undefined`)
 - `gamesLoadingStatus`: string of either `'LOADING'`, `'ERROR'`, or `'DONE'`, indicating whether games have loaded successfully from the API, initialized as `'LOADING'`
+- `createGame`: function that takes a `RequestGame` object as an argument and creates a game with those attributes at the API, adding it to the `games` array if successful
+- `updateGame`: function that takes a `gameId` and `RequestGame` object as arguments and updates the game with that game ID using those attributes at the API, updating the `games` array if successful
 - `destroyGame`: function that takes a game ID as an argument and destroys the game with that ID at the API, updating the `games` array accordingly
+
+Each of the provided function can optionally take `onSuccess` and `onError` callbacks, in that order. These callbacks are of the `CallbackFunction` type; they take no arguments and have a `void` return type. They are useful for things like hiding a form after it has been successfully submitted.
 
 Accessing games requires a user to be authenticated, so the `GamesProvider` can only be rendered inside a [`LoginProvider`](/docs/contexts/login-context.md). Note that the `GamesProvider` itself calls the `requireLogin` function provided by the login context, so this function should not be called in any `GamesContext` consumers.
 

@@ -1,29 +1,10 @@
-import { describe, test, expect, vitest, afterEach, beforeEach } from 'vitest'
-import { render, act } from '@testing-library/react'
-import { setupServer } from 'msw/node'
-import { deleteGameSuccess, getGamesAllSuccess } from '../../support/msw/games'
-import {
-  GamesContext,
-  type GamesContextType,
-} from '../../contexts/gamesContext'
-import GameLineItem from './gameLineItem'
+import { describe, test, expect, vitest, beforeEach } from 'vitest'
+import { act } from '@testing-library/react'
 import { renderAuthenticated } from '../../support/testUtils'
-
-const contextValue: GamesContextType = {
-  games: [
-    {
-      id: 4,
-      user_id: 42,
-      name: 'De finibus bonorum et malorum',
-      description: 'This is my game',
-      created_at: new Date(),
-      updated_at: new Date(),
-    },
-  ],
-  gamesLoadingState: 'DONE',
-  createGame: () => {},
-  destroyGame: () => {},
-}
+import { gamesContextValue } from '../../support/data/contextValues'
+import { PageProvider } from '../../contexts/pageContext'
+import { GamesContext } from '../../contexts/gamesContext'
+import GameLineItem from './gameLineItem'
 
 // This component can't really be tested because Vitest fucking sucks.
 // It won't get the style off the element, even if the style is computed
@@ -32,35 +13,38 @@ const contextValue: GamesContextType = {
 // way to test whether the user can see the description or not.
 describe('GameLineItem', () => {
   test('matches snapshot', () => {
-    const wrapper = render(
-      <GamesContext.Provider value={contextValue}>
-        <GameLineItem
-          gameId={4}
-          name="De finibus bonorum et malorum"
-          description="This is my game"
-        />
-      </GamesContext.Provider>
-    )
-    expect(wrapper).toBeTruthy()
-    expect(wrapper).toMatchSnapshot()
-  })
-
-  describe('destroying the game', () => {
-    beforeEach(() => {
-      contextValue.destroyGame = vitest
-        .fn()
-        .mockImplementation((_gameId: number) => {})
-    })
-
-    test('destroys the game when the button is clicked', () => {
-      const wrapper = renderAuthenticated(
-        <GamesContext.Provider value={contextValue}>
+    const wrapper = renderAuthenticated(
+      <PageProvider>
+        <GamesContext.Provider value={gamesContextValue}>
           <GameLineItem
             gameId={4}
             name="De finibus bonorum et malorum"
             description="This is my game"
           />
         </GamesContext.Provider>
+      </PageProvider>
+    )
+    expect(wrapper).toBeTruthy()
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  describe('destroying the game', () => {
+    test('destroys the game when the button is clicked', () => {
+      const contextValue = {
+        ...gamesContextValue,
+        destroyGame: vitest.fn().mockImplementation((_gameId: number) => {}),
+      }
+
+      const wrapper = renderAuthenticated(
+        <PageProvider>
+          <GamesContext.Provider value={contextValue}>
+            <GameLineItem
+              gameId={4}
+              name="De finibus bonorum et malorum"
+              description="This is my game"
+            />
+          </GamesContext.Provider>
+        </PageProvider>
       )
 
       window.confirm = vitest.fn().mockImplementation(() => true)
@@ -72,14 +56,21 @@ describe('GameLineItem', () => {
     })
 
     test("doesn't destroy the game when the user cancels", () => {
+      const contextValue = {
+        ...gamesContextValue,
+        destroyGame: vitest.fn().mockImplementation((_gameId: number) => {}),
+      }
+
       const wrapper = renderAuthenticated(
-        <GamesContext.Provider value={contextValue}>
-          <GameLineItem
-            gameId={4}
-            name="De finibus bonorum et malorum"
-            description="This is my game"
-          />
-        </GamesContext.Provider>
+        <PageProvider>
+          <GamesContext.Provider value={contextValue}>
+            <GameLineItem
+              gameId={4}
+              name="De finibus bonorum et malorum"
+              description="This is my game"
+            />
+          </GamesContext.Provider>
+        </PageProvider>
       )
 
       window.confirm = vitest.fn().mockImplementation(() => false)

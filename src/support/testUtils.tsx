@@ -3,8 +3,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { JSDOM } from 'jsdom'
 import { render } from '@testing-library/react'
 import { LoginContext } from '../contexts/loginContext'
-import { User } from 'firebase/auth'
-import testProfileImg from './testProfileImg.png'
+import {
+  loadingLoginContextValue,
+  loginContextValue,
+  unauthenticatedLoginContextValue,
+} from './data/contextValues'
 
 export const BASE_APP_URI = 'http://localhost:5173'
 
@@ -28,26 +31,6 @@ const setDom = () => {
 
 /**
  *
- * Global Test Data
- *
- */
-
-export const requireLogin = () => {
-  /* noop */
-}
-
-export const testUser = {
-  uid: 'edna',
-  displayName: 'Edna St. Vincent Millay',
-  email: 'edna@gmail.com',
-  photoURL: testProfileImg,
-  emailVerified: true,
-  getIdtoken: () =>
-    new Promise<string>((resolve, _reject) => resolve('xxxxxxx')),
-} as unknown as User
-
-/**
- *
  * Test Renderers
  *
  */
@@ -61,39 +44,23 @@ const renderWithJSDOM = (ui: ReactElement) => {
 export const renderWithRouter = (ui: ReactElement) =>
   renderWithJSDOM(<BrowserRouter>{ui}</BrowserRouter>)
 
-export const renderAuthenticated = (ui: ReactElement, authLoading = false) =>
+export const renderAuthenticated = (ui: ReactElement) =>
   renderWithRouter(
-    <LoginContext.Provider
-      value={{
-        user: testUser,
-        token: 'xxxxxxx',
-        requireLogin,
-        authLoading,
-      }}
-    >
+    <LoginContext.Provider value={loginContextValue}>
       {ui}
     </LoginContext.Provider>
   )
 
 export const renderUnauthenticated = (ui: ReactElement) =>
   renderWithRouter(
-    <LoginContext.Provider
-      value={{
-        user: null,
-        token: null,
-        authLoading: false,
-        requireLogin,
-      }}
-    >
+    <LoginContext.Provider value={unauthenticatedLoginContextValue}>
       {ui}
     </LoginContext.Provider>
   )
 
 export const renderAuthLoading = (ui: ReactElement) =>
   renderWithRouter(
-    <LoginContext.Provider
-      value={{ user: null, token: null, authLoading: true, requireLogin }}
-    >
+    <LoginContext.Provider value={loadingLoginContextValue}>
       {ui}
     </LoginContext.Provider>
   )

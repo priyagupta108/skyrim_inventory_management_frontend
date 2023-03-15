@@ -6,21 +6,21 @@ import { auth, signOutWithGoogle } from '../firebase'
 import { ProviderProps } from '../types/contexts'
 import paths from '../routing/paths'
 
-interface LoginContextType {
+export interface LoginContextType {
   authLoading: boolean
   token: string | null
   requireLogin: () => void
   user?: User | null
 }
 
-const LoginContext = createContext<LoginContextType>({
+export const LoginContext = createContext<LoginContextType>({
   user: null,
   token: null,
   authLoading: true,
   requireLogin: () => {}, // noop
 })
 
-const LoginProvider = ({ children }: ProviderProps) => {
+export const LoginProvider = ({ children }: ProviderProps) => {
   const [user, authLoading, authError] = useAuthState(auth)
   const [token, setToken] = useState<string | null>(null)
   const navigate = useNavigate()
@@ -48,5 +48,3 @@ const LoginProvider = ({ children }: ProviderProps) => {
 
   return <LoginContext.Provider value={value}>{children}</LoginContext.Provider>
 }
-
-export { LoginContext, LoginProvider }

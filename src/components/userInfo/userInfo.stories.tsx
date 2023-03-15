@@ -1,5 +1,9 @@
 import { BrowserRouter } from 'react-router-dom'
-import { testUser } from '../../support/testUtils'
+import { testUser } from '../../support/data/users'
+import {
+  loginContextValue,
+  loadingLoginContextValue,
+} from '../../support/data/contextValues'
 import { LoginContext } from '../../contexts/loginContext'
 import UserInfo from './userInfo'
 
@@ -12,7 +16,7 @@ export default { title: 'UserInfo' }
 
 export const WithPhoto = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: testUser, authLoading: false }}>
+    <LoginContext.Provider value={loginContextValue}>
       <div style={{ height: '64px', display: 'flex' }}>
         <UserInfo />
       </div>
@@ -23,7 +27,7 @@ export const WithPhoto = () => (
 export const WithAnonymousAvatar = () => (
   <BrowserRouter>
     <LoginContext.Provider
-      value={{ user: userWithAnonymousAvatar, authLoading: false }}
+      value={{ ...loginContextValue, user: userWithAnonymousAvatar }}
     >
       <div style={{ height: '64px', display: 'flex' }}>
         <UserInfo />
@@ -34,7 +38,7 @@ export const WithAnonymousAvatar = () => (
 
 export const AuthLoading = () => (
   <BrowserRouter>
-    <LoginContext.Provider value={{ user: null, authLoading: true }}>
+    <LoginContext.Provider value={loadingLoginContextValue}>
       <div style={{ height: '64px', display: 'flex' }}>
         <UserInfo />
       </div>

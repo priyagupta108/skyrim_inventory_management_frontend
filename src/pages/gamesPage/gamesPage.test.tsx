@@ -1,5 +1,10 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
-import { waitFor, act, waitForElementToBeRemoved } from '@testing-library/react'
+import {
+  waitFor,
+  act,
+  waitForElementToBeRemoved,
+  fireEvent,
+} from '@testing-library/react'
 import { setupServer } from 'msw/node'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import {
@@ -9,17 +14,17 @@ import {
   getGamesEmptySuccess,
   getGamesAllSuccess,
   getGamesServerError,
+  patchGameSuccess,
+  patchGameUnprocessableEntity,
+  patchGameNotFound,
+  patchGameServerError,
   deleteGameSuccess,
   deleteGameNotFound,
   deleteGameServerError,
 } from '../../support/msw/games'
-import { allGames } from '../../support/data/games'
+import { gamesContextValue } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
-import {
-  GamesContext,
-  GamesContextType,
-  GamesProvider,
-} from '../../contexts/gamesContext'
+import { GamesContext, GamesProvider } from '../../contexts/gamesContext'
 import GamesPage from './gamesPage'
 
 describe('<GamesPage />', () => {
@@ -295,11 +300,9 @@ describe('<GamesPage />', () => {
     describe('when the user cancels deletion', () => {
       test("doesn't destroy the game", async () => {
         const contextValue = {
-          games: allGames,
-          gamesLoadingState: 'DONE',
-          createGame: () => {},
+          ...gamesContextValue,
           destroyGame: vitest.fn().mockImplementation((_gameId: number) => {}),
-        } as GamesContextType
+        }
 
         const wrapper = renderAuthenticated(
           <PageProvider>
@@ -461,6 +464,535 @@ describe('<GamesPage />', () => {
               'Game with a really really really really really long name'
             )
           ).toBeTruthy()
+        })
+      })
+    })
+  })
+
+  describe('editing a game', () => {
+    describe('when successful', () => {
+      const mockServer = setupServer(getGamesAllSuccess, patchGameSuccess)
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('displays the edit form', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
+      })
+
+      test('hides the modal and form when clicking outside the form', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const form = wrapper.getByText('Update Game')
+        expect(form).toBeTruthy()
+
+        const modal = wrapper.getByTestId('modal') as HTMLDivElement
+
+        act(() => {
+          fireEvent.mouseDown(modal)
+        })
+
+        expect(wrapper.queryByText('Update Game')).toBeFalsy()
+      })
+
+      test("doesn't hide the modal and form when clicking inside the form", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
+
+        const form = wrapper.getByTestId('editGame32Form') as HTMLFormElement
+
+        act(() => {
+          fireEvent.mouseDown(form)
+        })
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
+      })
+
+      test('hides the modal and form when pressing the Escape key', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        expect(wrapper.getByText('Update Game')).toBeTruthy()
+
+        const modal = wrapper.getByTestId('modal') as HTMLDivElement
+
+        act(() => {
+          fireEvent.keyUp(modal, { key: 'Escape' })
+        })
+
+        expect(wrapper.queryByText('Update Game')).toBeFalsy()
+      })
+
+      test('updates the item on the list and hides the modal', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, {
+          target: { value: 'Distinctive New Name' },
+        })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          expect(wrapper.queryByText('My Game 1')).toBeFalsy()
+          expect(wrapper.getByText('Distinctive New Name')).toBeTruthy()
+          expect(
+            wrapper.getByText('This is a game with a description')
+          ).toBeTruthy()
+          expect(wrapper.queryByTestId('editGame32Form')).toBeFalsy()
+        })
+      })
+    })
+
+    describe('when setting a field to null', () => {
+      const mockServer = setupServer(getGamesAllSuccess, patchGameSuccess)
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('updates the game on the list and hides the modal', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const descInput = wrapper.getByTestId(
+          'editDescriptionField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, {
+          target: { value: 'Distinctive New Name' },
+        })
+
+        fireEvent.change(descInput, {
+          target: { value: '' },
+        })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          expect(wrapper.queryByText('My Game 1')).toBeFalsy()
+          expect(wrapper.getByText('Distinctive New Name')).toBeTruthy()
+          expect(
+            wrapper.getAllByText('This game has no description.').length
+          ).toEqual(2)
+          expect(wrapper.queryByTestId('editGame32Form')).toBeFalsy()
+        })
+      })
+    })
+
+    describe('when the server returns an Unprocessable Entity response', () => {
+      const mockServer = setupServer(
+        getGamesAllSuccess,
+        patchGameUnprocessableEntity
+      )
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test("doesn't hide the modal form", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The modal should not be hidden
+          expect(wrapper.getByTestId('editGame32Form')).toBeTruthy()
+        })
+      })
+
+      test('shows the flash message', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The flash error message should be displayed
+          expect(
+            wrapper.getByText(
+              '1 error(s) prevented your game from being saved:'
+            )
+          ).toBeTruthy()
+          expect(wrapper.getByText('Name must be unique')).toBeTruthy()
+        })
+      })
+
+      test("doesn't update the game name on the list", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The name should not be changed
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+          expect(wrapper.getAllByText('My Game 2').length).toEqual(1)
+        })
+      })
+    })
+
+    describe('when the server returns a 404 response', () => {
+      const mockServer = setupServer(getGamesAllSuccess, patchGameNotFound)
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test("doesn't hide the modal form", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The modal should not be hidden
+          expect(wrapper.getByTestId('editGame32Form')).toBeTruthy()
+        })
+      })
+
+      test('displays the flash error', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The flash error message should be displayed
+          expect(
+            wrapper.getByText(
+              "Oops! We couldn't find the game you're looking for. Please refresh and try again."
+            )
+          ).toBeTruthy()
+        })
+      })
+
+      test("doesn't update the name on the list", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The name should not be changed
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+          expect(wrapper.queryByText('New Name')).toBeFalsy()
+        })
+      })
+    })
+
+    describe('when the server returns a 500 response', () => {
+      const mockServer = setupServer(getGamesAllSuccess, patchGameServerError)
+
+      beforeAll(() => mockServer.listen())
+      afterEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test("doesn't hide the modal form", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The modal should not be hidden
+          expect(wrapper.getByTestId('editGame32Form')).toBeTruthy()
+        })
+      })
+
+      test('displays the flash error', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The flash error message should be displayed
+          expect(
+            wrapper.getByText(
+              "Oops! Something unexpected went wrong. We're sorry! Please try again later."
+            )
+          ).toBeTruthy()
+        })
+      })
+
+      test("doesn't update the name on the list", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <GamesPage />
+            </GamesProvider>
+          </PageProvider>
+        )
+
+        const editButton = (await wrapper.findByTestId(
+          'editGame32'
+        )) as HTMLButtonElement
+
+        act(() => editButton.click())
+
+        const nameInput = wrapper.getByTestId(
+          'editNameField'
+        ) as HTMLInputElement
+        const button = wrapper.getByTestId(
+          'submitGameEditForm'
+        ) as HTMLButtonElement
+
+        fireEvent.change(nameInput, { target: { value: 'New Name' } })
+
+        act(() => button.click())
+
+        await waitFor(() => {
+          // The name should not be changed
+          expect(wrapper.getByText('My Game 1')).toBeTruthy()
+          expect(wrapper.queryByText('New Name')).toBeFalsy()
         })
       })
     })

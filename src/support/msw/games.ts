@@ -1,4 +1,5 @@
 import { rest } from 'msw'
+import { ResponseGame } from '../../types/apiData'
 import { emptyGames, allGames } from '../data/games'
 
 const BASE_URI = 'http://localhost:3000'
@@ -72,6 +73,59 @@ export const getGamesServerError = rest.get(
   `${BASE_URI}/games`,
   (req, res, ctx) => {
     return res(ctx.status(500), ctx.json({ errors: ['Something went wrong'] }))
+  }
+)
+
+/**
+ *
+ * PATCH /games/:id
+ *
+ */
+
+const newOrExistingGame = (id: number): ResponseGame => {
+  const existingGame = allGames.find((game) => game.id === id)
+
+  if (existingGame) return existingGame
+
+  return {
+    id,
+    user_id: 412,
+    name: 'Skyrim Game',
+    description: null,
+    created_at: new Date(),
+    updated_at: new Date(),
+  }
+}
+
+export const patchGameSuccess = rest.patch(
+  `${BASE_URI}/games/:id`,
+  async (req, res, ctx) => {
+    const id = Number(req.params.id)
+    const body = await req.json()
+    const game = newOrExistingGame(id)
+
+    return res(ctx.status(200), ctx.json({ ...game, ...body }))
+  }
+)
+
+export const patchGameUnprocessableEntity = rest.patch(
+  `${BASE_URI}/games/:id`,
+  (req, res, ctx) => {
+    return res(ctx.status(422), ctx.json({ errors: ['Name must be unique'] }))
+  }
+)
+
+export const patchGameNotFound = rest.patch(
+  `${BASE_URI}/games/:id`,
+  (req, res, ctx) => {
+    return res(ctx.status(404))
+  }
+)
+
+export const patchGameServerError = rest.patch(
+  `${BASE_URI}/games/:id`,
+  (req, res, ctx) => {
+    return res(ctx.status(500), ctx.json({ errors: ['oh noes'] }))
   }
 )
 

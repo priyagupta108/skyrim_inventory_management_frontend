@@ -1,6 +1,9 @@
 import { BrowserRouter } from 'react-router-dom'
-import { testUser, requireLogin } from '../../support/testUtils'
 import { allGames, emptyGames } from '../../support/data/games'
+import {
+  loadingLoginContextValue,
+  loginContextValue,
+} from '../../support/data/contextValues'
 import { internalServerErrorResponse } from '../../support/data/errors'
 import { LoginContext } from '../../contexts/loginContext'
 import { PageProvider } from '../../contexts/pageContext'
@@ -15,14 +18,7 @@ export default {
 
 export const NoGames = () => (
   <BrowserRouter>
-    <LoginContext.Provider
-      value={{
-        user: testUser,
-        token: 'xxxxxxx',
-        authLoading: false,
-        requireLogin,
-      }}
-    >
+    <LoginContext.Provider value={loginContextValue}>
       <PageProvider>
         <GamesProvider>
           <GamesPage />
@@ -45,14 +41,7 @@ NoGames.parameters = {
 
 export const WithGamesHappy = () => (
   <BrowserRouter>
-    <LoginContext.Provider
-      value={{
-        user: testUser,
-        token: 'xxxxxxx',
-        authLoading: false,
-        requireLogin,
-      }}
-    >
+    <LoginContext.Provider value={loginContextValue}>
       <PageProvider>
         <GamesProvider>
           <GamesPage />
@@ -93,9 +82,7 @@ WithGamesHappy.parameters = {
 
 export const AuthLoading = () => (
   <BrowserRouter>
-    <LoginContext.Provider
-      value={{ user: null, token: null, authLoading: true, requireLogin }}
-    >
+    <LoginContext.Provider value={loadingLoginContextValue}>
       <PageProvider>
         <GamesProvider>
           <GamesPage />
@@ -107,14 +94,7 @@ export const AuthLoading = () => (
 
 export const ServerError = () => (
   <BrowserRouter>
-    <LoginContext.Provider
-      value={{
-        user: testUser,
-        token: 'xxxxxxx',
-        authLoading: false,
-        requireLogin,
-      }}
-    >
+    <LoginContext.Provider value={loginContextValue}>
       <PageProvider>
         <GamesProvider>
           <GamesPage />

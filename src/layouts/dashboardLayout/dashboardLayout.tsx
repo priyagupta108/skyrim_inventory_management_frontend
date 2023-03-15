@@ -1,7 +1,8 @@
-import { type ReactElement } from 'react'
+import { type KeyboardEventHandler, type ReactElement } from 'react'
 import { usePageContext } from '../../hooks/contexts'
 import DashboardHeader from '../../components/dashboardHeader/dashboardHeader'
 import FlashMessage from '../../components/flashMessage/flashMessage'
+import Modal from '../../components/modal/modal'
 import styles from './dashboardLayout.module.css'
 
 interface DashboardLayoutProps {
@@ -10,10 +11,16 @@ interface DashboardLayoutProps {
 }
 
 const DashboardLayout = ({ title, children }: DashboardLayoutProps) => {
-  const { flashProps } = usePageContext()
+  const { flashProps, modalProps, setModalProps } = usePageContext()
+
+  const hideModalIfEsc: KeyboardEventHandler = (e) => {
+    if (e.key !== 'Escape') return
+
+    setModalProps({ hidden: true, children: <></> })
+  }
 
   return (
-    <main className={styles.root}>
+    <main className={styles.root} onKeyUp={hideModalIfEsc}>
       <section className={styles.container}>
         {title ? (
           <>
@@ -25,6 +32,7 @@ const DashboardLayout = ({ title, children }: DashboardLayoutProps) => {
       </section>
       <DashboardHeader />
       <FlashMessage {...flashProps} />
+      <Modal {...modalProps} />
     </main>
   )
 }

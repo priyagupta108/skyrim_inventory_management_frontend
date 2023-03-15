@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
 import classNames from 'classnames'
-import { type FlashColors, type FlashProps } from '../../types/flashMessages'
+import { type FlashColors, type FlashProps } from '../../types/pageContext'
 import styles from './flashMessage.module.css'
 
 const colors: FlashColors = {
