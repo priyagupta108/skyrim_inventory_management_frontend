@@ -140,7 +140,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
                         Unit Weight
                         <input
                           class="_input_003550"
-                          inputmode="numeric"
+                          inputmode="decimal"
                           min="0"
                           name="unit_weight"
                           placeholder="Unit Weight"
@@ -311,7 +311,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
                       Unit Weight
                       <input
                         class="_input_003550"
-                        inputmode="numeric"
+                        inputmode="decimal"
                         min="0"
                         name="unit_weight"
                         placeholder="Unit Weight"
@@ -539,7 +539,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                         Unit Weight
                         <input
                           class="_input_003550"
-                          inputmode="numeric"
+                          inputmode="decimal"
                           min="0"
                           name="unit_weight"
                           placeholder="Unit Weight"
@@ -1006,7 +1006,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                       Unit Weight
                       <input
                         class="_input_003550"
-                        inputmode="numeric"
+                        inputmode="decimal"
                         min="0"
                         name="unit_weight"
                         placeholder="Unit Weight"
@@ -1530,7 +1530,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
                         Unit Weight
                         <input
                           class="_input_003550"
-                          inputmode="numeric"
+                          inputmode="decimal"
                           min="0"
                           name="unit_weight"
                           placeholder="Unit Weight"
@@ -1701,7 +1701,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
                       Unit Weight
                       <input
                         class="_input_003550"
-                        inputmode="numeric"
+                        inputmode="decimal"
                         min="0"
                         name="unit_weight"
                         placeholder="Unit Weight"
@@ -1962,7 +1962,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
                         Unit Weight
                         <input
                           class="_input_003550"
-                          inputmode="numeric"
+                          inputmode="decimal"
                           min="0"
                           name="unit_weight"
                           placeholder="Unit Weight"
@@ -2166,7 +2166,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
                       Unit Weight
                       <input
                         class="_input_003550"
-                        inputmode="numeric"
+                        inputmode="decimal"
                         min="0"
                         name="unit_weight"
                         placeholder="Unit Weight"

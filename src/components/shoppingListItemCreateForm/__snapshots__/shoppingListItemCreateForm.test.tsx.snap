@@ -68,7 +68,7 @@ exports[`ShoppingListItemCreateForm > matches snapshot 1`] = `
                 Unit Weight
                 <input
                   class="_input_003550"
-                  inputmode="numeric"
+                  inputmode="decimal"
                   min="0"
                   name="unit_weight"
                   placeholder="Unit Weight"
@@ -163,7 +163,7 @@ exports[`ShoppingListItemCreateForm > matches snapshot 1`] = `
               Unit Weight
               <input
                 class="_input_003550"
-                inputmode="numeric"
+                inputmode="decimal"
                 min="0"
                 name="unit_weight"
                 placeholder="Unit Weight"
