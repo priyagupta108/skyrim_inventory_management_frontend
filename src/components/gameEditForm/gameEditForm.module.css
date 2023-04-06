@@ -1,16 +1,21 @@
 .root {
   font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
-  padding: 8px 16px;
+  padding: 24px;
   margin: 0 auto;
   width: 80%;
   background-color: #f0f0f0;
 }
 
+.header {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
 .fieldset {
   border: none;
-  margin: 0;
   padding: 4px 0;
   display: grid;
+  margin-bottom: 12px;
 }
 
 .fieldset:first-of-type {
@@ -50,11 +55,16 @@
   border: 1px solid var(--button-border-color);
   border-radius: 3px;
   padding: 8px 16px;
-  margin-bottom: 1.5rem;
 }
 
 .submit:hover {
   background-color: var(--button-hover-color);
+}
+
+@media (min-width: 481px) {
+  .root {
+    padding: 32px;
+  }
 }
 
 @media (min-width: 601px) {

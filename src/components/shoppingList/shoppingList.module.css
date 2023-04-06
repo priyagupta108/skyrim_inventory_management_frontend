@@ -1,0 +1,67 @@
+.root {
+  font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
+  background-color: var(--scheme-color);
+  color: var(--text-color-primary);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 0 auto;
+}
+
+.root:hover,
+.root:hover .trigger,
+.root:hover .form {
+  background-color: var(--hover-color);
+}
+
+.trigger {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+}
+
+.icons {
+  margin: 8px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.icon {
+  color: var(--text-color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.icon:hover {
+  color: var(--scheme-color-lightest);
+}
+
+.form {
+  height: 26px;
+  margin-left: 8px;
+  padding: 7px 0;
+  max-width: var(--max-title-width);
+}
+
+.title {
+  font-size: 1.25rem;
+  line-height: 1.25;
+  margin: 8px 0 8px 8px;
+}
+
+.details {
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+}
+
+.emptyList {
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: var(--scheme-color-lighter);
+  color: var(--text-color-secondary);
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+}

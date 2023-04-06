@@ -1,0 +1,122 @@
+.root {
+  font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
+  background-color: var(--main-color);
+  border-bottom: none;
+}
+
+.root.expanded {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.root:hover {
+  background-color: var(--hover-color);
+}
+
+.trigger {
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.descriptionContainer {
+  display: grid;
+  border-right: 1px solid var(--border-color);
+  align-items: center;
+}
+
+.descriptionContainerEditable {
+  composes: descriptionContainer;
+  grid-template-columns: 25% 75%;
+}
+
+.description {
+  color: var(--title-text-color);
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 16px 12px;
+  line-height: 1.25;
+}
+
+.quantity {
+  color: var(--title-text-color);
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 16px 12px;
+  text-align: center;
+  align-self: center;
+}
+
+.quantityEditable {
+  composes: quantity;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.quantityContent {
+  overflow-wrap: break-word;
+}
+
+.editIcons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 8px 4px;
+}
+
+.icon {
+  display: inline-grid;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon:disabled {
+  cursor: not-allowed;
+}
+
+.icon:hover .fa,
+.icon:disabled .fa {
+  color: var(--body-background-color);
+}
+
+.fa {
+  color: var(--title-text-color);
+}
+
+.details {
+  background-color: var(--body-background-color);
+  color: var(--body-text-color);
+  border-bottom: var(--border-color);
+  padding: 16px;
+}
+
+.label {
+  margin: 0;
+}
+
+.value {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+@media (min-width: 481px) {
+  .descriptionContainerEditable {
+    grid-template-columns: 20% 80%;
+  }
+
+  .descriptionContainerEditable .description {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1025px) {
+  .descriptionContainerEditable {
+    grid-template-columns: 16% 84%;
+  }
+}

@@ -68,7 +68,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
       setFlashProps({
         hidden: false,
         type: 'error',
-        message: message,
+        message,
       })
     }
   }
@@ -115,6 +115,8 @@ export const GamesProvider = ({ children }: ProviderProps) => {
 
   const fetchGames = useCallback(() => {
     if (user && token) {
+      setGamesLoadingState(LOADING)
+
       getGames(token)
         .then(({ json }) => {
           if (Array.isArray(json)) {
