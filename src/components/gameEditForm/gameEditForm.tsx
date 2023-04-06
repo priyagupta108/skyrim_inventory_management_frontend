@@ -5,7 +5,7 @@ import {
   type FormEventHandler,
 } from 'react'
 import { RequestGame as Game } from '../../types/apiData'
-import { useGamesContext } from '../../hooks/contexts'
+import { usePageContext, useGamesContext } from '../../hooks/contexts'
 import colorSchemes, { ColorScheme } from '../../utils/colorSchemes'
 import styles from './gameEditForm.module.css'
 
@@ -22,6 +22,7 @@ const GameEditForm = ({
   description,
   buttonColor,
 }: GameEditFormProps) => {
+  const { setModalProps } = usePageContext()
   const { updateGame } = useGamesContext()
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -63,7 +64,11 @@ const GameEditForm = ({
     const formData = new FormData(formRef.current)
     const game = extractAttributes(formData)
 
-    if (game) updateGame(gameId, game)
+    if (game) {
+      updateGame(gameId, game)
+    } else {
+      setModalProps({ hidden: true, children: <></> })
+    }
   }
 
   useEffect(() => {
