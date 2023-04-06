@@ -49,13 +49,13 @@ const ShoppingListItemCreateForm = ({ listId }: CreateFormProps) => {
     ) as Record<string, string>
 
     const returnValue: RequestShoppingListItem = {
-      description: attributes.description,
+      description: attributes.description?.trim(),
       quantity: Number(attributes.quantity),
     }
 
     if (attributes.unit_weight)
       returnValue.unit_weight = Number(attributes.unit_weight)
-    if (attributes.notes) returnValue.notes = attributes.notes
+    if (attributes.notes) returnValue.notes = attributes.notes.trim()
 
     return returnValue
   }

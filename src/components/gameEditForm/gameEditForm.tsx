@@ -38,17 +38,19 @@ const GameEditForm = ({
     '--button-border-color': colorRef.current.borderColor,
   } as CSSProperties
 
-  const extractAttributes = (formData: FormData): Game => {
+  const extractAttributes = (formData: FormData): Game | null => {
     const values = Object.fromEntries(Array.from(formData.entries())) as Record<
       string,
       string
     >
     const attributes: Game = {}
-    const newName = values.name || null
-    const newDescription = values.description || null
+    const newName = values.name?.trim() || null
+    const newDescription = values.description?.trim() || null
 
     if (newName !== name) attributes.name = newName
     if (newDescription !== description) attributes.description = newDescription
+
+    if (!Object.keys(attributes).length) return null
 
     return attributes
   }
@@ -61,7 +63,7 @@ const GameEditForm = ({
     const formData = new FormData(formRef.current)
     const game = extractAttributes(formData)
 
-    updateGame(gameId, game)
+    if (game) updateGame(gameId, game)
   }
 
   useEffect(() => {

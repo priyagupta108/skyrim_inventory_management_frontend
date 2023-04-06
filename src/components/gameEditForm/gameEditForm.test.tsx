@@ -95,5 +95,83 @@ describe('GameEditForm', () => {
         description: 'New description',
       })
     })
+
+    test('trims strings', () => {
+      const game = games[0]
+      const contextValue = {
+        ...gamesContextValue,
+        updateGame: vitest
+          .fn()
+          .mockImplementation(
+            (_gameId: number, _attributes: RequestGame) => {}
+          ),
+      }
+
+      const wrapper = renderAuthenticated(
+        <PageProvider>
+          <GamesContext.Provider value={contextValue}>
+            <GameEditForm
+              gameId={game.id}
+              name={game.name}
+              description={game.description}
+              buttonColor={GREEN}
+            />
+          </GamesContext.Provider>
+        </PageProvider>
+      )
+
+      const nameInput = wrapper.getByTestId('editNameField') as HTMLInputElement
+      const descInput = wrapper.getByTestId(
+        'editDescriptionField'
+      ) as HTMLInputElement
+      const button = wrapper.getByTestId(
+        'submitGameEditForm'
+      ) as HTMLButtonElement
+
+      fireEvent.change(nameInput, { target: { value: ' Something new ' } })
+      fireEvent.change(descInput, {
+        target: { value: '  New description    ' },
+      })
+
+      act(() => button.click())
+
+      expect(contextValue.updateGame).toHaveBeenCalledWith(game.id, {
+        name: 'Something new',
+        description: 'New description',
+      })
+    })
+
+    test("doesn't update if attributes aren't changed", () => {
+      const game = games[0]
+      const contextValue = {
+        ...gamesContextValue,
+        updateGame: vitest
+          .fn()
+          .mockImplementation(
+            (_gameId: number, _attributes: RequestGame) => {}
+          ),
+      }
+
+      const wrapper = renderAuthenticated(
+        <PageProvider>
+          <GamesContext.Provider value={contextValue}>
+            <GameEditForm
+              gameId={game.id}
+              name={game.name}
+              description={game.description}
+              buttonColor={GREEN}
+            />
+          </GamesContext.Provider>
+        </PageProvider>
+      )
+
+      const button = wrapper.getByTestId(
+        'submitGameEditForm'
+      ) as HTMLButtonElement
+
+      act(() => button.click())
+
+      expect(contextValue.updateGame).not.toHaveBeenCalled()
+    })
   })
 })

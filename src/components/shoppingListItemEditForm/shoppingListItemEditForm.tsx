@@ -54,7 +54,7 @@ const ShoppingListItemEditForm = ({
     if (typeof newQty === 'number' && newQty !== quantity)
       attributes.quantity = newQty
     if (newWeight !== unitWeight) attributes.unit_weight = newWeight
-    if (newNotes !== notes) attributes.notes = newNotes
+    if (newNotes !== notes) attributes.notes = newNotes?.trim()
 
     if (!Object.keys(attributes).length) return null
 

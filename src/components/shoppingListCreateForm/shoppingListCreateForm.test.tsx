@@ -173,7 +173,7 @@ describe('ShoppingListCreateForm', () => {
 
   describe('submitting the form', () => {
     describe('when the form is enabled', () => {
-      test('calls the createShoppingList function', () => {
+      test('trims the title and calls the createShoppingList function', () => {
         const createShoppingList = vitest.fn()
         const contextValue = {
           ...shoppingListsContextValue,
@@ -193,10 +193,9 @@ describe('ShoppingListCreateForm', () => {
         const input = wrapper.getByPlaceholderText('Title')
         const button = wrapper.getByText('Create')
 
-        act(() => {
-          fireEvent.change(input, { target: { value: 'New Shopping List' } })
-          fireEvent.click(button)
-        })
+        fireEvent.change(input, { target: { value: '   New Shopping List  ' } })
+
+        act(() => fireEvent.click(button))
 
         expect(createShoppingList).toHaveBeenCalledWith(
           { title: 'New Shopping List' },

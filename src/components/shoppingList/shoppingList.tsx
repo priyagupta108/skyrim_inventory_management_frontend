@@ -114,12 +114,18 @@ const ShoppingList = ({
     }
   }
 
-  const extractAttributes = (formData: FormData): RequestShoppingList => {
-    const attributes = ({ title } = Object.fromEntries(
+  const extractAttributes = (
+    formData: FormData
+  ): RequestShoppingList | null => {
+    const attributes = Object.fromEntries(
       Array.from(formData.entries())
-    ) as Record<string, string>)
+    ) as Record<string, string>
 
-    return attributes
+    attributes.title = attributes.title?.trim()
+
+    if (attributes.title === title) return null
+
+    return { title: attributes.title }
   }
 
   const submitAndHideForm: FormEventHandler = (e) => {
@@ -132,7 +138,8 @@ const ShoppingList = ({
 
     const onSuccess = () => setIsComponentVisible(false)
 
-    updateShoppingList(listId, attributes, onSuccess)
+    console.log('attributes: ', attributes)
+    if (attributes) updateShoppingList(listId, attributes, onSuccess)
   }
 
   useEffect(() => {

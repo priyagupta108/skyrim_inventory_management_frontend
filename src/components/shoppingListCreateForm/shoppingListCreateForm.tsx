@@ -30,7 +30,7 @@ const ShoppingListCreateForm = () => {
     >
     const attributes: RequestShoppingList = {}
 
-    if (values.title) attributes.title = values.title
+    if (values.title) attributes.title = values.title.trim()
 
     return attributes
   }

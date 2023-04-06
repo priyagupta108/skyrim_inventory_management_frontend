@@ -72,11 +72,10 @@ describe('ShoppingListItemCreateForm', () => {
       const quantityField = wrapper.getByLabelText('Quantity')
       const form = wrapper.getByLabelText('Shopping list item creation form')
 
-      act(() => {
-        fireEvent.change(descField, { target: { value: 'Iron ingot' } })
-        fireEvent.change(quantityField, { target: { value: '2' } })
-        fireEvent.submit(form)
-      })
+      fireEvent.change(descField, { target: { value: '  Iron ingot    ' } })
+      fireEvent.change(quantityField, { target: { value: '2' } })
+
+      act(() => fireEvent.submit(form))
 
       expect(createShoppingListItem).toHaveBeenCalledWith(
         4,
