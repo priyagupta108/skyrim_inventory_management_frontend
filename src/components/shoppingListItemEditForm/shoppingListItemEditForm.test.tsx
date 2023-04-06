@@ -93,17 +93,18 @@ describe('ShoppingListItemEditForm', () => {
 
         const qtyInput = wrapper.getByLabelText('Quantity')
         const weightInput = wrapper.getByLabelText('Unit Weight')
+        const notesInput = wrapper.getByLabelText('Notes')
         const form = wrapper.getByTestId('editShoppingListItem6Form')
 
-        act(() => {
-          fireEvent.change(qtyInput, { target: { value: '4' } })
-          fireEvent.change(weightInput, { target: { value: '0.1' } })
-          fireEvent.submit(form)
-        })
+        fireEvent.change(qtyInput, { target: { value: '4' } })
+        fireEvent.change(weightInput, { target: { value: '0.1' } })
+        fireEvent.change(notesInput, { target: { value: '  New notes    ' } })
+
+        act(() => fireEvent.submit(form))
 
         expect(updateShoppingListItem).toHaveBeenCalledWith(
           6,
-          { quantity: 4, unit_weight: 0.1 },
+          { quantity: 4, unit_weight: 0.1, notes: 'New notes' },
           expect.any(Function)
         )
       })

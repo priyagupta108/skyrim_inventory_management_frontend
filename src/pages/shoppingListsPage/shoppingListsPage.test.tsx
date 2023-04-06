@@ -812,7 +812,7 @@ describe('ShoppingListsPage', () => {
       beforeEach(() => mockServer.resetHandlers())
       afterAll(() => mockServer.close())
 
-      test('updates the title', async () => {
+      test('trims and updates the title', async () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
@@ -832,7 +832,7 @@ describe('ShoppingListsPage', () => {
         const editForm = wrapper.getByLabelText('List title edit form')
 
         fireEvent.change(titleInput, {
-          target: { value: 'Alchemy Ingredients' },
+          target: { value: ' Alchemy Ingredients  ' },
         })
 
         act(() => fireEvent.submit(editForm))

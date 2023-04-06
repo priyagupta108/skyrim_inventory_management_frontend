@@ -71,8 +71,6 @@ describe('<GameCreateForm />', () => {
           const createGame = vitest
             .fn()
             .mockImplementation((_game: RequestGame) => {})
-          const destroyGame = () => {}
-          const updateGame = () => {}
 
           const wrapper = renderAuthenticated(
             <PageProvider>
@@ -92,6 +90,39 @@ describe('<GameCreateForm />', () => {
             fireEvent.change(nameInput, { target: { value: 'Skyrim' } })
             fireEvent.change(descInput, {
               target: { value: 'Custom description' },
+            })
+            fireEvent.submit(form)
+          })
+
+          expect(createGame).toHaveBeenCalledWith(
+            { name: 'Skyrim', description: 'Custom description' },
+            expect.any(Function)
+          )
+        })
+
+        test('trims strings', () => {
+          const createGame = vitest
+            .fn()
+            .mockImplementation((_game: RequestGame) => {})
+
+          const wrapper = renderAuthenticated(
+            <PageProvider>
+              <GamesContext.Provider
+                value={{ ...gamesContextValue, createGame }}
+              >
+                <GameCreateForm />
+              </GamesContext.Provider>
+            </PageProvider>
+          )
+
+          const nameInput = wrapper.getByTestId('createNameField')
+          const descInput = wrapper.getByTestId('createDescriptionField')
+          const form = wrapper.getByTestId('gameCreateFormForm')
+
+          act(() => {
+            fireEvent.change(nameInput, { target: { value: '   Skyrim  ' } })
+            fireEvent.change(descInput, {
+              target: { value: ' Custom description   ' },
             })
             fireEvent.submit(form)
           })

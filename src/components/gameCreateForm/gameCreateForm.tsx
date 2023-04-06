@@ -37,8 +37,8 @@ const GameCreateForm = ({ disabled }: GameCreateFormProps) => {
       string
     >
     return {
-      name: values.name || null,
-      description: values.description || null,
+      name: values.name?.trim() || null,
+      description: values.description?.trim() || null,
     }
   }
 
