@@ -1,6 +1,5 @@
 import { describe, test, expect, vitest } from 'vitest'
 import { act, fireEvent } from '@testing-library/react'
-import { RequestGame } from '../../types/apiData'
 import { renderAuthenticated } from '../../support/testUtils'
 import { allGames as games } from '../../support/data/games'
 import { gamesContextValue } from '../../support/data/contextValues'
@@ -84,7 +83,7 @@ describe('GameEditForm', () => {
       fireEvent.change(nameInput, { target: { value: 'Something new' } })
       fireEvent.change(descInput, { target: { value: 'New description' } })
 
-      act(() => button.click())
+      act(() => fireEvent.click(button))
 
       expect(contextValue.updateGame).toHaveBeenCalledWith(game.id, {
         name: 'Something new',
@@ -125,7 +124,7 @@ describe('GameEditForm', () => {
         target: { value: '  New description    ' },
       })
 
-      act(() => button.click())
+      act(() => fireEvent.click(button))
 
       expect(contextValue.updateGame).toHaveBeenCalledWith(game.id, {
         name: 'Something new',
@@ -157,7 +156,7 @@ describe('GameEditForm', () => {
         'submitGameEditForm'
       ) as HTMLButtonElement
 
-      act(() => button.click())
+      act(() => fireEvent.click(button))
 
       expect(contextValue.updateGame).not.toHaveBeenCalled()
     })
