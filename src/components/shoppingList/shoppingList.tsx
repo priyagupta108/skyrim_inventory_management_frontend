@@ -138,7 +138,11 @@ const ShoppingList = ({
 
     const onSuccess = () => setIsComponentVisible(false)
 
-    if (attributes) updateShoppingList(listId, attributes, onSuccess)
+    if (attributes) {
+      updateShoppingList(listId, attributes, onSuccess)
+    } else {
+      setIsComponentVisible(false)
+    }
   }
 
   useEffect(() => {
