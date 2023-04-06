@@ -48,6 +48,7 @@ export const EditableWithListItems = () => (
       <ShoppingList listId={32} title="Proudspire Manor" editable>
         <ShoppingListItem
           itemId={1}
+          listTitle="Proudspire Manor"
           description="Steel Ingot"
           quantity={5}
           unitWeight={1.0}
@@ -55,6 +56,7 @@ export const EditableWithListItems = () => (
         />
         <ShoppingListItem
           itemId={2}
+          listTitle="Proudspire Manor"
           description="This item has a really really really really really long description for testing purposes"
           quantity={200000000000}
           unitWeight={400000000000}
@@ -69,7 +71,7 @@ export const EditableWithListItems = () => (
 export const NotEditableNoListItems = () => (
   <Providers>
     <ColorProvider colorScheme={PINK}>
-      <ShoppingList listId={32} title="Proudspire Manor" />
+      <ShoppingList listId={32} title="All Items" />
     </ColorProvider>
   </Providers>
 )
@@ -77,15 +79,17 @@ export const NotEditableNoListItems = () => (
 export const NotEditableWithListItems = () => (
   <Providers>
     <ColorProvider colorScheme={YELLOW}>
-      <ShoppingList listId={32} title="Proudspire Manor">
+      <ShoppingList listId={32} title="All Items">
         <ShoppingListItem
           itemId={1}
+          listTitle="All Items"
           description="Steel Ingot"
           quantity={5}
           unitWeight={1.0}
         />
         <ShoppingListItem
           itemId={2}
+          listTitle="All Items"
           description="This item has a really really really really really long description for testing purposes"
           quantity={200000000000}
           unitWeight={400000000000}

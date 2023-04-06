@@ -8,6 +8,13 @@ Link to a Trello card but also explain some of the key context here (in case we 
 
 Summary of the changes made, preferably as a bulleted list
 
+## Required Tasks
+
+- [ ] Add/update automated tests
+- [ ] Add/update Storybook stories
+- [ ] Add/update docs
+- [ ] Verify TypeScript compiles
+
 ## Considerations
 
 Explanation of design/implementation decisions or which alternatives you considered or tried

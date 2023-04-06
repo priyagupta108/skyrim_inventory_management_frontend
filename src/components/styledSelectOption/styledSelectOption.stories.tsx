@@ -16,8 +16,8 @@ export default { title: 'StyledSelectOption' }
 export const WithShortName = () => (
   <StyledSelectOption
     optionName="Option 1"
-    onClick={() => {}}
-    onKeyDown={() => {}}
+    optionValue={12}
+    onSelected={() => {}}
     ariaSelected={false}
   />
 )
@@ -25,8 +25,8 @@ export const WithShortName = () => (
 export const WithLongName = () => (
   <StyledSelectOption
     optionName="Neque porro quisquam est quis dolorem ipsum quia dolor sit amet"
-    onClick={() => {}}
-    onKeyDown={() => {}}
+    optionValue="De finibus bonorum et malorum"
+    onSelected={() => {}}
     ariaSelected={false}
   />
 )
@@ -35,8 +35,8 @@ export const WithStyledParent = () => (
   <ul style={{ listStyleType: 'none', paddingLeft: '12px' }}>
     <StyledSelectOption
       optionName="Option 1"
-      onClick={() => {}}
-      onKeyDown={() => {}}
+      optionValue={23}
+      onSelected={() => {}}
       ariaSelected={false}
     />
   </ul>
@@ -52,8 +52,8 @@ export const WithStyledParent = () => (
 export const Selected = () => (
   <StyledSelectOption
     optionName="Option 1"
-    onClick={() => {}}
-    onKeyDown={() => {}}
+    optionValue="Option Value"
+    onSelected={() => {}}
     ariaSelected={true}
   />
 )

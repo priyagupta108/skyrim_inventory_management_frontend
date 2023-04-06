@@ -110,6 +110,8 @@ export const newShoppingListItem = (
   const newItem: ResponseShoppingListItem = {
     id: 42,
     list_id: listId,
+    description: 'Dummy description for TypeScript',
+    quantity: 1,
     unit_weight: null,
     notes: null,
     created_at: new Date(),
