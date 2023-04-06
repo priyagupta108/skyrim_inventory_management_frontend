@@ -138,7 +138,6 @@ const ShoppingList = ({
 
     const onSuccess = () => setIsComponentVisible(false)
 
-    console.log('attributes: ', attributes)
     if (attributes) updateShoppingList(listId, attributes, onSuccess)
   }
 
