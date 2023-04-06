@@ -57,11 +57,7 @@ describe('GameEditForm', () => {
       const game = games[0]
       const contextValue = {
         ...gamesContextValue,
-        updateGame: vitest
-          .fn()
-          .mockImplementation(
-            (_gameId: number, _attributes: RequestGame) => {}
-          ),
+        updateGame: vitest.fn(),
       }
 
       const wrapper = renderAuthenticated(
@@ -100,11 +96,7 @@ describe('GameEditForm', () => {
       const game = games[0]
       const contextValue = {
         ...gamesContextValue,
-        updateGame: vitest
-          .fn()
-          .mockImplementation(
-            (_gameId: number, _attributes: RequestGame) => {}
-          ),
+        updateGame: vitest.fn(),
       }
 
       const wrapper = renderAuthenticated(
@@ -145,11 +137,7 @@ describe('GameEditForm', () => {
       const game = games[0]
       const contextValue = {
         ...gamesContextValue,
-        updateGame: vitest
-          .fn()
-          .mockImplementation(
-            (_gameId: number, _attributes: RequestGame) => {}
-          ),
+        updateGame: vitest.fn(),
       }
 
       const wrapper = renderAuthenticated(
