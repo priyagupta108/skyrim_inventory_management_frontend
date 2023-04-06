@@ -141,7 +141,7 @@ const ShoppingListItemCreateForm = ({ listId }: CreateFormProps) => {
             <input
               className={styles.input}
               type="number"
-              inputMode="numeric"
+              inputMode="decimal"
               name="unit_weight"
               min={0}
               step={0.1}
