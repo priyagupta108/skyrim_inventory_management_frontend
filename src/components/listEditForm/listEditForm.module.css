@@ -4,7 +4,6 @@
   align-content: center;
   max-width: var(--max-width);
   background-color: var(--scheme-color);
-  border-bottom: 1px solid var(--border-color);
 }
 
 .input {
@@ -12,10 +11,10 @@
   font-size: 1.25rem;
   font-weight: 700;
   padding: 0;
-  padding-right: 8px;
   background-color: inherit;
   color: var(--text-color);
-  border-style: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .submit {
