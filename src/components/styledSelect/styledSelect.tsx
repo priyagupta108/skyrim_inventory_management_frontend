@@ -38,7 +38,7 @@ const truncatedText = (text: string, width?: number) => {
 
   // 48px is the width of the button (32px) + side margins (16px)
   const maxWidth = width - 48
-  let textWidth = measureText(text)
+  const textWidth = measureText(text)
 
   if (textWidth < maxWidth) return text
 
