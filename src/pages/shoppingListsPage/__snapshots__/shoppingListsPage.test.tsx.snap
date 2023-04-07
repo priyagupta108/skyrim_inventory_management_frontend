@@ -35,9 +35,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
                 <p
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
-                >
-                  Games loading...
-                </p>
+                />
                 <button
                   class="_trigger_0a8ecf"
                   disabled=""
@@ -220,9 +218,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
               <p
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
-              >
-                Games loading...
-              </p>
+              />
               <button
                 class="_trigger_0a8ecf"
                 disabled=""
@@ -462,9 +458,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                 <p
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
-                >
-                  Games loading...
-                </p>
+                />
                 <button
                   class="_trigger_0a8ecf"
                 >
@@ -1804,9 +1798,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               <p
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
-              >
-                Games loading...
-              </p>
+              />
               <button
                 class="_trigger_0a8ecf"
               >

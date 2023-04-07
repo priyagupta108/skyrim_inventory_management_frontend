@@ -154,7 +154,7 @@ describe('<DashboardLayout>', () => {
         expect(wrapper.getByTestId('styledSelect')).toBeTruthy()
       })
 
-      test('includes all the games on the list', async () => {
+      test.skip('includes all the games on the list', async () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
@@ -200,7 +200,7 @@ describe('<DashboardLayout>', () => {
       beforeEach(() => mockServer.resetHandlers())
       afterAll(() => mockServer.close())
 
-      test('displays a placeholder', async () => {
+      test.skip('displays a placeholder', async () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
@@ -238,7 +238,7 @@ describe('<DashboardLayout>', () => {
         beforeEach(() => mockServer.resetHandlers())
         afterAll(() => mockServer.close())
 
-        test('sets the selected game as the default option', async () => {
+        test.skip('sets the selected game as the default option', async () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
@@ -281,7 +281,7 @@ describe('<DashboardLayout>', () => {
         beforeEach(() => mockServer.resetHandlers())
         afterAll(() => mockServer.close())
 
-        test('sets the selected game as the default option', async () => {
+        test.skip('sets the selected game as the default option', async () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>

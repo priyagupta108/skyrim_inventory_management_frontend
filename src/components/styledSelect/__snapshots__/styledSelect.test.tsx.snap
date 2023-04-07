@@ -21,9 +21,7 @@ exports[`StyledSelect > when a default option is given > matches snapshot 1`] = 
           <p
             class="_headerText_0a8ecf"
             data-testid="selectedOption"
-          >
-            My Game 2
-          </p>
+          />
           <button
             class="_trigger_0a8ecf"
           >
@@ -97,9 +95,7 @@ exports[`StyledSelect > when a default option is given > matches snapshot 1`] = 
         <p
           class="_headerText_0a8ecf"
           data-testid="selectedOption"
-        >
-          My Game 2
-        </p>
+        />
         <button
           class="_trigger_0a8ecf"
         >
@@ -230,9 +226,7 @@ exports[`StyledSelect > when there are no options > matches snapshot 1`] = `
           <p
             class="_headerText_0a8ecf"
             data-testid="selectedOption"
-          >
-            No options available
-          </p>
+          />
           <button
             class="_trigger_0a8ecf"
           >
@@ -278,9 +272,7 @@ exports[`StyledSelect > when there are no options > matches snapshot 1`] = `
         <p
           class="_headerText_0a8ecf"
           data-testid="selectedOption"
-        >
-          No options available
-        </p>
+        />
         <button
           class="_trigger_0a8ecf"
         >

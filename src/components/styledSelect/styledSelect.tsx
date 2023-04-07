@@ -1,14 +1,9 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  type MouseEventHandler,
-  type CSSProperties,
-} from 'react'
+import { useState, useEffect, type CSSProperties } from 'react'
 import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { BLUE } from '../../utils/colorSchemes'
+import useSize from '../../hooks/useSize'
 import useComponentVisible from '../../hooks/useComponentVisible'
 import StyledSelectOption from '../styledSelectOption/styledSelectOption'
 import styles from './styledSelect.module.css'
@@ -27,8 +22,33 @@ interface StyledSelectProps {
   className?: string
 }
 
-const truncatedText = (text: string) => {
-  return text.length > 24 ? `${text.substring(0, 23).trim()}...` : text
+const measureText = (text: string) => {
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')
+
+  if (!context) return 0
+
+  context.font = '16px Quattrocento Sans'
+
+  return context.measureText(text).width
+}
+
+const truncatedText = (text: string, width?: number) => {
+  if (!width) return
+
+  const maxWidth = width - 48
+  let textWidth = measureText(text)
+
+  if (textWidth < maxWidth) return text
+
+  let maxLength = text.length - 3
+
+  while (measureText(`${text.trim()}...`) > maxWidth) {
+    maxLength--
+    text = text.substring(0, maxLength - 1)
+  }
+
+  return `${text.trim()}...`
 }
 
 const isEqual = (option1: SelectOption, option2: SelectOption) =>
@@ -51,6 +71,7 @@ const StyledSelect = ({
     componentRef,
     triggerRef,
   } = useComponentVisible()
+  const size = useSize(triggerRef)
 
   const colorVars = {
     '--button-background-color': BLUE.schemeColorDarkest,
@@ -112,7 +133,10 @@ const StyledSelect = ({
         aria-expanded={isComponentVisible}
       >
         <p className={styles.headerText} data-testid="selectedOption">
-          {truncatedText(options.length ? headerText : placeholder)}
+          {truncatedText(
+            options.length ? headerText : placeholder,
+            size?.width
+          )}
         </p>
         <button className={styles.trigger} disabled={disabled}>
           <FontAwesomeIcon className={styles.fa} icon={faAngleDown} />
