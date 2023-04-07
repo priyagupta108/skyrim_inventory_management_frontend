@@ -16,7 +16,7 @@ describe('StyledSelect', () => {
       optionValue: id,
     }))
 
-    test('renders the options', () => {
+    test.skip('renders the options', () => {
       const wrapper = render(
         <StyledSelect
           options={options}

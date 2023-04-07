@@ -1,5 +1,11 @@
-import { type KeyboardEventHandler, type MouseEventHandler } from 'react'
+import {
+  useRef,
+  type KeyboardEventHandler,
+  type MouseEventHandler,
+} from 'react'
 import classNames, { type Argument } from 'classnames'
+import { measureText } from '../../utils/measureText'
+import useSize from '../../hooks/useSize'
 import styles from './styledSelectOption.module.css'
 
 interface StyledSelectOptionProps {
@@ -17,10 +23,29 @@ const StyledSelectOption = ({
   ariaSelected,
   className,
 }: StyledSelectOptionProps) => {
-  const displayName = () =>
-    optionName.length > 24
-      ? `${optionName.substring(0, 23).trim()}...`
-      : optionName
+  const componentRef = useRef<HTMLLIElement>(null)
+  const size = useSize(componentRef)
+
+  const displayName = (maxWidth?: number) => {
+    if (!maxWidth) return
+
+    const font = '16px Quattrocento Sans'
+    const textWidth = measureText(optionName, font)
+
+    if (textWidth < maxWidth) return optionName
+
+    // Subtract ~3 since we'll be adding ellipses to the
+    // option name if it is truncated
+    let maxLength = optionName.length - 3
+    let text = optionName
+
+    while (measureText(`${text.trim()}...`, font) >= maxWidth) {
+      maxLength--
+      text = text.substring(0, maxLength - 1)
+    }
+
+    return `${text.trim()}...`
+  }
 
   const onClick: MouseEventHandler = (e) => {
     e.preventDefault()
@@ -38,6 +63,7 @@ const StyledSelectOption = ({
   return (
     <li
       className={classNames(styles.root, className)}
+      ref={componentRef}
       onClick={onClick}
       onKeyDown={onKeyDown}
       role="option"
@@ -45,7 +71,7 @@ const StyledSelectOption = ({
       aria-selected={ariaSelected}
       data-option-value={optionValue}
     >
-      {displayName()}
+      {displayName(size?.width)}
     </li>
   )
 }

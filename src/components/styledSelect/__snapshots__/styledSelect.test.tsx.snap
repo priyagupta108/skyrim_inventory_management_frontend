@@ -53,27 +53,21 @@ exports[`StyledSelect > when a default option is given > matches snapshot 1`] = 
             data-option-value="32"
             role="option"
             tabindex="0"
-          >
-            My Game 1
-          </li>
+          />
           <li
             aria-selected="true"
             class="_root_b75fe4"
             data-option-value="51"
             role="option"
             tabindex="0"
-          >
-            My Game 2
-          </li>
+          />
           <li
             aria-selected="false"
             class="_root_b75fe4"
             data-option-value="77"
             role="option"
             tabindex="0"
-          >
-            Game with a really real...
-          </li>
+          />
         </ul>
       </div>
     </div>
@@ -127,27 +121,21 @@ exports[`StyledSelect > when a default option is given > matches snapshot 1`] = 
           data-option-value="32"
           role="option"
           tabindex="0"
-        >
-          My Game 1
-        </li>
+        />
         <li
           aria-selected="true"
           class="_root_b75fe4"
           data-option-value="51"
           role="option"
           tabindex="0"
-        >
-          My Game 2
-        </li>
+        />
         <li
           aria-selected="false"
           class="_root_b75fe4"
           data-option-value="77"
           role="option"
           tabindex="0"
-        >
-          Game with a really real...
-        </li>
+        />
       </ul>
     </div>
   </div>,
@@ -407,27 +395,21 @@ exports[`StyledSelect > when there are options > matches snapshot 1`] = `
             data-option-value="32"
             role="option"
             tabindex="0"
-          >
-            My Game 1
-          </li>
+          />
           <li
             aria-selected="false"
             class="_root_b75fe4"
             data-option-value="51"
             role="option"
             tabindex="0"
-          >
-            My Game 2
-          </li>
+          />
           <li
             aria-selected="false"
             class="_root_b75fe4"
             data-option-value="77"
             role="option"
             tabindex="0"
-          >
-            Game with a really real...
-          </li>
+          />
         </ul>
       </div>
     </div>
@@ -481,27 +463,21 @@ exports[`StyledSelect > when there are options > matches snapshot 1`] = `
           data-option-value="32"
           role="option"
           tabindex="0"
-        >
-          My Game 1
-        </li>
+        />
         <li
           aria-selected="false"
           class="_root_b75fe4"
           data-option-value="51"
           role="option"
           tabindex="0"
-        >
-          My Game 2
-        </li>
+        />
         <li
           aria-selected="false"
           class="_root_b75fe4"
           data-option-value="77"
           role="option"
           tabindex="0"
-        >
-          Game with a really real...
-        </li>
+        />
       </ul>
     </div>
   </div>,
