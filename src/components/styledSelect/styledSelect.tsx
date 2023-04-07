@@ -36,11 +36,14 @@ const measureText = (text: string) => {
 const truncatedText = (text: string, width?: number) => {
   if (!width) return
 
+  // 48px is the width of the button (32px) + side margins (16px)
   const maxWidth = width - 48
   let textWidth = measureText(text)
 
   if (textWidth < maxWidth) return text
 
+  // Subtract ~3 since we will be adding ellipses to any truncated
+  // option names
   let maxLength = text.length - 3
 
   while (measureText(`${text.trim()}...`) > maxWidth) {
