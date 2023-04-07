@@ -5,6 +5,13 @@
   color: #000;
 }
 
+.root:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #f0f0f0;
+}
+
 .container {
   padding: 24px 0;
   margin: 0 auto;
