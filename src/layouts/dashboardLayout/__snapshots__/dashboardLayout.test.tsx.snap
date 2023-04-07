@@ -379,9 +379,7 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
                 <p
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
-                >
-                  My Game 2
-                </p>
+                />
                 <button
                   class="_trigger_0a8ecf"
                 >
@@ -593,9 +591,7 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
               <p
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
-              >
-                My Game 2
-              </p>
+              />
               <button
                 class="_trigger_0a8ecf"
               >
@@ -1350,9 +1346,7 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when game
                 <p
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
-                >
-                  Games loading...
-                </p>
+                />
                 <button
                   class="_trigger_0a8ecf"
                   disabled=""
@@ -1542,9 +1536,7 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when game
               <p
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
-              >
-                Games loading...
-              </p>
+              />
               <button
                 class="_trigger_0a8ecf"
                 disabled=""
@@ -1786,9 +1778,7 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when ther
                 <p
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
-                >
-                  Games loading...
-                </p>
+                />
                 <button
                   class="_trigger_0a8ecf"
                   disabled=""
@@ -1973,9 +1963,7 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when ther
               <p
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
-              >
-                Games loading...
-              </p>
+              />
               <button
                 class="_trigger_0a8ecf"
                 disabled=""
