@@ -26,8 +26,11 @@ const StyledSelectOption = ({
   const componentRef = useRef<HTMLLIElement>(null)
   const size = useSize(componentRef)
 
-  const displayName = (maxWidth?: number) => {
-    if (!maxWidth) return
+  const displayName = (width?: number) => {
+    if (!width) return
+
+    // 16 = amount of side padding
+    const maxWidth = width - 16
 
     const font = '16px Quattrocento Sans'
     const textWidth = measureText(optionName, font)
