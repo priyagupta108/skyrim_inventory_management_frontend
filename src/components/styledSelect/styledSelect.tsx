@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { BLUE } from '../../utils/colorSchemes'
+import { measureText } from '../../utils/measureText'
 import useSize from '../../hooks/useSize'
 import useComponentVisible from '../../hooks/useComponentVisible'
 import StyledSelectOption from '../styledSelectOption/styledSelectOption'
@@ -22,23 +23,13 @@ interface StyledSelectProps {
   className?: string
 }
 
-const measureText = (text: string) => {
-  const canvas = document.createElement('canvas')
-  const context = canvas.getContext('2d')
-
-  if (!context) return 0
-
-  context.font = '16px Quattrocento Sans'
-
-  return context.measureText(text).width
-}
-
 const truncatedText = (text: string, width?: number) => {
   if (!width) return
 
   // 48px is the width of the button (32px) + side margins (16px)
   const maxWidth = width - 48
-  const textWidth = measureText(text)
+  const font = '16px Quattrocento Sans'
+  const textWidth = measureText(text, font)
 
   if (textWidth < maxWidth) return text
 
@@ -46,7 +37,7 @@ const truncatedText = (text: string, width?: number) => {
   // option names
   let maxLength = text.length - 3
 
-  while (measureText(`${text.trim()}...`) > maxWidth) {
+  while (measureText(`${text.trim()}...`, font) >= maxWidth) {
     maxLength--
     text = text.substring(0, maxLength - 1)
   }
