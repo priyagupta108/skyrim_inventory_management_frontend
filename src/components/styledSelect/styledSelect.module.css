@@ -70,13 +70,3 @@
 .hidden {
   display: none;
 }
-
-@media (min-width: 769px) {
-  .root {
-    font-size: 1.025rem;
-  }
-
-  .headerText {
-    font-size: 1.025rem;
-  }
-}

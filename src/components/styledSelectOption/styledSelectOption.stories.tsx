@@ -22,9 +22,11 @@ export const WithShortName = () => (
   />
 )
 
+// Ugly name but this name caused it to wrap weirdly in the past so
+// this name will be used to ensure that isn't happening.
 export const WithLongName = () => (
   <StyledSelectOption
-    optionName="Neque porro quisquam est quis dolorem ipsum quia dolor sit amet"
+    optionName="This Name Has 50 Characters Exactly 1234 Wwwwwwwww"
     optionValue="De finibus bonorum et malorum"
     onSelected={() => {}}
     ariaSelected={false}
@@ -35,6 +37,17 @@ export const WithStyledParent = () => (
   <ul style={{ listStyleType: 'none', paddingLeft: '12px' }}>
     <StyledSelectOption
       optionName="Option 1"
+      optionValue={23}
+      onSelected={() => {}}
+      ariaSelected={false}
+    />
+  </ul>
+)
+
+export const WithLongNameAndStyledParent = () => (
+  <ul style={{ listStyleType: 'none', paddingLeft: '12px' }}>
+    <StyledSelectOption
+      optionName="This Name Has 50 Characters Exactly 1234 Wwwwwwwww"
       optionValue={23}
       onSelected={() => {}}
       ariaSelected={false}

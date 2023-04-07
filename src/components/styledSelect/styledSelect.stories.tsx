@@ -33,11 +33,16 @@ export const WithLongOptions = () => (
   />
 )
 
-export const WithDefaultOption = () => (
+options.push({
+  optionName: "This Name Has 50 Characters Exactly 1234 Wwwwwwwww",
+  optionValue: 27
+})
+
+export const WithLongDefaultOption = () => (
   <StyledSelect
     options={options}
     onOptionSelected={() => {}}
-    defaultOption={options[1]}
+    defaultOption={options[-1]}
     placeholder="Select an option..."
   />
 )

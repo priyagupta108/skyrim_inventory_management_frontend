@@ -12,6 +12,7 @@ import { useColorScheme } from '../../hooks/contexts'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons'
 import styles from './listEditForm.module.css'
+import { measureText } from '../../utils/measureText'
 
 const FIXED_BUTTON_WIDTH = 72 // px
 
@@ -33,14 +34,8 @@ const ListEditForm = ({
   const MAX_TEXT_WIDTH = maxTotalWidth - FIXED_BUTTON_WIDTH - 2
 
   const getInputTextWidth = (text: string) => {
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d')
-
-    if (!context) return 0
-
-    context.font = '21px Quattrocento Sans'
-
-    const textWidth = context.measureText(text).width
+    const font = '21px Quattrocento Sans'
+    const textWidth = measureText(text, font)
 
     return Math.min(textWidth, MAX_TEXT_WIDTH)
   }
