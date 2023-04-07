@@ -40,7 +40,7 @@ const StyledSelectOption = ({
     // Subtract ~3 since we'll be adding ellipses to the
     // option name if it is truncated
     let maxLength = optionName.length - 3
-    let text = optionName
+    let text = optionName.substring(0, maxLength - 1)
 
     while (measureText(`${text.trim()}...`, font) >= maxWidth) {
       maxLength--

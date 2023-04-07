@@ -36,6 +36,7 @@ const truncatedText = (text: string, width?: number) => {
   // Subtract ~3 since we will be adding ellipses to any truncated
   // option names
   let maxLength = text.length - 3
+  text = text.substring(0, maxLength - 1)
 
   while (measureText(`${text.trim()}...`, font) >= maxWidth) {
     maxLength--
