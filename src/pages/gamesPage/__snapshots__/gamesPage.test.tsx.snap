@@ -109,8 +109,12 @@ exports[`<GamesPage /> > viewing games > when loading > matches snapshot 1`] = `
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -220,8 +224,12 @@ exports[`<GamesPage /> > viewing games > when loading > matches snapshot 1`] = `
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -434,8 +442,12 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -591,8 +603,12 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -805,8 +821,12 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -962,8 +982,12 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -1176,8 +1200,12 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -1333,8 +1361,12 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,

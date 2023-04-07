@@ -179,8 +179,12 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -360,8 +364,12 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -1755,8 +1763,12 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -3093,8 +3105,12 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,

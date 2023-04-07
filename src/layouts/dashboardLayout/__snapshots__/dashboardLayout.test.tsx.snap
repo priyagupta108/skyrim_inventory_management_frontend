@@ -140,8 +140,12 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -282,8 +286,12 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -549,8 +557,12 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -759,8 +771,12 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -1024,8 +1040,12 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -1232,8 +1252,12 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -1477,8 +1501,12 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when game
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -1665,8 +1693,12 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when game
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -1905,8 +1937,12 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when ther
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -2088,8 +2124,12 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when ther
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -2275,8 +2315,12 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -2405,8 +2449,12 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,

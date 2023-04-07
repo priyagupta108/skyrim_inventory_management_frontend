@@ -10,6 +10,84 @@ exports[`Modal > matches snapshot 1`] = `
         data-testid="modal"
       >
         <div
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          >
+            <div
+              class="_root_bc52a1"
+            >
+              <h3
+                class="_header_bc52a1"
+              >
+                Update Game
+              </h3>
+              <form
+                data-testid="editGame4Form"
+                style="--button-background-color: #ffbf00; --button-text-color: #4c3900; --button-hover-color: #e5ab00; --button-border-color: #cc9800;"
+              >
+                <fieldset
+                  class="_fieldset_bc52a1"
+                >
+                  <label
+                    class="_label_bc52a1"
+                    for="name"
+                  >
+                    Name
+                  </label>
+                  <input
+                    aria-label="Name"
+                    class="_input_bc52a1"
+                    data-testid="editNameField"
+                    name="name"
+                    pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                    title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
+                    type="text"
+                    value="My Game"
+                  />
+                </fieldset>
+                <fieldset
+                  class="_fieldset_bc52a1"
+                >
+                  <label
+                    class="_label_bc52a1"
+                    for="description"
+                  >
+                    Description
+                  </label>
+                  <input
+                    aria-label="Description"
+                    class="_input_bc52a1"
+                    data-testid="editDescriptionField"
+                    name="description"
+                    placeholder="Description"
+                    value=""
+                  />
+                </fieldset>
+                <button
+                  class="_submit_bc52a1"
+                  data-testid="submitGameEditForm"
+                  type="submit"
+                >
+                  Update Game
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_root_753dd0"
+      data-testid="modal"
+    >
+      <div
+        class="_container_753dd0"
+      >
+        <div
           class="_content_753dd0"
         >
           <div
@@ -71,76 +149,6 @@ exports[`Modal > matches snapshot 1`] = `
               </button>
             </form>
           </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="_root_753dd0"
-      data-testid="modal"
-    >
-      <div
-        class="_content_753dd0"
-      >
-        <div
-          class="_root_bc52a1"
-        >
-          <h3
-            class="_header_bc52a1"
-          >
-            Update Game
-          </h3>
-          <form
-            data-testid="editGame4Form"
-            style="--button-background-color: #ffbf00; --button-text-color: #4c3900; --button-hover-color: #e5ab00; --button-border-color: #cc9800;"
-          >
-            <fieldset
-              class="_fieldset_bc52a1"
-            >
-              <label
-                class="_label_bc52a1"
-                for="name"
-              >
-                Name
-              </label>
-              <input
-                aria-label="Name"
-                class="_input_bc52a1"
-                data-testid="editNameField"
-                name="name"
-                pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
-                title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
-                type="text"
-                value="My Game"
-              />
-            </fieldset>
-            <fieldset
-              class="_fieldset_bc52a1"
-            >
-              <label
-                class="_label_bc52a1"
-                for="description"
-              >
-                Description
-              </label>
-              <input
-                aria-label="Description"
-                class="_input_bc52a1"
-                data-testid="editDescriptionField"
-                name="description"
-                placeholder="Description"
-                value=""
-              />
-            </fieldset>
-            <button
-              class="_submit_bc52a1"
-              data-testid="submitGameEditForm"
-              type="submit"
-            >
-              Update Game
-            </button>
-          </form>
         </div>
       </div>
     </div>

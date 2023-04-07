@@ -190,8 +190,12 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -382,8 +386,12 @@ exports[`<DashboardPage /> > matches snapshot 1`] = `
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
@@ -540,8 +548,12 @@ exports[`<DashboardPage /> > when auth is loading > matches snapshot 1`] = `
           data-testid="modal"
         >
           <div
-            class="_content_753dd0"
-          />
+            class="_container_753dd0"
+          >
+            <div
+              class="_content_753dd0"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -641,8 +653,12 @@ exports[`<DashboardPage /> > when auth is loading > matches snapshot 1`] = `
         data-testid="modal"
       >
         <div
-          class="_content_753dd0"
-        />
+          class="_container_753dd0"
+        >
+          <div
+            class="_content_753dd0"
+          />
+        </div>
       </div>
     </main>
   </div>,
