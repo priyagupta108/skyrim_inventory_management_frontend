@@ -5,16 +5,18 @@
   line-height: 1.25;
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid #dedede;
+  box-sizing: border-box;
   padding: 16px;
   text-align: center;
   border-radius: 8px;
   box-shadow: 1px 1px 8px #dedede;
   position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   top: 128px;
   z-index: 1001;
-  width: 82%;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .hidden {
