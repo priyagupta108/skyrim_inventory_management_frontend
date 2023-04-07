@@ -19,8 +19,13 @@ const Modal = ({ hidden, children }: ModalProps) => {
       onMouseDown={hideModal}
       data-testid="modal"
     >
-      <div className={styles.content} onMouseDown={(e) => e.stopPropagation()}>
-        {children}
+      <div className={styles.container}>
+        <div
+          className={styles.content}
+          onMouseDown={(e) => e.stopPropagation()}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )

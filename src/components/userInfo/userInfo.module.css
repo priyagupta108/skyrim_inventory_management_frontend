@@ -34,19 +34,19 @@
   position: fixed;
   right: 16px;
   background-color: #f0f0f0;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #e3e3e3;
   border-radius: 5px;
   padding: 8px 24px;
-  box-shadow: -4px 4px 4px #d0d0d0;
+  box-shadow: -4px 4px 4px #e0e0e0;
   cursor: pointer;
-  opacity: 80%;
+  opacity: 90%;
 }
 
 .dropdown.active:hover,
 .dropdown.active:focus,
 .dropdown.active:active {
   background-color: #e0e0e0;
-  opacity: 80%;
+  opacity: 90%;
 }
 
 .signOutText {
