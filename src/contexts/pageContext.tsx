@@ -30,6 +30,7 @@ const PageContext = createContext<PageContextType>({
 const PageProvider = ({ children }: ProviderProps) => {
   const [flashProps, setFlashProps] = useState<FlashProps>(defaultFlashProps)
   const [modalProps, setModalProps] = useState<ModalProps>(defaultModalProps)
+  const [flashVisibleSince, setFlashVisibleSince] = useState<Date | null>(null)
 
   const value = {
     flashProps,
@@ -40,7 +41,19 @@ const PageProvider = ({ children }: ProviderProps) => {
 
   useEffect(() => {
     if (flashProps.hidden === false) {
-      setTimeout(() => setFlashProps({ ...flashProps, hidden: true }), 4000)
+      setFlashVisibleSince(new Date())
+
+      setTimeout(() => {
+        const now = new Date()
+
+        if (
+          flashVisibleSince &&
+          Number(now) - Number(flashVisibleSince) >= 4000
+        ) {
+          setFlashVisibleSince(null)
+          setFlashProps({ ...flashProps, hidden: true })
+        }
+      }, 4000)
     }
   }, [flashProps])
 
