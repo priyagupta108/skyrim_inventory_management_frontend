@@ -46,7 +46,10 @@ const PageProvider = ({ children }: ProviderProps) => {
       setTimeout(() => {
         const now = new Date()
 
-        if (flashVisibleSince && Number(now) - Number(flashVisibleSince) >= 4000) {
+        if (
+          flashVisibleSince &&
+          Number(now) - Number(flashVisibleSince) >= 4000
+        ) {
           setFlashVisibleSince(null)
           setFlashProps({ ...flashProps, hidden: true })
         }

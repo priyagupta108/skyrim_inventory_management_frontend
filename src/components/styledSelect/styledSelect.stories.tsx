@@ -34,8 +34,8 @@ export const WithLongOptions = () => (
 )
 
 options.push({
-  optionName: "This Name Has 50 Characters Exactly 1234 Wwwwwwwww",
-  optionValue: 27
+  optionName: 'This Name Has 50 Characters Exactly 1234 Wwwwwwwww',
+  optionValue: 27,
 })
 
 export const WithLongDefaultOption = () => (
