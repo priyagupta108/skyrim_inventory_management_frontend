@@ -597,16 +597,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                               >
                                 10
                               </p>
-                              <h4
-                                class="_label_fccc8d"
-                              >
-                                Notes:
-                              </h4>
-                              <p
-                                class="_value_fccc8d"
-                              >
-                                For Arniel Gane -- For trophy room
-                              </p>
                             </div>
                           </div>
                         </div>
@@ -660,16 +650,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                                 class="_value_fccc8d"
                               >
                                 400000000000
-                              </p>
-                              <h4
-                                class="_label_fccc8d"
-                              >
-                                Notes:
-                              </h4>
-                              <p
-                                class="_value_fccc8d"
-                              >
-                                -
                               </p>
                             </div>
                           </div>
@@ -1937,16 +1917,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             >
                               10
                             </p>
-                            <h4
-                              class="_label_fccc8d"
-                            >
-                              Notes:
-                            </h4>
-                            <p
-                              class="_value_fccc8d"
-                            >
-                              For Arniel Gane -- For trophy room
-                            </p>
                           </div>
                         </div>
                       </div>
@@ -2000,16 +1970,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                               class="_value_fccc8d"
                             >
                               400000000000
-                            </p>
-                            <h4
-                              class="_label_fccc8d"
-                            >
-                              Notes:
-                            </h4>
-                            <p
-                              class="_value_fccc8d"
-                            >
-                              -
                             </p>
                           </div>
                         </div>

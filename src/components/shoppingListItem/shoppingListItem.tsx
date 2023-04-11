@@ -256,8 +256,12 @@ const ShoppingListItem = ({
           <h4 className={styles.label}>Unit Weight:</h4>
           <p className={styles.value}>{formatWeight(unitWeight)}</p>
 
-          <h4 className={styles.label}>Notes:</h4>
-          <p className={styles.value}>{notes || '-'}</p>
+          {editable && (
+            <>
+              <h4 className={styles.label}>Notes:</h4>
+              <p className={styles.value}>{notes || '-'}</p>
+            </>
+          )}
         </div>
       </AnimateHeight>
     </div>
