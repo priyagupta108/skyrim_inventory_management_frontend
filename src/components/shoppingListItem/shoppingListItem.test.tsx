@@ -63,6 +63,7 @@ describe('ShoppingListItem', () => {
         expect(wrapper.getByText('Silver Necklace')).toBeTruthy()
         expect(wrapper.getByText('2')).toBeTruthy()
         expect(wrapper.getByText('1')).toBeTruthy()
+        expect(wrapper.getByText('To enchant')).toBeTruthy()
         expect(wrapper.queryByText('1.0')).toBeFalsy()
       })
 
@@ -148,6 +149,7 @@ describe('ShoppingListItem', () => {
         expect(wrapper.getByText('Silver Necklace')).toBeTruthy()
         expect(wrapper.getByText('2')).toBeTruthy()
         expect(wrapper.getByText('0.3')).toBeTruthy()
+        expect(wrapper.queryByText(/To enchant/)).toBeFalsy()
       })
 
       test('truncates unit weight values appropriately', () => {

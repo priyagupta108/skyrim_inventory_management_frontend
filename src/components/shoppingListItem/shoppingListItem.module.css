@@ -105,6 +105,10 @@
   line-height: 1.25;
 }
 
+.value:last-child {
+  margin-bottom: 0;
+}
+
 @media (min-width: 481px) {
   .descriptionContainerEditable {
     grid-template-columns: 20% 80%;

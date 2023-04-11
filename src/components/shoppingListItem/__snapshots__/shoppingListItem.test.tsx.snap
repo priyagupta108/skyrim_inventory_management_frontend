@@ -414,16 +414,6 @@ exports[`ShoppingListItem > displaying the list item > when the list item is not
               >
                 0.3
               </p>
-              <h4
-                class="_label_fccc8d"
-              >
-                Notes:
-              </h4>
-              <p
-                class="_value_fccc8d"
-              >
-                To enchant
-              </p>
             </div>
           </div>
         </div>
@@ -480,16 +470,6 @@ exports[`ShoppingListItem > displaying the list item > when the list item is not
               class="_value_fccc8d"
             >
               0.3
-            </p>
-            <h4
-              class="_label_fccc8d"
-            >
-              Notes:
-            </h4>
-            <p
-              class="_value_fccc8d"
-            >
-              To enchant
             </p>
           </div>
         </div>
