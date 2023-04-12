@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useRef } from 'react'
 import { ProviderProps } from '../types/contexts'
 import { type FlashProps, type ModalProps } from '../types/pageContext'
 
@@ -30,7 +30,8 @@ const PageContext = createContext<PageContextType>({
 const PageProvider = ({ children }: ProviderProps) => {
   const [flashProps, setFlashProps] = useState<FlashProps>(defaultFlashProps)
   const [modalProps, setModalProps] = useState<ModalProps>(defaultModalProps)
-  const [flashVisibleSince, setFlashVisibleSince] = useState<Date | null>(null)
+
+  const flashVisibleSince = useRef(0)
 
   const value = {
     flashProps,
@@ -40,21 +41,16 @@ const PageProvider = ({ children }: ProviderProps) => {
   }
 
   useEffect(() => {
-    if (flashProps.hidden === false) {
-      setFlashVisibleSince(new Date())
+    if (flashProps.hidden === true) return
 
-      setTimeout(() => {
-        const now = new Date()
+    flashVisibleSince.current = Number(new Date())
 
-        if (
-          flashVisibleSince &&
-          Number(now) - Number(flashVisibleSince) >= 4000
-        ) {
-          setFlashVisibleSince(null)
-          setFlashProps({ ...flashProps, hidden: true })
-        }
-      }, 4000)
-    }
+    setTimeout(() => {
+      if (Number(new Date()) - flashVisibleSince.current >= 4000) {
+        setFlashProps({ ...flashProps, hidden: true })
+        flashVisibleSince.current = 0
+      }
+    }, 4000)
   }, [flashProps])
 
   return <PageContext.Provider value={value}>{children}</PageContext.Provider>
