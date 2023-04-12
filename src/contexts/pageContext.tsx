@@ -31,7 +31,7 @@ const PageProvider = ({ children }: ProviderProps) => {
   const [flashProps, setFlashProps] = useState<FlashProps>(defaultFlashProps)
   const [modalProps, setModalProps] = useState<ModalProps>(defaultModalProps)
 
-  const flashVisibleSince = useRef<number>(0)
+  const flashVisibleSince = useRef(0)
 
   const value = {
     flashProps,
