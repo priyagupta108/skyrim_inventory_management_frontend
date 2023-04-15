@@ -1,9 +1,10 @@
 # Skyrim Inventory Management Frontend
 
-This is the rewritten frontend to Skyrim Inventory Management. The original frontend, which now runs on https://sim-legacy.danascheider.com, can be found at https://github.com/danascheider/sim_legacy_frontend. This rewrite has just begun and the README will be expanded with additional information as the app grows.
+This is the rewritten frontend to Skyrim Inventory Management. The original frontend, which has been decommissioned, can be found at https://github.com/danascheider/sim_legacy_frontend.
 
 ## Table of Contents
 
+- [Production Site](#production-site)
 - [Overview](#overview)
 - [Developer Information](#developer-information)
   - [Running Locally](#running-locally)
@@ -19,6 +20,10 @@ This is the rewritten frontend to Skyrim Inventory Management. The original fron
   - [GitHub Actions](#github-actions)
     - [Tests](#tests)
     - [Deploys](#deploys)
+
+## Production Site
+
+https://sim.danascheider.com
 
 ## Overview
 
