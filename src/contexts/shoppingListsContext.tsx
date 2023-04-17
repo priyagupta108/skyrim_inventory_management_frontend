@@ -34,35 +34,47 @@ export interface ShoppingListsContextType {
   createShoppingList: (
     attributes: RequestShoppingList,
     onSuccess?: CallbackFunction | null,
-    onError?: CallbackFunction | null
+    onError?: CallbackFunction | null,
+    idToken?: string | null,
+    retries?: number
   ) => void
   updateShoppingList: (
     listId: number,
     attributes: RequestShoppingList,
     onSuccess?: CallbackFunction | null,
-    onError?: CallbackFunction | null
+    onError?: CallbackFunction | null,
+    idToken?: string | null,
+    retries?: number
   ) => void
   destroyShoppingList: (
     listId: number,
     onSuccess?: CallbackFunction | null,
-    onError?: CallbackFunction | null
+    onError?: CallbackFunction | null,
+    idToken?: string | null,
+    retries?: number
   ) => void
   createShoppingListItem: (
     listId: number,
     attributes: RequestShoppingListItem,
     onSuccess?: CallbackFunction | null,
-    onError?: CallbackFunction | null
+    onError?: CallbackFunction | null,
+    idToken?: string | null,
+    retries?: number
   ) => void
   updateShoppingListItem: (
     itemId: number,
     attributes: RequestShoppingListItem,
     onSuccess?: CallbackFunction | null,
-    onError?: CallbackFunction | null
+    onError?: CallbackFunction | null,
+    idToken?: string | null,
+    retries?: number
   ) => void
   destroyShoppingListItem: (
     itemId: number,
     onSuccess?: CallbackFunction | null,
-    onError?: CallbackFunction | null
+    onError?: CallbackFunction | null,
+    idToken?: string | null,
+    retries?: number
   ) => void
 }
 
@@ -78,7 +90,8 @@ export const ShoppingListsContext = createContext<ShoppingListsContextType>({
 })
 
 export const ShoppingListsProvider = ({ children }: ProviderProps) => {
-  const { user, token, authLoading, requireLogin } = useGoogleLogin()
+  const { user, token, authLoading, requireLogin, withTokenRefresh } =
+    useGoogleLogin()
   const { setFlashProps } = usePageContext()
   const { gamesLoadingState, games } = useGamesContext()
   const queryString = useQueryString()
@@ -131,7 +144,9 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
     (
       attributes: RequestShoppingList,
       onSuccess?: CallbackFunction | null,
-      onError?: CallbackFunction | null
+      onError?: CallbackFunction | null,
+      idToken?: string | null,
+      retries?: number
     ) => {
       if (!activeGame) {
         setFlashProps({
@@ -144,8 +159,10 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
         return
       }
 
-      if (user && token) {
-        postShoppingLists(activeGame, attributes, token)
+      idToken ??= token
+
+      if (idToken) {
+        postShoppingLists(activeGame, attributes, idToken)
           .then(({ json }) => {
             if (Array.isArray(json)) {
               if (json.length == 2) {
@@ -166,7 +183,19 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e: ApiError) => {
-            if (e.code === 404) {
+            retries ??= 1
+
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                createShoppingList(
+                  attributes,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            } else if (e.code === 404) {
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -186,38 +215,51 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
   /**
    *
-   * Fetch shopping lists for the active game
+   * Fetch shopping lists for the active game and set
+   * them as the shoppingLists array
    *
    */
 
+  const setShoppingListsFromApi = (
+    idToken: string | null = token,
+    retries: number = 1
+  ) => {
+    if (!activeGame || !idToken) return
+
+    getShoppingLists(activeGame, idToken)
+      .then(({ json }) => {
+        if (Array.isArray(json)) {
+          setShoppingLists(json)
+          setShoppingListsLoadingState(DONE)
+        }
+      })
+      .catch((e: ApiError) => {
+        if (e.code === 401 && retries > 0) {
+          return withTokenRefresh((newToken) => {
+            setShoppingListsFromApi(newToken, retries - 1)
+          })
+        } else if (e.code === 404) {
+          setFlashProps({
+            hidden: false,
+            type: 'error',
+            message:
+              "The game you've selected doesn't exist, or doesn't belong to you. Please select another game and try again.",
+          })
+        } else {
+          handleApiError(e)
+        }
+
+        setShoppingLists([])
+        setShoppingListsLoadingState(ERROR)
+      })
+  }
+
   const fetchShoppingLists = useCallback(() => {
-    if (user && token && activeGame) {
+    if (token && activeGame) {
       setShoppingListsLoadingState(LOADING)
-
-      getShoppingLists(activeGame, token)
-        .then(({ json }) => {
-          if (Array.isArray(json)) {
-            setShoppingLists(json)
-            setShoppingListsLoadingState(DONE)
-          }
-        })
-        .catch((e: ApiError) => {
-          if (e.code === 404) {
-            setFlashProps({
-              hidden: false,
-              type: 'error',
-              message:
-                "The game you've selected doesn't exist, or doesn't belong to you. Please select another game and try again.",
-            })
-          } else {
-            handleApiError(e)
-          }
-
-          setShoppingLists([])
-          setShoppingListsLoadingState(ERROR)
-        })
+      setShoppingListsFromApi()
     }
-  }, [user, token, activeGame])
+  }, [token, activeGame])
 
   /**
    *
@@ -230,10 +272,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       listId: number,
       attributes: RequestShoppingList,
       onSuccess?: CallbackFunction | null,
-      onError?: CallbackFunction | null
+      onError?: CallbackFunction | null,
+      idToken?: string | null,
+      retries?: number
     ) => {
-      if (user && token) {
-        patchShoppingList(listId, attributes, token)
+      idToken ??= token
+
+      if (idToken) {
+        patchShoppingList(listId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
               const newShoppingLists = [...shoppingLists]
@@ -257,7 +303,20 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e: ApiError) => {
-            if (e.code === 404) {
+            retries ??= 1
+
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                updateShoppingList(
+                  listId,
+                  attributes,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            } else if (e.code === 404) {
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -272,7 +331,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, shoppingLists]
+    [token, shoppingLists]
   )
 
   /**
@@ -285,10 +344,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
     (
       listId: number,
       onSuccess?: CallbackFunction | null,
-      onError?: CallbackFunction | null
+      onError?: CallbackFunction | null,
+      idToken?: string | null,
+      retries?: number
     ) => {
-      if (user && token) {
-        deleteShoppingList(listId, token)
+      idToken ??= token
+
+      if (idToken) {
+        deleteShoppingList(listId, idToken)
           .then(({ json }) => {
             if ('errors' in json) {
               // This case should never happen because normally an ApiError
@@ -324,7 +387,19 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e: ApiError) => {
-            if (e.code === 404) {
+            retries ??= 1
+
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                destroyShoppingList(
+                  listId,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            } else if (e.code === 404) {
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -339,7 +414,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, shoppingLists]
+    [token, shoppingLists]
   )
 
   /**
@@ -353,10 +428,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       listId: number,
       attributes: RequestShoppingListItem,
       onSuccess?: CallbackFunction | null,
-      onError?: CallbackFunction | null
+      onError?: CallbackFunction | null,
+      idToken?: string | null,
+      retries?: number
     ) => {
-      if (user && token) {
-        postShoppingListItems(listId, attributes, token)
+      idToken ??= token
+
+      if (idToken) {
+        postShoppingListItems(listId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200 || status === 201) {
               const newShoppingLists = [...shoppingLists]
@@ -388,7 +467,20 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e: ApiError) => {
-            if (e.code === 404) {
+            retries ??= 1
+
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                createShoppingListItem(
+                  listId,
+                  attributes,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            } else if (e.code === 404) {
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -403,7 +495,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, shoppingLists]
+    [token, shoppingLists]
   )
 
   /**
@@ -417,10 +509,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       itemId: number,
       attributes: RequestShoppingListItem,
       onSuccess?: CallbackFunction | null,
-      onError?: CallbackFunction | null
+      onError?: CallbackFunction | null,
+      idToken?: string | null,
+      retries?: number
     ) => {
-      if (user && token) {
-        patchShoppingListItem(itemId, attributes, token)
+      idToken ??= token
+
+      if (idToken) {
+        patchShoppingListItem(itemId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
               const newShoppingLists = [...shoppingLists]
@@ -450,7 +546,20 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e: ApiError) => {
-            if (e.code === 404) {
+            retries ??= 1
+
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                updateShoppingListItem(
+                  itemId,
+                  attributes,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            } else if (e.code === 404) {
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -465,7 +574,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, shoppingLists]
+    [token, shoppingLists]
   )
 
   /**
@@ -478,9 +587,13 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
     (
       itemId: number,
       onSuccess?: CallbackFunction | null,
-      onError?: CallbackFunction | null
+      onError?: CallbackFunction | null,
+      idToken?: string | null,
+      retries?: number
     ) => {
-      if (user && token) {
+      idToken ??= token
+
+      if (idToken) {
         deleteShoppingListItem(itemId, token)
           .then(({ status, json }) => {
             if (status === 200) {
@@ -512,7 +625,17 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e: ApiError) => {
-            if (e.code === 404) {
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                destroyShoppingListItem(
+                  itemId,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            } else if (e.code === 404) {
               setFlashProps({
                 hidden: false,
                 type: 'error',

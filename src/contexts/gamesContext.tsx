@@ -19,15 +19,25 @@ export interface GamesContextType {
   createGame: (
     game: RequestGame,
     onSuccess?: CallbackFunction,
-    onError?: CallbackFunction
+    onError?: CallbackFunction,
+    idToken?: string | null,
+    retries?: number
   ) => void
   updateGame: (
     gameId: number,
     attributes: RequestGame,
     onSuccess?: CallbackFunction,
-    onError?: CallbackFunction
+    onError?: CallbackFunction,
+    idToken?: string | null,
+    retries?: number
   ) => void
-  destroyGame: (gameId: number) => void
+  destroyGame: (
+    gameId: number,
+    onSuccess?: CallbackFunction,
+    onError?: CallbackFunction,
+    idToken?: string | null,
+    retries?: number
+  ) => void
 }
 
 export const GamesContext = createContext<GamesContextType>({
@@ -39,7 +49,8 @@ export const GamesContext = createContext<GamesContextType>({
 })
 
 export const GamesProvider = ({ children }: ProviderProps) => {
-  const { user, token, authLoading, requireLogin } = useGoogleLogin()
+  const { user, token, authLoading, requireLogin, withTokenRefresh } =
+    useGoogleLogin()
   const [gamesLoadingState, setGamesLoadingState] = useState(LOADING)
   const [games, setGames] = useState<Game[]>([])
   const { setFlashProps, setModalProps } = usePageContext()
@@ -83,10 +94,14 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     (
       body: RequestGame,
       onSuccess?: CallbackFunction,
-      onError?: CallbackFunction
+      onError?: CallbackFunction,
+      idToken?: string | null,
+      retries?: number
     ) => {
-      if (user && token) {
-        postGames(body, token)
+      idToken ??= token
+
+      if (idToken) {
+        postGames(body, idToken)
           .then(({ json }) => {
             if ('name' in json) {
               setGames([json, ...games])
@@ -99,38 +114,65 @@ export const GamesProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e: ApiError) => {
+            retries ??= 1
+
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                createGame(
+                  body,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            }
+
             handleApiError(e)
             onError && onError()
           })
       }
     },
-    [user, token, games]
+    [token, games]
   )
 
   /**
    *
    * Retrieve all the current user's games from the API
+   * and set them as the games array
    *
    */
 
+  const setGamesFromApi = (idToken: string, retries: number = 1) => {
+    return getGames(idToken)
+      .then(({ json }) => {
+        if (Array.isArray(json)) {
+          setGames(json)
+          setGamesLoadingState(DONE)
+        }
+      })
+      .catch((e: ApiError) => {
+        if (e.code === 401 && retries > 0) {
+          return withTokenRefresh((newToken) => {
+            setGamesFromApi(newToken, retries - 1)
+          })
+        } else {
+          throw e
+        }
+      })
+  }
+
   const fetchGames = useCallback(() => {
-    if (user && token) {
+    if (token) {
       setGamesLoadingState(LOADING)
 
-      getGames(token)
-        .then(({ json }) => {
-          if (Array.isArray(json)) {
-            setGames(json)
-            setGamesLoadingState(DONE)
-          }
-        })
-        .catch((e: ApiError) => {
-          handleApiError(e)
-          setGames([])
-          setGamesLoadingState(ERROR)
-        })
+      setGamesFromApi(token).catch((e: ApiError) => {
+        handleApiError(e)
+        setGames([])
+        setGamesLoadingState(ERROR)
+      })
     }
-  }, [user, token])
+  }, [token])
 
   /**
    *
@@ -143,10 +185,14 @@ export const GamesProvider = ({ children }: ProviderProps) => {
       gameId: number,
       attributes: RequestGame,
       onSuccess?: CallbackFunction,
-      onError?: CallbackFunction
+      onError?: CallbackFunction,
+      idToken?: string | null,
+      retries?: number
     ) => {
-      if (user && token) {
-        patchGame(gameId, attributes, token)
+      idToken ??= token
+
+      if (idToken) {
+        patchGame(gameId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
               const newGames = games
@@ -165,7 +211,22 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               onSuccess && onSuccess()
             }
           })
-          .catch((e) => {
+          .catch((e: ApiError) => {
+            retries ??= 1
+
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                updateGame(
+                  gameId,
+                  attributes,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            }
+
             handleApiError(e)
 
             onError && onError()
@@ -185,10 +246,14 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     (
       gameId: number,
       onSuccess?: CallbackFunction,
-      onError?: CallbackFunction
+      onError?: CallbackFunction,
+      idToken?: string | null,
+      retries?: number
     ) => {
-      if (user && token) {
-        deleteGame(gameId, token)
+      idToken ??= token
+
+      if (idToken) {
+        deleteGame(gameId, idToken)
           .then(({ status }) => {
             if (status === 204) {
               const newGames = games.filter(({ id }) => id !== gameId)
@@ -202,7 +267,21 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               onSuccess && onSuccess()
             }
           })
-          .catch((e) => {
+          .catch((e: ApiError) => {
+            retries ??= 1
+
+            if (e.code === 401 && retries > 0) {
+              return withTokenRefresh((newToken) => {
+                destroyGame(
+                  gameId,
+                  onSuccess,
+                  onError,
+                  newToken,
+                  (retries as number) - 1
+                )
+              })
+            }
+
             handleApiError(e)
 
             onError && onError()
