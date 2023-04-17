@@ -233,7 +233,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, games]
+    [token, games]
   )
 
   /**
@@ -288,7 +288,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, games]
+    [token, games]
   )
 
   const value = {
@@ -307,7 +307,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     if (authLoading) return
 
     fetchGames()
-  }, [authLoading, fetchGames])
+  }, [authLoading])
 
   return <GamesContext.Provider value={value}>{children}</GamesContext.Provider>
 }

@@ -594,7 +594,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
-        deleteShoppingListItem(itemId, token)
+        deleteShoppingListItem(itemId, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
               const newShoppingLists = [...shoppingLists]
@@ -625,6 +625,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             }
           })
           .catch((e: ApiError) => {
+            retries ??= 1
+
             if (e.code === 401 && retries > 0) {
               return withTokenRefresh((newToken) => {
                 destroyShoppingListItem(
