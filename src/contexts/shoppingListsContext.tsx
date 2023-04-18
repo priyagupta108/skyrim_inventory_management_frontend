@@ -652,7 +652,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, shoppingLists]
+    [token, shoppingLists]
   )
 
   /**
@@ -693,7 +693,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
     if (authLoading) return
 
     fetchShoppingLists()
-  }, [authLoading, fetchShoppingLists])
+  }, [authLoading, activeGame])
 
   useEffect(() => {
     requireLogin()
