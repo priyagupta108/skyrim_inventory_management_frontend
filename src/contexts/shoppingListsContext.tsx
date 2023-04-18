@@ -90,8 +90,7 @@ export const ShoppingListsContext = createContext<ShoppingListsContextType>({
 })
 
 export const ShoppingListsProvider = ({ children }: ProviderProps) => {
-  const { user, token, authLoading, requireLogin, withTokenRefresh } =
-    useGoogleLogin()
+  const { token, authLoading, withTokenRefresh } = useGoogleLogin()
   const { setFlashProps } = usePageContext()
   const { gamesLoadingState, games } = useGamesContext()
   const queryString = useQueryString()
@@ -210,7 +209,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, activeGame, shoppingLists]
+    [token, activeGame, shoppingLists]
   )
 
   /**
@@ -694,10 +693,6 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
     fetchShoppingLists()
   }, [authLoading, activeGame])
-
-  useEffect(() => {
-    requireLogin()
-  }, [requireLogin])
 
   return (
     <ShoppingListsContext.Provider value={value}>

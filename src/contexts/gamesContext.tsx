@@ -49,8 +49,7 @@ export const GamesContext = createContext<GamesContextType>({
 })
 
 export const GamesProvider = ({ children }: ProviderProps) => {
-  const { user, token, authLoading, requireLogin, withTokenRefresh } =
-    useGoogleLogin()
+  const { token, authLoading, withTokenRefresh } = useGoogleLogin()
   const [gamesLoadingState, setGamesLoadingState] = useState(LOADING)
   const [games, setGames] = useState<Game[]>([])
   const { setFlashProps, setModalProps } = usePageContext()
@@ -298,10 +297,6 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     updateGame,
     destroyGame,
   }
-
-  useEffect(() => {
-    requireLogin()
-  }, [requireLogin])
 
   useEffect(() => {
     if (authLoading) return

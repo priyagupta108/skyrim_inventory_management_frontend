@@ -1,4 +1,5 @@
 import { useEffect, CSSProperties } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { PulseLoader } from 'react-spinners'
 import { type RelativePath } from '../../types/navigation'
 import { YELLOW, PINK, BLUE, GREEN, AQUA } from '../../utils/colorSchemes'
@@ -48,11 +49,12 @@ const loaderStyles: CSSProperties = {
 }
 
 const DashboardPage = () => {
-  const { authLoading, requireLogin } = useGoogleLogin()
+  const { token, authLoading } = useGoogleLogin()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    requireLogin()
-  }, [requireLogin])
+    if (!token && !authLoading) navigate(paths.home)
+  }, [token, authLoading])
 
   return (
     <DashboardLayout>
