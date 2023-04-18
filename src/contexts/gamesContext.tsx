@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState } from 'react'
+import { createContext, useCallback, useEffect, useState, useRef } from 'react'
 import { signOutWithGoogle } from '../firebase'
 import { type RequestGame, type ResponseGame as Game } from '../types/apiData'
 import { type ProviderProps } from '../types/contexts'
@@ -49,11 +49,12 @@ export const GamesContext = createContext<GamesContextType>({
 })
 
 export const GamesProvider = ({ children }: ProviderProps) => {
-  const { user, token, authLoading, requireLogin, withTokenRefresh } =
+  const { token, authLoading, requireLogin, withTokenRefresh } =
     useGoogleLogin()
   const [gamesLoadingState, setGamesLoadingState] = useState(LOADING)
   const [games, setGames] = useState<Game[]>([])
   const { setFlashProps, setModalProps } = usePageContext()
+  const previousTokenRef = useRef(token)
 
   /**
    *
@@ -304,10 +305,14 @@ export const GamesProvider = ({ children }: ProviderProps) => {
   }, [requireLogin])
 
   useEffect(() => {
-    if (authLoading) return
+    if (
+      authLoading ||
+      (token && previousTokenRef.current && previousTokenRef.current !== token)
+    )
+      return
 
     fetchGames()
-  }, [authLoading])
+  }, [authLoading, token])
 
   return <GamesContext.Provider value={value}>{children}</GamesContext.Provider>
 }

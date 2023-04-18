@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useCallback } from 'react'
+import { createContext, useEffect, useState, useRef, useCallback } from 'react'
 import { signOutWithGoogle } from '../firebase'
 import { type CallbackFunction } from '../types/functions'
 import {
@@ -99,6 +99,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   const [shoppingListsLoadingState, setShoppingListsLoadingState] =
     useState(LOADING)
   const [shoppingLists, setShoppingLists] = useState<ResponseShoppingList[]>([])
+  const previousTokenRef = useRef(token)
 
   /**
    *
@@ -690,10 +691,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   }, [queryString, gamesLoadingState, games])
 
   useEffect(() => {
-    if (authLoading) return
+    if (
+      authLoading ||
+      (token && previousTokenRef.current && previousTokenRef.current !== token)
+    )
+      return
 
     fetchShoppingLists()
-  }, [authLoading, activeGame])
+  }, [authLoading, activeGame, token])
 
   useEffect(() => {
     requireLogin()
