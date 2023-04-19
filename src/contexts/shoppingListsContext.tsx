@@ -90,7 +90,7 @@ export const ShoppingListsContext = createContext<ShoppingListsContextType>({
 })
 
 export const ShoppingListsProvider = ({ children }: ProviderProps) => {
-  const { user, token, authLoading, requireLogin, withTokenRefresh } =
+  const { token, authLoading, requireLogin, withTokenRefresh } =
     useGoogleLogin()
   const { setFlashProps } = usePageContext()
   const { gamesLoadingState, games } = useGamesContext()
@@ -211,7 +211,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           })
       }
     },
-    [user, token, activeGame, shoppingLists]
+    [token, activeGame, shoppingLists]
   )
 
   /**
