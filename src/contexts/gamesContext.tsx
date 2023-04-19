@@ -305,13 +305,18 @@ export const GamesProvider = ({ children }: ProviderProps) => {
   }, [requireLogin])
 
   useEffect(() => {
-    if (
-      authLoading ||
-      (token && previousTokenRef.current && previousTokenRef.current !== token)
-    )
-      return
+    if (authLoading) return
 
-    fetchGames()
+    // Only fetch games if token is present and
+    // (a) the token just changed from null to a string value or
+    // (b) the token is already set and it is the initial render
+    if (
+      token &&
+      (!previousTokenRef.current || previousTokenRef.current === token)
+    )
+      fetchGames()
+
+    previousTokenRef.current = token
   }, [authLoading, token])
 
   return <GamesContext.Provider value={value}>{children}</GamesContext.Provider>

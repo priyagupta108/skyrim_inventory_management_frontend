@@ -691,13 +691,18 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   }, [queryString, gamesLoadingState, games])
 
   useEffect(() => {
-    if (
-      authLoading ||
-      (token && previousTokenRef.current && previousTokenRef.current !== token)
-    )
-      return
+    if (authLoading) return
 
-    fetchShoppingLists()
+    // Only fetch shopping lists if token is present and
+    // (a) the token just changed from null to a string value or
+    // (b) the token is already set and it is the initial render
+    if (
+      token &&
+      (!previousTokenRef.current || previousTokenRef.current === token)
+    )
+      fetchShoppingLists()
+
+    previousTokenRef.current = token
   }, [authLoading, activeGame, token])
 
   useEffect(() => {
