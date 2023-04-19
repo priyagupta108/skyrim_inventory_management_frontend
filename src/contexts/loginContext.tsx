@@ -10,6 +10,7 @@ export interface LoginContextType {
   authLoading: boolean
   token: string | null
   requireLogin: () => void
+  withTokenRefresh: (fn: (idToken: string) => void) => void
   user?: User | null
 }
 
@@ -18,6 +19,7 @@ export const LoginContext = createContext<LoginContextType>({
   token: null,
   authLoading: true,
   requireLogin: () => {}, // noop
+  withTokenRefresh: () => {},
 })
 
 export const LoginProvider = ({ children }: ProviderProps) => {
@@ -31,19 +33,31 @@ export const LoginProvider = ({ children }: ProviderProps) => {
     }
   }, [user, authLoading])
 
+  const refreshToken = useCallback(() => {
+    if (user) user.getIdToken(true).then((idToken) => setToken(idToken))
+  }, [user])
+
+  const withTokenRefresh = (fn: Function) => {
+    if (user) {
+      user.getIdToken(true).then((idToken) => {
+        setToken(idToken)
+        fn(idToken)
+      })
+    }
+  }
+
   const value = {
     user,
     token,
     requireLogin,
+    withTokenRefresh,
     authLoading,
   }
 
   useEffect(() => {
     if (authError) signOutWithGoogle()
 
-    if (user) {
-      user.getIdToken(true).then((token) => setToken(token))
-    }
+    refreshToken()
   }, [user, authError])
 
   return <LoginContext.Provider value={value}>{children}</LoginContext.Provider>
