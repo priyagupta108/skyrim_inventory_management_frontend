@@ -1,3 +1,4 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { useRef, type FormEvent } from 'react'
 import { PINK } from '../../utils/colorSchemes'
 import { ColorProvider } from '../../contexts/colorContext'
@@ -19,10 +20,22 @@ const WrapperComponent = () => {
   )
 }
 
-export default { title: 'ListEditForm' }
+type EditFormStory = StoryObj<typeof WrapperComponent>
 
-export const Default = () => (
-  <ColorProvider colorScheme={PINK}>
-    <WrapperComponent />
-  </ColorProvider>
-)
+const meta: Meta<typeof WrapperComponent> = {
+  title: 'ListEditForm',
+  component: WrapperComponent,
+  decorators: [
+    (Story) => (
+      <ColorProvider colorScheme={PINK}>
+        <Story />
+      </ColorProvider>
+    ),
+  ],
+}
+
+export default meta
+
+export const Default: EditFormStory = {
+  render: () => <WrapperComponent />,
+}

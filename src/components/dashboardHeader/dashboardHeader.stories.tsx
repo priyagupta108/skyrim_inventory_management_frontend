@@ -1,3 +1,4 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 import { testUser } from '../../support/data/users'
 import {
@@ -7,35 +8,54 @@ import {
 import { LoginContext } from '../../contexts/loginContext'
 import DashboardHeader from './dashboardHeader'
 
-export default { title: 'DashboardHeader' }
+type Story = StoryObj<typeof DashboardHeader>
 
-export const Default = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={loginContextValue}>
-      <DashboardHeader />
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+const meta: Meta<typeof DashboardHeader> = {
+  title: 'DashboardHeader',
+  component: DashboardHeader,
+}
+
+export default meta
+
+export const Default: Story = {
+  render: () => {
+    return (
+      <BrowserRouter>
+        <LoginContext.Provider value={loginContextValue}>
+          <DashboardHeader />
+        </LoginContext.Provider>
+      </BrowserRouter>
+    )
+  },
+}
 
 const userWithAnonymousAvatar = {
   ...testUser,
   photoURL: null,
 }
 
-export const WithAnonymousAvatar = () => (
-  <BrowserRouter>
-    <LoginContext.Provider
-      value={{ ...loginContextValue, user: userWithAnonymousAvatar }}
-    >
-      <DashboardHeader />
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+export const WithAnonymousAvatar: Story = {
+  render: () => {
+    return (
+      <BrowserRouter>
+        <LoginContext.Provider
+          value={{ ...loginContextValue, user: userWithAnonymousAvatar }}
+        >
+          <DashboardHeader />
+        </LoginContext.Provider>
+      </BrowserRouter>
+    )
+  },
+}
 
-export const AuthLoading = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={loadingLoginContextValue}>
-      <DashboardHeader />
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+export const AuthLoading: Story = {
+  render: () => {
+    return (
+      <BrowserRouter>
+        <LoginContext.Provider value={loadingLoginContextValue}>
+          <DashboardHeader />
+        </LoginContext.Provider>
+      </BrowserRouter>
+    )
+  },
+}

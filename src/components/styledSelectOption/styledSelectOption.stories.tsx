@@ -1,6 +1,32 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import StyledSelectOption from './styledSelectOption'
 
-export default { title: 'StyledSelectOption' }
+type OptionStory = StoryObj<typeof StyledSelectOption>
+
+const meta: Meta<typeof StyledSelectOption> = {
+  title: 'StyledSelectOption',
+  component: StyledSelectOption,
+  decorators: [
+    (Story, { parameters }) => {
+      const { withStyledParent } = parameters
+      const styles = {
+        listStyleType: 'none',
+        paddingLeft: '12px',
+        width: '256px',
+      }
+
+      return withStyledParent ? (
+        <ul style={styles}>
+          <Story />
+        </ul>
+      ) : (
+        <Story />
+      )
+    },
+  ],
+}
+
+export default meta
 
 /**
  *
@@ -13,47 +39,41 @@ export default { title: 'StyledSelectOption' }
  *
  */
 
-export const WithShortName = () => (
-  <StyledSelectOption
-    optionName="Option 1"
-    optionValue={12}
-    onSelected={() => {}}
-    ariaSelected={false}
-  />
-)
+const onSelected = () => {}
+
+export const WithShortName: OptionStory = {
+  args: {
+    optionName: 'Option 1',
+    optionValue: 12,
+    onSelected,
+    ariaSelected: false,
+  },
+}
 
 // Ugly name but this name caused it to wrap weirdly in the past so
 // this name will be used to ensure that isn't happening.
-export const WithLongName = () => (
-  <StyledSelectOption
-    optionName="This Name Has 50 Characters Exactly 1234 Wwwwwwwww"
-    optionValue="De finibus bonorum et malorum"
-    onSelected={() => {}}
-    ariaSelected={false}
-  />
-)
+export const WithLongName: OptionStory = {
+  args: {
+    optionName: 'This Name Has 50 Characters Exactly 1234 Wwwwwwwww',
+    optionValue: 'De finibus bonorum et malorum',
+    onSelected,
+    ariaSelected: false,
+  },
+}
 
-export const WithStyledParent = () => (
-  <ul style={{ listStyleType: 'none', paddingLeft: '12px' }}>
-    <StyledSelectOption
-      optionName="Option 1"
-      optionValue={23}
-      onSelected={() => {}}
-      ariaSelected={false}
-    />
-  </ul>
-)
+export const WithStyledParent: OptionStory = {
+  args: WithShortName.args,
+  parameters: {
+    withStyledParent: true,
+  },
+}
 
-export const WithLongNameAndStyledParent = () => (
-  <ul style={{ listStyleType: 'none', paddingLeft: '12px' }}>
-    <StyledSelectOption
-      optionName="This Name Has 50 Characters Exactly 1234 Wwwwwwwww"
-      optionValue={23}
-      onSelected={() => {}}
-      ariaSelected={false}
-    />
-  </ul>
-)
+export const WithLongNameAndStyledParent: OptionStory = {
+  args: WithLongName.args,
+  parameters: {
+    withStyledParent: true,
+  },
+}
 
 /**
  *
@@ -62,11 +82,9 @@ export const WithLongNameAndStyledParent = () => (
  *
  */
 
-export const Selected = () => (
-  <StyledSelectOption
-    optionName="Option 1"
-    optionValue="Option Value"
-    onSelected={() => {}}
-    ariaSelected={true}
-  />
-)
+export const Selected: OptionStory = {
+  args: {
+    ...WithShortName.args,
+    ariaSelected: true,
+  },
+}

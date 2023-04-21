@@ -1,7 +1,15 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { allGames } from '../../support/data/games'
 import StyledSelect from './styledSelect'
 
-export default { title: 'StyledSelect' }
+type Story = StoryObj<typeof StyledSelect>
+
+const meta: Meta<typeof StyledSelect> = {
+  title: 'StyledSelect',
+  component: StyledSelect,
+}
+
+export default meta
 
 const options = allGames.map(({ name, id }) => ({
   optionName: name,
@@ -17,57 +25,43 @@ const options = allGames.map(({ name, id }) => ({
  */
 const longOptions = [...options, ...options]
 
-export const WithOptions = () => (
-  <StyledSelect
-    options={options}
-    onOptionSelected={() => {}}
-    placeholder="Doesn't matter"
-  />
-)
+const onOptionSelected = () => {}
 
-export const WithLongOptions = () => (
-  <StyledSelect
-    options={longOptions}
-    onOptionSelected={() => {}}
-    placeholder="Select an option..."
-  />
-)
+export const WithOptions: Story = {
+  args: {
+    options,
+    onOptionSelected,
+    defaultOption: options[0],
+    placeholder: "Doesn't matter",
+    disabled: false,
+  },
+}
+
+export const WithLongOptions: Story = {
+  args: {
+    ...WithOptions.args,
+    options: longOptions,
+  },
+}
 
 options.push({
   optionName: 'This Name Has 50 Characters Exactly 1234 Wwwwwwwww',
   optionValue: 27,
 })
 
-export const WithLongDefaultOption = () => (
-  <StyledSelect
-    options={options}
-    onOptionSelected={() => {}}
-    defaultOption={options[-1]}
-    placeholder="Select an option..."
-  />
-)
+export const WithLongDefaultOption: Story = {
+  args: {
+    options,
+    onOptionSelected,
+    defaultOption: options[options.length - 1],
+    placeholder: "Doesn't matter",
+  },
+}
 
-export const NoOptions = () => (
-  <StyledSelect
-    options={[]}
-    onOptionSelected={() => {}}
-    placeholder="No options available"
-  />
-)
-
-export const NoOptionsLongPlaceholder = () => (
-  <StyledSelect
-    options={[]}
-    onOptionSelected={() => {}}
-    placeholder="This placeholder is way too long."
-  />
-)
-
-export const Disabled = () => (
-  <StyledSelect
-    options={options}
-    onOptionSelected={() => {}}
-    placeholder="Doesn't matter"
-    disabled
-  />
-)
+export const NoOptions: Story = {
+  args: {
+    options: [],
+    onOptionSelected,
+    placeholder: 'No options available',
+  },
+}

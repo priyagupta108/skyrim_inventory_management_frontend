@@ -1,3 +1,4 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 import { LoginContext } from '../../contexts/loginContext'
 import {
@@ -5,20 +6,33 @@ import {
   unauthenticatedLoginContextValue,
 } from '../../support/data/contextValues'
 import HomePage from './homePage'
-export default { title: 'HomePage' }
 
-export const Default = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={unauthenticatedLoginContextValue}>
-      <HomePage />
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+type HomePageStory = StoryObj<typeof HomePage>
 
-export const AuthLoading = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={loadingLoginContextValue}>
-      <HomePage />
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+const meta: Meta<typeof HomePage> = {
+  title: 'HomePage',
+  component: HomePage,
+  decorators: [
+    (Story, { parameters }) => (
+      <BrowserRouter>
+        <LoginContext.Provider value={parameters.loginContextValue}>
+          <Story />
+        </LoginContext.Provider>
+      </BrowserRouter>
+    ),
+  ],
+}
+
+export default meta
+
+export const Default: HomePageStory = {
+  parameters: {
+    loginContextValue: unauthenticatedLoginContextValue,
+  },
+}
+
+export const AuthLoading: HomePageStory = {
+  parameters: {
+    loginContextValue: loadingLoginContextValue,
+  },
+}

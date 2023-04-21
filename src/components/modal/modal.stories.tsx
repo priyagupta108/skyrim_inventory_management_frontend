@@ -1,10 +1,20 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import GameEditForm from '../gameEditForm/gameEditForm'
 import Modal from './modal'
 
-export default { title: 'Modal' }
+type Story = StoryObj<typeof Modal>
 
-export const Default = () => (
-  <Modal hidden={false}>
-    <GameEditForm gameId={4} name="My Game 1" description={null} />
-  </Modal>
-)
+const meta: Meta<typeof Modal> = {
+  title: 'Modal',
+  component: Modal,
+}
+
+export default meta
+
+export const Default: Story = {
+  render: () => (
+    <Modal hidden={false}>
+      <GameEditForm gameId={4} name="My Game 1" description={null} />
+    </Modal>
+  ),
+}
