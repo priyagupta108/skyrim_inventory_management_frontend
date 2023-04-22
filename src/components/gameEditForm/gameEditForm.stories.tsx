@@ -35,8 +35,7 @@ export const Default: EditFormStory = {
 
 export const WithoutDescription: EditFormStory = {
   args: {
-    gameId: id,
-    name,
+    ...Default.args,
     description: null,
   },
 }

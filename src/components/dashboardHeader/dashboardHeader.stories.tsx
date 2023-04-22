@@ -8,24 +8,27 @@ import {
 import { LoginContext } from '../../contexts/loginContext'
 import DashboardHeader from './dashboardHeader'
 
-type Story = StoryObj<typeof DashboardHeader>
+type HeaderStory = StoryObj<typeof DashboardHeader>
 
 const meta: Meta<typeof DashboardHeader> = {
   title: 'DashboardHeader',
   component: DashboardHeader,
+  decorators: [
+    (Story, { parameters }) => (
+      <BrowserRouter>
+        <LoginContext.Provider value={parameters.loginContextValue}>
+          <Story />
+        </LoginContext.Provider>
+      </BrowserRouter>
+    )
+  ]
 }
 
 export default meta
 
-export const Default: Story = {
-  render: () => {
-    return (
-      <BrowserRouter>
-        <LoginContext.Provider value={loginContextValue}>
-          <DashboardHeader />
-        </LoginContext.Provider>
-      </BrowserRouter>
-    )
+export const Default: HeaderStory = {
+  parameters: {
+    loginContextValue,
   },
 }
 
@@ -34,28 +37,14 @@ const userWithAnonymousAvatar = {
   photoURL: null,
 }
 
-export const WithAnonymousAvatar: Story = {
-  render: () => {
-    return (
-      <BrowserRouter>
-        <LoginContext.Provider
-          value={{ ...loginContextValue, user: userWithAnonymousAvatar }}
-        >
-          <DashboardHeader />
-        </LoginContext.Provider>
-      </BrowserRouter>
-    )
+export const WithAnonymousAvatar: HeaderStory = {
+  parameters: {
+    loginContextValue: { ...loginContextValue, user: userWithAnonymousAvatar },
   },
 }
 
-export const AuthLoading: Story = {
-  render: () => {
-    return (
-      <BrowserRouter>
-        <LoginContext.Provider value={loadingLoginContextValue}>
-          <DashboardHeader />
-        </LoginContext.Provider>
-      </BrowserRouter>
-    )
+export const AuthLoading: HeaderStory = {
+  parameters: {
+    loginContextValue: loadingLoginContextValue,
   },
 }

@@ -36,6 +36,4 @@ const meta: Meta<typeof WrapperComponent> = {
 
 export default meta
 
-export const Default: EditFormStory = {
-  render: () => <WrapperComponent />,
-}
+export const Default: EditFormStory = {}
