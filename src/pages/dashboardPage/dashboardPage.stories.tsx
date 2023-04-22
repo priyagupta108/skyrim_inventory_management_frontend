@@ -1,3 +1,4 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 import { LoginContext } from '../../contexts/loginContext'
 import { PageProvider } from '../../contexts/pageContext'
@@ -7,24 +8,34 @@ import {
 } from '../../support/data/contextValues'
 import DashboardPage from './dashboardPage'
 
-export default { title: 'DashboardPage' }
+type DashboardStory = StoryObj<typeof DashboardPage>
 
-export const Default = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={loginContextValue}>
-      <PageProvider>
-        <DashboardPage />
-      </PageProvider>
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+const meta: Meta<typeof DashboardPage> = {
+  title: 'DashboardPage',
+  component: DashboardPage,
+  decorators: [
+    (Story, { parameters }) => (
+      <BrowserRouter>
+        <LoginContext.Provider value={parameters.loginContextValue}>
+          <PageProvider>
+            <Story />
+          </PageProvider>
+        </LoginContext.Provider>
+      </BrowserRouter>
+    ),
+  ],
+}
 
-export const AuthLoading = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={loadingLoginContextValue}>
-      <PageProvider>
-        <DashboardPage />
-      </PageProvider>
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+export default meta
+
+export const Default: DashboardStory = {
+  parameters: {
+    loginContextValue,
+  },
+}
+
+export const AuthLoading: DashboardStory = {
+  parameters: {
+    loginContextValue: loadingLoginContextValue,
+  },
+}

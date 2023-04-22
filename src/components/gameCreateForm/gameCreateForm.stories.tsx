@@ -1,22 +1,31 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { gamesContextValue } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
 import GameCreateForm from './gameCreateForm'
 
-export default { title: 'GameCreateForm' }
+type CreateFormStory = StoryObj<typeof GameCreateForm>
 
-export const Default = () => (
-  <PageProvider>
-    <GamesContext.Provider value={gamesContextValue}>
-      <GameCreateForm />
-    </GamesContext.Provider>
-  </PageProvider>
-)
+const meta: Meta<typeof GameCreateForm> = {
+  title: 'GameCreateForm',
+  component: GameCreateForm,
+  decorators: [
+    (Story) => (
+      <PageProvider>
+        <GamesContext.Provider value={gamesContextValue}>
+          <Story />
+        </GamesContext.Provider>
+      </PageProvider>
+    ),
+  ],
+}
 
-export const Disabled = () => (
-  <PageProvider>
-    <GamesContext.Provider value={gamesContextValue}>
-      <GameCreateForm disabled />
-    </GamesContext.Provider>
-  </PageProvider>
-)
+export default meta
+
+export const Default: CreateFormStory = {}
+
+export const Disabled: CreateFormStory = {
+  args: {
+    disabled: true,
+  },
+}

@@ -1,25 +1,41 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { allGames as games } from '../../support/data/games'
 import { gamesContextValue } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
 import GameEditForm from './gameEditForm'
 
+type EditFormStory = StoryObj<typeof GameEditForm>
+
 const { id, name, description } = games[0]
 
-export default { title: 'GameEditForm' }
+const meta: Meta<typeof GameEditForm> = {
+  title: 'GameEditForm',
+  component: GameEditForm,
+  decorators: [
+    (Story) => (
+      <PageProvider>
+        <GamesContext.Provider value={gamesContextValue}>
+          <Story />
+        </GamesContext.Provider>
+      </PageProvider>
+    ),
+  ],
+}
 
-export const Default = () => (
-  <PageProvider>
-    <GamesContext.Provider value={gamesContextValue}>
-      <GameEditForm gameId={id} name={name} description={description} />
-    </GamesContext.Provider>
-  </PageProvider>
-)
+export default meta
 
-export const WithoutDescription = () => (
-  <PageProvider>
-    <GamesContext.Provider value={gamesContextValue}>
-      <GameEditForm gameId={id} name={name} description={null} />
-    </GamesContext.Provider>
-  </PageProvider>
-)
+export const Default: EditFormStory = {
+  args: {
+    gameId: id,
+    name,
+    description,
+  },
+}
+
+export const WithoutDescription: EditFormStory = {
+  args: {
+    ...Default.args,
+    description: null,
+  },
+}

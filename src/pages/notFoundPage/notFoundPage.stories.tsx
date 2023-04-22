@@ -1,10 +1,21 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 import NotFoundPage from './notFoundPage'
 
-export default { title: 'NotFoundPage' }
+type NotFoundStory = StoryObj<typeof NotFoundPage>
 
-export const Default = () => (
-  <BrowserRouter>
-    <NotFoundPage />
-  </BrowserRouter>
-)
+const meta: Meta<typeof NotFoundPage> = {
+  title: 'NotFoundPage',
+  component: NotFoundPage,
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    ),
+  ],
+}
+
+export default meta
+
+export const Default: NotFoundStory = {}

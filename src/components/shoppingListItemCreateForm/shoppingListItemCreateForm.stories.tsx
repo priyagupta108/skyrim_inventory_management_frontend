@@ -1,3 +1,4 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import {
   gamesContextValue,
   loginContextValue,
@@ -11,18 +12,32 @@ import { ShoppingListsContext } from '../../contexts/shoppingListsContext'
 import { ColorProvider } from '../../contexts/colorContext'
 import ShoppingListItemCreateForm from './shoppingListItemCreateForm'
 
-export default { title: 'ShoppingListItemCreateForm' }
+type CreateFormStory = StoryObj<typeof ShoppingListItemCreateForm>
 
-export const Default = () => (
-  <LoginContext.Provider value={loginContextValue}>
-    <PageProvider>
-      <GamesContext.Provider value={gamesContextValue}>
-        <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-          <ColorProvider colorScheme={BLUE}>
-            <ShoppingListItemCreateForm listId={4} />
-          </ColorProvider>
-        </ShoppingListsContext.Provider>
-      </GamesContext.Provider>
-    </PageProvider>
-  </LoginContext.Provider>
-)
+const meta: Meta<typeof ShoppingListItemCreateForm> = {
+  title: 'ShoppingListItemCreateForm',
+  component: ShoppingListItemCreateForm,
+  decorators: [
+    (Story) => (
+      <LoginContext.Provider value={loginContextValue}>
+        <PageProvider>
+          <GamesContext.Provider value={gamesContextValue}>
+            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
+              <ColorProvider colorScheme={BLUE}>
+                <Story />
+              </ColorProvider>
+            </ShoppingListsContext.Provider>
+          </GamesContext.Provider>
+        </PageProvider>
+      </LoginContext.Provider>
+    ),
+  ],
+}
+
+export default meta
+
+export const Default: CreateFormStory = {
+  args: {
+    listId: 4,
+  },
+}

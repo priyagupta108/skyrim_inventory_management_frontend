@@ -1,14 +1,30 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 import { GREEN } from '../../utils/colorSchemes'
 import { ColorProvider } from '../../contexts/colorContext'
 import NavigationCard from './navigationCard'
 
-export default { title: 'Navigation Card' }
+type NavigationCardStory = StoryObj<typeof NavigationCard>
 
-export const Default = () => (
-  <BrowserRouter>
-    <ColorProvider colorScheme={GREEN}>
-      <NavigationCard href="/">Your Shopping Lists</NavigationCard>
-    </ColorProvider>
-  </BrowserRouter>
-)
+const meta: Meta<typeof NavigationCard> = {
+  title: 'NavigationCard',
+  component: NavigationCard,
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <ColorProvider colorScheme={GREEN}>
+          <Story />
+        </ColorProvider>
+      </BrowserRouter>
+    ),
+  ],
+}
+
+export default meta
+
+export const Default: NavigationCardStory = {
+  args: {
+    href: '#',
+    children: 'Your Shopping Lists',
+  },
+}

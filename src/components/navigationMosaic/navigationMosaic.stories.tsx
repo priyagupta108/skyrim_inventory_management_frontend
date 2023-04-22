@@ -1,11 +1,26 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 import NavigationMosaic from './navigationMosaic'
 import cards from './testCards'
 
-export default { title: 'NavigationMosaic' }
+type NavigationMosaicStory = StoryObj<typeof NavigationMosaic>
 
-export const Default = () => (
-  <BrowserRouter>
-    <NavigationMosaic cardArray={cards} />
-  </BrowserRouter>
-)
+const meta: Meta<typeof NavigationMosaic> = {
+  title: 'NavigationMosaic',
+  component: NavigationMosaic,
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    ),
+  ],
+}
+
+export default meta
+
+export const Default: NavigationMosaicStory = {
+  args: {
+    cardArray: cards,
+  },
+}

@@ -1,6 +1,14 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import FlashMessage from './flashMessage'
 
-export default { title: 'FlashMessage' }
+type Story = StoryObj<typeof FlashMessage>
+
+const meta: Meta<typeof FlashMessage> = {
+  title: 'FlashMessage',
+  component: FlashMessage,
+}
+
+export default meta
 
 const messageString = 'You will be assimilated.'
 
@@ -10,106 +18,139 @@ const messageArray = [
   'Resistance is futile.',
 ]
 
-export const SuccessWithStringMessage = () => (
-  <FlashMessage type="success" message={messageString} hidden={false} />
-)
+/**
+ *
+ * Success messages
+ *
+ */
 
-export const SuccessWithStringMessageAndHeader = () => (
-  <FlashMessage
-    type="success"
-    message={messageString}
-    hidden={false}
-    header="Success!"
-  />
-)
+export const SuccessWithStringMessage: Story = {
+  args: {
+    type: 'success',
+    message: messageString,
+    hidden: false,
+  },
+}
 
-export const SuccessWithArrayMessage = () => (
-  <FlashMessage type="success" message={messageArray} hidden={false} />
-)
+export const SuccessWithStringMessageAndHeader: Story = {
+  args: {
+    ...SuccessWithStringMessage.args,
+    header: 'We are the Borg.',
+  },
+}
 
-export const SuccessWithArrayMessageAndHeader = () => (
-  <FlashMessage
-    type="success"
-    message={messageArray}
-    hidden={false}
-    header="Success!"
-  />
-)
+export const SuccessWithArrayMessage: Story = {
+  args: {
+    ...SuccessWithStringMessage.args,
+    message: messageArray,
+  },
+}
 
-export const InfoWithStringMessage = () => (
-  <FlashMessage type="info" message={messageString} hidden={false} />
-)
+export const SuccessWithArrayMessageAndHeader: Story = {
+  args: {
+    ...SuccessWithArrayMessage.args,
+    header: 'We are the Borg.',
+  },
+}
 
-export const InfoWithStringMessageAndHeader = () => (
-  <FlashMessage
-    type="info"
-    message={messageString}
-    hidden={false}
-    header="For Your Information:"
-  />
-)
+/**
+ *
+ * Info messages
+ *
+ */
 
-export const InfoWithArrayMessage = () => (
-  <FlashMessage type="info" message={messageArray} hidden={false} />
-)
+export const InfoWithStringMessage: Story = {
+  args: {
+    ...SuccessWithStringMessage.args,
+    type: 'info',
+  },
+}
 
-export const InfoWithArrayMessageAndHeader = () => (
-  <FlashMessage
-    type="info"
-    message={messageArray}
-    hidden={false}
-    header="For Your Information:"
-  />
-)
+export const InfoWithStringMessageAndHeader: Story = {
+  args: {
+    ...InfoWithStringMessage.args,
+    header: 'We are the Borg.',
+  },
+}
 
-export const WarningWithStringMessage = () => (
-  <FlashMessage type="warning" message={messageString} hidden={false} />
-)
+export const InfoWithArrayMessage: Story = {
+  args: {
+    ...InfoWithStringMessage.args,
+    message: messageArray,
+  },
+}
 
-export const WarningWithStringMessageAndHeader = () => (
-  <FlashMessage
-    type="warning"
-    message={messageString}
-    hidden={false}
-    header="Warning:"
-  />
-)
+export const InfoWithArrayMessageAndHeader: Story = {
+  args: {
+    ...InfoWithArrayMessage.args,
+    header: 'We are the Borg.',
+  },
+}
 
-export const WarningWithArrayMessage = () => (
-  <FlashMessage type="warning" message={messageArray} hidden={false} />
-)
+/**
+ *
+ * Warning messages
+ *
+ */
 
-export const WarningWithArrayMessageAndHeader = () => (
-  <FlashMessage
-    type="warning"
-    message={messageArray}
-    hidden={false}
-    header="Warning:"
-  />
-)
+export const WarningWithStringMessage: Story = {
+  args: {
+    ...SuccessWithStringMessage.args,
+    type: 'warning',
+  },
+}
 
-export const ErrorWithStringMessage = () => (
-  <FlashMessage type="error" message={messageString} hidden={false} />
-)
+export const WarningWithStringMessageAndHeader: Story = {
+  args: {
+    ...WarningWithStringMessage.args,
+    header: 'We are the Borg.',
+  },
+}
 
-export const ErrorWithStringMessageAndHeader = () => (
-  <FlashMessage
-    type="error"
-    message={messageString}
-    hidden={false}
-    header="We are the Borg."
-  />
-)
+export const WarningWithArrayMessage: Story = {
+  args: {
+    ...WarningWithStringMessage.args,
+    message: messageArray,
+  },
+}
 
-export const ErrorWithArrayMessage = () => (
-  <FlashMessage type="error" message={messageArray} hidden={false} />
-)
+export const WarningWithArrayMessageAndHeader: Story = {
+  args: {
+    ...WarningWithArrayMessage.args,
+    header: 'We are the Borg.',
+  },
+}
 
-export const ErrorWithArrayMessageAndHeader = () => (
-  <FlashMessage
-    type="error"
-    message={messageArray}
-    hidden={false}
-    header="We are the Borg."
-  />
-)
+/**
+ *
+ * Error messages
+ *
+ */
+
+export const ErrorWithStringMessage: Story = {
+  args: {
+    ...SuccessWithStringMessage.args,
+    type: 'error',
+  },
+}
+
+export const ErrorWithStringMessageAndHeader: Story = {
+  args: {
+    ...ErrorWithStringMessage.args,
+    header: 'We are the Borg.',
+  },
+}
+
+export const ErrorWithArrayMessage: Story = {
+  args: {
+    ...ErrorWithStringMessage.args,
+    message: messageArray,
+  },
+}
+
+export const ErrorWithArrayMessageAndHeader: Story = {
+  args: {
+    ...ErrorWithArrayMessage.args,
+    header: 'We are the Borg.',
+  },
+}

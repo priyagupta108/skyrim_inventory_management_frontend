@@ -1,7 +1,9 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 import {
   gamesContextValue,
   gamesContextValueLoading,
+  shoppingListsContextValue,
   shoppingListsContextValueLoading,
   shoppingListsContextValueEmpty,
   loginContextValue,
@@ -16,67 +18,56 @@ import { GamesContext } from '../../contexts/gamesContext'
 import { PageProvider } from '../../contexts/pageContext'
 import ShoppingListsPage from './shoppingListsPage'
 
-export default { title: 'ShoppingListsPage' }
+type ShoppingListsPageStory = StoryObj<typeof ShoppingListsPage>
 
-export const GamesLoading = () => (
-  <BrowserRouter>
-    <PageProvider>
-      <GamesContext.Provider value={gamesContextValueLoading}>
-        <ShoppingListsContext.Provider value={shoppingListsContextValueLoading}>
-          <ShoppingListsPage />
-        </ShoppingListsContext.Provider>
-      </GamesContext.Provider>
-    </PageProvider>
-  </BrowserRouter>
-)
-
-export const ShoppingListsLoading = () => (
-  <BrowserRouter>
-    <PageProvider>
-      <GamesContext.Provider value={gamesContextValue}>
-        <ShoppingListsContext.Provider value={shoppingListsContextValueLoading}>
-          <ShoppingListsPage />
-        </ShoppingListsContext.Provider>
-      </GamesContext.Provider>
-    </PageProvider>
-  </BrowserRouter>
-)
-
-export const WithShoppingLists = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={loginContextValue}>
-      <PageProvider>
-        <GamesContext.Provider value={gamesContextValue}>
-          <ShoppingListsProvider>
-            <ShoppingListsPage />
-          </ShoppingListsProvider>
-        </GamesContext.Provider>
-      </PageProvider>
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
-
-WithShoppingLists.parameters = {
-  mockData: [
-    {
-      url: '/api/games/32/shopping_lists',
-      method: 'GET',
-      status: 200,
-      response: shoppingListsForGame(77),
-    },
+const meta: Meta<typeof ShoppingListsPage> = {
+  title: 'ShoppingListsPage',
+  component: ShoppingListsPage,
+  decorators: [
+    (Story, { parameters }) => (
+      <BrowserRouter>
+        <LoginContext.Provider value={loginContextValue}>
+          <PageProvider>
+            <GamesContext.Provider value={parameters.gamesContextValue}>
+              <ShoppingListsContext.Provider
+                value={parameters.shoppingListsContextValue}
+              >
+                <Story />
+              </ShoppingListsContext.Provider>
+            </GamesContext.Provider>
+          </PageProvider>
+        </LoginContext.Provider>
+      </BrowserRouter>
+    ),
   ],
 }
 
-export const NoShoppingLists = () => (
-  <BrowserRouter>
-    <LoginContext.Provider value={loginContextValue}>
-      <PageProvider>
-        <GamesContext.Provider value={gamesContextValue}>
-          <ShoppingListsContext.Provider value={shoppingListsContextValueEmpty}>
-            <ShoppingListsPage />
-          </ShoppingListsContext.Provider>
-        </GamesContext.Provider>
-      </PageProvider>
-    </LoginContext.Provider>
-  </BrowserRouter>
-)
+export default meta
+
+export const GamesLoading: ShoppingListsPageStory = {
+  parameters: {
+    gamesContextValue: gamesContextValueLoading,
+    shoppingListsContextValue,
+  },
+}
+
+export const ShoppingListsLoading: ShoppingListsPageStory = {
+  parameters: {
+    gamesContextValue,
+    shoppingListsContextValue: shoppingListsContextValueLoading,
+  },
+}
+
+export const WithShoppingLists: ShoppingListsPageStory = {
+  parameters: {
+    gamesContextValue,
+    shoppingListsContextValue,
+  },
+}
+
+export const NoShoppingLists: ShoppingListsPageStory = {
+  parameters: {
+    gamesContextValue,
+    shoppingListsContextValue: shoppingListsContextValueEmpty,
+  },
+}

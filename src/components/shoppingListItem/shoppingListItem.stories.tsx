@@ -1,10 +1,10 @@
-import { ReactElement } from 'react'
+import { type Meta, type StoryObj } from '@storybook/react'
 import {
   loginContextValue,
   gamesContextValue,
   shoppingListsContextValue,
 } from '../../support/data/contextValues'
-import { AQUA, BLUE, GREEN, PINK, YELLOW } from '../../utils/colorSchemes'
+import colorSchemes from '../../utils/colorSchemes'
 import { LoginContext } from '../../contexts/loginContext'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
@@ -12,110 +12,85 @@ import { ShoppingListsContext } from '../../contexts/shoppingListsContext'
 import { ColorProvider } from '../../contexts/colorContext'
 import ShoppingListItem from './shoppingListItem'
 
-interface ProviderProps {
-  children: ReactElement
+type ListItemStory = StoryObj<typeof ShoppingListItem>
+
+const meta: Meta<typeof ShoppingListItem> = {
+  title: 'ShoppingListItem',
+  component: ShoppingListItem,
+  decorators: [
+    (Story) => (
+      <LoginContext.Provider value={loginContextValue}>
+        <PageProvider>
+          <GamesContext.Provider value={gamesContextValue}>
+            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
+              <ColorProvider
+                colorScheme={
+                  colorSchemes[Math.floor(Math.random() * colorSchemes.length)]
+                }
+              >
+                <Story />
+              </ColorProvider>
+            </ShoppingListsContext.Provider>
+          </GamesContext.Provider>
+        </PageProvider>
+      </LoginContext.Provider>
+    ),
+  ],
 }
 
-const ContextProviders = ({ children }: ProviderProps) => (
-  <LoginContext.Provider value={loginContextValue}>
-    <PageProvider>
-      <GamesContext.Provider value={gamesContextValue}>
-        <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-          {children}
-        </ShoppingListsContext.Provider>
-      </GamesContext.Provider>
-    </PageProvider>
-  </LoginContext.Provider>
-)
+export default meta
 
-export default { title: 'ShoppingListItem' }
+export const NotEditable: ListItemStory = {
+  args: {
+    itemId: 1,
+    listTitle: 'All Items',
+    description: 'Dwarven metal ingot',
+    quantity: 5,
+    unitWeight: 1.0,
+  },
+}
 
-export const Editable = () => (
-  <ContextProviders>
-    <ColorProvider colorScheme={AQUA}>
-      <ShoppingListItem
-        itemId={1}
-        listTitle="Lakeview Manor"
-        description="Dwarven metal ingot"
-        quantity={5}
-        unitWeight={1.0}
-        notes="To make bolts"
-        editable
-      />
-    </ColorProvider>
-  </ContextProviders>
-)
+export const Editable: ListItemStory = {
+  args: {
+    ...NotEditable.args,
+    listTitle: 'Lakeview Manor',
+    notes: 'To make bolts',
+    editable: true,
+  },
+}
 
-export const NotEditable = () => (
-  <ContextProviders>
-    <ColorProvider colorScheme={YELLOW}>
-      <ShoppingListItem
-        itemId={1}
-        listTitle="All Items"
-        description="Dwarven metal ingot"
-        quantity={5}
-        unitWeight={1.0}
-        notes="To make bolts"
-      />
-    </ColorProvider>
-  </ContextProviders>
-)
+export const LongValuesNotEditable: ListItemStory = {
+  args: {
+    ...NotEditable.args,
+    description:
+      'This item has a really really really really really long description for testing purposes',
+    quantity: 200000000000000000,
+    unitWeight: 4000000000000000.0,
+  },
+}
 
-export const LongValuesEditable = () => (
-  <ContextProviders>
-    <ColorProvider colorScheme={BLUE}>
-      <ShoppingListItem
-        itemId={1}
-        listTitle="Building Materials"
-        description="This item has a really really really really really long description for testing purposes"
-        quantity={200000000000000000}
-        unitWeight={4000000000000000.0}
-        notes="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"
-        editable
-      />
-    </ColorProvider>
-  </ContextProviders>
-)
+export const LongValuesEditable: ListItemStory = {
+  args: {
+    ...LongValuesNotEditable.args,
+    listTitle:
+      'List with a Really Really Really Really Really Really Really Long Title for Testing Purposes',
+    notes:
+      'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
+    editable: true,
+  },
+}
 
-export const LongValuesNotEditable = () => (
-  <ContextProviders>
-    <ColorProvider colorScheme={AQUA}>
-      <ShoppingListItem
-        itemId={1}
-        listTitle="All Items"
-        description="This item has a really really really really really long description for testing purposes"
-        quantity={200000000000000000}
-        unitWeight={4000000000000000.0}
-        notes="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"
-      />
-    </ColorProvider>
-  </ContextProviders>
-)
+export const EmptyFields: ListItemStory = {
+  args: {
+    ...Editable.args,
+    unitWeight: null,
+    notes: null,
+  },
+}
 
-export const EmptyFields = () => (
-  <ContextProviders>
-    <ColorProvider colorScheme={GREEN}>
-      <ShoppingListItem
-        itemId={1}
-        listTitle="All Items"
-        description="Dwarven metal ingot"
-        quantity={5}
-      />
-    </ColorProvider>
-  </ContextProviders>
-)
-
-export const UnitWeightWithDecimal = () => (
-  <ContextProviders>
-    <ColorProvider colorScheme={PINK}>
-      <ShoppingListItem
-        itemId={1}
-        listTitle="All Items"
-        description="Necklace"
-        quantity={1}
-        unitWeight={0.3}
-        notes="To enchant with fire resistance"
-      />
-    </ColorProvider>
-  </ContextProviders>
-)
+export const UnitWeightWithDecimal: ListItemStory = {
+  args: {
+    ...Editable.args,
+    unitWeight: 0.3,
+  },
+}

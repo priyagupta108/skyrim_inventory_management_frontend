@@ -1,12 +1,27 @@
+import { type Meta, type StoryObj } from '@storybook/react'
 import { type MouseEventHandler } from 'react'
 import GoogleSignInButton from './googleSignInButton'
 
+type Story = StoryObj<typeof GoogleSignInButton>
+
 const onClick: MouseEventHandler = (e) => e.preventDefault()
 
-export default { title: 'GoogleSignInButton' }
+const meta: Meta<typeof GoogleSignInButton> = {
+  title: 'GoogleSignInButton',
+  component: GoogleSignInButton,
+}
 
-export const Default = () => <GoogleSignInButton onClick={onClick} />
+export default meta
 
-export const Disabled = () => (
-  <GoogleSignInButton onClick={onClick} loading={true} />
-)
+export const Default: Story = {
+  args: {
+    onClick,
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
+    loading: true,
+  },
+}
