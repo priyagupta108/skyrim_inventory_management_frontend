@@ -20,8 +20,8 @@ const meta: Meta<typeof DashboardHeader> = {
           <Story />
         </LoginContext.Provider>
       </BrowserRouter>
-    )
-  ]
+    ),
+  ],
 }
 
 export default meta
