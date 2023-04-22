@@ -372,12 +372,12 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               for (const deletedId of json.deleted) {
                 const index = newShoppingLists.findIndex(
-                  (list) => list?.id === deletedId
+                  (list) => list.id === deletedId
                 )
-                delete newShoppingLists[index]
+                newShoppingLists.splice(index, 1)
               }
 
-              setShoppingLists(newShoppingLists.filter((list) => !!list))
+              setShoppingLists(newShoppingLists)
               setFlashProps({
                 hidden: false,
                 type: 'success',
