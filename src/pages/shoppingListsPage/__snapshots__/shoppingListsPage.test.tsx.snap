@@ -3213,7 +3213,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
           <p
             class="_noLists_92c834"
           >
-            You need a game to use the shopping lists feature. 
+            You need a game to use the shopping lists feature.
+             
             <button
               class="_link_92c834"
             >
@@ -3436,7 +3437,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
         <p
           class="_noLists_92c834"
         >
-          You need a game to use the shopping lists feature. 
+          You need a game to use the shopping lists feature.
+           
           <button
             class="_link_92c834"
           >
