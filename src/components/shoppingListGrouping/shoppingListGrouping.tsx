@@ -1,12 +1,22 @@
 import colorSchemes from '../../utils/colorSchemes'
 import { ColorProvider } from '../../contexts/colorContext'
-import { useShoppingListsContext } from '../../hooks/contexts'
+import { DONE } from '../../utils/loadingStates'
+import { useGamesContext, useShoppingListsContext } from '../../hooks/contexts'
 import ShoppingListItem from '../shoppingListItem/shoppingListItem'
 import ShoppingList from '../shoppingList/shoppingList'
 import styles from './shoppingListGrouping.module.css'
 
 const ShoppingListGrouping = () => {
+  const { games, gamesLoadingState } = useGamesContext()
   const { shoppingLists } = useShoppingListsContext()
+
+  if (gamesLoadingState === DONE && !games.length)
+    return (
+      <p className={styles.noLists}>
+        You need a game to use the shopping lists feature.{' '}
+        <button className={styles.link}>Create a game</button> to get started.
+      </p>
+    )
 
   if (!shoppingLists.length)
     return <p className={styles.noLists}>This game has no shopping lists.</p>

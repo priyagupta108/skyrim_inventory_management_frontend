@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 import {
   gamesContextValue,
+  gamesContextValueEmpty,
   shoppingListsContextValue,
   shoppingListsContextValueEmpty,
 } from '../../support/data/contextValues'
@@ -17,7 +18,7 @@ const meta: Meta<typeof ShoppingListGrouping> = {
   decorators: [
     (Story, { parameters }) => (
       <PageProvider>
-        <GamesContext.Provider value={gamesContextValue}>
+        <GamesContext.Provider value={parameters.gamesContextValue}>
           <ShoppingListsContext.Provider
             value={parameters.shoppingListsContextValue}
           >
@@ -33,12 +34,21 @@ export default meta
 
 export const WithShoppingLists: GroupingStory = {
   parameters: {
+    gamesContextValue,
     shoppingListsContextValue,
   },
 }
 
 export const WithoutShoppingLists: GroupingStory = {
   parameters: {
+    gamesContextValue,
     shoppingListsContextValue: shoppingListsContextValueEmpty,
+  },
+}
+
+export const NoGames: GroupingStory = {
+  parameters: {
+    gamesContextValue: gamesContextValueEmpty,
+    shoppingListsContextValue,
   },
 }

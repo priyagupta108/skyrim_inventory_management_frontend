@@ -706,6 +706,11 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   }, [authLoading, activeGame, token])
 
   useEffect(() => {
+    if (gamesLoadingState === DONE && !games.length)
+      setShoppingListsLoadingState(DONE)
+  }, [gamesLoadingState, games])
+
+  useEffect(() => {
     requireLogin()
   }, [requireLogin])
 

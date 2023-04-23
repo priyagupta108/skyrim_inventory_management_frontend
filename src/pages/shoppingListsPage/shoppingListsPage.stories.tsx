@@ -7,6 +7,7 @@ import {
   shoppingListsContextValueLoading,
   shoppingListsContextValueEmpty,
   loginContextValue,
+  gamesContextValueEmpty,
 } from '../../support/data/contextValues'
 import { shoppingListsForGame } from '../../support/data/shoppingLists'
 import {
@@ -48,6 +49,13 @@ export const GamesLoading: ShoppingListsPageStory = {
   parameters: {
     gamesContextValue: gamesContextValueLoading,
     shoppingListsContextValue,
+  },
+}
+
+export const NoGames: ShoppingListsPageStory = {
+  parameters: {
+    gamesContextValue: gamesContextValueEmpty,
+    shoppingListsContextValue: shoppingListsContextValueEmpty,
   },
 }
 

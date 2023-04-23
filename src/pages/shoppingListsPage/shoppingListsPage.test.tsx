@@ -36,6 +36,7 @@ import {
   postShoppingListItemsServerError,
   deleteShoppingListItemSuccess,
   deleteShoppingListItemServerError,
+  getGamesEmptySuccess,
 } from '../../support/msw/handlers'
 import { gamesContextValue } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
@@ -271,6 +272,72 @@ describe('ShoppingListsPage', () => {
             )
           ).toBeTruthy()
         })
+      })
+    })
+
+    describe('when there are no games', () => {
+      const mockServer = setupServer(getGamesEmptySuccess)
+
+      beforeAll(() => mockServer.listen())
+      beforeEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('hides the loading component', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <ShoppingListsProvider>
+                <ShoppingListsPage />
+              </ShoppingListsProvider>
+            </GamesProvider>
+          </PageProvider>,
+          'http://localhost:5173/shopping_lists'
+        )
+
+        await waitFor(() => {
+          expect(wrapper.queryByTestId('pulseLoader')).toBeFalsy()
+        })
+      })
+
+      test('shows a message that you need a game', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <ShoppingListsProvider>
+                <ShoppingListsPage />
+              </ShoppingListsProvider>
+            </GamesProvider>
+          </PageProvider>,
+          'http://localhost:5173/shopping_lists'
+        )
+
+        await waitFor(() => {
+          expect(
+            wrapper.getByText(
+              /You need a game to use the shopping lists feature\./
+            )
+          ).toBeTruthy()
+          expect(wrapper.getByText('Create a game')).toBeTruthy()
+        })
+      })
+
+      test('matches snapshot', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <ShoppingListsProvider>
+                <ShoppingListsPage />
+              </ShoppingListsProvider>
+            </GamesProvider>
+          </PageProvider>,
+          'http://localhost:5173/shopping_lists'
+        )
+
+        await wrapper.findByText(
+          /You need a game to use the shopping lists feature\./
+        )
+
+        expect(wrapper).toMatchSnapshot()
       })
     })
   })
