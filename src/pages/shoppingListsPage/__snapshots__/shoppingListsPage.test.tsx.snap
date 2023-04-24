@@ -3220,7 +3220,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
             >
               Create a game
             </button>
-             to get started.
+             
+            to get started.
           </p>
         </section>
         <header
@@ -3444,7 +3445,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
           >
             Create a game
           </button>
-           to get started.
+           
+          to get started.
         </p>
       </section>
       <header
