@@ -16,11 +16,15 @@ import {
 import { setupServer } from 'msw/node'
 import { renderAuthenticated, renderAuthLoading } from '../../support/testUtils'
 import {
+  postGamesSuccess,
+  postGamesUnprocessable,
+  postGamesServerError,
   postShoppingListsSuccess,
   postShoppingListsServerError,
   postShoppingListsUnprocessable,
   getGamesAllSuccess,
   getShoppingListsSuccess,
+  getShoppingListsEmptySuccess,
   patchShoppingListSuccess,
   patchShoppingListUnprocessable,
   patchShoppingListServerError,
@@ -296,6 +300,12 @@ describe('ShoppingListsPage', () => {
 
         await waitFor(() => {
           expect(wrapper.queryByTestId('pulseLoader')).toBeFalsy()
+          expect(
+            wrapper.getByText(
+              /You need a game to use the shopping lists feature\./
+            )
+          ).toBeTruthy()
+          expect(wrapper.getByText('Create a game')).toBeTruthy()
         })
       })
 
@@ -338,6 +348,174 @@ describe('ShoppingListsPage', () => {
         )
 
         expect(wrapper).toMatchSnapshot()
+      })
+    })
+  })
+
+  describe('creating a game from the shopping lists page', () => {
+    describe('when successful', () => {
+      const mockServer = setupServer(
+        getGamesEmptySuccess,
+        postGamesSuccess,
+        getShoppingListsEmptySuccess
+      )
+
+      beforeAll(() => mockServer.listen())
+      beforeEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test('displays the form', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <ShoppingListsProvider>
+                <ShoppingListsPage />
+              </ShoppingListsProvider>
+            </GamesProvider>
+          </PageProvider>,
+          'http://localhost:5173/shopping_lists'
+        )
+
+        const link = await wrapper.findByText('Create a game')
+
+        act(() => fireEvent.click(link))
+
+        expect(wrapper.getByTestId('gameForm')).toBeTruthy()
+        expect(wrapper.getAllByText('Create Game')).toBeTruthy()
+      })
+
+      test('creates a game and shows the flash message', async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <ShoppingListsProvider>
+                <ShoppingListsPage />
+              </ShoppingListsProvider>
+            </GamesProvider>
+          </PageProvider>,
+          'http://localhost:5173/shopping_lists'
+        )
+
+        const link = await wrapper.findByText('Create a game')
+
+        act(() => fireEvent.click(link))
+
+        const form = wrapper.getByTestId('gameForm')
+        const nameInput = wrapper.getByLabelText('Name')
+
+        fireEvent.change(nameInput, {
+          target: { value: 'New Name for a New Game' },
+        })
+
+        act(() => fireEvent.submit(form))
+
+        await waitFor(() => {
+          expect(wrapper.queryByTestId('gameForm')).toBeFalsy()
+          // TODO: Uncomment this expectation when we've got the node-canvas foolishness
+          //       worked out
+          //
+          // expect(wrapper.getByText(/New Name/)).toBeTruthy()
+          expect(
+            wrapper.queryByText(
+              /You need a game to use the shopping lists feature\./
+            )
+          ).toBeFalsy()
+          expect(
+            wrapper.getByText('This game has no shopping lists.')
+          ).toBeTruthy()
+          expect(
+            wrapper.getByText('Success! Your game has been created.')
+          ).toBeTruthy()
+        })
+      })
+    })
+
+    describe('when there is a validation error', () => {
+      const mockServer = setupServer(
+        getGamesEmptySuccess,
+        postGamesUnprocessable
+      )
+
+      beforeAll(() => mockServer.listen())
+      beforeEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test("shows the flash error and doesn't hide the form", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <ShoppingListsProvider>
+                <ShoppingListsPage />
+              </ShoppingListsProvider>
+            </GamesProvider>
+          </PageProvider>,
+          'http://localhost:5173/shopping_lists'
+        )
+
+        const link = await wrapper.findByText('Create a game')
+
+        act(() => fireEvent.click(link))
+
+        const form = wrapper.getByTestId('gameForm')
+        const nameInput = wrapper.getByLabelText('Name')
+
+        fireEvent.change(nameInput, {
+          target: { value: 'New Name for a New Game' },
+        })
+
+        act(() => fireEvent.submit(form))
+
+        await waitFor(() => {
+          expect(wrapper.getByTestId('gameForm')).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              '1 error(s) prevented your game from being saved:'
+            )
+          ).toBeTruthy()
+        })
+      })
+    })
+
+    describe('when there is an internal server error', () => {
+      const mockServer = setupServer(getGamesEmptySuccess, postGamesServerError)
+
+      beforeAll(() => mockServer.listen())
+      beforeEach(() => mockServer.resetHandlers())
+      afterAll(() => mockServer.close())
+
+      test("shows the flash error and doesn't hide the form", async () => {
+        const wrapper = renderAuthenticated(
+          <PageProvider>
+            <GamesProvider>
+              <ShoppingListsProvider>
+                <ShoppingListsPage />
+              </ShoppingListsProvider>
+            </GamesProvider>
+          </PageProvider>,
+          'http://localhost:5173/shopping_lists'
+        )
+
+        const link = await wrapper.findByText('Create a game')
+
+        act(() => fireEvent.click(link))
+
+        const form = wrapper.getByTestId('gameForm')
+        const nameInput = wrapper.getByLabelText('Name')
+
+        fireEvent.change(nameInput, {
+          target: { value: 'New Name for a New Game' },
+        })
+
+        act(() => fireEvent.submit(form))
+
+        await waitFor(() => {
+          expect(wrapper.getByTestId('gameForm')).toBeTruthy()
+          expect(
+            wrapper.getByText(
+              "Oops! Something unexpected went wrong. We're sorry! Please try again later."
+            )
+          ).toBeTruthy()
+        })
       })
     })
   })

@@ -1,20 +1,46 @@
+import { type MouseEventHandler } from 'react'
+import { type RequestGame as Game } from '../../types/apiData'
 import colorSchemes from '../../utils/colorSchemes'
 import { ColorProvider } from '../../contexts/colorContext'
 import { DONE } from '../../utils/loadingStates'
-import { useGamesContext, useShoppingListsContext } from '../../hooks/contexts'
+import {
+  usePageContext,
+  useGamesContext,
+  useShoppingListsContext,
+} from '../../hooks/contexts'
+import GameForm from '../gameForm/gameForm'
 import ShoppingListItem from '../shoppingListItem/shoppingListItem'
 import ShoppingList from '../shoppingList/shoppingList'
 import styles from './shoppingListGrouping.module.css'
 
 const ShoppingListGrouping = () => {
-  const { games, gamesLoadingState } = useGamesContext()
+  const { setModalProps } = usePageContext()
+  const { games, gamesLoadingState, createGame } = useGamesContext()
   const { shoppingLists } = useShoppingListsContext()
+
+  const showGameForm: MouseEventHandler = (e) => {
+    e.preventDefault()
+
+    const submit = (attributes: Game) => {
+      createGame(attributes, () => {
+        setModalProps({ hidden: true, children: <></> })
+      })
+    }
+
+    setModalProps({
+      hidden: false,
+      children: <GameForm submitForm={submit} type="create" />,
+    })
+  }
 
   if (gamesLoadingState === DONE && !games.length)
     return (
       <p className={styles.noLists}>
         You need a game to use the shopping lists feature.{' '}
-        <button className={styles.link}>Create a game</button> to get started.
+        <button className={styles.link} onClick={showGameForm}>
+          Create a game
+        </button>{' '}
+        to get started.
       </p>
     )
 
