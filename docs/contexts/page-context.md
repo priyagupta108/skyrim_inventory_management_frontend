@@ -159,9 +159,10 @@ export default Parent
  */
 
 import { type MouseEventHandler } from 'react'
+import { RequestGame as Game } from '../../types/apiData'
 import { usePageContext } from '../../hooks/contexts'
 import DashboardLayout from '../../layouts/dashboardLayout/dashboardLayout'
-import GameEditForm from '../../components/gameEditForm/gameEditForm'
+import GameForm from '../../components/gameForm/gameForm'
 import styles from './child.module.css'
 
 interface ChildProps {
@@ -172,9 +173,20 @@ const Child = ({ gameId }: ChildProps) => {
   const { setModalProps } = usePageContext()
 
   const showForm: MouseEventHandler = (e) => {
+    const submit = (attributes: Game) => {
+      /* do something */
+    }
+
     setModalProps({
       hidden: false,
-      children: <GameEditForm gameId={gameId} name="foo" description="bar" />,
+      children: (
+        <GameForm
+          submitForm={submit}
+          type="edit"
+          defaultName="foo"
+          defaultDescription="bar"
+        />
+      ),
     })
   }
 

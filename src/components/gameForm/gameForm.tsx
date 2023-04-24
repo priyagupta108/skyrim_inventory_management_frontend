@@ -74,7 +74,7 @@ const GameForm = ({
         ref={formRef}
         style={colorVars}
         onSubmit={onSubmit}
-        data-testId="gameForm"
+        data-testid="gameForm"
       >
         <fieldset className={styles.fieldset}>
           <label className={styles.label}>
