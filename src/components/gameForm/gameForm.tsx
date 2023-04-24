@@ -44,15 +44,10 @@ const GameForm = ({
       string
     >
 
-    const attributes: Game = {}
-    const newName = values.name?.trim() || null
-    const newDescription = values.description?.trim() || null
-
-    if (newName !== defaultName) attributes.name = newName
-    if (newDescription !== defaultDescription)
-      attributes.description = newDescription
-
-    return attributes
+    return {
+      name: values.name?.trim() || null,
+      description: values.description?.trim() || null,
+    }
   }
 
   const onSubmit: FormEventHandler = (e) => {
