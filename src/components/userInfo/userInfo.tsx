@@ -39,7 +39,7 @@ const UserInfo = () => {
             [styles.active]: dropdownVisible,
           })}
         >
-          <div onClick={signOut}>
+          <div role="button" onClick={signOut}>
             <FontAwesomeIcon icon={faRightFromBracket} />
             <p className={styles.signOutText}>Sign Out</p>
           </div>

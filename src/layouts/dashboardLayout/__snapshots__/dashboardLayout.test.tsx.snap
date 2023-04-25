@@ -105,7 +105,9 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -251,7 +253,9 @@ exports[`<DashboardLayout> > when a title is given > matches snapshot 1`] = `
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -514,7 +518,9 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -720,7 +726,9 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -983,7 +991,9 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -1189,7 +1199,9 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -1436,7 +1448,9 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when game
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -1626,7 +1640,9 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when game
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -1868,7 +1884,9 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when ther
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -2053,7 +2071,9 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when ther
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -2244,7 +2264,9 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -2378,7 +2400,9 @@ exports[`<DashboardLayout> > when no title is given > matches snapshot 1`] = `
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "

@@ -85,7 +85,9 @@ exports[`<DashboardHeader /> > matches snapshot 1`] = `
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -194,7 +196,9 @@ exports[`<DashboardHeader /> > matches snapshot 1`] = `
           <menu
             class="_dropdown_d263fb"
           >
-            <div>
+            <div
+              role="button"
+            >
               <svg
                 aria-hidden="true"
                 class="svg-inline--fa fa-right-from-bracket "
