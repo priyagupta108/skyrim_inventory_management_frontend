@@ -9,11 +9,7 @@ import {
   loginContextValue,
   gamesContextValueEmpty,
 } from '../../support/data/contextValues'
-import { shoppingListsForGame } from '../../support/data/shoppingLists'
-import {
-  ShoppingListsContext,
-  ShoppingListsProvider,
-} from '../../contexts/shoppingListsContext'
+import { ShoppingListsContext } from '../../contexts/shoppingListsContext'
 import { LoginContext } from '../../contexts/loginContext'
 import { GamesContext } from '../../contexts/gamesContext'
 import { PageProvider } from '../../contexts/pageContext'
