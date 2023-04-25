@@ -8,6 +8,7 @@ The `LoginProvider`'s value makes the following values available:
 - `token`: string
 - `authLoading`: boolean
 - `requireLogin`: function
+- `signOut`: function
 - `withTokenRefresh`: function
   - Takes a single argument: a function taking the new ID token as a parameter
 
@@ -132,3 +133,7 @@ In this example, the login context identifies the signed-in user, if any, and pr
 ## Types
 
 The `LoginProvider` takes no props other than `children`, which can be React (TSX) elements or string types.
+
+## signOut vs. signOutWithGoogle
+
+The [firebase.ts](/src/firebase.ts) file exports a function called `signOutWithGoogle`. This should not be used to sign out users. Instead, the `LoginProvider`'s `signOut` function should be used. The `signOutWithGoogle` function signs out the user but doesn't nullify the user's token in memory, meaning that it could still be used for other back-end requests after that user has logged out, even if another user has subsequently logged in, as long as the token hasn't expired and the second user doesn't refresh the page.
