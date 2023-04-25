@@ -381,7 +381,7 @@ describe('ShoppingListsPage', () => {
         act(() => fireEvent.click(link))
 
         expect(wrapper.getByTestId('gameForm')).toBeTruthy()
-        expect(wrapper.getAllByText('Create Game')).toBeTruthy()
+        expect(wrapper.getAllByText('Create Game').length).toBeTruthy()
       })
 
       test('creates a game and shows the flash message', async () => {
