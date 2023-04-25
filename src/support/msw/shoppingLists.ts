@@ -75,10 +75,14 @@ export const getShoppingListsSuccess = rest.get(
 
     if (gameIds.indexOf(gameId) < 0) return res(ctx.status(404))
 
-    return res(
-      ctx.status(200),
-      ctx.json(shoppingListsForGame(Number(req.params.gameId)))
-    )
+    return res(ctx.status(200), ctx.json(shoppingListsForGame(gameId)))
+  }
+)
+
+export const getShoppingListsEmptySuccess = rest.get(
+  `${BASE_URI}/games/:gameId/shopping_lists`,
+  (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json([]))
   }
 )
 

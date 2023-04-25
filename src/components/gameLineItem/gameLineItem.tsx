@@ -2,8 +2,9 @@ import { useState, type MouseEventHandler } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import AnimateHeight from 'react-animate-height'
+import { RequestGame as Game } from '../../types/apiData'
 import { useGamesContext, usePageContext } from '../../hooks/contexts'
-import GameEditForm from '../gameEditForm/gameEditForm'
+import GameForm from '../gameForm/gameForm'
 import styles from './gameLineItem.module.css'
 
 const DEFAULT_DESCRIPTION = 'This game has no description.'
@@ -17,7 +18,7 @@ interface GameLineItemProps {
 }
 
 const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
-  const { destroyGame } = useGamesContext()
+  const { updateGame, destroyGame } = useGamesContext()
   const { setFlashProps, setModalProps } = usePageContext()
   const [descriptionExpanded, setDescriptionExpanded] = useState(false)
 
@@ -46,10 +47,26 @@ const GameLineItem = ({ gameId, name, description }: GameLineItemProps) => {
   const showEditForm: MouseEventHandler = (e) => {
     e.preventDefault()
 
+    const submit = (attributes: Game) => {
+      if (attributes.name === name && attributes.description === description) {
+        setModalProps({
+          hidden: true,
+          children: <></>,
+        })
+      } else {
+        updateGame(gameId, attributes)
+      }
+    }
+
     setModalProps({
       hidden: false,
       children: (
-        <GameEditForm gameId={gameId} name={name} description={description} />
+        <GameForm
+          submitForm={submit}
+          type="edit"
+          defaultName={name}
+          defaultDescription={description}
+        />
       ),
     })
   }

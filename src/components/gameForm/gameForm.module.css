@@ -8,12 +8,12 @@
 .header {
   font-size: 1.25rem;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .fieldset {
   border: none;
   padding: 4px 0;
-  display: grid;
   margin-bottom: 12px;
 }
 
@@ -27,7 +27,8 @@
 
 .label {
   margin-top: 6px;
-  margin-bottom: 6px;
+  display: flex;
+  flex-direction: column;
 }
 
 .label:first-of-type {
@@ -37,12 +38,13 @@
 .input {
   font-family: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
   font-size: 1rem;
+  line-height: 1.25;
   background-color: #fff;
   color: #000;
   border: 1px solid #e0e0e0;
   padding: 8px;
   border-radius: 3px;
-  line-height: 1.25;
+  margin-top: 6px;
 }
 
 .submit {

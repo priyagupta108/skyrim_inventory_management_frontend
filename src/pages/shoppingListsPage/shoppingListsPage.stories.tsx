@@ -7,12 +7,9 @@ import {
   shoppingListsContextValueLoading,
   shoppingListsContextValueEmpty,
   loginContextValue,
+  gamesContextValueEmpty,
 } from '../../support/data/contextValues'
-import { shoppingListsForGame } from '../../support/data/shoppingLists'
-import {
-  ShoppingListsContext,
-  ShoppingListsProvider,
-} from '../../contexts/shoppingListsContext'
+import { ShoppingListsContext } from '../../contexts/shoppingListsContext'
 import { LoginContext } from '../../contexts/loginContext'
 import { GamesContext } from '../../contexts/gamesContext'
 import { PageProvider } from '../../contexts/pageContext'
@@ -48,6 +45,13 @@ export const GamesLoading: ShoppingListsPageStory = {
   parameters: {
     gamesContextValue: gamesContextValueLoading,
     shoppingListsContextValue,
+  },
+}
+
+export const NoGames: ShoppingListsPageStory = {
+  parameters: {
+    gamesContextValue: gamesContextValueEmpty,
+    shoppingListsContextValue: shoppingListsContextValueEmpty,
   },
 }
 

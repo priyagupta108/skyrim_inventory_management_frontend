@@ -12,13 +12,15 @@ const BASE_URI = 'http://localhost:3000'
 
 export const postGamesSuccess = rest.post(
   `${BASE_URI}/games`,
-  (req, res, ctx) => {
+  async (req, res, ctx) => {
+    const json = await req.json()
+
     const body = {
       id: 102,
       user_id: 412,
-      name: req.params.name || 'My Game 3',
+      name: json.name || 'My Game 3',
       description:
-        req.params.description || 'This description is just for illustration.',
+        json.description || 'This description is just for illustration.',
       created_at: new Date(),
       updated_at: new Date(),
     }

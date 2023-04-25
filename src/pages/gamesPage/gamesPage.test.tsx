@@ -538,7 +538,7 @@ describe('<GamesPage />', () => {
 
         expect(wrapper.getAllByText('Update Game').length).toEqual(2)
 
-        const form = wrapper.getByTestId('editGame32Form') as HTMLFormElement
+        const form = wrapper.getByTestId('gameForm') as HTMLFormElement
 
         act(() => {
           fireEvent.mouseDown(form)
@@ -588,11 +588,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, {
@@ -607,7 +605,7 @@ describe('<GamesPage />', () => {
           expect(
             wrapper.getByText('This is a game with a description')
           ).toBeTruthy()
-          expect(wrapper.queryByTestId('editGame32Form')).toBeFalsy()
+          expect(wrapper.queryByTestId('gameForm')).toBeFalsy()
         })
       })
     })
@@ -634,14 +632,10 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
-        const descInput = wrapper.getByTestId(
-          'editDescriptionField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
+        const descInput = wrapper.getAllByLabelText('Description')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, {
@@ -660,7 +654,7 @@ describe('<GamesPage />', () => {
           expect(
             wrapper.getAllByText('This game has no description.').length
           ).toEqual(2)
-          expect(wrapper.queryByTestId('editGame32Form')).toBeFalsy()
+          expect(wrapper.queryByTestId('gameForm')).toBeFalsy()
         })
       })
     })
@@ -690,11 +684,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
@@ -703,7 +695,7 @@ describe('<GamesPage />', () => {
 
         await waitFor(() => {
           // The modal should not be hidden
-          expect(wrapper.getByTestId('editGame32Form')).toBeTruthy()
+          expect(wrapper.getByTestId('gameForm')).toBeTruthy()
         })
       })
 
@@ -722,11 +714,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
@@ -759,11 +749,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'My Game 2' } })
@@ -800,11 +788,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'New Name' } })
@@ -813,7 +799,7 @@ describe('<GamesPage />', () => {
 
         await waitFor(() => {
           // The modal should not be hidden
-          expect(wrapper.getByTestId('editGame32Form')).toBeTruthy()
+          expect(wrapper.getByTestId('gameForm')).toBeTruthy()
         })
       })
 
@@ -832,11 +818,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'New Name' } })
@@ -868,11 +852,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'New Name' } })
@@ -909,11 +891,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'New Name' } })
@@ -922,7 +902,7 @@ describe('<GamesPage />', () => {
 
         await waitFor(() => {
           // The modal should not be hidden
-          expect(wrapper.getByTestId('editGame32Form')).toBeTruthy()
+          expect(wrapper.getByTestId('gameForm')).toBeTruthy()
         })
       })
 
@@ -941,11 +921,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'New Name' } })
@@ -977,11 +955,9 @@ describe('<GamesPage />', () => {
 
         act(() => editButton.click())
 
-        const nameInput = wrapper.getByTestId(
-          'editNameField'
-        ) as HTMLInputElement
+        const nameInput = wrapper.getAllByLabelText('Name')[0]
         const button = wrapper.getByTestId(
-          'submitGameEditForm'
+          'gameFormSubmit'
         ) as HTMLButtonElement
 
         fireEvent.change(nameInput, { target: { value: 'New Name' } })
