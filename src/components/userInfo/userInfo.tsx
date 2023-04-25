@@ -2,14 +2,13 @@ import { type MouseEventHandler, useState } from 'react'
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
-import { signOutWithGoogle } from '../../firebase'
 import { useGoogleLogin } from '../../hooks/contexts'
 import anonymousAvatar from './anonymousAvatar.jpg'
 import styles from './userInfo.module.css'
 
 const UserInfo = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false)
-  const { user } = useGoogleLogin()
+  const { user, signOut } = useGoogleLogin()
 
   const toggleDropdown: MouseEventHandler = (): void => {
     setDropdownVisible(!dropdownVisible)
@@ -40,7 +39,7 @@ const UserInfo = () => {
             [styles.active]: dropdownVisible,
           })}
         >
-          <div onClick={signOutWithGoogle}>
+          <div onClick={signOut}>
             <FontAwesomeIcon icon={faRightFromBracket} />
             <p className={styles.signOutText}>Sign Out</p>
           </div>
