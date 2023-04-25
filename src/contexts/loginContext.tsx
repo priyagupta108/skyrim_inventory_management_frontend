@@ -10,6 +10,7 @@ export interface LoginContextType {
   authLoading: boolean
   token: string | null
   requireLogin: () => void
+  signOut: () => void
   withTokenRefresh: (fn: (idToken: string) => void) => void
   user?: User | null
 }
@@ -18,8 +19,9 @@ export const LoginContext = createContext<LoginContextType>({
   user: null,
   token: null,
   authLoading: true,
+  signOut: () => {}, // noop
   requireLogin: () => {}, // noop
-  withTokenRefresh: () => {},
+  withTokenRefresh: () => {}, // noop
 })
 
 export const LoginProvider = ({ children }: ProviderProps) => {
@@ -46,16 +48,21 @@ export const LoginProvider = ({ children }: ProviderProps) => {
     }
   }
 
+  const signOut = () => {
+    signOutWithGoogle().then(() => setToken(null))
+  }
+
   const value = {
     user,
     token,
     requireLogin,
     withTokenRefresh,
+    signOut,
     authLoading,
   }
 
   useEffect(() => {
-    if (authError) signOutWithGoogle()
+    if (authError) signOut()
 
     refreshToken()
   }, [user, authError])

@@ -18,6 +18,7 @@ export const loginContextValue: LoginContextType = {
   user: testUser,
   token: 'xxxxxxx',
   requireLogin: noop,
+  signOut: noop,
   withTokenRefresh: (fn) => fn('xxxxxxx'),
   authLoading: false,
 }
@@ -26,6 +27,7 @@ export const loadingLoginContextValue: LoginContextType = {
   user: null,
   token: null,
   requireLogin: noop,
+  signOut: noop,
   withTokenRefresh: noop,
   authLoading: true,
 }
@@ -34,6 +36,7 @@ export const unauthenticatedLoginContextValue: LoginContextType = {
   user: null,
   token: null,
   requireLogin: noop,
+  signOut: noop,
   withTokenRefresh: noop,
   authLoading: false,
 }

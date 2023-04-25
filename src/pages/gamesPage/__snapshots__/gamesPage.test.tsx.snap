@@ -407,7 +407,9 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -568,7 +570,9 @@ exports[`<GamesPage /> > viewing games > when the server returns an error > matc
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -786,7 +790,9 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -947,7 +953,9 @@ exports[`<GamesPage /> > viewing games > when there are multiple games > matches
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -1165,7 +1173,9 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -1326,7 +1336,9 @@ exports[`<GamesPage /> > viewing games > when there are no games > matches snaps
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "

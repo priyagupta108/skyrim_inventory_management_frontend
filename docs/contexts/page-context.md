@@ -81,7 +81,6 @@ export default Parent
  */
 
 import { useState, useEffect } from 'react'
-import { signOutWithGoogle } from '../../firebase'
 import { type ResponseGame as Game } from '../../types/apiData'
 import { type ApiError } from '../../types/errors'
 import { useGoogleLogin, usePageContext } from '../../hooks/contexts'
@@ -90,7 +89,7 @@ import DashboardLayout from '../../layouts/dashboardLayout/dashboardLayout'
 import styles from './child.module.css'
 
 const Child = () => {
-  const { user, token, authLoading } = useGoogleLogin()
+  const { user, token, authLoading, signOut } = useGoogleLogin()
   const { setFlashProps } = usePageContext()
   const [games, setGames] = useState<Game[]>([])
 
@@ -103,7 +102,7 @@ const Child = () => {
           setGames(json)
         })
         .catch((e: ApiError) => {
-          if (e.status === 401) signOutWithGoogle()
+          if (e.status === 401) signOut()
 
           setFlashProps({
             type: 'error',

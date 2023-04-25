@@ -1,5 +1,4 @@
 import { createContext, useCallback, useEffect, useState, useRef } from 'react'
-import { signOutWithGoogle } from '../firebase'
 import { type RequestGame, type ResponseGame as Game } from '../types/apiData'
 import { type ProviderProps } from '../types/contexts'
 import { type CallbackFunction } from '../types/functions'
@@ -49,7 +48,7 @@ export const GamesContext = createContext<GamesContextType>({
 })
 
 export const GamesProvider = ({ children }: ProviderProps) => {
-  const { token, authLoading, requireLogin, withTokenRefresh } =
+  const { token, authLoading, requireLogin, withTokenRefresh, signOut } =
     useGoogleLogin()
   const [gamesLoadingState, setGamesLoadingState] = useState(LOADING)
   const [games, setGames] = useState<Game[]>([])
@@ -65,7 +64,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
   const handleApiError = (e: ApiError) => {
     if (import.meta.env.DEV) console.error(e.message)
 
-    if (e.code === 401) signOutWithGoogle()
+    if (e.code === 401) signOut()
 
     if (Array.isArray(e.message)) {
       setFlashProps({

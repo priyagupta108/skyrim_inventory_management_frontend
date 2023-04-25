@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState, useRef, useCallback } from 'react'
-import { signOutWithGoogle } from '../firebase'
 import { type CallbackFunction } from '../types/functions'
 import {
   type RequestShoppingListItem,
@@ -90,7 +89,7 @@ export const ShoppingListsContext = createContext<ShoppingListsContextType>({
 })
 
 export const ShoppingListsProvider = ({ children }: ProviderProps) => {
-  const { token, authLoading, requireLogin, withTokenRefresh } =
+  const { token, authLoading, requireLogin, withTokenRefresh, signOut } =
     useGoogleLogin()
   const { setFlashProps } = usePageContext()
   const { gamesLoadingState, games } = useGamesContext()
@@ -111,7 +110,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
     if (import.meta.env.DEV) console.error(e.message)
 
     if (e.code === 401) {
-      signOutWithGoogle()
+      signOut()
     } else if (e.code === 422) {
       setFlashProps({
         hidden: false,

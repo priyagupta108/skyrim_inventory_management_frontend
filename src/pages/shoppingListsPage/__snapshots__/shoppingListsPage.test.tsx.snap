@@ -1702,7 +1702,9 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -3022,7 +3024,9 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
@@ -3304,7 +3308,9 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
               <menu
                 class="_dropdown_d263fb"
               >
-                <div>
+                <div
+                  role="button"
+                >
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-right-from-bracket "
@@ -3529,7 +3535,9 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
             <menu
               class="_dropdown_d263fb"
             >
-              <div>
+              <div
+                role="button"
+              >
                 <svg
                   aria-hidden="true"
                   class="svg-inline--fa fa-right-from-bracket "
