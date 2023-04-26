@@ -1,4 +1,10 @@
-import { useRef, type FormEventHandler, type CSSProperties } from 'react'
+import {
+  useState,
+  useEffect,
+  useRef,
+  type FormEventHandler,
+  type CSSProperties,
+} from 'react'
 import { type RequestShoppingList } from '../../types/apiData'
 import { DONE } from '../../utils/loadingStates'
 import { BLUE } from '../../utils/colorSchemes'
@@ -10,11 +16,12 @@ const ShoppingListCreateForm = () => {
   const { shoppingListsLoadingState, createShoppingList } =
     useShoppingListsContext()
 
+  const [disabled, setDisabled] = useState(
+    gamesLoadingState !== DONE || shoppingListsLoadingState !== DONE
+  )
+
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-
-  const disabled =
-    gamesLoadingState !== DONE || shoppingListsLoadingState !== DONE
 
   const colorVars = {
     '--button-color': BLUE.schemeColorDark,
@@ -43,15 +50,28 @@ const ShoppingListCreateForm = () => {
     const formData = new FormData(formRef.current)
     const attributes = extractAttributes(formData)
 
-    const clearForm = () => formRef.current?.reset()
+    const clearForm = () => {
+      formRef.current?.reset()
+      setDisabled(false)
+    }
 
     const focusInput = () => {
       formRef.current?.reset()
+      setDisabled(false)
       inputRef.current?.focus()
     }
 
+    setDisabled(true)
     createShoppingList(attributes, clearForm, focusInput)
   }
+
+  useEffect(() => {
+    if (gamesLoadingState === DONE && shoppingListsLoadingState === DONE) {
+      setDisabled(false)
+    } else {
+      setDisabled(true)
+    }
+  }, [gamesLoadingState, shoppingListsLoadingState])
 
   return (
     <form

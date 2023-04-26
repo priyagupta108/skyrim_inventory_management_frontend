@@ -499,6 +499,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               <input
                 aria-label="Title"
                 class="_input_1118ad"
+                disabled=""
                 name="title"
                 pattern="\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*"
                 placeholder="Title"
@@ -507,6 +508,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               />
               <button
                 class="_button_1118ad"
+                disabled=""
                 type="submit"
               >
                 Create
@@ -1821,6 +1823,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
             <input
               aria-label="Title"
               class="_input_1118ad"
+              disabled=""
               name="title"
               pattern="\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*"
               placeholder="Title"
@@ -1829,6 +1832,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
             />
             <button
               class="_button_1118ad"
+              disabled=""
               type="submit"
             >
               Create
