@@ -40,9 +40,9 @@
 }
 
 .form {
-  height: 26px;
+  height: 25px;
   margin-left: 8px;
-  padding: 7px 0;
+  padding: 8px 0;
   max-width: var(--max-title-width);
 }
 
