@@ -17,7 +17,7 @@ export interface GamesContextType {
   gamesLoadingState: LoadingState
   createGame: (
     game: RequestGame,
-    onSuccess?: CallbackFunction,
+    onSuccess?: (game: Game) => void,
     onError?: CallbackFunction,
     idToken?: string | null,
     retries?: number
@@ -93,7 +93,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
   const createGame = useCallback(
     (
       body: RequestGame,
-      onSuccess?: CallbackFunction,
+      onSuccess?: (game: Game) => void,
       onError?: CallbackFunction,
       idToken?: string | null,
       retries?: number
@@ -110,7 +110,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
                 type: 'success',
                 message: 'Success! Your game has been created.',
               })
-              onSuccess && onSuccess()
+              onSuccess && onSuccess(json)
             }
           })
           .catch((e: ApiError) => {

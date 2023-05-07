@@ -6,6 +6,7 @@ import {
 } from 'react'
 import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
+import { ResponseGame } from '../../types/apiData'
 import { DONE } from '../../utils/loadingStates'
 import { usePageContext, useGamesContext } from '../../hooks/contexts'
 import { useQueryString } from '../../hooks/useQueryString'
@@ -29,7 +30,7 @@ const DashboardLayout = ({
   children,
 }: DashboardLayoutProps) => {
   const { flashProps, modalProps, setModalProps } = usePageContext()
-  const { games, gamesLoadingState } = useGamesContext()
+  const { games, createGame, gamesLoadingState } = useGamesContext()
 
   const queryString = useQueryString()
   const navigate = useNavigate()
@@ -39,8 +40,24 @@ const DashboardLayout = ({
   const [selectPlaceholder, setSelectPlaceholder] = useState('Games loading...')
 
   const onOptionSelected = (optionValue: number | string) => {
-    queryString.set('gameId', String(optionValue))
+    setQueryString(optionValue)
+  }
+
+  const setQueryString = (id: number | string) => {
+    queryString.set('gameId', String(id))
     navigate(`?${queryString.toString()}`)
+  }
+
+  const onSubmitInput = (name: string) => {
+    createGame(
+      { name },
+      ({ id }: ResponseGame) => setQueryString(id),
+      () =>
+        setDefaultOption({
+          optionName: games[0].name,
+          optionValue: games[0].id,
+        })
+    )
   }
 
   const hideModalIfEsc: KeyboardEventHandler = (e) => {
@@ -83,6 +100,7 @@ const DashboardLayout = ({
                   options={selectOptions}
                   placeholder={selectPlaceholder}
                   onOptionSelected={onOptionSelected}
+                  onSubmitInput={onSubmitInput}
                   defaultOption={defaultOption}
                   className={styles.select}
                   disabled={gamesLoadingState !== DONE}
