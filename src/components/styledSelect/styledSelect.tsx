@@ -107,13 +107,14 @@ const StyledSelect = ({
     )
 
     if (existingOption) {
-      setHeaderText(existingOption.optionName)
       selectOption(existingOption.optionValue)
     } else {
+      setHeaderText(inputRef.current.value)
       onSubmitInput(value)
       setIsComponentVisible(false)
-      inputRef.current?.blur()
     }
+
+    inputRef.current?.blur()
   }
 
   useEffect(() => {

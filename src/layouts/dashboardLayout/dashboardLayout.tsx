@@ -49,7 +49,15 @@ const DashboardLayout = ({
   }
 
   const onSubmitInput = (name: string) => {
-    createGame({ name }, ({ id }: ResponseGame) => setQueryString(id))
+    createGame(
+      { name },
+      ({ id }: ResponseGame) => setQueryString(id),
+      () =>
+        setDefaultOption({
+          optionName: games[0].name,
+          optionValue: games[0].id,
+        })
+    )
   }
 
   const hideModalIfEsc: KeyboardEventHandler = (e) => {
