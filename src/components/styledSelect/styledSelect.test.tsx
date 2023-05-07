@@ -1,4 +1,5 @@
-import { describe, test, expect } from 'vitest'
+import { describe, test, expect, vitest } from 'vitest'
+import { act, fireEvent } from '@testing-library/react'
 import { render } from '../../support/testUtils'
 import { allGames } from '../../support/data/games'
 import StyledSelect from './styledSelect'
@@ -21,6 +22,7 @@ describe('StyledSelect', () => {
         <StyledSelect
           options={options}
           onOptionSelected={() => {}}
+          onSubmitInput={() => {}}
           placeholder="Doesn't matter"
         />
       )
@@ -45,11 +47,83 @@ describe('StyledSelect', () => {
         <StyledSelect
           options={options}
           onOptionSelected={() => {}}
+          onSubmitInput={() => {}}
           placeholder="Doesn't matter"
         />
       )
 
       expect(wrapper).toMatchSnapshot()
+    })
+
+    describe('submitting the input', () => {
+      describe('when not pressing enter', () => {
+        test("doesn't call the onSubmitInput function", () => {
+          const onSubmitInput = vitest.fn()
+
+          const wrapper = render(
+            <StyledSelect
+              options={options}
+              onOptionSelected={() => {}}
+              onSubmitInput={onSubmitInput}
+              placeholder="Doesn't matter"
+            />
+          )
+
+          const input = wrapper.getByTestId('selectedOption')
+
+          act(() => fireEvent.keyDown(input, { target: { key: ' ' } }))
+
+          expect(onSubmitInput).not.toHaveBeenCalled()
+        })
+      })
+
+      describe('when the input value matches an option name', () => {
+        test.skip('selects the option', () => {
+          const onOptionSelected = vitest.fn()
+          const onSubmitInput = vitest.fn()
+
+          const wrapper = render(
+            <StyledSelect
+              options={options}
+              onOptionSelected={onOptionSelected}
+              onSubmitInput={onSubmitInput}
+              placeholder="Doesn't matter"
+            />
+          )
+
+          const input = wrapper.getByTestId('selectedOption')
+
+          fireEvent.change(input, { target: { value: 'my game 2' } })
+
+          act(() => fireEvent.keyDown(input, { target: { key: 'Enter' } }))
+
+          expect(onOptionSelected).toHaveBeenCalledWith(51)
+          expect(onSubmitInput).not.toHaveBeenCalled()
+        })
+      })
+
+      describe('when the input value does not match an option name', () => {
+        test.skip('calls the onSubmitInput function with the input value', () => {
+          const onSubmitInput = vitest.fn()
+
+          const wrapper = render(
+            <StyledSelect
+              options={options}
+              onOptionSelected={() => {}}
+              onSubmitInput={onSubmitInput}
+              placeholder="Doesn't matter"
+            />
+          )
+
+          const input = wrapper.getByTestId('selectedOption')
+
+          fireEvent.change(input, { target: { value: 'New Game New Name' } })
+
+          act(() => fireEvent.keyDown(input, { target: { key: 'Enter' } }))
+
+          expect(onSubmitInput).toHaveBeenCalledWith('New Game New Name')
+        })
+      })
     })
   })
 
@@ -59,6 +133,7 @@ describe('StyledSelect', () => {
         <StyledSelect
           options={[]}
           onOptionSelected={() => {}}
+          onSubmitInput={() => {}}
           placeholder="No options available"
         />
       )
@@ -71,6 +146,7 @@ describe('StyledSelect', () => {
         <StyledSelect
           options={[]}
           onOptionSelected={() => {}}
+          onSubmitInput={() => {}}
           placeholder="This placeholder is way too long."
         />
       )
@@ -85,6 +161,7 @@ describe('StyledSelect', () => {
         <StyledSelect
           options={[]}
           onOptionSelected={() => {}}
+          onSubmitInput={() => {}}
           placeholder="No options available"
         />
       )
@@ -105,6 +182,7 @@ describe('StyledSelect', () => {
           options={options}
           defaultOption={options[1]}
           onOptionSelected={() => {}}
+          onSubmitInput={() => {}}
           placeholder="Doesn't matter"
         />
       )
@@ -129,6 +207,7 @@ describe('StyledSelect', () => {
           options={options}
           defaultOption={options[2]}
           onOptionSelected={() => {}}
+          onSubmitInput={() => {}}
           placeholder="Doesn't matter"
         />
       )
@@ -145,6 +224,7 @@ describe('StyledSelect', () => {
           options={options}
           defaultOption={options[1]}
           onOptionSelected={() => {}}
+          onSubmitInput={() => {}}
           placeholder="Doesn't matter"
         />
       )

@@ -32,7 +32,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
                 class="_header_0a8ecf"
                 role="combobox"
               >
-                <p
+                <input
+                  aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
                 />
@@ -215,7 +216,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
               class="_header_0a8ecf"
               role="combobox"
             >
-              <p
+              <input
+                aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
               />
@@ -455,7 +457,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                 class="_header_0a8ecf"
                 role="combobox"
               >
-                <p
+                <input
+                  aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
                 />
@@ -1779,7 +1782,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               class="_header_0a8ecf"
               role="combobox"
             >
-              <p
+              <input
+                aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
               />
@@ -3160,7 +3164,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
                 class="_header_0a8ecf"
                 role="combobox"
               >
-                <p
+                <input
+                  aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
                 />
@@ -3387,7 +3392,8 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
               class="_header_0a8ecf"
               role="combobox"
             >
-              <p
+              <input
+                aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
               />

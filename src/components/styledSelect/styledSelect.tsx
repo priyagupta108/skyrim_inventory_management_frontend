@@ -1,4 +1,10 @@
-import { useState, useEffect, type CSSProperties } from 'react'
+import {
+  useState,
+  useEffect,
+  useRef,
+  type KeyboardEventHandler,
+  type CSSProperties,
+} from 'react'
 import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
@@ -18,6 +24,7 @@ interface StyledSelectProps {
   options: SelectOption[]
   placeholder: string
   onOptionSelected: (optionValue: string | number) => void
+  onSubmitInput: (value: string) => void
   disabled?: boolean
   defaultOption?: SelectOption | null
   className?: string
@@ -54,6 +61,7 @@ const StyledSelect = ({
   options,
   placeholder,
   onOptionSelected,
+  onSubmitInput,
   defaultOption,
   disabled,
   className,
@@ -67,6 +75,7 @@ const StyledSelect = ({
     triggerRef,
   } = useComponentVisible()
   const size = useSize(triggerRef)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const colorVars = {
     '--button-background-color': BLUE.schemeColorDarkest,
@@ -83,6 +92,27 @@ const StyledSelect = ({
       setHeaderText(opt.optionName)
       setIsComponentVisible(false)
       onOptionSelected(value)
+    }
+  }
+
+  const onKeyDown: KeyboardEventHandler = (e) => {
+    if (!inputRef.current || e.key !== 'Enter') return
+
+    const value = inputRef.current.value.trim()
+
+    if (value.toLowerCase() === activeOption?.optionName.toLowerCase()) return
+
+    const existingOption = options.find(
+      ({ optionName }) => optionName.toLowerCase() === value.toLowerCase()
+    )
+
+    if (existingOption) {
+      setHeaderText(existingOption.optionName)
+      selectOption(existingOption.optionValue)
+    } else {
+      onSubmitInput(value)
+      setIsComponentVisible(false)
+      inputRef.current?.blur()
     }
   }
 
@@ -103,11 +133,17 @@ const StyledSelect = ({
   })
 
   useEffect(() => {
-    if (defaultOption && !activeOption) {
+    if (defaultOption) {
       setHeaderText(defaultOption.optionName)
       setActiveOption(defaultOption)
     }
-  }, [defaultOption, activeOption])
+  }, [defaultOption])
+
+  useEffect(() => {
+    const text = truncatedText(headerText, size?.width)
+
+    if (inputRef.current && text) inputRef.current.value = text
+  }, [headerText, inputRef.current])
 
   return (
     <div
@@ -127,12 +163,14 @@ const StyledSelect = ({
         aria-controls="selectListbox"
         aria-expanded={isComponentVisible}
       >
-        <p className={styles.headerText} data-testid="selectedOption">
-          {truncatedText(
-            options.length ? headerText : placeholder,
-            size?.width
-          )}
-        </p>
+        <input
+          className={styles.headerText}
+          ref={inputRef}
+          data-testid="selectedOption"
+          placeholder={truncatedText(placeholder)}
+          aria-label="Add or Select Option"
+          onKeyDown={onKeyDown}
+        />
         <button className={styles.trigger} disabled={disabled}>
           <FontAwesomeIcon className={styles.fa} icon={faAngleDown} />
         </button>

@@ -380,7 +380,8 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
                 class="_header_0a8ecf"
                 role="combobox"
               >
-                <p
+                <input
+                  aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
                 />
@@ -588,7 +589,8 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
               class="_header_0a8ecf"
               role="combobox"
             >
-              <p
+              <input
+                aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
               />
@@ -853,7 +855,8 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
                 class="_header_0a8ecf"
                 role="combobox"
               >
-                <p
+                <input
+                  aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
                 />
@@ -1061,7 +1064,8 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when a ga
               class="_header_0a8ecf"
               role="combobox"
             >
-              <p
+              <input
+                aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
               />
@@ -1331,7 +1335,8 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when game
                 class="_header_0a8ecf"
                 role="combobox"
               >
-                <p
+                <input
+                  aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
                 />
@@ -1523,7 +1528,8 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when game
               class="_header_0a8ecf"
               role="combobox"
             >
-              <p
+              <input
+                aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
               />
@@ -1767,7 +1773,8 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when ther
                 class="_header_0a8ecf"
                 role="combobox"
               >
-                <p
+                <input
+                  aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
                   data-testid="selectedOption"
                 />
@@ -1954,7 +1961,8 @@ exports[`<DashboardLayout> > when includeGameSelector is set to true > when ther
               class="_header_0a8ecf"
               role="combobox"
             >
-              <p
+              <input
+                aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
                 data-testid="selectedOption"
               />
