@@ -31,7 +31,7 @@ describe('StyledSelect', () => {
       expect(wrapper.queryByText("Doesn't matter")).toBeFalsy()
 
       // Main, initially visible box is empty by default
-      expect(wrapper.getByTestId('selectedOption').textContent).toBeFalsy()
+      expect(wrapper.getByLabelText('Add or Select Option').textContent).toBeFalsy()
 
       // Initially, no option is selected
       expect(wrapper.queryByRole('option', { selected: true })).toBeFalsy()
@@ -69,7 +69,7 @@ describe('StyledSelect', () => {
             />
           )
 
-          const input = wrapper.getByTestId('selectedOption')
+          const input = wrapper.getByLabelText('Add or Select Option')
 
           act(() => fireEvent.keyDown(input, { target: { key: ' ' } }))
 
@@ -91,7 +91,7 @@ describe('StyledSelect', () => {
             />
           )
 
-          const input = wrapper.getByTestId('selectedOption')
+          const input = wrapper.getByLabelText('Add or Select Option')
 
           fireEvent.change(input, { target: { value: 'my game 2' } })
 
@@ -115,7 +115,7 @@ describe('StyledSelect', () => {
             />
           )
 
-          const input = wrapper.getByTestId('selectedOption')
+          const input = wrapper.getByLabelText('Add or Select Option')
 
           fireEvent.change(input, { target: { value: 'New Game New Name' } })
 
@@ -151,7 +151,7 @@ describe('StyledSelect', () => {
         />
       )
 
-      expect(wrapper.getByTestId('selectedOption').textContent).toEqual(
+      expect(wrapper.getByLabelText('Add or Select Option').textContent).toEqual(
         'This placeholder is way...'
       )
     })
@@ -196,7 +196,7 @@ describe('StyledSelect', () => {
       ).toEqual(options[1].optionName)
 
       // The header text should be the option name
-      expect(wrapper.getByTestId('selectedOption').textContent).toEqual(
+      expect(wrapper.getByLabelText('Add or Select Option').textContent).toEqual(
         options[1].optionName
       )
     })
@@ -213,7 +213,7 @@ describe('StyledSelect', () => {
       )
 
       // The header text should be the option name
-      expect(wrapper.getByTestId('selectedOption').textContent).toEqual(
+      expect(wrapper.getByLabelText('Add or Select Option').textContent).toEqual(
         'Game with a really real...'
       )
     })

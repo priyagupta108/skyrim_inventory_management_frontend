@@ -166,7 +166,6 @@ const StyledSelect = ({
         <input
           className={styles.headerText}
           ref={inputRef}
-          data-testid="selectedOption"
           placeholder={truncatedText(placeholder, size?.width)}
           aria-label="Add or Select Option"
           onKeyDown={onKeyDown}

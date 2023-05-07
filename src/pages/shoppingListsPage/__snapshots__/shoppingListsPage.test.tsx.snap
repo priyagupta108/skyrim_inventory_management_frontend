@@ -35,7 +35,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
                 <input
                   aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
-                  data-testid="selectedOption"
                 />
                 <button
                   class="_trigger_0a8ecf"
@@ -219,7 +218,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
               <input
                 aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
-                data-testid="selectedOption"
               />
               <button
                 class="_trigger_0a8ecf"
@@ -460,7 +458,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                 <input
                   aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
-                  data-testid="selectedOption"
                 />
                 <button
                   class="_trigger_0a8ecf"
@@ -1785,7 +1782,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               <input
                 aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
-                data-testid="selectedOption"
               />
               <button
                 class="_trigger_0a8ecf"
@@ -3167,7 +3163,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
                 <input
                   aria-label="Add or Select Option"
                   class="_headerText_0a8ecf"
-                  data-testid="selectedOption"
                 />
                 <button
                   class="_trigger_0a8ecf"
@@ -3395,7 +3390,6 @@ exports[`ShoppingListsPage > viewing shopping lists > when there are no games > 
               <input
                 aria-label="Add or Select Option"
                 class="_headerText_0a8ecf"
-                data-testid="selectedOption"
               />
               <button
                 class="_trigger_0a8ecf"
