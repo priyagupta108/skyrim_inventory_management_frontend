@@ -1,9 +1,5 @@
 import { createContext, useCallback, useEffect, useState, useRef } from 'react'
-import {
-  type RequestGame,
-  type ResponseGame as Game,
-  ResponseGame,
-} from '../types/apiData'
+import { type RequestGame, type ResponseGame as Game } from '../types/apiData'
 import { type ProviderProps } from '../types/contexts'
 import { type CallbackFunction } from '../types/functions'
 import { useGoogleLogin, usePageContext } from '../hooks/contexts'
@@ -21,7 +17,7 @@ export interface GamesContextType {
   gamesLoadingState: LoadingState
   createGame: (
     game: RequestGame,
-    onSuccess?: (game: ResponseGame) => void,
+    onSuccess?: (game: Game) => void,
     onError?: CallbackFunction,
     idToken?: string | null,
     retries?: number
@@ -97,7 +93,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
   const createGame = useCallback(
     (
       body: RequestGame,
-      onSuccess?: (game: ResponseGame) => void,
+      onSuccess?: (game: Game) => void,
       onError?: CallbackFunction,
       idToken?: string | null,
       retries?: number

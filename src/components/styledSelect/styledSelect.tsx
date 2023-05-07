@@ -111,7 +111,6 @@ const StyledSelect = ({
     } else {
       setHeaderText(inputRef.current.value)
       onSubmitInput(value)
-      setIsComponentVisible(false)
     }
 
     inputRef.current?.blur()
@@ -168,7 +167,7 @@ const StyledSelect = ({
           className={styles.headerText}
           ref={inputRef}
           data-testid="selectedOption"
-          placeholder={truncatedText(placeholder)}
+          placeholder={truncatedText(placeholder, size?.width)}
           aria-label="Add or Select Option"
           onKeyDown={onKeyDown}
         />
