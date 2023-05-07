@@ -31,7 +31,9 @@ describe('StyledSelect', () => {
       expect(wrapper.queryByText("Doesn't matter")).toBeFalsy()
 
       // Main, initially visible box is empty by default
-      expect(wrapper.getByLabelText('Add or Select Option').textContent).toBeFalsy()
+      expect(
+        wrapper.getByLabelText('Add or Select Option').textContent
+      ).toBeFalsy()
 
       // Initially, no option is selected
       expect(wrapper.queryByRole('option', { selected: true })).toBeFalsy()
@@ -151,9 +153,9 @@ describe('StyledSelect', () => {
         />
       )
 
-      expect(wrapper.getByLabelText('Add or Select Option').textContent).toEqual(
-        'This placeholder is way...'
-      )
+      expect(
+        wrapper.getByLabelText('Add or Select Option').textContent
+      ).toEqual('This placeholder is way...')
     })
 
     test('matches snapshot', () => {
@@ -196,9 +198,9 @@ describe('StyledSelect', () => {
       ).toEqual(options[1].optionName)
 
       // The header text should be the option name
-      expect(wrapper.getByLabelText('Add or Select Option').textContent).toEqual(
-        options[1].optionName
-      )
+      expect(
+        wrapper.getByLabelText('Add or Select Option').textContent
+      ).toEqual(options[1].optionName)
     })
 
     test.skip('truncates the title if it is too long', () => {
@@ -213,9 +215,9 @@ describe('StyledSelect', () => {
       )
 
       // The header text should be the option name
-      expect(wrapper.getByLabelText('Add or Select Option').textContent).toEqual(
-        'Game with a really real...'
-      )
+      expect(
+        wrapper.getByLabelText('Add or Select Option').textContent
+      ).toEqual('Game with a really real...')
     })
 
     test('matches snapshot', () => {
