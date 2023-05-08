@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useRef } from 'react'
+import { type ApiCalls, type Resource, type HttpVerb } from '../types/apiCalls'
 import { ProviderProps } from '../types/contexts'
 import { type FlashProps, type ModalProps } from '../types/pageContext'
 
@@ -7,6 +8,9 @@ interface PageContextType {
   setFlashProps: (props: FlashProps) => void
   modalProps: ModalProps
   setModalProps: (props: ModalProps) => void
+  apiCallStatus: ApiCalls
+  addApiCall: (key: Resource, value: HttpVerb) => void
+  removeApiCall: (key: Resource, value: HttpVerb) => void
 }
 
 const defaultFlashProps: FlashProps = {
@@ -20,24 +24,52 @@ const defaultModalProps: ModalProps = {
   children: <></>,
 }
 
+const defaultApiCallStatus = {
+  games: [],
+  shoppingLists: [],
+  shoppingListItems: [],
+}
+
 const PageContext = createContext<PageContextType>({
   flashProps: defaultFlashProps,
   modalProps: defaultModalProps,
+  apiCallStatus: defaultApiCallStatus,
   setFlashProps: () => {},
   setModalProps: () => {},
+  addApiCall: () => {},
+  removeApiCall: () => {},
 })
 
 const PageProvider = ({ children }: ProviderProps) => {
   const [flashProps, setFlashProps] = useState<FlashProps>(defaultFlashProps)
   const [modalProps, setModalProps] = useState<ModalProps>(defaultModalProps)
+  const [apiCallStatus, setApiCallStatus] =
+    useState<ApiCalls>(defaultApiCallStatus)
 
   const flashVisibleSince = useRef(0)
+
+  const addApiCall = (key: Resource, value: HttpVerb) => {
+    setApiCallStatus({
+      ...apiCallStatus,
+      [key]: [...apiCallStatus[key], value],
+    })
+  }
+
+  const removeApiCall = (key: Resource, value: HttpVerb) => {
+    setApiCallStatus({
+      ...apiCallStatus,
+      [key]: apiCallStatus[key].filter((verb) => verb !== value),
+    })
+  }
 
   const value = {
     flashProps,
     modalProps,
+    apiCallStatus,
     setFlashProps,
     setModalProps,
+    addApiCall,
+    removeApiCall,
   }
 
   useEffect(() => {

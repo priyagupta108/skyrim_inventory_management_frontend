@@ -91,7 +91,7 @@ export const ShoppingListsContext = createContext<ShoppingListsContextType>({
 export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   const { token, authLoading, requireLogin, withTokenRefresh, signOut } =
     useGoogleLogin()
-  const { setFlashProps } = usePageContext()
+  const { setFlashProps, addApiCall, removeApiCall } = usePageContext()
   const { gamesLoadingState, games } = useGamesContext()
   const queryString = useQueryString()
   const [activeGame, setActiveGame] = useState<number | null>(null)
@@ -162,6 +162,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingLists', 'post')
         postShoppingLists(activeGame, attributes, idToken)
           .then(({ json }) => {
             if (Array.isArray(json)) {
@@ -172,6 +173,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 newShoppingLists.splice(1, 0, json[0])
                 setShoppingLists(newShoppingLists)
               }
+
+              removeApiCall('shoppingLists', 'post')
 
               setFlashProps({
                 hidden: false,
@@ -196,6 +199,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 )
               })
             } else if (e.code === 404) {
+              removeApiCall('shoppingLists', 'post')
+
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -203,6 +208,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                   "The game you've selected doesn't exist, or doesn't belong to you. Please select another game and try again.",
               })
             } else {
+              removeApiCall('shoppingLists', 'post')
               handleApiError(e)
             }
 
@@ -226,11 +232,13 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   ) => {
     if (!activeGame || !idToken) return
 
+    addApiCall('shoppingLists', 'get')
     getShoppingLists(activeGame, idToken)
       .then(({ json }) => {
         if (Array.isArray(json)) {
           setShoppingLists(json)
           setShoppingListsLoadingState(DONE)
+          removeApiCall('shoppingLists', 'get')
         }
       })
       .catch((e: ApiError) => {
@@ -239,6 +247,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             setShoppingListsFromApi(newToken, retries - 1)
           })
         } else if (e.code === 404) {
+          removeApiCall('shoppingLists', 'get')
+
           setFlashProps({
             hidden: false,
             type: 'error',
@@ -246,6 +256,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               "The game you've selected doesn't exist, or doesn't belong to you. Please select another game and try again.",
           })
         } else {
+          removeApiCall('shoppingLists', 'get')
           handleApiError(e)
         }
 
@@ -279,6 +290,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingLists', 'patch')
         patchShoppingList(listId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
@@ -289,10 +301,12 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               newShoppingLists[index] = json
 
               setShoppingLists(newShoppingLists)
-
+              removeApiCall('shoppingLists', 'patch')
               onSuccess && onSuccess()
             } else {
               // This won't happen but TypeScript doesn't know that
+              removeApiCall('shoppingLists', 'patch')
+
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -317,6 +331,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 )
               })
             } else if (e.code === 404) {
+              removeApiCall('shoppingLists', 'patch')
+
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -324,6 +340,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                   "The shopping list you tried to update doesn't exist, or doesn't belong to you. Please refresh and try again.",
               })
             } else {
+              removeApiCall('shoppingLists', 'patch')
               handleApiError(e)
             }
 
@@ -351,12 +368,15 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingLists', 'delete')
         deleteShoppingList(listId, idToken)
           .then(({ json }) => {
             if ('errors' in json) {
               // This case should never happen because normally an ApiError
               // will be thrown for any response that includes this key, but
               // TypeScript doesn't know that.
+              removeApiCall('shoppingLists', 'delete')
+
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -377,6 +397,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               }
 
               setShoppingLists(newShoppingLists)
+              removeApiCall('shoppingLists', 'delete')
+
               setFlashProps({
                 hidden: false,
                 type: 'success',
@@ -400,6 +422,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 )
               })
             } else if (e.code === 404) {
+              removeApiCall('shoppingLists', 'delete')
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -407,6 +430,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                   "The shopping list you tried to delete doesn't exist, or doesn't belong to you. Please refresh and try again.",
               })
             } else {
+              removeApiCall('shoppingLists', 'delete')
               handleApiError(e)
             }
 
@@ -435,6 +459,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingListItems', 'post')
         postShoppingListItems(listId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200 || status === 201) {
@@ -465,6 +490,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onError && onError()
             }
+
+            removeApiCall('shoppingListItems', 'post')
           })
           .catch((e: ApiError) => {
             retries ??= 1
@@ -491,6 +518,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
+            removeApiCall('shoppingListItems', 'post')
             onError && onError()
           })
       }
@@ -516,6 +544,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingListItems', 'patch')
+
         patchShoppingListItem(itemId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
@@ -544,6 +574,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onError && onError()
             }
+
+            removeApiCall('shoppingListItems', 'patch')
           })
           .catch((e: ApiError) => {
             retries ??= 1
@@ -570,6 +602,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
+            removeApiCall('shoppingListItems', 'patch')
             onError && onError()
           })
       }
@@ -594,6 +627,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingListItems', 'delete')
+
         deleteShoppingListItem(itemId, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
@@ -623,6 +658,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onError && onError()
             }
+
+            removeApiCall('shoppingListItems', 'delete')
           })
           .catch((e: ApiError) => {
             retries ??= 1
@@ -648,6 +685,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
+            removeApiCall('shoppingListItems', 'delete')
             onError && onError()
           })
       }

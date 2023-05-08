@@ -52,7 +52,8 @@ export const GamesProvider = ({ children }: ProviderProps) => {
     useGoogleLogin()
   const [gamesLoadingState, setGamesLoadingState] = useState(LOADING)
   const [games, setGames] = useState<Game[]>([])
-  const { setFlashProps, setModalProps } = usePageContext()
+  const { setFlashProps, setModalProps, addApiCall, removeApiCall } =
+    usePageContext()
   const previousTokenRef = useRef(token)
 
   /**
@@ -101,6 +102,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('games', 'post')
         postGames(body, idToken)
           .then(({ json }) => {
             if ('name' in json) {
@@ -110,6 +112,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
                 type: 'success',
                 message: 'Success! Your game has been created.',
               })
+              removeApiCall('games', 'post')
               onSuccess && onSuccess(json)
             }
           })
@@ -144,11 +147,13 @@ export const GamesProvider = ({ children }: ProviderProps) => {
    */
 
   const setGamesFromApi = (idToken: string, retries: number = 1) => {
+    addApiCall('games', 'get')
     return getGames(idToken)
       .then(({ json }) => {
         if (Array.isArray(json)) {
           setGames(json)
           setGamesLoadingState(DONE)
+          removeApiCall('games', 'get')
         }
       })
       .catch((e: ApiError) => {
@@ -157,6 +162,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
             setGamesFromApi(newToken, retries - 1)
           })
         } else {
+          removeApiCall('games', 'get')
           throw e
         }
       })
@@ -192,6 +198,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('games', 'patch')
         patchGame(gameId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
@@ -199,6 +206,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               const index = newGames.findIndex((el) => el.id === gameId)
               newGames[index] = json
               setGames(newGames)
+              removeApiCall('games', 'patch')
               setModalProps({
                 hidden: true,
                 children: <></>,
@@ -227,6 +235,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               })
             }
 
+            removeApiCall('games', 'patch')
             handleApiError(e)
 
             onError && onError()
@@ -253,11 +262,13 @@ export const GamesProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('games', 'delete')
         deleteGame(gameId, idToken)
           .then(({ status }) => {
             if (status === 204) {
               const newGames = games.filter(({ id }) => id !== gameId)
               setGames(newGames)
+              removeApiCall('games', 'delete')
               setFlashProps({
                 hidden: false,
                 type: 'success',
@@ -282,6 +293,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               })
             }
 
+            removeApiCall('games', 'delete')
             handleApiError(e)
 
             onError && onError()
