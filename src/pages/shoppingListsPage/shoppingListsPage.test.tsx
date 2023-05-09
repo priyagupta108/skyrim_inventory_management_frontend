@@ -6,6 +6,7 @@ import {
   beforeEach,
   afterAll,
   afterEach,
+  vitest,
 } from 'vitest'
 import {
   waitFor,
@@ -347,7 +348,9 @@ describe('ShoppingListsPage', () => {
           /You need a game to use the shopping lists feature\./
         )
 
-        expect(wrapper).toMatchSnapshot()
+        await waitFor(() => {
+          expect(wrapper).toMatchSnapshot()
+        })
       })
     })
   })

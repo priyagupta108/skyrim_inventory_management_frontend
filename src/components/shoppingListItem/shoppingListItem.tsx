@@ -56,16 +56,18 @@ const ShoppingListItem = ({
   notes,
   editable = false,
 }: ShoppingListItemProps) => {
+  const { apiCallsInProgress, setFlashProps, setModalProps } = usePageContext()
+  const { destroyShoppingListItem, updateShoppingListItem } =
+    useShoppingListsContext()
+
   const [expanded, setExpanded] = useState(false)
-  const [incrementerDisabled, setIncrementerDisabled] = useState(false)
+  const [incrementerDisabled, setIncrementerDisabled] = useState(
+    !!apiCallsInProgress.shoppingListItems.length
+  )
 
   const iconsRef = useRef<HTMLSpanElement>(null)
   const incRef = useRef<HTMLButtonElement>(null)
   const decRef = useRef<HTMLButtonElement>(null)
-
-  const { setFlashProps, setModalProps } = usePageContext()
-  const { destroyShoppingListItem, updateShoppingListItem } =
-    useShoppingListsContext()
 
   const colorScheme = useColorScheme()
   const {

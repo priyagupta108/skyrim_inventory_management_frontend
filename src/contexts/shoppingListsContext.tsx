@@ -91,7 +91,7 @@ export const ShoppingListsContext = createContext<ShoppingListsContextType>({
 export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   const { token, authLoading, requireLogin, withTokenRefresh, signOut } =
     useGoogleLogin()
-  const { setFlashProps } = usePageContext()
+  const { setFlashProps, addApiCall, removeApiCall } = usePageContext()
   const { gamesLoadingState, games } = useGamesContext()
   const queryString = useQueryString()
   const [activeGame, setActiveGame] = useState<number | null>(null)
@@ -162,6 +162,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingLists', 'post')
         postShoppingLists(activeGame, attributes, idToken)
           .then(({ json }) => {
             if (Array.isArray(json)) {
@@ -172,6 +173,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 newShoppingLists.splice(1, 0, json[0])
                 setShoppingLists(newShoppingLists)
               }
+
+              removeApiCall('shoppingLists', 'post')
 
               setFlashProps({
                 hidden: false,
@@ -206,6 +209,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e)
             }
 
+            removeApiCall('shoppingLists', 'post')
             onError && onError()
           })
       }
@@ -226,11 +230,13 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   ) => {
     if (!activeGame || !idToken) return
 
+    addApiCall('shoppingLists', 'get')
     getShoppingLists(activeGame, idToken)
       .then(({ json }) => {
         if (Array.isArray(json)) {
           setShoppingLists(json)
           setShoppingListsLoadingState(DONE)
+          removeApiCall('shoppingLists', 'get')
         }
       })
       .catch((e: ApiError) => {
@@ -249,6 +255,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           handleApiError(e)
         }
 
+        removeApiCall('shoppingLists', 'get')
         setShoppingLists([])
         setShoppingListsLoadingState(ERROR)
       })
@@ -279,6 +286,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingLists', 'patch')
         patchShoppingList(listId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
@@ -289,10 +297,12 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               newShoppingLists[index] = json
 
               setShoppingLists(newShoppingLists)
-
+              removeApiCall('shoppingLists', 'patch')
               onSuccess && onSuccess()
             } else {
               // This won't happen but TypeScript doesn't know that
+              removeApiCall('shoppingLists', 'patch')
+
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -327,6 +337,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e)
             }
 
+            removeApiCall('shoppingLists', 'patch')
             onError && onError()
           })
       }
@@ -351,12 +362,15 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingLists', 'delete')
         deleteShoppingList(listId, idToken)
           .then(({ json }) => {
             if ('errors' in json) {
               // This case should never happen because normally an ApiError
               // will be thrown for any response that includes this key, but
               // TypeScript doesn't know that.
+              removeApiCall('shoppingLists', 'delete')
+
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -377,6 +391,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               }
 
               setShoppingLists(newShoppingLists)
+              removeApiCall('shoppingLists', 'delete')
+
               setFlashProps({
                 hidden: false,
                 type: 'success',
@@ -410,6 +426,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e)
             }
 
+            removeApiCall('shoppingLists', 'delete')
             onError && onError()
           })
       }
@@ -435,6 +452,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingListItems', 'post')
         postShoppingListItems(listId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200 || status === 201) {
@@ -465,6 +483,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onError && onError()
             }
+
+            removeApiCall('shoppingListItems', 'post')
           })
           .catch((e: ApiError) => {
             retries ??= 1
@@ -491,6 +511,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
+            removeApiCall('shoppingListItems', 'post')
             onError && onError()
           })
       }
@@ -516,6 +537,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingListItems', 'patch')
+
         patchShoppingListItem(itemId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
@@ -544,6 +567,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onError && onError()
             }
+
+            removeApiCall('shoppingListItems', 'patch')
           })
           .catch((e: ApiError) => {
             retries ??= 1
@@ -570,6 +595,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
+            removeApiCall('shoppingListItems', 'patch')
             onError && onError()
           })
       }
@@ -594,6 +620,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
+        addApiCall('shoppingListItems', 'delete')
+
         deleteShoppingListItem(itemId, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
@@ -607,6 +635,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               newShoppingLists[index] = json[1]
 
               setShoppingLists(newShoppingLists)
+              removeApiCall('shoppingListItems', 'delete')
+
               setFlashProps({
                 hidden: false,
                 type: 'success',
@@ -615,6 +645,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onSuccess && onSuccess()
             } else {
+              removeApiCall('shoppingListItems', 'delete')
+
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -648,6 +680,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
+            removeApiCall('shoppingListItems', 'delete')
             onError && onError()
           })
       }

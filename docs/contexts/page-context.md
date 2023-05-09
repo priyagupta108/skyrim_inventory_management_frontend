@@ -36,18 +36,27 @@ Note that the `children` prop is not optional, but may be set to an empty fragme
 
 ## The `PageContext`
 
-The `PageProvider` exposes four values to the user:
+The `PageProvider` exposes seven values to its consumers:
 
 - `flashProps` (an object of type `FlashMessageProps`)
 - `setFlashProps` (a function taking a `FlashMessageProps` object as an argument)
 - `modalProps` (an object of type `ModalProps`)
 - `setModalProps` (a function taking a `ModalProps` object as an argument)
+- `apiCallsInProgress` (an [`ApiCalls`](/src/types/apiCalls.d.ts) object indicating which API calls are in progress)
+- `addApiCall` (a function that takes a resource name (currently "games", "shoppingLists", and "shoppingListItems") and HTTP verb ("get", "patch", "post", "delete") as arguments and adds the specified API call to the `apiCallsInProgress` object)
+- `removeApiCall` (a function that takes a resource name (currently "games", "shoppingLists", and "shoppingListItems") and HTTP verb ("get", "patch", "post", "delete") as arguments and removes the specified API call, if present, from the `apiCallsInProgress` object)
 
-All of these are implemented as state variables within the context provider. Because of required values in the `FlashMessageProps` type, there is a default value of `flashProps` that includes an empty string as the message, a type of `'info'`, and, most importantly, `hidden: true`. Likewise, the default value of `modalProps` has `hidden` set to `true` and `children` set to an empty fragment, `<></>`.
+Of these, the first five are implemented as state variables within the context provider. Because of required values in the `FlashMessageProps` type, there is a default value of `flashProps` that includes an empty string as the message, a type of `'info'`, and, most importantly, `hidden: true`. Likewise, the default value of `modalProps` has `hidden` set to `true` and `children` set to an empty fragment, `<></>`.
 
 When an individual component needs to display a flash message or modal, it can access these values using the `usePageContext()` hook. To display a message, it should call `setFlashProps` with the desired type, message, and (optionally) header. The `hidden` value should also be set to `false`. To display a modal, it should call `setModalProps`, setting `hidden` to `false` and `children` to the React (TSX) element that should appear inside the modal. When hiding the modal, best practice is to set the `children` value back to an empty fragment, `<></>`.
 
 With the flash message, the `PageProvider` ensures that it is hidden after a period of time, so there is no need for a user to manually dismiss it or for a component using it to ensure it disappears.
+
+### In-progress API Calls
+
+Sometimes, to avoid race conditions between API calls, it is best to disable a component when an API call is in progress. For that purpose, we can use the `apiCallsInProgress` object from the `PageProvider`. This object has a key for each resource type ("games", "shoppingLists", and "shoppingListItems"). Each key corresponds to an array of lower-case HTTP verbs indicating which API calls are in progress for that resource type. We found it advantageous to have a separate array for each resource type, since many components should be disabled when, for example, any request is made for a `shoppingList` resource, but requests made for other resources don't matter.
+
+The `apiCallsInProgress` object can be updated using the `addApiCall` and `removeApiCall` functions. Remember that, when you add an API call, it must be removed when the API call completes. This will not happen automatically.
 
 ## Examples
 
@@ -199,3 +208,81 @@ const Child = ({ gameId }: ChildProps) => {
 ```
 
 In this case, note that the component does not render the `DashboardLayout` component. Nevertheless, it will need to be rendered within a `DashboardLayout` (or at least, within the same `PageProvider` as one) in order for the modal form to appear.
+
+### Adding and Removing API Calls
+
+```tsx
+import { type MouseEventHandler } from 'react'
+import { postGames } from '../../utils/api/simApi'
+import { usePageContext } from '../../hooks/contexts'
+
+const MyComponent = () => {
+  const { addApiCall, removeApiCall } = usePageContext()
+
+  const makeApiCall: MouseEventHandler = (e) => {
+    e.preventDefault()
+
+    addApiCall('games', 'post')
+    postGames({ name: 'My Game' })
+      .then(({ status, json }) => {
+        // do something
+
+        removeApiCall('games', 'post')
+      })
+      .catch((e: Error) => {
+        removeApiCall('games', 'post')
+      })
+  }
+
+  return <button onClick={makeApiCall}>Create Game</button>
+}
+
+export default MyComponent
+```
+
+As shown, you should make sure the API call is removed from the `apiCallsInProgress` object whenever the API call is complete, even in error cases.
+
+### Checking API Call Status
+
+```tsx
+import { useState, useEffect } from 'react'
+import { usePageContext } from '../../hooks/contexts'
+
+const MyComponent = () => {
+  const { apiCallsInProgress } = usePageContext()
+
+  const [disabled, setDisabled] = useState(!!apiCallsInProgress.games.length)
+
+  const onClick: MouseEventHandler = (e) => {
+    e.preventDefault()
+
+    // do the thing
+  }
+
+  useEffect(() => {
+    if (apiCallsInProgress.games.length) {
+      setDisabled(true)
+    } else {
+      setDisabled(false)
+    }
+  }, [apiCallsInProgress])
+
+  return (
+    <button disabled={disabled} onClick={onClick}>
+      Do the Thing!
+    </button>
+  )
+}
+
+export default MyComponent
+```
+
+Note that you could also use more specific checks if you want the button disabled for some API calls but not others:
+
+```ts
+if ('post' in apiCallsInProgress.games) {
+  setDisabled(true)
+} else {
+  setDisabled(false)
+}
+```
