@@ -344,7 +344,7 @@ describe('ShoppingListsPage', () => {
           'http://localhost:5173/shopping_lists'
         )
 
-        await  wrapper.findByText(
+        await wrapper.findByText(
           /You need a game to use the shopping lists feature\./
         )
 

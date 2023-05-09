@@ -131,6 +131,7 @@ export const GamesProvider = ({ children }: ProviderProps) => {
               })
             }
 
+            removeApiCall('games', 'post')
             handleApiError(e)
             onError && onError()
           })

@@ -199,8 +199,6 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 )
               })
             } else if (e.code === 404) {
-              removeApiCall('shoppingLists', 'post')
-
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -208,10 +206,10 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                   "The game you've selected doesn't exist, or doesn't belong to you. Please select another game and try again.",
               })
             } else {
-              removeApiCall('shoppingLists', 'post')
               handleApiError(e)
             }
 
+            removeApiCall('shoppingLists', 'post')
             onError && onError()
           })
       }
@@ -247,8 +245,6 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
             setShoppingListsFromApi(newToken, retries - 1)
           })
         } else if (e.code === 404) {
-          removeApiCall('shoppingLists', 'get')
-
           setFlashProps({
             hidden: false,
             type: 'error',
@@ -256,10 +252,10 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               "The game you've selected doesn't exist, or doesn't belong to you. Please select another game and try again.",
           })
         } else {
-          removeApiCall('shoppingLists', 'get')
           handleApiError(e)
         }
 
+        removeApiCall('shoppingLists', 'get')
         setShoppingLists([])
         setShoppingListsLoadingState(ERROR)
       })
@@ -331,8 +327,6 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 )
               })
             } else if (e.code === 404) {
-              removeApiCall('shoppingLists', 'patch')
-
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -340,10 +334,10 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                   "The shopping list you tried to update doesn't exist, or doesn't belong to you. Please refresh and try again.",
               })
             } else {
-              removeApiCall('shoppingLists', 'patch')
               handleApiError(e)
             }
 
+            removeApiCall('shoppingLists', 'patch')
             onError && onError()
           })
       }
@@ -422,7 +416,6 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 )
               })
             } else if (e.code === 404) {
-              removeApiCall('shoppingLists', 'delete')
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -430,10 +423,10 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                   "The shopping list you tried to delete doesn't exist, or doesn't belong to you. Please refresh and try again.",
               })
             } else {
-              removeApiCall('shoppingLists', 'delete')
               handleApiError(e)
             }
 
+            removeApiCall('shoppingLists', 'delete')
             onError && onError()
           })
       }
@@ -642,6 +635,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               newShoppingLists[index] = json[1]
 
               setShoppingLists(newShoppingLists)
+              removeApiCall('shoppingListItems', 'delete')
+
               setFlashProps({
                 hidden: false,
                 type: 'success',
@@ -650,6 +645,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onSuccess && onSuccess()
             } else {
+              removeApiCall('shoppingListItems', 'delete')
+
               setFlashProps({
                 hidden: false,
                 type: 'error',
@@ -658,8 +655,6 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onError && onError()
             }
-
-            removeApiCall('shoppingListItems', 'delete')
           })
           .catch((e: ApiError) => {
             retries ??= 1

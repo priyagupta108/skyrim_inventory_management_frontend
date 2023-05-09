@@ -24,7 +24,7 @@ const defaultModalProps: ModalProps = {
   children: <></>,
 }
 
-const defaultApiCallStatus = {
+const defaultApiCallStatus: ApiCalls = {
   games: [],
   shoppingLists: [],
   shoppingListItems: [],
@@ -43,20 +43,20 @@ const PageContext = createContext<PageContextType>({
 const PageProvider = ({ children }: ProviderProps) => {
   const [flashProps, setFlashProps] = useState<FlashProps>(defaultFlashProps)
   const [modalProps, setModalProps] = useState<ModalProps>(defaultModalProps)
-  const [apiCallsInProgress, SetApiCallsInProgress] =
+  const [apiCallsInProgress, setApiCallsInProgress] =
     useState<ApiCalls>(defaultApiCallStatus)
 
   const flashVisibleSince = useRef(0)
 
   const addApiCall = (key: Resource, value: HttpVerb) => {
-    SetApiCallsInProgress({
+    setApiCallsInProgress({
       ...apiCallsInProgress,
       [key]: [...apiCallsInProgress[key], value],
     })
   }
 
   const removeApiCall = (key: Resource, value: HttpVerb) => {
-    SetApiCallsInProgress({
+    setApiCallsInProgress({
       ...apiCallsInProgress,
       [key]: apiCallsInProgress[key].filter((verb) => verb !== value),
     })
