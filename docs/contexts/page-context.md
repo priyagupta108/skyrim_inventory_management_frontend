@@ -46,7 +46,6 @@ The `PageProvider` exposes seven values to its consumers:
 - `addApiCall` (a function that takes a resource name (currently "games", "shoppingLists", and "shoppingListItems") and HTTP verb ("get", "patch", "post", "delete") as arguments and adds the specified API call to the `apiCallsInProgress` object)
 - `removeApiCall` (a function that takes a resource name (currently "games", "shoppingLists", and "shoppingListItems") and HTTP verb ("get", "patch", "post", "delete") as arguments and removes the specified API call, if present, from the `apiCallsInProgress` object)
 
-
 Of these, the first five are implemented as state variables within the context provider. Because of required values in the `FlashMessageProps` type, there is a default value of `flashProps` that includes an empty string as the message, a type of `'info'`, and, most importantly, `hidden: true`. Likewise, the default value of `modalProps` has `hidden` set to `true` and `children` set to an empty fragment, `<></>`.
 
 When an individual component needs to display a flash message or modal, it can access these values using the `usePageContext()` hook. To display a message, it should call `setFlashProps` with the desired type, message, and (optionally) header. The `hidden` value should also be set to `false`. To display a modal, it should call `setModalProps`, setting `hidden` to `false` and `children` to the React (TSX) element that should appear inside the modal. When hiding the modal, best practice is to set the `children` value back to an empty fragment, `<></>`.
@@ -235,9 +234,7 @@ const MyComponent = () => {
       })
   }
 
-  return(
-    <button onClick={makeApiCall}>Create Game</button>
-  )
+  return <button onClick={makeApiCall}>Create Game</button>
 }
 
 export default MyComponent
@@ -271,7 +268,9 @@ const MyComponent = () => {
   }, [apiCallsInProgress])
 
   return (
-    <button disabled={disabled} onClick={onClick}>Do the Thing!</button>
+    <button disabled={disabled} onClick={onClick}>
+      Do the Thing!
+    </button>
   )
 }
 
