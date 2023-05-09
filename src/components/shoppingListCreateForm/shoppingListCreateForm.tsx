@@ -8,16 +8,23 @@ import {
 import { type RequestShoppingList } from '../../types/apiData'
 import { DONE } from '../../utils/loadingStates'
 import { BLUE } from '../../utils/colorSchemes'
-import { useGamesContext, useShoppingListsContext } from '../../hooks/contexts'
+import {
+  usePageContext,
+  useGamesContext,
+  useShoppingListsContext,
+} from '../../hooks/contexts'
 import styles from './shoppingListCreateForm.module.css'
 
 const ShoppingListCreateForm = () => {
+  const { apiCallsInProgress } = usePageContext()
   const { gamesLoadingState } = useGamesContext()
   const { shoppingListsLoadingState, createShoppingList } =
     useShoppingListsContext()
 
   const [disabled, setDisabled] = useState(
-    gamesLoadingState !== DONE || shoppingListsLoadingState !== DONE
+    gamesLoadingState !== DONE ||
+      shoppingListsLoadingState !== DONE ||
+      !!apiCallsInProgress.shoppingLists.length
   )
 
   const formRef = useRef<HTMLFormElement>(null)
@@ -52,26 +59,27 @@ const ShoppingListCreateForm = () => {
 
     const clearForm = () => {
       formRef.current?.reset()
-      setDisabled(false)
     }
 
     const focusInput = () => {
       formRef.current?.reset()
-      setDisabled(false)
       inputRef.current?.focus()
     }
 
-    setDisabled(true)
     createShoppingList(attributes, clearForm, focusInput)
   }
 
   useEffect(() => {
-    if (gamesLoadingState === DONE && shoppingListsLoadingState === DONE) {
+    if (
+      gamesLoadingState === DONE &&
+      shoppingListsLoadingState === DONE &&
+      !apiCallsInProgress.shoppingLists.length
+    ) {
       setDisabled(false)
     } else {
       setDisabled(true)
     }
-  }, [gamesLoadingState, shoppingListsLoadingState])
+  }, [gamesLoadingState, shoppingListsLoadingState, apiCallsInProgress])
 
   return (
     <form

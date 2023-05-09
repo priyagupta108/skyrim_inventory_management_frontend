@@ -8,7 +8,7 @@ interface PageContextType {
   setFlashProps: (props: FlashProps) => void
   modalProps: ModalProps
   setModalProps: (props: ModalProps) => void
-  apiCallStatus: ApiCalls
+  apiCallsInProgress: ApiCalls
   addApiCall: (key: Resource, value: HttpVerb) => void
   removeApiCall: (key: Resource, value: HttpVerb) => void
 }
@@ -33,7 +33,7 @@ const defaultApiCallStatus = {
 const PageContext = createContext<PageContextType>({
   flashProps: defaultFlashProps,
   modalProps: defaultModalProps,
-  apiCallStatus: defaultApiCallStatus,
+  apiCallsInProgress: defaultApiCallStatus,
   setFlashProps: () => {},
   setModalProps: () => {},
   addApiCall: () => {},
@@ -43,29 +43,29 @@ const PageContext = createContext<PageContextType>({
 const PageProvider = ({ children }: ProviderProps) => {
   const [flashProps, setFlashProps] = useState<FlashProps>(defaultFlashProps)
   const [modalProps, setModalProps] = useState<ModalProps>(defaultModalProps)
-  const [apiCallStatus, setApiCallStatus] =
+  const [apiCallsInProgress, SetApiCallsInProgress] =
     useState<ApiCalls>(defaultApiCallStatus)
 
   const flashVisibleSince = useRef(0)
 
   const addApiCall = (key: Resource, value: HttpVerb) => {
-    setApiCallStatus({
-      ...apiCallStatus,
-      [key]: [...apiCallStatus[key], value],
+    SetApiCallsInProgress({
+      ...apiCallsInProgress,
+      [key]: [...apiCallsInProgress[key], value],
     })
   }
 
   const removeApiCall = (key: Resource, value: HttpVerb) => {
-    setApiCallStatus({
-      ...apiCallStatus,
-      [key]: apiCallStatus[key].filter((verb) => verb !== value),
+    SetApiCallsInProgress({
+      ...apiCallsInProgress,
+      [key]: apiCallsInProgress[key].filter((verb) => verb !== value),
     })
   }
 
   const value = {
     flashProps,
     modalProps,
-    apiCallStatus,
+    apiCallsInProgress,
     setFlashProps,
     setModalProps,
     addApiCall,
