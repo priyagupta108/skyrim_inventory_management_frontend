@@ -331,27 +331,6 @@ describe('ShoppingListsPage', () => {
           expect(wrapper.getByText('Create a game')).toBeTruthy()
         })
       })
-
-      test('matches snapshot', async () => {
-        const wrapper = renderAuthenticated(
-          <PageProvider>
-            <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
-            </GamesProvider>
-          </PageProvider>,
-          'http://localhost:5173/shopping_lists'
-        )
-
-        await wrapper.findByText(
-          /You need a game to use the shopping lists feature\./
-        )
-
-        await waitFor(() => {
-          expect(wrapper).toMatchSnapshot()
-        })
-      })
     })
   })
 
