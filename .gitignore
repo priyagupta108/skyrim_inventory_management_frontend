@@ -28,3 +28,6 @@ dist-ssr
 
 # Local environment configuration
 .env
+
+# Yarn cache
+.yarn/cache
