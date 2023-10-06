@@ -29,5 +29,6 @@ dist-ssr
 # Local environment configuration
 .env
 
-# Yarn cache
+# Yarn cache and binary file
 .yarn/cache
+.yarn/install-state.gz
