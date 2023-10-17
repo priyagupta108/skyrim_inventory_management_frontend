@@ -8207,7 +8207,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.9":
+"fast-glob@npm:^3.2.12":
+  version: 3.3.1
+  resolution: "fast-glob@npm:3.3.1"
+  dependencies:
+    "@nodelib/fs.stat": ^2.0.2
+    "@nodelib/fs.walk": ^1.2.3
+    glob-parent: ^5.1.2
+    merge2: ^1.3.0
+    micromatch: ^4.0.4
+  checksum: b6f3add6403e02cf3a798bfbb1183d0f6da2afd368f27456010c0bc1f9640aea308243d4cb2c0ab142f618276e65ecb8be1661d7c62a7b4e5ba774b9ce5432e5
+  languageName: node
+  linkType: hard
+
+"fast-glob@npm:^3.2.9":
   version: 3.2.12
   resolution: "fast-glob@npm:3.2.12"
   dependencies:
@@ -12886,8 +12899,8 @@ __metadata:
     storybook: ^7.4.6
     storybook-addon-mock: ^4.3.0
     typescript: ^5.2.2
+    unplugin-fonts: ^1.0.3
     vite: ^4.4.11
-    vite-plugin-fonts: ^0.7.0
     vitest: ^0.34.6
   languageName: unknown
   linkType: soft
@@ -13810,6 +13823,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"unplugin-fonts@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "unplugin-fonts@npm:1.0.3"
+  dependencies:
+    fast-glob: ^3.2.12
+    unplugin: ^1.3.1
+  peerDependencies:
+    "@nuxt/kit": ^3.0.0
+    vite: ^2.0.0 || ^3.0.0 || ^4.0.0
+  peerDependenciesMeta:
+    "@nuxt/kit":
+      optional: true
+  checksum: 0128603ec3b653e2ad36e42225d4db256fb142bbea77db206e8ca758f05ac16fa3a015f121d513620847407ced639faca654d0daa683bdc271aacf22eeb7ddd2
+  languageName: node
+  linkType: hard
+
 "unplugin@npm:^1.3.1":
   version: 1.5.0
   resolution: "unplugin@npm:1.5.0"
@@ -14032,17 +14061,6 @@ __metadata:
   bin:
     vite-node: vite-node.mjs
   checksum: 46eba82bf8b69c7dfeed901502533b172cc6303212f0f49f82c2f64758fa4b60acd1b1e37cb96aff944e36b510b0d1beedb50d9cb25ef39e0159b2b9d1136b1f
-  languageName: node
-  linkType: hard
-
-"vite-plugin-fonts@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "vite-plugin-fonts@npm:0.7.0"
-  dependencies:
-    fast-glob: ^3.2.11
-  peerDependencies:
-    vite: ^2.0.0 || ^3.0.0 || ^4.0.0
-  checksum: 2e4cc4dd32f7dfee0bd8be8abc56051e70c5c9083edccac4166964da40304f5341c50bf4ff7e1e4c9bcd16955e52491a2d56ab07264b19442397cd4d9e4c312a
   languageName: node
   linkType: hard
 
