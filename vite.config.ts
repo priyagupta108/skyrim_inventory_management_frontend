@@ -1,4 +1,3 @@
-/// <reference types='vitest' />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import Unfonts from 'unplugin-fonts/vite'
@@ -30,9 +29,5 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
   },
 })
