@@ -47,7 +47,7 @@
     "@types/jsdom": "^21.1.4",
     "@types/node": "^20.8.6",
     "@types/react": "^18.2.30",
-    "@types/react-dom": "^18.2.13",
+    "@types/react-dom": "^18.2.14",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/parser": "^6.8.0",
     "@vitejs/plugin-react": "^4.1.0",
