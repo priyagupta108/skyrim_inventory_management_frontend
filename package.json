@@ -45,7 +45,7 @@
     "@storybook/testing-library": "^0.2.2",
     "@testing-library/react": "^14.0.0",
     "@types/jsdom": "^21.1.4",
-    "@types/node": "^20.8.8",
+    "@types/node": "^20.8.9",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
     "@types/react-router-dom": "^5.3.3",
