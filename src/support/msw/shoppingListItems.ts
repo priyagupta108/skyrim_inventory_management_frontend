@@ -2,7 +2,7 @@ import { http } from 'msw'
 import { allShoppingLists, shoppingListsForGame } from '../data/shoppingLists'
 import { allShoppingListItems } from '../data/shoppingListItems'
 import { newShoppingListItem } from './helpers/data'
-import { RequestShoppingListItem } from '../../types/apiData'
+import { type RequestShoppingListItem } from '../../types/apiData'
 
 const BASE_URI = 'http://localhost:3000'
 const listIds = allShoppingLists.map(({ id }) => id)

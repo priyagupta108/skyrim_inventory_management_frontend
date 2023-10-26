@@ -1,5 +1,5 @@
 import { http } from 'msw'
-import { RequestGame, type ResponseGame } from '../../types/apiData'
+import { type RequestGame, type ResponseGame } from '../../types/apiData'
 import { emptyGames, allGames } from '../data/games'
 
 const BASE_URI = 'http://localhost:3000'

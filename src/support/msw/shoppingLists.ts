@@ -3,7 +3,7 @@ import { allGames } from '../data/games'
 import { allShoppingLists } from '../data/shoppingLists'
 import { shoppingListsForGame } from '../data/shoppingLists'
 import { newShoppingList, newShoppingListWithAggregate } from './helpers/data'
-import { RequestShoppingList } from '../../types/apiData'
+import { type RequestShoppingList } from '../../types/apiData'
 
 const BASE_URI = 'http://localhost:3000'
 const gameIds = allGames.map(({ id }) => id)
