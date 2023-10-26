@@ -1,5 +1,5 @@
-import { rest } from 'msw'
-import { type ResponseGame } from '../../types/apiData'
+import { http } from 'msw'
+import { type RequestGame, type ResponseGame } from '../../types/apiData'
 import { emptyGames, allGames } from '../data/games'
 
 const BASE_URI = 'http://localhost:3000'
@@ -10,10 +10,10 @@ const BASE_URI = 'http://localhost:3000'
  *
  */
 
-export const postGamesSuccess = rest.post(
+export const postGamesSuccess = http.post(
   `${BASE_URI}/games`,
-  async (req, res, ctx) => {
-    const json = await req.json()
+  async ({ request }) => {
+    const json = await request.json() as RequestGame
 
     const body = {
       id: 102,
@@ -25,29 +25,29 @@ export const postGamesSuccess = rest.post(
       updated_at: new Date(),
     }
 
-    return res(ctx.status(201), ctx.json(body))
+    return new Response(JSON.stringify(body), { status: 201 })
   }
 )
 
-export const postGamesUnprocessable = rest.post(
+export const postGamesUnprocessable = http.post(
   `${BASE_URI}/games`,
-  (_req, res, ctx) => {
+  (_) => {
     const body = {
       errors: [
         "Name can only contain alphanumeric characters, spaces, commas (,), hyphens (-), and apostrophes (')",
       ],
     }
 
-    return res(ctx.status(422), ctx.json(body))
+    return new Response(JSON.stringify(body), { status: 422 })
   }
 )
 
-export const postGamesServerError = rest.post(
+export const postGamesServerError = http.post(
   `${BASE_URI}/games`,
-  (_req, res, ctx) => {
+  (_) => {
     const body = { errors: ['oh noes'] }
 
-    return res(ctx.status(500), ctx.json(body))
+    return new Response(JSON.stringify(body), { status: 500 })
   }
 )
 
@@ -57,24 +57,24 @@ export const postGamesServerError = rest.post(
  *
  */
 
-export const getGamesEmptySuccess = rest.get(
+export const getGamesEmptySuccess = http.get(
   `${BASE_URI}/games`,
-  (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(emptyGames))
+  (_) => {
+    return new Response(JSON.stringify(emptyGames), { status: 200 })
   }
 )
 
-export const getGamesAllSuccess = rest.get(
+export const getGamesAllSuccess = http.get(
   `${BASE_URI}/games`,
-  (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(allGames))
+  (_) => {
+    return new Response(JSON.stringify(allGames), { status: 200 })
   }
 )
 
-export const getGamesServerError = rest.get(
+export const getGamesServerError = http.get(
   `${BASE_URI}/games`,
-  (_req, res, ctx) => {
-    return res(ctx.status(500), ctx.json({ errors: ['Something went wrong'] }))
+  (_) => {
+    return new Response(JSON.stringify({ errors: ['Something went wrong'] }), { status: 500 })
   }
 )
 
@@ -99,35 +99,36 @@ const newOrExistingGame = (id: number): ResponseGame => {
   }
 }
 
-export const patchGameSuccess = rest.patch(
+export const patchGameSuccess = http.patch(
   `${BASE_URI}/games/:id`,
-  async (req, res, ctx) => {
-    const id = Number(req.params.id)
-    const body = await req.json()
-    const game = newOrExistingGame(id)
+  async ({ request, params }) => {
+    const { id } = params
+    const body = await request.json() as RequestGame
+    const game = newOrExistingGame(Number(id))
+    const respBody = JSON.stringify({ ...game, ...body })
 
-    return res(ctx.status(200), ctx.json({ ...game, ...body }))
+    return new Response(respBody, { status: 200 })
   }
 )
 
-export const patchGameUnprocessableEntity = rest.patch(
+export const patchGameUnprocessableEntity = http.patch(
   `${BASE_URI}/games/:id`,
-  (_req, res, ctx) => {
-    return res(ctx.status(422), ctx.json({ errors: ['Name must be unique'] }))
+  (_) => {
+    return new Response(JSON.stringify({ errors: ['Name must be unique'] }), { status: 422 })
   }
 )
 
-export const patchGameNotFound = rest.patch(
+export const patchGameNotFound = http.patch(
   `${BASE_URI}/games/:id`,
-  (_req, res, ctx) => {
-    return res(ctx.status(404))
+  (_) => {
+    return new Response(null, { status: 404 })
   }
 )
 
-export const patchGameServerError = rest.patch(
+export const patchGameServerError = http.patch(
   `${BASE_URI}/games/:id`,
-  (_req, res, ctx) => {
-    return res(ctx.status(500), ctx.json({ errors: ['oh noes'] }))
+  (_) => {
+    return new Response(JSON.stringify({ errors: ['oh noes'] }), { status: 500 })
   }
 )
 
@@ -137,23 +138,23 @@ export const patchGameServerError = rest.patch(
  *
  */
 
-export const deleteGameSuccess = rest.delete(
+export const deleteGameSuccess = http.delete(
   `${BASE_URI}/games/:id`,
-  (_req, res, ctx) => {
-    return res(ctx.status(204))
+  (_) => {
+    return new Response(null, { status: 204 })
   }
 )
 
-export const deleteGameNotFound = rest.delete(
+export const deleteGameNotFound = http.delete(
   `${BASE_URI}/games/:id`,
-  (_req, res, ctx) => {
-    return res(ctx.status(404))
+  (_) => {
+    return new Response(null, { status: 404 })
   }
 )
 
-export const deleteGameServerError = rest.delete(
+export const deleteGameServerError = http.delete(
   `${BASE_URI}/games/:id`,
-  (_req, res, ctx) => {
-    return res(ctx.status(500), ctx.json({ errors: ['oh noes'] }))
+  (_) => {
+    return new Response(JSON.stringify({ errors: ['oh noes'] }), { status: 500 })
   }
 )

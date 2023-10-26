@@ -1,8 +1,8 @@
-import { rest } from 'msw'
+import { http } from 'msw'
 import { allShoppingLists, shoppingListsForGame } from '../data/shoppingLists'
 import { allShoppingListItems } from '../data/shoppingListItems'
 import { newShoppingListItem } from './helpers/data'
-import { RequestShoppingListItem } from '../../types/apiData'
+import { type RequestShoppingListItem } from '../../types/apiData'
 
 const BASE_URI = 'http://localhost:3000'
 const listIds = allShoppingLists.map(({ id }) => id)
@@ -14,47 +14,47 @@ const listIds = allShoppingLists.map(({ id }) => id)
  */
 
 // Handles 201 and 404 responses
-export const postShoppingListItemsSuccess = rest.post(
+export const postShoppingListItemsSuccess = http.post(
   `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
-  async (req, res, ctx) => {
-    const listId: number = Number(req.params.listId)
+  async ({ request, params }) => {
+    const listId = Number(params.listId)
 
-    if (listIds.indexOf(listId) < 0) return res(ctx.status(404))
+    if (listIds.indexOf(listId) < 0) return new Response(null, { status: 404 })
 
-    const attributes = await req.json()
+    const attributes = await request.json() as RequestShoppingListItem
 
-    return res(
-      ctx.status(201),
-      ctx.json(newShoppingListItem(attributes, listId))
+    return new Response(
+      JSON.stringify(newShoppingListItem(attributes, listId)),
+      { status: 201 }
     )
   }
 )
 
 // Returns the same validation errors regardless of request body
 // submitted
-export const postShoppingListItemsUnprocessable = rest.post(
+export const postShoppingListItemsUnprocessable = http.post(
   `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(422),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: [
           'Quantity must be greater than 0',
           'Unit weight must be greater than or equal to 0',
         ],
-      })
+      }),
+      { status: 422 }
     )
   }
 )
 
-export const postShoppingListItemsServerError = rest.post(
+export const postShoppingListItemsServerError = http.post(
   `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(500),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: ['Something went horribly wrong'],
-      })
+      }),
+      { status: 500 }
     )
   }
 )
@@ -65,14 +65,14 @@ export const postShoppingListItemsServerError = rest.post(
  *
  */
 
-export const incrementShoppingListItemSuccess = rest.patch(
+export const incrementShoppingListItemSuccess = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
-  (req, res, ctx) => {
-    const itemId: number = Number(req.params.id)
+  ({ params }) => {
+    const itemId: number = Number(params.id)
     const item = allShoppingListItems.find(({ id }) => id === itemId)
     const list = allShoppingLists.find(({ id }) => id === item?.list_id)
 
-    if (!item || !list) return res(ctx.status(404))
+    if (!item || !list) return new Response(null, { status: 404 })
 
     const allItems = shoppingListsForGame(list.game_id).flatMap(
       ({ list_items }) =>
@@ -82,18 +82,18 @@ export const incrementShoppingListItemSuccess = rest.patch(
     const aggListItem = { ...allItems[0], quantity: allItems[0].quantity + 1 }
     const regItem = { ...item, quantity: item.quantity + 1 }
 
-    return res(ctx.status(200), ctx.json([aggListItem, regItem]))
+    return new Response(JSON.stringify([aggListItem, regItem]), { status: 200 })
   }
 )
 
-export const decrementShoppingListItemSuccess = rest.patch(
+export const decrementShoppingListItemSuccess = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
-  (req, res, ctx) => {
-    const itemId: number = Number(req.params.id)
+  ({ request, params }) => {
+    const itemId: number = Number(params.id)
     const item = allShoppingListItems.find(({ id }) => id === itemId)
     const list = allShoppingLists.find(({ id }) => id === item?.list_id)
 
-    if (!item || !list) return res(ctx.status(404))
+    if (!item || !list) return new Response(null, { status: 404 })
 
     const allItems = shoppingListsForGame(list.game_id).flatMap(
       ({ list_items }) =>
@@ -102,7 +102,7 @@ export const decrementShoppingListItemSuccess = rest.patch(
     const aggListItem = { ...allItems[0], quantity: allItems[0].quantity - 1 }
     const regItem = { ...item, quantity: item.quantity - 1 }
 
-    return res(ctx.status(200), ctx.json([aggListItem, regItem]))
+    return new Response(JSON.stringify([aggListItem, regItem]), { status: 200 })
   }
 )
 
@@ -117,16 +117,16 @@ export const decrementShoppingListItemSuccess = rest.patch(
 // the list item being updated has no "notes" value other than that of the
 // list item being updated - i.e., none of its other associated list items, if
 // any, have notes. If they did, that, too, would further complicate things.
-export const updateShoppingListItemSuccess = rest.patch(
+export const updateShoppingListItemSuccess = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
-  async (req, res, ctx) => {
-    const itemId: number = Number(req.params.id)
+  async ({ request, params }) => {
+    const itemId: number = Number(params.id)
     const item = allShoppingListItems.find(({ id }) => id === itemId)
     const list = allShoppingLists.find(({ id }) => id === item?.list_id)
 
-    if (!item || !list) return res(ctx.status(404))
+    if (!item || !list) return new Response(null, { status: 404 })
 
-    const json = (await req.json()) as RequestShoppingListItem
+    const json = await request.json() as RequestShoppingListItem
 
     const allItems = shoppingListsForGame(list.game_id).flatMap(
       ({ list_items }) =>
@@ -135,34 +135,34 @@ export const updateShoppingListItemSuccess = rest.patch(
     const aggListItem = { ...allItems[0], notes: json.notes }
     const regItem = { ...item, notes: json.notes }
 
-    return res(ctx.status(200), ctx.json([aggListItem, regItem]))
+    return new Response(JSON.stringify([aggListItem, regItem]), { status: 200 })
   }
 )
 
 // Returns the same validation errors regardless of request body
-export const updateShoppingListItemUnprocessable = rest.patch(
+export const updateShoppingListItemUnprocessable = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(422),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: [
           'Quantity must be greater than 0',
           'Unit weight must be greater than or equal to 0',
         ],
-      })
+      }),
+      { status: 422 }
     )
   }
 )
 
-export const updateShoppingListItemServerError = rest.patch(
+export const updateShoppingListItemServerError = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(500),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: ['Something went horribly wrong'],
-      })
+      }),
+      { status: 500 }
     )
   }
 )
@@ -178,23 +178,23 @@ export const updateShoppingListItemServerError = rest.patch(
 //       from the regular list AND the aggregate list regardless
 //       of whether there are other matching items. This function
 //       does not match the complexity of back-end behaviour.
-export const deleteShoppingListItemSuccess = rest.delete(
+export const deleteShoppingListItemSuccess = http.delete(
   `${BASE_URI}/shopping_list_items/:id`,
-  (req, res, ctx) => {
-    const itemId: number = Number(req.params.id)
+  ({ request, params }) => {
+    const itemId = Number(params.id)
     const item = allShoppingListItems.find(({ id }) => id === itemId)
 
-    if (!item) return res(ctx.status(404))
+    if (!item) return new Response(null, { status: 404 })
 
     const listId = item.list_id
     const regList = allShoppingLists.find(({ id }) => id === listId)
 
-    if (!regList) return res(ctx.status(404))
+    if (!regList) return new Response(null, { status: 404 })
 
     const aggListId = regList.aggregate_list_id
     const aggList = allShoppingLists.find(({ id }) => id === aggListId)
 
-    if (!aggList) return res(ctx.status(404))
+    if (!aggList) return new Response(null, { status: 404 })
 
     const list = { ...regList }
     const aggregate = { ...aggList }
@@ -204,16 +204,16 @@ export const deleteShoppingListItemSuccess = rest.delete(
       ({ description }) => description !== item.description
     )
 
-    return res(ctx.status(200), ctx.json([aggregate, list]))
+    return new Response(JSON.stringify([aggregate, list]), { status: 200 })
   }
 )
 
-export const deleteShoppingListItemServerError = rest.delete(
+export const deleteShoppingListItemServerError = http.delete(
   `${BASE_URI}/shopping_list_items/:id`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(500),
-      ctx.json({ errors: ['Something went horribly wrong'] })
+  (_) => {
+    return new Response(
+      JSON.stringify({ errors: ['Something went horribly wrong'] }),
+      { status: 500 }
     )
   }
 )

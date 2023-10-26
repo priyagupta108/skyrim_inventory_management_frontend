@@ -1,8 +1,9 @@
-import { rest } from 'msw'
+import { http } from 'msw'
 import { allGames } from '../data/games'
 import { allShoppingLists } from '../data/shoppingLists'
 import { shoppingListsForGame } from '../data/shoppingLists'
 import { newShoppingList, newShoppingListWithAggregate } from './helpers/data'
+import { type RequestShoppingList } from '../../types/apiData'
 
 const BASE_URI = 'http://localhost:3000'
 const gameIds = allGames.map(({ id }) => id)
@@ -15,48 +16,48 @@ const listIds = allShoppingLists.map(({ id }) => id)
  */
 
 // Handles both 201 and 404 responses
-export const postShoppingListsSuccess = rest.post(
+export const postShoppingListsSuccess = http.post(
   `${BASE_URI}/games/:gameId/shopping_lists`,
-  async (req, res, ctx) => {
-    const gameId: number = Number(req.params.gameId)
+  async ({ request, params }) => {
+    const gameId = Number(params.gameId)
 
-    if (gameIds.indexOf(gameId) < 0) return res(ctx.status(404))
+    if (gameIds.indexOf(gameId) < 0) return new Response(null, { status: 404 })
 
-    const attributes = await req.json()
+    const attributes = await request.json() as RequestShoppingList
 
     const responseBody = shoppingListsForGame(gameId).length
       ? newShoppingList(attributes, gameId)
       : newShoppingListWithAggregate(attributes, gameId)
 
-    return res(ctx.status(201), ctx.json(responseBody))
+    return new Response(JSON.stringify(responseBody), { status: 201 })
   }
 )
 
 // Returns the same validation errors regardless of request body
 // submitted
-export const postShoppingListsUnprocessable = rest.post(
+export const postShoppingListsUnprocessable = http.post(
   `${BASE_URI}/games/:gameId/shopping_lists`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(422),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: [
           'Title must be unique per game',
           "Title can only contain alphanumeric characters, spaces, commas (,), hyphens (-), and apostrophes (')",
         ],
-      })
+      }),
+      { status: 422 }
     )
   }
 )
 
-export const postShoppingListsServerError = rest.post(
+export const postShoppingListsServerError = http.post(
   `${BASE_URI}/games/:gameId/shopping_lists`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(500),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: ['Something went horribly wrong'],
-      })
+      }),
+      { status: 500 }
     )
   }
 )
@@ -68,21 +69,21 @@ export const postShoppingListsServerError = rest.post(
  */
 
 // Covers both success and 404 cases
-export const getShoppingListsSuccess = rest.get(
+export const getShoppingListsSuccess = http.get(
   `${BASE_URI}/games/:gameId/shopping_lists`,
-  (req, res, ctx) => {
-    const gameId: number = Number(req.params.gameId)
+  ({ params }) => {
+    const gameId = Number(params.gameId)
 
-    if (gameIds.indexOf(gameId) < 0) return res(ctx.status(404))
+    if (gameIds.indexOf(gameId) < 0) return new Response(null, { status: 404 })
 
-    return res(ctx.status(200), ctx.json(shoppingListsForGame(gameId)))
+    return new Response(JSON.stringify(shoppingListsForGame(gameId)), { status: 200 })
   }
 )
 
-export const getShoppingListsEmptySuccess = rest.get(
+export const getShoppingListsEmptySuccess = http.get(
   `${BASE_URI}/games/:gameId/shopping_lists`,
-  (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json([]))
+  (_) => {
+    return new Response(JSON.stringify([]), { status: 200 })
   }
 )
 
@@ -93,45 +94,45 @@ export const getShoppingListsEmptySuccess = rest.get(
  */
 
 // Covers both success and 404 cases
-export const patchShoppingListSuccess = rest.patch(
+export const patchShoppingListSuccess = http.patch(
   `${BASE_URI}/shopping_lists/:id`,
-  async (req, res, ctx) => {
-    const listId: number = Number(req.params.id)
+  async ({ request, params }) => {
+    const listId = Number(params.id)
 
-    if (listIds.indexOf(listId) < 0) return res(ctx.status(404))
+    if (listIds.indexOf(listId) < 0) return new Response(null, { status: 404 })
 
     const list = allShoppingLists.find(({ id }) => id === listId)
-    const { title } = await req.json()
+    const { title } = await request.json() as RequestShoppingList
 
-    return res(ctx.status(200), ctx.json({ ...list, title }))
+    return new Response(JSON.stringify({ ...list, title }), { status: 200 })
   }
 )
 
 // Returns the same validation errors regardless of request
 // body submitted
-export const patchShoppingListUnprocessable = rest.patch(
+export const patchShoppingListUnprocessable = http.patch(
   `${BASE_URI}/shopping_lists/:id`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(422),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: [
           'Title must be unique per game',
           "Title can only contain alphanumeric characters, spaces, commas (,), hyphens (-), and apostrophes (')",
         ],
-      })
+      }),
+      { status: 422 }
     )
   }
 )
 
-export const patchShoppingListServerError = rest.patch(
+export const patchShoppingListServerError = http.patch(
   `${BASE_URI}/shopping_lists/:id`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(500),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: ['Something went horribly wrong'],
-      })
+      }),
+      { status: 500 }
     )
   }
 )
@@ -143,13 +144,13 @@ export const patchShoppingListServerError = rest.patch(
  */
 
 // Covers both success and 404 cases
-export const deleteShoppingListSuccess = rest.delete(
+export const deleteShoppingListSuccess = http.delete(
   `${BASE_URI}/shopping_lists/:listId`,
-  (req, res, ctx) => {
-    const listId = Number(req.params.listId)
+  ({ params }) => {
+    const listId = Number(params.listId)
     const list = allShoppingLists.find(({ id }) => id === listId)
 
-    if (!list) return res(ctx.status(404))
+    if (!list) return new Response(null, { status: 404 })
 
     const lists = shoppingListsForGame(list.game_id)
 
@@ -165,18 +166,18 @@ export const deleteShoppingListSuccess = rest.delete(
       }
     }
 
-    return res(ctx.status(200), ctx.json(json))
+    return new Response(JSON.stringify(json), { status: 200 })
   }
 )
 
-export const deleteShoppingListServerError = rest.delete(
+export const deleteShoppingListServerError = http.delete(
   `${BASE_URI}/shopping_lists/:listId`,
-  (_req, res, ctx) => {
-    return res(
-      ctx.status(500),
-      ctx.json({
+  (_) => {
+    return new Response(
+      JSON.stringify({
         errors: ['Something went horribly wrong'],
-      })
+      }),
+      { status: 500 }
     )
   }
 )
