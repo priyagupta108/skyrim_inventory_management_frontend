@@ -10011,9 +10011,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "msw@npm:2.0.2"
+"msw@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "msw@npm:2.0.3"
   dependencies:
     "@bundled-es-modules/cookie": ^2.0.0
     "@bundled-es-modules/js-levenshtein": ^2.0.1
@@ -10045,7 +10045,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: 78e2694ffb49a9b60122733fd31173e506275d3d4c234039b5f99764ed69b331f2e51a01df21e555f9ae0a63ec8e7bc98c3c30d34dc69f2d0e62e2e5114237cd
+  checksum: 3c0ef3c2fc11064dc76d6b6769e0fe575efd3c0b8a189ed280b0bd6b04b601a7a80c270e02a76d839e497243202a81cb4daec54a08429ad4802d33cc87efa131
   languageName: node
   linkType: hard
 
@@ -11785,7 +11785,7 @@ __metadata:
     eslint: ^8.53.0
     firebase: ^10.5.2
     jsdom: ^22.1.0
-    msw: ^2.0.2
+    msw: ^2.0.3
     prettier: 3.0.3
     react: ^18.2.0
     react-animate-height: ^3.2.2
