@@ -58,7 +58,7 @@
     "eslint": "^8.53.0",
     "jsdom": "^22.1.0",
     "msw": "^2.0.6",
-    "prettier": "3.0.3",
+    "prettier": "3.1.0",
     "storybook": "^7.5.3",
     "storybook-addon-mock": "^4.3.0",
     "typescript": "^5.2.2",
