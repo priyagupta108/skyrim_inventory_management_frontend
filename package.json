@@ -62,7 +62,7 @@
     "storybook": "^7.5.3",
     "storybook-addon-mock": "^4.3.0",
     "typescript": "^5.2.2",
-    "unplugin-fonts": "^1.0.3",
+    "unplugin-fonts": "^1.1.1",
     "vite": "^4.5.0",
     "vitest": "^0.34.6"
   },
