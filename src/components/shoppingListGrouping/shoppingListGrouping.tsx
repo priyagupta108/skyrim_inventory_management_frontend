@@ -36,7 +36,7 @@ const ShoppingListGrouping = () => {
   if (gamesLoadingState === DONE && !games.length)
     return (
       <p className={styles.noLists}>
-        You need a game to use the shopping lists feature.{' '}
+        You need a game to use the wish lists feature.{' '}
         <button className={styles.link} onClick={showGameForm}>
           Create a game
         </button>{' '}
@@ -45,7 +45,7 @@ const ShoppingListGrouping = () => {
     )
 
   if (!shoppingLists.length)
-    return <p className={styles.noLists}>This game has no shopping lists.</p>
+    return <p className={styles.noLists}>This game has no wish lists.</p>
 
   return (
     <div className={styles.root}>

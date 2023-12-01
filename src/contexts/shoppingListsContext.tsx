@@ -115,7 +115,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       setFlashProps({
         hidden: false,
         type: 'error',
-        header: `${e.message.length} error(s) prevented your shopping ${
+        header: `${e.message.length} error(s) prevented your wish ${
           resource || 'list'
         } from being saved:`,
         message: e.message,
@@ -153,7 +153,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           hidden: false,
           type: 'warning',
           message:
-            'You must select a game from the dropdown before creating a shopping list.',
+            'You must select a game from the dropdown before creating a wish list.',
         })
 
         return
@@ -179,7 +179,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               setFlashProps({
                 hidden: false,
                 type: 'success',
-                message: 'Success! Your shopping list has been created.',
+                message: 'Success! Your wish list has been created.',
               })
 
               onSuccess && onSuccess()
@@ -331,7 +331,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 hidden: false,
                 type: 'error',
                 message:
-                  "The shopping list you tried to update doesn't exist, or doesn't belong to you. Please refresh and try again.",
+                  "The wish list you tried to update doesn't exist, or doesn't belong to you. Please refresh and try again.",
               })
             } else {
               handleApiError(e)
@@ -396,7 +396,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               setFlashProps({
                 hidden: false,
                 type: 'success',
-                message: 'Success! Your shopping list has been deleted.',
+                message: 'Success! Your wish list has been deleted.',
               })
 
               onSuccess && onSuccess()
@@ -420,7 +420,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 hidden: false,
                 type: 'error',
                 message:
-                  "The shopping list you tried to delete doesn't exist, or doesn't belong to you. Please refresh and try again.",
+                  "The wish list you tried to delete doesn't exist, or doesn't belong to you. Please refresh and try again.",
               })
             } else {
               handleApiError(e)
@@ -470,7 +470,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               setFlashProps({
                 hidden: false,
                 type: 'success',
-                message: 'Success! Your shopping list item has been created.',
+                message: 'Success! Your wish list item has been created.',
               })
 
               onSuccess && onSuccess()
@@ -505,7 +505,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 hidden: false,
                 type: 'error',
                 message:
-                  "The shopping list you tried to add an item to doesn't exist, or doesn't belong to you. Please refresh and try again.",
+                  "The wish list you tried to add an item to doesn't exist, or doesn't belong to you. Please refresh and try again.",
               })
             } else {
               handleApiError(e, 'list item')
@@ -589,7 +589,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                 hidden: false,
                 type: 'error',
                 message:
-                  "You have attempted to update a shopping list item that doesn't exist, or doesn't belong to you. Please refresh and try again.",
+                  "You have attempted to update a wish list item that doesn't exist, or doesn't belong to you. Please refresh and try again.",
               })
             } else {
               handleApiError(e, 'list item')
@@ -640,7 +640,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               setFlashProps({
                 hidden: false,
                 type: 'success',
-                message: 'Success! Your shopping list item has been deleted.',
+                message: 'Success! Your wish list item has been deleted.',
               })
 
               onSuccess && onSuccess()

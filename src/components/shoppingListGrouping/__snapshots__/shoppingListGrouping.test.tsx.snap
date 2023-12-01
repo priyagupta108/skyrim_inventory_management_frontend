@@ -8,7 +8,7 @@ exports[`ShoppingListGrouping > when there are no shopping lists > matches snaps
       <p
         class="_noLists_92c834"
       >
-        This game has no shopping lists.
+        This game has no wish lists.
       </p>
     </div>
   </body>,
@@ -16,7 +16,7 @@ exports[`ShoppingListGrouping > when there are no shopping lists > matches snaps
     <p
       class="_noLists_92c834"
     >
-      This game has no shopping lists.
+      This game has no wish lists.
     </p>
   </div>,
   "debug": [Function],
@@ -325,7 +325,7 @@ exports[`ShoppingListGrouping > when there are shopping lists > matches snapshot
                         style="display: none;"
                       >
                         <form
-                          aria-label="Shopping list item creation form"
+                          aria-label="Wish list item creation form"
                           class="_form_003550"
                         >
                           <label
@@ -793,7 +793,7 @@ exports[`ShoppingListGrouping > when there are shopping lists > matches snapshot
                         style="display: none;"
                       >
                         <form
-                          aria-label="Shopping list item creation form"
+                          aria-label="Wish list item creation form"
                           class="_form_003550"
                         >
                           <label
@@ -1113,7 +1113,7 @@ exports[`ShoppingListGrouping > when there are shopping lists > matches snapshot
                         style="display: none;"
                       >
                         <form
-                          aria-label="Shopping list item creation form"
+                          aria-label="Wish list item creation form"
                           class="_form_003550"
                         >
                           <label
@@ -1436,7 +1436,7 @@ exports[`ShoppingListGrouping > when there are shopping lists > matches snapshot
                       style="display: none;"
                     >
                       <form
-                        aria-label="Shopping list item creation form"
+                        aria-label="Wish list item creation form"
                         class="_form_003550"
                       >
                         <label
@@ -1904,7 +1904,7 @@ exports[`ShoppingListGrouping > when there are shopping lists > matches snapshot
                       style="display: none;"
                     >
                       <form
-                        aria-label="Shopping list item creation form"
+                        aria-label="Wish list item creation form"
                         class="_form_003550"
                       >
                         <label
@@ -2224,7 +2224,7 @@ exports[`ShoppingListGrouping > when there are shopping lists > matches snapshot
                       style="display: none;"
                     >
                       <form
-                        aria-label="Shopping list item creation form"
+                        aria-label="Wish list item creation form"
                         class="_form_003550"
                       >
                         <label

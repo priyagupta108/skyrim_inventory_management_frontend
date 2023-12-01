@@ -70,7 +70,7 @@ describe('ShoppingListItemCreateForm', () => {
 
       const descField = wrapper.getByLabelText('Description')
       const quantityField = wrapper.getByLabelText('Quantity')
-      const form = wrapper.getByLabelText('Shopping list item creation form')
+      const form = wrapper.getByLabelText('Wish list item creation form')
 
       fireEvent.change(descField, { target: { value: '  Iron ingot    ' } })
       fireEvent.change(quantityField, { target: { value: '2' } })

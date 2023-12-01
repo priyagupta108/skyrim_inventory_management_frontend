@@ -12,6 +12,7 @@ Summary of the changes made, preferably as a bulleted list
 
 - [ ] Add/update automated tests
 - [ ] Add/update Storybook stories
+- [ ] Comprehensively test final changes in local environment
 - [ ] Add/update docs
 - [ ] Run formatter on final changes
 - [ ] Verify TypeScript compiles

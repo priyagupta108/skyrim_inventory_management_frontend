@@ -125,7 +125,7 @@ const ShoppingListItem = ({
     e.preventDefault()
 
     const confirmed = window.confirm(
-      'Destroy shopping list item? Your aggregate list will be updated to reflect the change. This action cannot be undone.'
+      'Destroy wish list item? Your aggregate list will be updated to reflect the change. This action cannot be undone.'
     )
 
     if (confirmed) {
@@ -134,7 +134,7 @@ const ShoppingListItem = ({
       setFlashProps({
         hidden: false,
         type: 'info',
-        message: 'OK, your shopping list item will not be deleted.',
+        message: 'OK, your wish list item will not be deleted.',
       })
     }
   }
@@ -159,7 +159,7 @@ const ShoppingListItem = ({
 
     if (quantity === 1) {
       const confirmed = window.confirm(
-        "You can't reduce shopping list item quantity below 1. Would you like to delete this item? This cannot be undone."
+        "You can't reduce wish list item quantity below 1. Would you like to delete this item? This cannot be undone."
       )
 
       if (confirmed) {
@@ -171,7 +171,7 @@ const ShoppingListItem = ({
         setFlashProps({
           hidden: false,
           type: 'info',
-          message: 'OK, your shopping list item will not be deleted.',
+          message: 'OK, your wish list item will not be deleted.',
         })
       }
     } else {

@@ -1,34 +1,34 @@
 # Shopping Lists Context
 
-The `ShoppingListsContext` keeps track of the active game and its shopping lists. The `ShoppingListsProvider` makes the following values available to consumers:
+The `ShoppingListsContext` keeps track of the active game and its wish lists. (Note that the naming scheme "shopping list" is being replaced with "wish list" but has not yet been replaced in the front end code or API endpoints/request bodies.) The `ShoppingListsProvider` makes the following values available to consumers:
 
-- `shoppingLists`: array of [`ResponseShoppingList`](/src/types/apiData.d.ts), the shopping lists returned from the API for the current active game
-- `shoppingListsLoadingStatus`: string of either `'LOADING'`, `'ERROR'`, or `'DONE'`, indicating whether shopping lists have loaded successfully from the API initialised as `'LOADING'`
-- `createShoppingList`: a function that creates a shopping list for the current active game at the API, taking the following arguments:
-  - `attributes`: an object containing an optional `title` key with a string value, the attributes of the shopping list to create
+- `shoppingLists`: array of [`ResponseShoppingList`](/src/types/apiData.d.ts), the wish lists returned from the API for the current active game
+- `shoppingListsLoadingStatus`: string of either `'LOADING'`, `'ERROR'`, or `'DONE'`, indicating whether wish lists have loaded successfully from the API initialised as `'LOADING'`
+- `createShoppingList`: a function that creates a wish list for the current active game at the API, taking the following arguments:
+  - `attributes`: an object containing an optional `title` key with a string value, the attributes of the wish list to create
   - `onSuccess` (optional): a callback called on a successful response; no arguments are passed in and its return value, if any, is not used
   - `onError` (optional): a callback called on an unsuccessful response; no arguments are passed in and its return value, if any, is not used
-- `updateShoppingList`: a function that creates a shopping list for the current active game at the API, taking the following arguments:
-  - `listId`: the ID of the shopping list to be updated
-  - `attributes`: an object containing an optional `title` key with a string value, the attributes of the shopping list to create
+- `updateShoppingList`: a function that creates a wish list for the current active game at the API, taking the following arguments:
+  - `listId`: the ID of the wish list to be updated
+  - `attributes`: an object containing an optional `title` key with a string value, the attributes of the wish list to create
   - `onSuccess` (optional): a callback called on a successful response; no arguments are passed in and its return value, if any, is not used
   - `onError` (optional): a callback called on an unsuccessful response; no arguments are passed in and its return value, if any, is not used
-- `destroyShoppingList`: a function that destroys the selected shopping list at the API, taking the following arguments:
-  - `listId`: the `id` of the shopping list to be destroyed
+- `destroyShoppingList`: a function that destroys the selected wish list at the API, taking the following arguments:
+  - `listId`: the `id` of the wish list to be destroyed
   - `onSuccess` (optional): a callback called on a successful response; no arguments are passed in and its return value, if any, is not used
   - `onError` (optional): a callback called on an unsuccessful response; no arguments are passed in and its return value, if any, is not used
-- `createShoppingListItem`: a function that creates a shopping list item on the selected shopping list at the API, taking the following arguments:
-  - `listId`: the `id` of the list on which to create the shopping list item
+- `createShoppingListItem`: a function that creates a wish list item on the selected wish list at the API, taking the following arguments:
+  - `listId`: the `id` of the list on which to create the wish list item
   - `attributes`: the attributes of the item to be created (required attributes are `description` (string) and `quantity` (number))
   - `onSuccess` (optional): a callback called on a successful response; no arguments are passed in and its return value, if any, is not used
   - `onError` (optional): a callback called on an unsuccessful response; no arguments are passed in and its return value, if any, is not used
-- `updateShoppingListItem`: a function that updates a shopping list item at the API, taking the following arguments:
-  - `itemId`: the `id` of the shopping list item to be updated
+- `updateShoppingListItem`: a function that updates a wish list item at the API, taking the following arguments:
+  - `itemId`: the `id` of the wish list item to be updated
   - `attributes`: the attributes of the item to be updated (`description` is not allowed as a value)
   - `onSuccess` (optional): a callback called on a successful response; no arguments are passed in and its return value, if any, is not used
   - `onError` (optional): a callback called on an unsuccessful response; no arguments are passed in and its return value, if any, is not used
-- `destroyShoppingListItem`: a function that destroys the selected shopping list at the API, taking the following arguments:
-  - `itemId`: the `id` of the shopping list item to be destroyed
+- `destroyShoppingListItem`: a function that destroys the selected wish list at the API, taking the following arguments:
+  - `itemId`: the `id` of the wish list item to be destroyed
   - `onSuccess` (optional): a callback called on a successful response; no arguments are passed in and its return value, if any, is not used
   - `onError` (optional): a callback called on an unsuccessful response; no arguments are passed in and its return value, if any, is not used
 

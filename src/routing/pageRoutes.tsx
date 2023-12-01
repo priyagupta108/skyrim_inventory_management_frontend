@@ -67,9 +67,9 @@ const pages: Page[] = [
     path: paths.dashboard.games,
   },
   {
-    pageId: 'dashboard-shopping-lists',
-    title: `${siteTitle} Shopping Lists`,
-    description: 'Manage your shopping lists',
+    pageId: 'dashboard-wish-lists',
+    title: `${siteTitle} Wish Lists`,
+    description: 'Manage your wish lists',
     jsx: (
       <PageProvider>
         <GamesProvider>

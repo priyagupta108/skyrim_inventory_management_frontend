@@ -47,7 +47,7 @@ describe('<DashboardPage />', () => {
     )
 
     expect(wrapper.getByText('Your Games')).toBeTruthy()
-    expect(wrapper.getByText('Your Shopping Lists')).toBeTruthy()
+    expect(wrapper.getByText('Your Wish Lists')).toBeTruthy()
     expect(wrapper.getByText('Your Inventory')).toBeTruthy()
     expect(wrapper.getByText('Nav Link 4')).toBeTruthy()
     expect(wrapper.getByText('Nav Link 5')).toBeTruthy()

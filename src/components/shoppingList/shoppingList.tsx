@@ -109,7 +109,7 @@ const ShoppingList = ({
       setFlashProps({
         hidden: false,
         type: 'info',
-        message: 'OK, your shopping list will not be destroyed.',
+        message: 'OK, your wish list will not be destroyed.',
       })
     }
   }
@@ -200,13 +200,13 @@ const ShoppingList = ({
       >
         <div className={styles.details}>
           {editable && <ShoppingListItemCreateForm listId={listId} />}
-          {/* We only want to display the "This shopping list has no list items"
+          {/* We only want to display the "This wish list has no list items"
           message if there is no list item creation form */}
           {children || editable ? (
             children
           ) : (
             <p className={styles.emptyList}>
-              This shopping list has no list items.
+              This wish list has no list items.
             </p>
           )}
         </div>
