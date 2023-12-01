@@ -19,7 +19,7 @@ const navigationCards = [
   },
   {
     colorScheme: PINK,
-    href: paths.dashboard.shoppingLists,
+    href: paths.dashboard.wishLists,
     children: 'Your Wish Lists',
     key: 'wish-lists',
   },

@@ -247,7 +247,7 @@ describe('<DashboardLayout>', () => {
                 </DashboardLayout>
               </GamesProvider>
             </PageProvider>,
-            'http://localhost:5173/shoppingLists?gameId=51'
+            'http://localhost:5173/wish_lists?gameId=51'
           )
 
           const selectedOption = wrapper.getByTestId('selectedOption')
@@ -267,7 +267,7 @@ describe('<DashboardLayout>', () => {
                 </DashboardLayout>
               </GamesContext.Provider>
             </PageProvider>,
-            'http://localhost:5173/shoppingLists?gameId=51'
+            'http://localhost:5173/wish_lists?gameId=51'
           )
 
           expect(wrapper).toMatchSnapshot()
@@ -290,7 +290,7 @@ describe('<DashboardLayout>', () => {
                 </DashboardLayout>
               </GamesProvider>
             </PageProvider>,
-            'http://localhost:5173/shoppingLists?gameId=67'
+            'http://localhost:5173/wish_lists?gameId=67'
           )
 
           const selectedOption = wrapper.getByTestId('selectedOption')
@@ -310,7 +310,7 @@ describe('<DashboardLayout>', () => {
                 </DashboardLayout>
               </GamesContext.Provider>
             </PageProvider>,
-            'http://localhost:5173/shoppingLists?gameId=67'
+            'http://localhost:5173/wish_lists?gameId=67'
           )
 
           expect(wrapper).toMatchSnapshot()

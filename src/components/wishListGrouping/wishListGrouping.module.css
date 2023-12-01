@@ -22,11 +22,11 @@
   color: #000;
 }
 
-.shoppingList {
+.wishList {
   margin-bottom: 24px;
 }
 
-.shoppingList:last-of-type {
+.wishList:last-of-type {
   margin-bottom: 0;
 }
 

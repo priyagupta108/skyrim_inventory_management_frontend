@@ -24,7 +24,7 @@ export const newWishList = (
 ): ResponseWishList[] => {
   if (gameIds.indexOf(gameId) < 0)
     throw new Error(
-      'Cannot generate shopping list for game that does not exist in test data'
+      'Cannot generate wish list for game that does not exist in test data'
     )
 
   const existingLists = wishListsForGame(gameId)
