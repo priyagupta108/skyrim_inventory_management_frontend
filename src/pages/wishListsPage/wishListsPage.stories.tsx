@@ -3,34 +3,34 @@ import { BrowserRouter } from 'react-router-dom'
 import {
   gamesContextValue,
   gamesContextValueLoading,
-  shoppingListsContextValue,
-  shoppingListsContextValueLoading,
-  shoppingListsContextValueEmpty,
+  wishListsContextValue,
+  wishListsContextValueLoading,
+  wishListsContextValueEmpty,
   loginContextValue,
   gamesContextValueEmpty,
 } from '../../support/data/contextValues'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
+import { WishListsContext } from '../../contexts/wishListsContext'
 import { LoginContext } from '../../contexts/loginContext'
 import { GamesContext } from '../../contexts/gamesContext'
 import { PageProvider } from '../../contexts/pageContext'
-import ShoppingListsPage from './wishListsPage'
+import WishListsPage from './wishListsPage'
 
-type ShoppingListsPageStory = StoryObj<typeof ShoppingListsPage>
+type WishListsPageStory = StoryObj<typeof WishListsPage>
 
-const meta: Meta<typeof ShoppingListsPage> = {
-  title: 'ShoppingListsPage',
-  component: ShoppingListsPage,
+const meta: Meta<typeof WishListsPage> = {
+  title: 'WishListsPage',
+  component: WishListsPage,
   decorators: [
     (Story, { parameters }) => (
       <BrowserRouter>
         <LoginContext.Provider value={loginContextValue}>
           <PageProvider>
             <GamesContext.Provider value={parameters.gamesContextValue}>
-              <ShoppingListsContext.Provider
-                value={parameters.shoppingListsContextValue}
+              <WishListsContext.Provider
+                value={parameters.wishListsContextValue}
               >
                 <Story />
-              </ShoppingListsContext.Provider>
+              </WishListsContext.Provider>
             </GamesContext.Provider>
           </PageProvider>
         </LoginContext.Provider>
@@ -41,37 +41,37 @@ const meta: Meta<typeof ShoppingListsPage> = {
 
 export default meta
 
-export const GamesLoading: ShoppingListsPageStory = {
+export const GamesLoading: WishListsPageStory = {
   parameters: {
     gamesContextValue: gamesContextValueLoading,
-    shoppingListsContextValue,
+    wishListsContextValue,
   },
 }
 
-export const NoGames: ShoppingListsPageStory = {
+export const NoGames: WishListsPageStory = {
   parameters: {
     gamesContextValue: gamesContextValueEmpty,
-    shoppingListsContextValue: shoppingListsContextValueEmpty,
+    wishListsContextValue: wishListsContextValueEmpty,
   },
 }
 
-export const ShoppingListsLoading: ShoppingListsPageStory = {
+export const WishListsLoading: WishListsPageStory = {
   parameters: {
     gamesContextValue,
-    shoppingListsContextValue: shoppingListsContextValueLoading,
+    wishListsContextValue: wishListsContextValueLoading,
   },
 }
 
-export const WithShoppingLists: ShoppingListsPageStory = {
+export const WithWishLists: WishListsPageStory = {
   parameters: {
     gamesContextValue,
-    shoppingListsContextValue,
+    wishListsContextValue,
   },
 }
 
-export const NoShoppingLists: ShoppingListsPageStory = {
+export const NoWishLists: WishListsPageStory = {
   parameters: {
     gamesContextValue,
-    shoppingListsContextValue: shoppingListsContextValueEmpty,
+    wishListsContextValue: wishListsContextValueEmpty,
   },
 }

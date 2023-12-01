@@ -6,17 +6,17 @@ import { DONE } from '../../utils/loadingStates'
 import {
   usePageContext,
   useGamesContext,
-  useShoppingListsContext,
+  useWishListsContext,
 } from '../../hooks/contexts'
 import GameForm from '../gameForm/gameForm'
-import ShoppingListItem from '../wishListItem/wishListItem'
-import ShoppingList from '../wishList/wishList'
+import WishListItem from '../wishListItem/wishListItem'
+import WishList from '../wishList/wishList'
 import styles from './wishListGrouping.module.css'
 
-const ShoppingListGrouping = () => {
+const WishListGrouping = () => {
   const { setModalProps } = usePageContext()
   const { games, gamesLoadingState, createGame } = useGamesContext()
-  const { shoppingLists } = useShoppingListsContext()
+  const { wishLists } = useWishListsContext()
 
   const showGameForm: MouseEventHandler = (e) => {
     e.preventDefault()
@@ -44,25 +44,25 @@ const ShoppingListGrouping = () => {
       </p>
     )
 
-  if (!shoppingLists.length)
+  if (!wishLists.length)
     return <p className={styles.noLists}>This game has no wish lists.</p>
 
   return (
     <div className={styles.root}>
-      {shoppingLists.map(({ id, title, aggregate, list_items }, index) => {
+      {wishLists.map(({ id, title, aggregate, list_items }, index) => {
         const colorIndex =
           index < colorSchemes.length ? index : index % colorSchemes.length
         const itemKey = title.toLowerCase().replace(' ', '-')
 
         return (
           <ColorProvider key={itemKey} colorScheme={colorSchemes[colorIndex]}>
-            <div className={styles.shoppingList}>
-              <ShoppingList listId={id} title={title} editable={!aggregate}>
+            <div className={styles.wishList}>
+              <WishList listId={id} title={title} editable={!aggregate}>
                 {(list_items.length &&
                   list_items.map(
                     ({ id, description, quantity, unit_weight, notes }) => {
                       return (
-                        <ShoppingListItem
+                        <WishListItem
                           key={`${description
                             .toLowerCase()
                             .replace(' ', '-')}-${id}`}
@@ -78,7 +78,7 @@ const ShoppingListGrouping = () => {
                     }
                   )) ||
                   null}
-              </ShoppingList>
+              </WishList>
             </div>
           </ColorProvider>
         )
@@ -87,4 +87,4 @@ const ShoppingListGrouping = () => {
   )
 }
 
-export default ShoppingListGrouping
+export default WishListGrouping

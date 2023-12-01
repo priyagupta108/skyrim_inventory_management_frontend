@@ -17,12 +17,12 @@ import {
 import {
   useColorScheme,
   usePageContext,
-  useShoppingListsContext,
+  useWishListsContext,
 } from '../../hooks/contexts'
-import ShoppingListItemEditForm from '../wishListItemEditForm/wishListItemEditForm'
+import WishListItemEditForm from '../wishListItemEditForm/wishListItemEditForm'
 import styles from './wishListItem.module.css'
 
-interface ShoppingListItemProps {
+interface WishListItemProps {
   itemId: number
   listTitle: string
   description: string
@@ -47,7 +47,7 @@ const formatWeight = (weight?: number | null) => {
   return weight % 1 === 0 ? weight.toFixed(0) : weight.toFixed(1)
 }
 
-const ShoppingListItem = ({
+const WishListItem = ({
   itemId,
   listTitle,
   description,
@@ -55,14 +55,14 @@ const ShoppingListItem = ({
   unitWeight,
   notes,
   editable = false,
-}: ShoppingListItemProps) => {
+}: WishListItemProps) => {
   const { apiCallsInProgress, setFlashProps, setModalProps } = usePageContext()
-  const { destroyShoppingListItem, updateShoppingListItem } =
-    useShoppingListsContext()
+  const { destroyWishListItem, updateWishListItem } =
+    useWishListsContext()
 
   const [expanded, setExpanded] = useState(false)
   const [incrementerDisabled, setIncrementerDisabled] = useState(
-    !!apiCallsInProgress.shoppingListItems.length
+    !!apiCallsInProgress.wishListItems.length
   )
 
   const iconsRef = useRef<HTMLSpanElement>(null)
@@ -108,7 +108,7 @@ const ShoppingListItem = ({
     setModalProps({
       hidden: false,
       children: (
-        <ShoppingListItemEditForm
+        <WishListItemEditForm
           itemId={itemId}
           description={description}
           listTitle={listTitle}
@@ -129,7 +129,7 @@ const ShoppingListItem = ({
     )
 
     if (confirmed) {
-      destroyShoppingListItem(itemId)
+      destroyWishListItem(itemId)
     } else {
       setFlashProps({
         hidden: false,
@@ -146,7 +146,7 @@ const ShoppingListItem = ({
 
     const onRequestComplete = () => setIncrementerDisabled(false)
 
-    updateShoppingListItem(
+    updateWishListItem(
       itemId,
       { quantity: quantity + 1 },
       onRequestComplete,
@@ -164,7 +164,7 @@ const ShoppingListItem = ({
 
       if (confirmed) {
         setIncrementerDisabled(true)
-        destroyShoppingListItem(itemId, null, () =>
+        destroyWishListItem(itemId, null, () =>
           setIncrementerDisabled(false)
         )
       } else {
@@ -178,7 +178,7 @@ const ShoppingListItem = ({
       const onRequestComplete = () => setIncrementerDisabled(false)
 
       setIncrementerDisabled(true)
-      updateShoppingListItem(
+      updateWishListItem(
         itemId,
         { quantity: quantity - 1 },
         onRequestComplete,
@@ -196,7 +196,7 @@ const ShoppingListItem = ({
         className={styles.trigger}
         onClick={toggleDetails}
         aria-expanded={expanded}
-        aria-controls={`shoppingListItem${itemId}Details`}
+        aria-controls={`wishListItem${itemId}Details`}
       >
         <span
           className={classNames(styles.descriptionContainer, {
@@ -208,14 +208,14 @@ const ShoppingListItem = ({
               <button
                 className={styles.icon}
                 onClick={destroy}
-                data-testid={`destroyShoppingListItem${itemId}`}
+                data-testid={`destroyWishListItem${itemId}`}
               >
                 <FontAwesomeIcon className={styles.fa} icon={faXmark} />
               </button>
               <button
                 className={styles.icon}
                 onClick={displayEditForm}
-                data-testid={`editShoppingListItem${itemId}`}
+                data-testid={`editWishListItem${itemId}`}
               >
                 <FontAwesomeIcon className={styles.fa} icon={faPenToSquare} />
               </button>
@@ -229,7 +229,7 @@ const ShoppingListItem = ({
               className={styles.icon}
               ref={incRef}
               onClick={incrementQuantity}
-              data-testid={`incrementShoppingListItem${itemId}`}
+              data-testid={`incrementWishListItem${itemId}`}
               disabled={incrementerDisabled}
             >
               <FontAwesomeIcon className={styles.fa} icon={faChevronUp} />
@@ -241,7 +241,7 @@ const ShoppingListItem = ({
               className={styles.icon}
               ref={decRef}
               onClick={decrementQuantity}
-              data-testid={`decrementShoppingListItem${itemId}`}
+              data-testid={`decrementWishListItem${itemId}`}
               disabled={incrementerDisabled}
             >
               <FontAwesomeIcon className={styles.fa} icon={faChevronDown} />
@@ -250,7 +250,7 @@ const ShoppingListItem = ({
         </span>
       </div>
       <AnimateHeight
-        id={`shoppingListItem${itemId}Details`}
+        id={`wishListItem${itemId}Details`}
         duration={200}
         height={expanded ? 'auto' : 0}
       >
@@ -270,4 +270,4 @@ const ShoppingListItem = ({
   )
 }
 
-export default ShoppingListItem
+export default WishListItem

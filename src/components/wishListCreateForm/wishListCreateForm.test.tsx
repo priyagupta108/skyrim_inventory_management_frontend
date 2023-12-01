@@ -11,65 +11,65 @@ import {
 import { act, fireEvent } from '@testing-library/react'
 import { setupServer } from 'msw/node'
 import { renderAuthenticated } from '../../support/testUtils'
-import { getShoppingListsSuccess } from '../../support/msw/handlers'
+import { getWishListsSuccess } from '../../support/msw/handlers'
 import {
   gamesContextValue,
   gamesContextValueError,
   gamesContextValueLoading,
-  shoppingListsContextValue,
-  shoppingListsContextValueError,
-  shoppingListsContextValueLoading,
+  wishListsContextValue,
+  wishListsContextValueError,
+  wishListsContextValueLoading,
 } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
 import {
-  ShoppingListsContext,
-  ShoppingListsProvider,
+  WishListsContext,
+  WishListsProvider,
 } from '../../contexts/wishListsContext'
-import ShoppingListCreateForm from './wishListCreateForm'
+import WishListCreateForm from './wishListCreateForm'
 
 const renderWithContexts = (ui: ReactElement) => {
   return renderAuthenticated(
     <PageProvider>
       <GamesContext.Provider value={gamesContextValue}>
-        <ShoppingListsProvider>{ui}</ShoppingListsProvider>
+        <WishListsProvider>{ui}</WishListsProvider>
       </GamesContext.Provider>
     </PageProvider>
   )
 }
 
-describe('ShoppingListCreateForm', () => {
+describe('WishListCreateForm', () => {
   describe('displaying the form', () => {
-    const mockServer = setupServer(getShoppingListsSuccess)
+    const mockServer = setupServer(getWishListsSuccess)
 
     beforeAll(() => mockServer.listen())
     beforeEach(() => mockServer.resetHandlers())
     afterAll(() => mockServer.close())
 
     test('has the correct form fields', () => {
-      const wrapper = renderWithContexts(<ShoppingListCreateForm />)
+      const wrapper = renderWithContexts(<WishListCreateForm />)
 
       expect(wrapper.getByPlaceholderText('Title')).toBeTruthy()
       expect(wrapper.getByText('Create')).toBeTruthy()
     })
 
     test('matches snapshot', () => {
-      const wrapper = renderWithContexts(<ShoppingListCreateForm />)
+      const wrapper = renderWithContexts(<WishListCreateForm />)
 
       expect(wrapper).toMatchSnapshot()
     })
   })
 
   describe('disabling behaviour', () => {
-    test('is disabled when the shopping lists are loading', () => {
+    test('is disabled when the wish lists are loading', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider
-              value={shoppingListsContextValueLoading}
+            <WishListsContext.Provider
+              value={wishListsContextValueLoading}
             >
-              <ShoppingListCreateForm />
-            </ShoppingListsContext.Provider>
+              <WishListCreateForm />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -84,15 +84,15 @@ describe('ShoppingListCreateForm', () => {
       ).toBeTruthy()
     })
 
-    test('is disabled when there is a shopping list loading error', () => {
+    test('is disabled when there is a wish list loading error', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider
-              value={shoppingListsContextValueError}
+            <WishListsContext.Provider
+              value={wishListsContextValueError}
             >
-              <ShoppingListCreateForm />
-            </ShoppingListsContext.Provider>
+              <WishListCreateForm />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -111,9 +111,9 @@ describe('ShoppingListCreateForm', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValueLoading}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListCreateForm />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListCreateForm />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -132,9 +132,9 @@ describe('ShoppingListCreateForm', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValueError}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListCreateForm />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListCreateForm />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -149,13 +149,13 @@ describe('ShoppingListCreateForm', () => {
       ).toBeTruthy()
     })
 
-    test('is enabled when both games and shopping lists have loaded', () => {
+    test('is enabled when both games and wish lists have loaded', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListCreateForm />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListCreateForm />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -173,19 +173,19 @@ describe('ShoppingListCreateForm', () => {
 
   describe('submitting the form', () => {
     describe('when the form is enabled', () => {
-      test('trims the title and calls the createShoppingList function', () => {
-        const createShoppingList = vitest.fn()
+      test('trims the title and calls the createWishList function', () => {
+        const createWishList = vitest.fn()
         const contextValue = {
-          ...shoppingListsContextValue,
-          createShoppingList,
+          ...wishListsContextValue,
+          createWishList,
         }
 
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsContext.Provider value={contextValue}>
-                <ShoppingListCreateForm />
-              </ShoppingListsContext.Provider>
+              <WishListsContext.Provider value={contextValue}>
+                <WishListCreateForm />
+              </WishListsContext.Provider>
             </GamesContext.Provider>
           </PageProvider>
         )
@@ -193,12 +193,12 @@ describe('ShoppingListCreateForm', () => {
         const input = wrapper.getByPlaceholderText('Title')
         const button = wrapper.getByText('Create')
 
-        fireEvent.change(input, { target: { value: '   New Shopping List  ' } })
+        fireEvent.change(input, { target: { value: '   New Wish List  ' } })
 
         act(() => fireEvent.click(button))
 
-        expect(createShoppingList).toHaveBeenCalledWith(
-          { title: 'New Shopping List' },
+        expect(createWishList).toHaveBeenCalledWith(
+          { title: 'New Wish List' },
           expect.any(Function),
           expect.any(Function)
         )
@@ -206,19 +206,19 @@ describe('ShoppingListCreateForm', () => {
     })
 
     describe('when the form is disabled', () => {
-      test("doesn't call the createShoppingList function", () => {
-        const createShoppingList = vitest.fn()
+      test("doesn't call the createWishList function", () => {
+        const createWishList = vitest.fn()
         const contextValue = {
-          ...shoppingListsContextValueLoading,
-          createShoppingList,
+          ...wishListsContextValueLoading,
+          createWishList,
         }
 
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsContext.Provider value={contextValue}>
-                <ShoppingListCreateForm />
-              </ShoppingListsContext.Provider>
+              <WishListsContext.Provider value={contextValue}>
+                <WishListCreateForm />
+              </WishListsContext.Provider>
             </GamesContext.Provider>
           </PageProvider>
         )
@@ -229,7 +229,7 @@ describe('ShoppingListCreateForm', () => {
           fireEvent.click(button)
         })
 
-        expect(createShoppingList).not.toHaveBeenCalled()
+        expect(createWishList).not.toHaveBeenCalled()
       })
     })
   })

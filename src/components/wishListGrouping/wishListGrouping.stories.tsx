@@ -2,28 +2,28 @@ import { type Meta, type StoryObj } from '@storybook/react'
 import {
   gamesContextValue,
   gamesContextValueEmpty,
-  shoppingListsContextValue,
-  shoppingListsContextValueEmpty,
+  wishListsContextValue,
+  wishListsContextValueEmpty,
 } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
-import ShoppingListGrouping from './wishListGrouping'
+import { WishListsContext } from '../../contexts/wishListsContext'
+import WishListGrouping from './wishListGrouping'
 
-type GroupingStory = StoryObj<typeof ShoppingListGrouping>
+type GroupingStory = StoryObj<typeof WishListGrouping>
 
-const meta: Meta<typeof ShoppingListGrouping> = {
-  title: 'ShoppingListGrouping',
-  component: ShoppingListGrouping,
+const meta: Meta<typeof WishListGrouping> = {
+  title: 'WishListGrouping',
+  component: WishListGrouping,
   decorators: [
     (Story, { parameters }) => (
       <PageProvider>
         <GamesContext.Provider value={parameters.gamesContextValue}>
-          <ShoppingListsContext.Provider
-            value={parameters.shoppingListsContextValue}
+          <WishListsContext.Provider
+            value={parameters.wishListsContextValue}
           >
             <Story />
-          </ShoppingListsContext.Provider>
+          </WishListsContext.Provider>
         </GamesContext.Provider>
       </PageProvider>
     ),
@@ -32,23 +32,23 @@ const meta: Meta<typeof ShoppingListGrouping> = {
 
 export default meta
 
-export const WithShoppingLists: GroupingStory = {
+export const WithWishLists: GroupingStory = {
   parameters: {
     gamesContextValue,
-    shoppingListsContextValue,
+    wishListsContextValue,
   },
 }
 
-export const WithoutShoppingLists: GroupingStory = {
+export const WithoutWishLists: GroupingStory = {
   parameters: {
     gamesContextValue,
-    shoppingListsContextValue: shoppingListsContextValueEmpty,
+    wishListsContextValue: wishListsContextValueEmpty,
   },
 }
 
 export const NoGames: GroupingStory = {
   parameters: {
     gamesContextValue: gamesContextValueEmpty,
-    shoppingListsContextValue,
+    wishListsContextValue,
   },
 }

@@ -4,34 +4,34 @@ import { act, fireEvent } from '@testing-library/react'
 import { renderAuthenticated } from '../../support/testUtils'
 import {
   gamesContextValue,
-  shoppingListsContextValue,
+  wishListsContextValue,
 } from '../../support/data/contextValues'
 import { GREEN } from '../../utils/colorSchemes'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
+import { WishListsContext } from '../../contexts/wishListsContext'
 import { ColorProvider } from '../../contexts/colorContext'
-import ShoppingListItem from './wishListItem'
+import WishListItem from './wishListItem'
 
-let listsContextValue = shoppingListsContextValue
+let listsContextValue = wishListsContextValue
 
 const renderInContexts = (ui: ReactElement) =>
   renderAuthenticated(
     <PageProvider>
       <GamesContext.Provider value={gamesContextValue}>
-        <ShoppingListsContext.Provider value={listsContextValue}>
+        <WishListsContext.Provider value={listsContextValue}>
           <ColorProvider colorScheme={GREEN}>{ui}</ColorProvider>
-        </ShoppingListsContext.Provider>
+        </WishListsContext.Provider>
       </GamesContext.Provider>
     </PageProvider>
   )
 
-describe('ShoppingListItem', () => {
+describe('WishListItem', () => {
   describe('displaying the list item', () => {
     describe('when the list item is editable', () => {
       test('displays the attributes', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={33}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -49,7 +49,7 @@ describe('ShoppingListItem', () => {
 
       test('truncates unit weight values appropriately', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={20}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -69,7 +69,7 @@ describe('ShoppingListItem', () => {
 
       test('has a destroy icon', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={20}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -80,12 +80,12 @@ describe('ShoppingListItem', () => {
           />
         )
 
-        expect(wrapper.getByTestId('destroyShoppingListItem20')).toBeTruthy()
+        expect(wrapper.getByTestId('destroyWishListItem20')).toBeTruthy()
       })
 
       test('has an edit icon', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={20}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -96,12 +96,12 @@ describe('ShoppingListItem', () => {
           />
         )
 
-        expect(wrapper.getByTestId('editShoppingListItem20')).toBeTruthy()
+        expect(wrapper.getByTestId('editWishListItem20')).toBeTruthy()
       })
 
       test('has increment and decrement icons', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={20}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -112,13 +112,13 @@ describe('ShoppingListItem', () => {
           />
         )
 
-        expect(wrapper.getByTestId('incrementShoppingListItem20')).toBeTruthy()
-        expect(wrapper.getByTestId('decrementShoppingListItem20')).toBeTruthy()
+        expect(wrapper.getByTestId('incrementWishListItem20')).toBeTruthy()
+        expect(wrapper.getByTestId('decrementWishListItem20')).toBeTruthy()
       })
 
       test('matches snapshot', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={2}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -136,7 +136,7 @@ describe('ShoppingListItem', () => {
     describe('when the list item is not editable', () => {
       test('displays the attributes', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={33}
             listTitle="All Items"
             description="Silver Necklace"
@@ -154,7 +154,7 @@ describe('ShoppingListItem', () => {
 
       test('truncates unit weight values appropriately', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={20}
             listTitle="All Items"
             description="Silver Necklace"
@@ -172,7 +172,7 @@ describe('ShoppingListItem', () => {
 
       test('has no destroy icon', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={20}
             listTitle="All Items"
             description="Silver Necklace"
@@ -182,12 +182,12 @@ describe('ShoppingListItem', () => {
           />
         )
 
-        expect(wrapper.queryByTestId('destroyShoppingListItem20')).toBeFalsy()
+        expect(wrapper.queryByTestId('destroyWishListItem20')).toBeFalsy()
       })
 
       test('has no edit icon', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={20}
             listTitle="All Items"
             description="Silver Necklace"
@@ -197,12 +197,12 @@ describe('ShoppingListItem', () => {
           />
         )
 
-        expect(wrapper.queryByTestId('editShoppingListItem20')).toBeFalsy()
+        expect(wrapper.queryByTestId('editWishListItem20')).toBeFalsy()
       })
 
       test('has no increment or decrement icons', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={20}
             listTitle="All Items"
             description="Silver Necklace"
@@ -212,13 +212,13 @@ describe('ShoppingListItem', () => {
           />
         )
 
-        expect(wrapper.queryByTestId('incrementShoppingListItem20')).toBeFalsy()
-        expect(wrapper.queryByTestId('decrementShoppingListItem20')).toBeFalsy()
+        expect(wrapper.queryByTestId('incrementWishListItem20')).toBeFalsy()
+        expect(wrapper.queryByTestId('decrementWishListItem20')).toBeFalsy()
       })
 
       test('matches snapshot', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={2}
             listTitle="All Items"
             description="Silver Necklace"
@@ -238,19 +238,19 @@ describe('ShoppingListItem', () => {
       const ogConfirm = window.confirm
 
       afterEach(() => {
-        listsContextValue = shoppingListsContextValue
+        listsContextValue = wishListsContextValue
         window.confirm = ogConfirm
       })
 
-      test("calls the context's destroyShoppingListItem function with its itemId", () => {
-        const destroyShoppingListItem = vitest.fn()
+      test("calls the context's destroyWishListItem function with its itemId", () => {
+        const destroyWishListItem = vitest.fn()
         listsContextValue = {
-          ...shoppingListsContextValue,
-          destroyShoppingListItem,
+          ...wishListsContextValue,
+          destroyWishListItem,
         }
 
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={33}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -263,12 +263,12 @@ describe('ShoppingListItem', () => {
 
         window.confirm = vitest.fn().mockImplementation(() => true)
 
-        const destroyIcon = wrapper.getByTestId('destroyShoppingListItem33')
+        const destroyIcon = wrapper.getByTestId('destroyWishListItem33')
 
         act(() => fireEvent.click(destroyIcon))
 
         expect(window.confirm).toHaveBeenCalled
-        expect(destroyShoppingListItem).toHaveBeenCalledWith(33)
+        expect(destroyWishListItem).toHaveBeenCalledWith(33)
       })
     })
 
@@ -276,19 +276,19 @@ describe('ShoppingListItem', () => {
       const ogConfirm = window.confirm
 
       afterEach(() => {
-        listsContextValue = shoppingListsContextValue
+        listsContextValue = wishListsContextValue
         window.confirm = ogConfirm
       })
 
-      test("doesn't call the destroyShoppingListItem function", () => {
-        const destroyShoppingListItem = vitest.fn()
+      test("doesn't call the destroyWishListItem function", () => {
+        const destroyWishListItem = vitest.fn()
         listsContextValue = {
-          ...shoppingListsContextValue,
-          destroyShoppingListItem,
+          ...wishListsContextValue,
+          destroyWishListItem,
         }
 
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={33}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -301,27 +301,27 @@ describe('ShoppingListItem', () => {
 
         window.confirm = vitest.fn().mockImplementation(() => false)
 
-        const destroyIcon = wrapper.getByTestId('destroyShoppingListItem33')
+        const destroyIcon = wrapper.getByTestId('destroyWishListItem33')
 
         act(() => fireEvent.click(destroyIcon))
 
         expect(window.confirm).toHaveBeenCalledOnce()
-        expect(destroyShoppingListItem).not.toHaveBeenCalled()
+        expect(destroyWishListItem).not.toHaveBeenCalled()
       })
     })
   })
 
   describe('incrementing the list item quantity', () => {
     afterEach(() => {
-      listsContextValue = shoppingListsContextValue
+      listsContextValue = wishListsContextValue
     })
 
     test('increments the quantity at the API', () => {
-      const updateShoppingListItem = vitest.fn()
-      listsContextValue = { ...listsContextValue, updateShoppingListItem }
+      const updateWishListItem = vitest.fn()
+      listsContextValue = { ...listsContextValue, updateWishListItem }
 
       const wrapper = renderInContexts(
-        <ShoppingListItem
+        <WishListItem
           itemId={33}
           listTitle="Clothing"
           description="Silver Necklace"
@@ -332,13 +332,13 @@ describe('ShoppingListItem', () => {
         />
       )
 
-      const incrementIcon = wrapper.getByTestId('incrementShoppingListItem33')
+      const incrementIcon = wrapper.getByTestId('incrementWishListItem33')
 
       act(() => {
         fireEvent.click(incrementIcon)
       })
 
-      expect(updateShoppingListItem).toHaveBeenCalledWith(
+      expect(updateWishListItem).toHaveBeenCalledWith(
         33,
         { quantity: 3 },
         expect.any(Function),
@@ -349,16 +349,16 @@ describe('ShoppingListItem', () => {
 
   describe('decrementing the list item quantity', () => {
     afterEach(() => {
-      listsContextValue = shoppingListsContextValue
+      listsContextValue = wishListsContextValue
     })
 
     describe('when the quantity is greater than 1', () => {
       test('decrements the quantity at the API', () => {
-        const updateShoppingListItem = vitest.fn()
-        listsContextValue = { ...listsContextValue, updateShoppingListItem }
+        const updateWishListItem = vitest.fn()
+        listsContextValue = { ...listsContextValue, updateWishListItem }
 
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={33}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -369,11 +369,11 @@ describe('ShoppingListItem', () => {
           />
         )
 
-        const decrementIcon = wrapper.getByTestId('decrementShoppingListItem33')
+        const decrementIcon = wrapper.getByTestId('decrementWishListItem33')
 
         act(() => fireEvent.click(decrementIcon))
 
-        expect(updateShoppingListItem).toHaveBeenCalledWith(
+        expect(updateWishListItem).toHaveBeenCalledWith(
           33,
           { quantity: 1 },
           expect.any(Function),
@@ -386,13 +386,13 @@ describe('ShoppingListItem', () => {
       const ogConfirm = window.confirm
 
       afterEach(() => {
-        listsContextValue = shoppingListsContextValue
+        listsContextValue = wishListsContextValue
         window.confirm = ogConfirm
       })
 
       test('prompts the user to destroy the item', () => {
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={33}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -405,7 +405,7 @@ describe('ShoppingListItem', () => {
 
         window.confirm = vitest.fn().mockImplementation(() => false)
 
-        const decrementIcon = wrapper.getByTestId('decrementShoppingListItem33')
+        const decrementIcon = wrapper.getByTestId('decrementWishListItem33')
 
         act(() => fireEvent.click(decrementIcon))
 
@@ -413,14 +413,14 @@ describe('ShoppingListItem', () => {
       })
 
       test('destroys the item if the user confirms', () => {
-        const destroyShoppingListItem = vitest.fn()
+        const destroyWishListItem = vitest.fn()
         listsContextValue = {
-          ...shoppingListsContextValue,
-          destroyShoppingListItem,
+          ...wishListsContextValue,
+          destroyWishListItem,
         }
 
         const wrapper = renderInContexts(
-          <ShoppingListItem
+          <WishListItem
             itemId={33}
             listTitle="Clothing"
             description="Silver Necklace"
@@ -433,12 +433,12 @@ describe('ShoppingListItem', () => {
 
         window.confirm = vitest.fn().mockImplementation(() => true)
 
-        const decrementIcon = wrapper.getByTestId('decrementShoppingListItem33')
+        const decrementIcon = wrapper.getByTestId('decrementWishListItem33')
 
         act(() => fireEvent.click(decrementIcon))
 
         expect(window.confirm).toHaveBeenCalledOnce()
-        expect(destroyShoppingListItem).toHaveBeenCalledWith(
+        expect(destroyWishListItem).toHaveBeenCalledWith(
           33,
           null,
           expect.any(Function)

@@ -5,31 +5,31 @@ import { renderAuthenticated } from '../../support/testUtils'
 import { BLUE } from '../../utils/colorSchemes'
 import {
   gamesContextValue,
-  shoppingListsContextValue,
+  wishListsContextValue,
 } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
-import ShoppingListItemEditForm from './wishListItemEditForm'
+import { WishListsContext } from '../../contexts/wishListsContext'
+import WishListItemEditForm from './wishListItemEditForm'
 
-let contextValue = shoppingListsContextValue
+let contextValue = wishListsContextValue
 
 const renderWithContexts = (ui: ReactElement) =>
   renderAuthenticated(
     <PageProvider>
       <GamesContext.Provider value={gamesContextValue}>
-        <ShoppingListsContext.Provider value={contextValue}>
+        <WishListsContext.Provider value={contextValue}>
           {ui}
-        </ShoppingListsContext.Provider>
+        </WishListsContext.Provider>
       </GamesContext.Provider>
     </PageProvider>
   )
 
-describe('ShoppingListItemEditForm', () => {
+describe('WishListItemEditForm', () => {
   describe('displaying the form', () => {
     test('has the correct fields', () => {
       const wrapper = renderWithContexts(
-        <ShoppingListItemEditForm
+        <WishListItemEditForm
           itemId={6}
           description="Health potion ingredients"
           listTitle="Alchemy Ingredients"
@@ -54,7 +54,7 @@ describe('ShoppingListItemEditForm', () => {
 
     test('matches snapshot', () => {
       const wrapper = renderWithContexts(
-        <ShoppingListItemEditForm
+        <WishListItemEditForm
           itemId={6}
           description="Health potion ingredients"
           listTitle="Alchemy Ingredients"
@@ -71,16 +71,16 @@ describe('ShoppingListItemEditForm', () => {
 
   describe('submitting the form', () => {
     afterEach(() => {
-      contextValue = shoppingListsContextValue
+      contextValue = wishListsContextValue
     })
 
     describe('with valid attributes', () => {
-      test('updates the shopping list item', () => {
-        const updateShoppingListItem = vitest.fn()
-        contextValue = { ...shoppingListsContextValue, updateShoppingListItem }
+      test('updates the wish list item', () => {
+        const updateWishListItem = vitest.fn()
+        contextValue = { ...wishListsContextValue, updateWishListItem }
 
         const wrapper = renderWithContexts(
-          <ShoppingListItemEditForm
+          <WishListItemEditForm
             itemId={6}
             description="Health potion ingredients"
             listTitle="Alchemy Ingredients"
@@ -94,7 +94,7 @@ describe('ShoppingListItemEditForm', () => {
         const qtyInput = wrapper.getByLabelText('Quantity')
         const weightInput = wrapper.getByLabelText('Unit Weight')
         const notesInput = wrapper.getByLabelText('Notes')
-        const form = wrapper.getByTestId('editShoppingListItem6Form')
+        const form = wrapper.getByTestId('editWishListItem6Form')
 
         fireEvent.change(qtyInput, { target: { value: '4' } })
         fireEvent.change(weightInput, { target: { value: '0.1' } })
@@ -102,7 +102,7 @@ describe('ShoppingListItemEditForm', () => {
 
         act(() => fireEvent.submit(form))
 
-        expect(updateShoppingListItem).toHaveBeenCalledWith(
+        expect(updateWishListItem).toHaveBeenCalledWith(
           6,
           { quantity: 4, unit_weight: 0.1, notes: 'New notes' },
           expect.any(Function)
@@ -112,11 +112,11 @@ describe('ShoppingListItemEditForm', () => {
 
     describe('with invalid attributes', () => {
       test("doesn't update the item", () => {
-        const updateShoppingListItem = vitest.fn()
-        contextValue = { ...shoppingListsContextValue, updateShoppingListItem }
+        const updateWishListItem = vitest.fn()
+        contextValue = { ...wishListsContextValue, updateWishListItem }
 
         const wrapper = renderWithContexts(
-          <ShoppingListItemEditForm
+          <WishListItemEditForm
             itemId={6}
             description="Health potion ingredients"
             listTitle="Alchemy Ingredients"
@@ -135,17 +135,17 @@ describe('ShoppingListItemEditForm', () => {
           fireEvent.click(button)
         })
 
-        expect(updateShoppingListItem).not.toHaveBeenCalled()
+        expect(updateWishListItem).not.toHaveBeenCalled()
       })
     })
 
     describe('with identical attributes', () => {
       test("doesn't update the item", () => {
-        const updateShoppingListItem = vitest.fn()
-        contextValue = { ...shoppingListsContextValue, updateShoppingListItem }
+        const updateWishListItem = vitest.fn()
+        contextValue = { ...wishListsContextValue, updateWishListItem }
 
         const wrapper = renderWithContexts(
-          <ShoppingListItemEditForm
+          <WishListItemEditForm
             itemId={6}
             description="Health potion ingredients"
             listTitle="Alchemy Ingredients"
@@ -156,12 +156,12 @@ describe('ShoppingListItemEditForm', () => {
           />
         )
 
-        const form = wrapper.getByTestId('editShoppingListItem6Form')
+        const form = wrapper.getByTestId('editWishListItem6Form')
 
         // Submit the form without updating any fields
         act(() => fireEvent.submit(form))
 
-        expect(updateShoppingListItem).not.toHaveBeenCalled()
+        expect(updateWishListItem).not.toHaveBeenCalled()
       })
     })
   })

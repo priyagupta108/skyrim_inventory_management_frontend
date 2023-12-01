@@ -1,21 +1,21 @@
 import { createContext, useEffect, useState, useRef, useCallback } from 'react'
 import { type CallbackFunction } from '../types/functions'
 import {
-  type RequestShoppingListItem,
-  type RequestShoppingList,
-  type ResponseShoppingList,
+  type RequestWishListItem,
+  type RequestWishList,
+  type ResponseWishList,
 } from '../types/apiData'
 import { type ProviderProps } from '../types/contexts'
 import { type ApiError } from '../types/errors'
 import { LOADING, DONE, ERROR, type LoadingState } from '../utils/loadingStates'
 import {
-  postShoppingLists,
-  getShoppingLists,
-  patchShoppingList,
-  deleteShoppingList,
-  postShoppingListItems,
-  patchShoppingListItem,
-  deleteShoppingListItem,
+  postWishLists,
+  getWishLists,
+  patchWishList,
+  deleteWishList,
+  postWishListItems,
+  patchWishListItem,
+  deleteWishListItem,
 } from '../utils/api/simApi'
 import { useQueryString } from '../hooks/useQueryString'
 import {
@@ -27,48 +27,48 @@ import {
 const UNEXPECTED_ERROR_MESSAGE =
   "Oops! Something unexpected went wrong. We're sorry! Please try again later."
 
-export interface ShoppingListsContextType {
-  shoppingLists: ResponseShoppingList[]
-  shoppingListsLoadingState: LoadingState
-  createShoppingList: (
-    attributes: RequestShoppingList,
+export interface WishListsContextType {
+  wishLists: ResponseWishList[]
+  wishListsLoadingState: LoadingState
+  createWishList: (
+    attributes: RequestWishList,
     onSuccess?: CallbackFunction | null,
     onError?: CallbackFunction | null,
     idToken?: string | null,
     retries?: number
   ) => void
-  updateShoppingList: (
+  updateWishList: (
     listId: number,
-    attributes: RequestShoppingList,
+    attributes: RequestWishList,
     onSuccess?: CallbackFunction | null,
     onError?: CallbackFunction | null,
     idToken?: string | null,
     retries?: number
   ) => void
-  destroyShoppingList: (
+  destroyWishList: (
     listId: number,
     onSuccess?: CallbackFunction | null,
     onError?: CallbackFunction | null,
     idToken?: string | null,
     retries?: number
   ) => void
-  createShoppingListItem: (
+  createWishListItem: (
     listId: number,
-    attributes: RequestShoppingListItem,
+    attributes: RequestWishListItem,
     onSuccess?: CallbackFunction | null,
     onError?: CallbackFunction | null,
     idToken?: string | null,
     retries?: number
   ) => void
-  updateShoppingListItem: (
+  updateWishListItem: (
     itemId: number,
-    attributes: RequestShoppingListItem,
+    attributes: RequestWishListItem,
     onSuccess?: CallbackFunction | null,
     onError?: CallbackFunction | null,
     idToken?: string | null,
     retries?: number
   ) => void
-  destroyShoppingListItem: (
+  destroyWishListItem: (
     itemId: number,
     onSuccess?: CallbackFunction | null,
     onError?: CallbackFunction | null,
@@ -77,27 +77,27 @@ export interface ShoppingListsContextType {
   ) => void
 }
 
-export const ShoppingListsContext = createContext<ShoppingListsContextType>({
-  shoppingLists: [] as ResponseShoppingList[],
-  shoppingListsLoadingState: LOADING,
-  createShoppingList: () => {},
-  updateShoppingList: () => {},
-  destroyShoppingList: () => {},
-  createShoppingListItem: () => {},
-  updateShoppingListItem: () => {},
-  destroyShoppingListItem: () => {},
+export const WishListsContext = createContext<WishListsContextType>({
+  wishLists: [] as ResponseWishList[],
+  wishListsLoadingState: LOADING,
+  createWishList: () => {},
+  updateWishList: () => {},
+  destroyWishList: () => {},
+  createWishListItem: () => {},
+  updateWishListItem: () => {},
+  destroyWishListItem: () => {},
 })
 
-export const ShoppingListsProvider = ({ children }: ProviderProps) => {
+export const WishListsProvider = ({ children }: ProviderProps) => {
   const { token, authLoading, requireLogin, withTokenRefresh, signOut } =
     useGoogleLogin()
   const { setFlashProps, addApiCall, removeApiCall } = usePageContext()
   const { gamesLoadingState, games } = useGamesContext()
   const queryString = useQueryString()
   const [activeGame, setActiveGame] = useState<number | null>(null)
-  const [shoppingListsLoadingState, setShoppingListsLoadingState] =
+  const [wishListsLoadingState, setWishListsLoadingState] =
     useState(LOADING)
-  const [shoppingLists, setShoppingLists] = useState<ResponseShoppingList[]>([])
+  const [wishLists, setWishLists] = useState<ResponseWishList[]>([])
   const previousTokenRef = useRef(token)
 
   /**
@@ -136,13 +136,13 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
   /**
    *
-   * Create shopping list for the active game
+   * Create wish list for the active game
    *
    */
 
-  const createShoppingList = useCallback(
+  const createWishList = useCallback(
     (
-      attributes: RequestShoppingList,
+      attributes: RequestWishList,
       onSuccess?: CallbackFunction | null,
       onError?: CallbackFunction | null,
       idToken?: string | null,
@@ -162,19 +162,19 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
-        addApiCall('shoppingLists', 'post')
-        postShoppingLists(activeGame, attributes, idToken)
+        addApiCall('wishLists', 'post')
+        postWishLists(activeGame, attributes, idToken)
           .then(({ json }) => {
             if (Array.isArray(json)) {
               if (json.length == 2) {
-                setShoppingLists(json)
+                setWishLists(json)
               } else {
-                const newShoppingLists = [...shoppingLists]
-                newShoppingLists.splice(1, 0, json[0])
-                setShoppingLists(newShoppingLists)
+                const newWishLists = [...wishLists]
+                newWishLists.splice(1, 0, json[0])
+                setWishLists(newWishLists)
               }
 
-              removeApiCall('shoppingLists', 'post')
+              removeApiCall('wishLists', 'post')
 
               setFlashProps({
                 hidden: false,
@@ -190,7 +190,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
             if (e.code === 401 && retries > 0) {
               return withTokenRefresh((newToken) => {
-                createShoppingList(
+                createWishList(
                   attributes,
                   onSuccess,
                   onError,
@@ -209,40 +209,40 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e)
             }
 
-            removeApiCall('shoppingLists', 'post')
+            removeApiCall('wishLists', 'post')
             onError && onError()
           })
       }
     },
-    [token, activeGame, shoppingLists]
+    [token, activeGame, wishLists]
   )
 
   /**
    *
-   * Fetch shopping lists for the active game and set
-   * them as the shoppingLists array
+   * Fetch wish lists for the active game and set
+   * them as the wishLists array
    *
    */
 
-  const setShoppingListsFromApi = (
+  const setWishListsFromApi = (
     idToken: string | null = token,
     retries: number = 1
   ) => {
     if (!activeGame || !idToken) return
 
-    addApiCall('shoppingLists', 'get')
-    getShoppingLists(activeGame, idToken)
+    addApiCall('wishLists', 'get')
+    getWishLists(activeGame, idToken)
       .then(({ json }) => {
         if (Array.isArray(json)) {
-          setShoppingLists(json)
-          setShoppingListsLoadingState(DONE)
-          removeApiCall('shoppingLists', 'get')
+          setWishLists(json)
+          setWishListsLoadingState(DONE)
+          removeApiCall('wishLists', 'get')
         }
       })
       .catch((e: ApiError) => {
         if (e.code === 401 && retries > 0) {
           return withTokenRefresh((newToken) => {
-            setShoppingListsFromApi(newToken, retries - 1)
+            setWishListsFromApi(newToken, retries - 1)
           })
         } else if (e.code === 404) {
           setFlashProps({
@@ -255,29 +255,29 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
           handleApiError(e)
         }
 
-        removeApiCall('shoppingLists', 'get')
-        setShoppingLists([])
-        setShoppingListsLoadingState(ERROR)
+        removeApiCall('wishLists', 'get')
+        setWishLists([])
+        setWishListsLoadingState(ERROR)
       })
   }
 
-  const fetchShoppingLists = useCallback(() => {
+  const fetchWishLists = useCallback(() => {
     if (token && activeGame) {
-      setShoppingListsLoadingState(LOADING)
-      setShoppingListsFromApi()
+      setWishListsLoadingState(LOADING)
+      setWishListsFromApi()
     }
   }, [token, activeGame])
 
   /**
    *
-   * Update specified shopping list
+   * Update specified wish list
    *
    */
 
-  const updateShoppingList = useCallback(
+  const updateWishList = useCallback(
     (
       listId: number,
-      attributes: RequestShoppingList,
+      attributes: RequestWishList,
       onSuccess?: CallbackFunction | null,
       onError?: CallbackFunction | null,
       idToken?: string | null,
@@ -286,22 +286,22 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
-        addApiCall('shoppingLists', 'patch')
-        patchShoppingList(listId, attributes, idToken)
+        addApiCall('wishLists', 'patch')
+        patchWishList(listId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
-              const newShoppingLists = [...shoppingLists]
-              const index = newShoppingLists.findIndex(
+              const newWishLists = [...wishLists]
+              const index = newWishLists.findIndex(
                 ({ id }) => id === listId
               )
-              newShoppingLists[index] = json
+              newWishLists[index] = json
 
-              setShoppingLists(newShoppingLists)
-              removeApiCall('shoppingLists', 'patch')
+              setWishLists(newWishLists)
+              removeApiCall('wishLists', 'patch')
               onSuccess && onSuccess()
             } else {
               // This won't happen but TypeScript doesn't know that
-              removeApiCall('shoppingLists', 'patch')
+              removeApiCall('wishLists', 'patch')
 
               setFlashProps({
                 hidden: false,
@@ -317,7 +317,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
             if (e.code === 401 && retries > 0) {
               return withTokenRefresh((newToken) => {
-                updateShoppingList(
+                updateWishList(
                   listId,
                   attributes,
                   onSuccess,
@@ -337,21 +337,21 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e)
             }
 
-            removeApiCall('shoppingLists', 'patch')
+            removeApiCall('wishLists', 'patch')
             onError && onError()
           })
       }
     },
-    [token, shoppingLists]
+    [token, wishLists]
   )
 
   /**
    *
-   * Destroy specified shopping list
+   * Destroy specified wish list
    *
    */
 
-  const destroyShoppingList = useCallback(
+  const destroyWishList = useCallback(
     (
       listId: number,
       onSuccess?: CallbackFunction | null,
@@ -362,14 +362,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
-        addApiCall('shoppingLists', 'delete')
-        deleteShoppingList(listId, idToken)
+        addApiCall('wishLists', 'delete')
+        deleteWishList(listId, idToken)
           .then(({ json }) => {
             if ('errors' in json) {
               // This case should never happen because normally an ApiError
               // will be thrown for any response that includes this key, but
               // TypeScript doesn't know that.
-              removeApiCall('shoppingLists', 'delete')
+              removeApiCall('wishLists', 'delete')
 
               setFlashProps({
                 hidden: false,
@@ -379,19 +379,19 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onError && onError()
             } else {
-              const newShoppingLists = shoppingLists
+              const newWishLists = wishLists
 
-              if (json.aggregate) newShoppingLists[0] = json.aggregate
+              if (json.aggregate) newWishLists[0] = json.aggregate
 
               for (const deletedId of json.deleted) {
-                const index = newShoppingLists.findIndex(
+                const index = newWishLists.findIndex(
                   (list) => list.id === deletedId
                 )
-                newShoppingLists.splice(index, 1)
+                newWishLists.splice(index, 1)
               }
 
-              setShoppingLists(newShoppingLists)
-              removeApiCall('shoppingLists', 'delete')
+              setWishLists(newWishLists)
+              removeApiCall('wishLists', 'delete')
 
               setFlashProps({
                 hidden: false,
@@ -407,7 +407,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
             if (e.code === 401 && retries > 0) {
               return withTokenRefresh((newToken) => {
-                destroyShoppingList(
+                destroyWishList(
                   listId,
                   onSuccess,
                   onError,
@@ -426,24 +426,24 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e)
             }
 
-            removeApiCall('shoppingLists', 'delete')
+            removeApiCall('wishLists', 'delete')
             onError && onError()
           })
       }
     },
-    [token, shoppingLists]
+    [token, wishLists]
   )
 
   /**
    *
-   * Create a new shopping list item
+   * Create a new wish list item
    *
    */
 
-  const createShoppingListItem = useCallback(
+  const createWishListItem = useCallback(
     (
       listId: number,
-      attributes: RequestShoppingListItem,
+      attributes: RequestWishListItem,
       onSuccess?: CallbackFunction | null,
       onError?: CallbackFunction | null,
       idToken?: string | null,
@@ -452,20 +452,20 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
-        addApiCall('shoppingListItems', 'post')
-        postShoppingListItems(listId, attributes, idToken)
+        addApiCall('wishListItems', 'post')
+        postWishListItems(listId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200 || status === 201) {
-              const newShoppingLists = [...shoppingLists]
+              const newWishLists = [...wishLists]
 
               for (let list of json) {
-                const index = newShoppingLists.findIndex(
+                const index = newWishLists.findIndex(
                   ({ id }) => id === list.id
                 )
-                newShoppingLists[index] = list
+                newWishLists[index] = list
               }
 
-              setShoppingLists(newShoppingLists)
+              setWishLists(newWishLists)
 
               setFlashProps({
                 hidden: false,
@@ -484,14 +484,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               onError && onError()
             }
 
-            removeApiCall('shoppingListItems', 'post')
+            removeApiCall('wishListItems', 'post')
           })
           .catch((e: ApiError) => {
             retries ??= 1
 
             if (e.code === 401 && retries > 0) {
               return withTokenRefresh((newToken) => {
-                createShoppingListItem(
+                createWishListItem(
                   listId,
                   attributes,
                   onSuccess,
@@ -511,24 +511,24 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
-            removeApiCall('shoppingListItems', 'post')
+            removeApiCall('wishListItems', 'post')
             onError && onError()
           })
       }
     },
-    [token, shoppingLists]
+    [token, wishLists]
   )
 
   /**
    *
-   * Update a shopping list item
+   * Update a wish list item
    *
    */
 
-  const updateShoppingListItem = useCallback(
+  const updateWishListItem = useCallback(
     (
       itemId: number,
-      attributes: RequestShoppingListItem,
+      attributes: RequestWishListItem,
       onSuccess?: CallbackFunction | null,
       onError?: CallbackFunction | null,
       idToken?: string | null,
@@ -537,15 +537,15 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
-        addApiCall('shoppingListItems', 'patch')
+        addApiCall('wishListItems', 'patch')
 
-        patchShoppingListItem(itemId, attributes, idToken)
+        patchWishListItem(itemId, attributes, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
-              const newShoppingLists = [...shoppingLists]
+              const newWishLists = [...wishLists]
 
               for (let item of json) {
-                const list = newShoppingLists.find(
+                const list = newWishLists.find(
                   ({ id }) => id === item.list_id
                 )
                 const index = list?.list_items?.findIndex(
@@ -556,7 +556,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
                   list.list_items[index] = item
               }
 
-              setShoppingLists(newShoppingLists)
+              setWishLists(newWishLists)
               onSuccess && onSuccess()
             } else {
               setFlashProps({
@@ -568,14 +568,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               onError && onError()
             }
 
-            removeApiCall('shoppingListItems', 'patch')
+            removeApiCall('wishListItems', 'patch')
           })
           .catch((e: ApiError) => {
             retries ??= 1
 
             if (e.code === 401 && retries > 0) {
               return withTokenRefresh((newToken) => {
-                updateShoppingListItem(
+                updateWishListItem(
                   itemId,
                   attributes,
                   onSuccess,
@@ -595,21 +595,21 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
-            removeApiCall('shoppingListItems', 'patch')
+            removeApiCall('wishListItems', 'patch')
             onError && onError()
           })
       }
     },
-    [token, shoppingLists]
+    [token, wishLists]
   )
 
   /**
    *
-   * Destroy a shopping list item
+   * Destroy a wish list item
    *
    */
 
-  const destroyShoppingListItem = useCallback(
+  const destroyWishListItem = useCallback(
     (
       itemId: number,
       onSuccess?: CallbackFunction | null,
@@ -620,22 +620,22 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
       idToken ??= token
 
       if (idToken) {
-        addApiCall('shoppingListItems', 'delete')
+        addApiCall('wishListItems', 'delete')
 
-        deleteShoppingListItem(itemId, idToken)
+        deleteWishListItem(itemId, idToken)
           .then(({ status, json }) => {
             if (status === 200) {
-              const newShoppingLists = [...shoppingLists]
+              const newWishLists = [...wishLists]
 
-              newShoppingLists[0] = json[0]
+              newWishLists[0] = json[0]
 
-              const index = newShoppingLists.findIndex(
+              const index = newWishLists.findIndex(
                 ({ id }) => id === json[1].id
               )
-              newShoppingLists[index] = json[1]
+              newWishLists[index] = json[1]
 
-              setShoppingLists(newShoppingLists)
-              removeApiCall('shoppingListItems', 'delete')
+              setWishLists(newWishLists)
+              removeApiCall('wishListItems', 'delete')
 
               setFlashProps({
                 hidden: false,
@@ -645,7 +645,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
               onSuccess && onSuccess()
             } else {
-              removeApiCall('shoppingListItems', 'delete')
+              removeApiCall('wishListItems', 'delete')
 
               setFlashProps({
                 hidden: false,
@@ -661,7 +661,7 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
 
             if (e.code === 401 && retries > 0) {
               return withTokenRefresh((newToken) => {
-                destroyShoppingListItem(
+                destroyWishListItem(
                   itemId,
                   onSuccess,
                   onError,
@@ -680,12 +680,12 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
               handleApiError(e, 'list item')
             }
 
-            removeApiCall('shoppingListItems', 'delete')
+            removeApiCall('wishListItems', 'delete')
             onError && onError()
           })
       }
     },
-    [token, shoppingLists]
+    [token, wishLists]
   )
 
   /**
@@ -695,14 +695,14 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
    */
 
   const value = {
-    shoppingLists,
-    shoppingListsLoadingState,
-    createShoppingList,
-    updateShoppingList,
-    destroyShoppingList,
-    createShoppingListItem,
-    updateShoppingListItem,
-    destroyShoppingListItem,
+    wishLists,
+    wishListsLoadingState,
+    createWishList,
+    updateWishList,
+    destroyWishList,
+    createWishListItem,
+    updateWishListItem,
+    destroyWishListItem,
   }
 
   /**
@@ -725,21 +725,21 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   useEffect(() => {
     if (authLoading) return
 
-    // Only fetch shopping lists if token is present and
+    // Only fetch wish lists if token is present and
     // (a) the token just changed from null to a string value or
     // (b) the token is already set and it is the initial render
     if (
       token &&
       (!previousTokenRef.current || previousTokenRef.current === token)
     )
-      fetchShoppingLists()
+      fetchWishLists()
 
     previousTokenRef.current = token
   }, [authLoading, activeGame, token])
 
   useEffect(() => {
     if (gamesLoadingState === DONE && !games.length)
-      setShoppingListsLoadingState(DONE)
+      setWishListsLoadingState(DONE)
   }, [gamesLoadingState, games])
 
   useEffect(() => {
@@ -747,8 +747,8 @@ export const ShoppingListsProvider = ({ children }: ProviderProps) => {
   }, [requireLogin])
 
   return (
-    <ShoppingListsContext.Provider value={value}>
+    <WishListsContext.Provider value={value}>
       {children}
-    </ShoppingListsContext.Provider>
+    </WishListsContext.Provider>
   )
 }

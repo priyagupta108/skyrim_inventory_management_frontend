@@ -4,9 +4,9 @@ import {
   type CSSProperties,
   type FormEventHandler,
 } from 'react'
-import { RequestShoppingListItem as ListItem } from '../../types/apiData'
+import { RequestWishListItem as ListItem } from '../../types/apiData'
 import { ColorScheme } from '../../utils/colorSchemes'
-import { usePageContext, useShoppingListsContext } from '../../hooks/contexts'
+import { usePageContext, useWishListsContext } from '../../hooks/contexts'
 import styles from './wishListItemEditForm.module.css'
 
 interface EditFormProps {
@@ -19,7 +19,7 @@ interface EditFormProps {
   notes?: string | null
 }
 
-const ShoppingListItemEditForm = ({
+const WishListItemEditForm = ({
   itemId,
   listTitle,
   description,
@@ -29,7 +29,7 @@ const ShoppingListItemEditForm = ({
   notes,
 }: EditFormProps) => {
   const { setFlashProps, setModalProps } = usePageContext()
-  const { updateShoppingListItem } = useShoppingListsContext()
+  const { updateWishListItem } = useWishListsContext()
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -79,7 +79,7 @@ const ShoppingListItemEditForm = ({
     const attributes = extractAttributes(formData)
 
     if (attributes) {
-      updateShoppingListItem(itemId, attributes, onSuccess)
+      updateWishListItem(itemId, attributes, onSuccess)
     } else {
       setModalProps({ hidden: true, children: <></> })
     }
@@ -95,7 +95,7 @@ const ShoppingListItemEditForm = ({
       <p className={styles.subheader}>{`On list "${listTitle}"`}</p>
       <form
         ref={formRef}
-        data-testid={`editShoppingListItem${itemId}Form`}
+        data-testid={`editWishListItem${itemId}Form`}
         onSubmit={onSubmit}
       >
         <fieldset className={styles.fieldset}>
@@ -151,4 +151,4 @@ const ShoppingListItemEditForm = ({
   )
 }
 
-export default ShoppingListItemEditForm
+export default WishListItemEditForm

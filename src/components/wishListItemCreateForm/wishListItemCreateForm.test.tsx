@@ -3,25 +3,25 @@ import { act, fireEvent } from '@testing-library/react'
 import { renderAuthenticated } from '../../support/testUtils'
 import {
   gamesContextValue,
-  shoppingListsContextValue,
+  wishListsContextValue,
 } from '../../support/data/contextValues'
 import { YELLOW } from '../../utils/colorSchemes'
 import { ColorProvider } from '../../contexts/colorContext'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
-import ShoppingListItemCreateForm from './wishListItemCreateForm'
+import { WishListsContext } from '../../contexts/wishListsContext'
+import WishListItemCreateForm from './wishListItemCreateForm'
 
-describe('ShoppingListItemCreateForm', () => {
+describe('WishListItemCreateForm', () => {
   test('displays correct fields', () => {
     const wrapper = renderAuthenticated(
       <PageProvider>
         <GamesContext.Provider value={gamesContextValue}>
-          <ShoppingListsContext.Provider value={shoppingListsContextValue}>
+          <WishListsContext.Provider value={wishListsContextValue}>
             <ColorProvider colorScheme={YELLOW}>
-              <ShoppingListItemCreateForm listId={4} />
+              <WishListItemCreateForm listId={4} />
             </ColorProvider>
-          </ShoppingListsContext.Provider>
+          </WishListsContext.Provider>
         </GamesContext.Provider>
       </PageProvider>
     )
@@ -38,11 +38,11 @@ describe('ShoppingListItemCreateForm', () => {
     const wrapper = renderAuthenticated(
       <PageProvider>
         <GamesContext.Provider value={gamesContextValue}>
-          <ShoppingListsContext.Provider value={shoppingListsContextValue}>
+          <WishListsContext.Provider value={wishListsContextValue}>
             <ColorProvider colorScheme={YELLOW}>
-              <ShoppingListItemCreateForm listId={4} />
+              <WishListItemCreateForm listId={4} />
             </ColorProvider>
-          </ShoppingListsContext.Provider>
+          </WishListsContext.Provider>
         </GamesContext.Provider>
       </PageProvider>
     )
@@ -52,18 +52,18 @@ describe('ShoppingListItemCreateForm', () => {
 
   describe('submitting the form', () => {
     test('submits the form when attributes are valid', () => {
-      const createShoppingListItem = vitest.fn()
+      const createWishListItem = vitest.fn()
 
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider
-              value={{ ...shoppingListsContextValue, createShoppingListItem }}
+            <WishListsContext.Provider
+              value={{ ...wishListsContextValue, createWishListItem }}
             >
               <ColorProvider colorScheme={YELLOW}>
-                <ShoppingListItemCreateForm listId={4} />
+                <WishListItemCreateForm listId={4} />
               </ColorProvider>
-            </ShoppingListsContext.Provider>
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -77,7 +77,7 @@ describe('ShoppingListItemCreateForm', () => {
 
       act(() => fireEvent.submit(form))
 
-      expect(createShoppingListItem).toHaveBeenCalledWith(
+      expect(createWishListItem).toHaveBeenCalledWith(
         4,
         {
           description: 'Iron ingot',
@@ -89,18 +89,18 @@ describe('ShoppingListItemCreateForm', () => {
     })
 
     test("doesn't submit the form if there are invalid values", () => {
-      const createShoppingListItem = vitest.fn()
+      const createWishListItem = vitest.fn()
 
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider
-              value={{ ...shoppingListsContextValue, createShoppingListItem }}
+            <WishListsContext.Provider
+              value={{ ...wishListsContextValue, createWishListItem }}
             >
               <ColorProvider colorScheme={YELLOW}>
-                <ShoppingListItemCreateForm listId={4} />
+                <WishListItemCreateForm listId={4} />
               </ColorProvider>
-            </ShoppingListsContext.Provider>
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -120,7 +120,7 @@ describe('ShoppingListItemCreateForm', () => {
         fireEvent.click(button)
       })
 
-      expect(createShoppingListItem).not.toHaveBeenCalled()
+      expect(createWishListItem).not.toHaveBeenCalled()
     })
   })
 })

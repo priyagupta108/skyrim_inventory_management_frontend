@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ShoppingListItemEditForm > displaying the form > matches snapshot 1`] = `
+exports[`WishListItemEditForm > displaying the form > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -20,7 +20,7 @@ exports[`ShoppingListItemEditForm > displaying the form > matches snapshot 1`] =
           On list "Alchemy Ingredients"
         </p>
         <form
-          data-testid="editShoppingListItem6Form"
+          data-testid="editWishListItem6Form"
         >
           <fieldset
             class="_fieldset_33b39d"
@@ -104,7 +104,7 @@ exports[`ShoppingListItemEditForm > displaying the form > matches snapshot 1`] =
         On list "Alchemy Ingredients"
       </p>
       <form
-        data-testid="editShoppingListItem6Form"
+        data-testid="editWishListItem6Form"
       >
         <fieldset
           class="_fieldset_33b39d"

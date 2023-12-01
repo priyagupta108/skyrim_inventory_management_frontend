@@ -2,33 +2,33 @@ import { type CSSProperties } from 'react'
 import { PulseLoader } from 'react-spinners'
 import { DONE, LOADING } from '../../utils/loadingStates'
 import { YELLOW } from '../../utils/colorSchemes'
-import { useShoppingListsContext } from '../../hooks/contexts'
+import { useWishListsContext } from '../../hooks/contexts'
 import DashboardLayout from '../../layouts/dashboardLayout/dashboardLayout'
-import ShoppingListGrouping from '../../components/wishListGrouping/wishListGrouping'
-import ShoppingListCreateForm from '../../components/wishListCreateForm/wishListCreateForm'
+import WishListGrouping from '../../components/wishListGrouping/wishListGrouping'
+import WishListCreateForm from '../../components/wishListCreateForm/wishListCreateForm'
 
 const loaderStyles: CSSProperties = {
   textAlign: 'center',
 }
 
-const ShoppingListsPage = () => {
-  const { shoppingListsLoadingState } = useShoppingListsContext()
+const WishListsPage = () => {
+  const { wishListsLoadingState } = useWishListsContext()
 
   return (
     <DashboardLayout title="Your Wish Lists" includeGameSelector>
       <>
-        <ShoppingListCreateForm />
-        {shoppingListsLoadingState === LOADING && (
+        <WishListCreateForm />
+        {wishListsLoadingState === LOADING && (
           <PulseLoader
             color={YELLOW.schemeColorDark}
             cssOverride={loaderStyles}
             data-testid="pulseLoader"
           />
         )}
-        {shoppingListsLoadingState === DONE && <ShoppingListGrouping />}
+        {wishListsLoadingState === DONE && <WishListGrouping />}
       </>
     </DashboardLayout>
   )
 }
 
-export default ShoppingListsPage
+export default WishListsPage

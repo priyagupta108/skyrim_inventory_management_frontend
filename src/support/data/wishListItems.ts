@@ -1,18 +1,18 @@
-import { type ResponseShoppingListItem as ListItem } from '../../types/apiData'
+import { type ResponseWishListItem as ListItem } from '../../types/apiData'
 
 /**
  *
- * Shopping list items are related to individual shopping lists. They are also
- * transitively related to games, belonging to the game that owns the shopping
- * list they are on. The `list_id` attribute found on shopping list items in this
- * file corresponds to the `id` attributes of the shopping lists under
- * /src/support/data/shoppingLists.ts.
+ * Wish list items are related to individual wish lists. They are also
+ * transitively related to games, belonging to the game that owns the wish
+ * list they are on. The `list_id` attribute found on wish list items in this
+ * file corresponds to the `id` attributes of the wish lists under
+ * /src/support/data/wishLists.ts.
  *
  */
 
-export const emptyShoppingListItems: ListItem[] = []
+export const emptyWishListItems: ListItem[] = []
 
-export const allShoppingListItems: ListItem[] = [
+export const allWishListItems: ListItem[] = [
   {
     id: 4,
     list_id: 1,
@@ -107,5 +107,5 @@ export const allShoppingListItems: ListItem[] = [
   },
 ]
 
-export const shoppingListItemsOnList = (listId: number) =>
-  allShoppingListItems.filter(({ list_id }) => list_id === listId)
+export const wishListItemsOnList = (listId: number) =>
+  allWishListItems.filter(({ list_id }) => list_id === listId)

@@ -4,28 +4,28 @@ import { BrowserRouter } from 'react-router-dom'
 import {
   gamesContextValue,
   loginContextValue,
-  shoppingListsContextValue,
+  wishListsContextValue,
 } from '../../support/data/contextValues'
 import { LoginContext } from '../../contexts/loginContext'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
+import { WishListsContext } from '../../contexts/wishListsContext'
 import { ColorProvider } from '../../contexts/colorContext'
-import ShoppingListItem from '../wishListItem/wishListItem'
-import ShoppingList from './wishList'
+import WishListItem from '../wishListItem/wishListItem'
+import WishList from './wishList'
 
-type ShoppingListStory = StoryObj<typeof ShoppingList>
+type WishListStory = StoryObj<typeof WishList>
 
-const meta: Meta<typeof ShoppingList> = {
-  title: 'ShoppingList',
-  component: ShoppingList,
+const meta: Meta<typeof WishList> = {
+  title: 'WishList',
+  component: WishList,
   decorators: [
     (Story) => (
       <BrowserRouter>
         <LoginContext.Provider value={loginContextValue}>
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsContext.Provider value={shoppingListsContextValue}>
+              <WishListsContext.Provider value={wishListsContextValue}>
                 <ColorProvider
                   colorScheme={
                     colorSchemes[
@@ -35,7 +35,7 @@ const meta: Meta<typeof ShoppingList> = {
                 >
                   <Story />
                 </ColorProvider>
-              </ShoppingListsContext.Provider>
+              </WishListsContext.Provider>
             </GamesContext.Provider>
           </PageProvider>
         </LoginContext.Provider>
@@ -46,7 +46,7 @@ const meta: Meta<typeof ShoppingList> = {
 
 export default meta
 
-export const EditableNoListItems: ShoppingListStory = {
+export const EditableNoListItems: WishListStory = {
   args: {
     listId: 32,
     title: 'Proudspire Manor',
@@ -54,12 +54,12 @@ export const EditableNoListItems: ShoppingListStory = {
   },
 }
 
-export const EditableWithListItems: ShoppingListStory = {
+export const EditableWithListItems: WishListStory = {
   args: {
     ...EditableNoListItems.args,
     children: (
       <>
-        <ShoppingListItem
+        <WishListItem
           itemId={1}
           listTitle="Proudspire Manor"
           description="Steel Ingot"
@@ -67,7 +67,7 @@ export const EditableWithListItems: ShoppingListStory = {
           unitWeight={1.0}
           editable
         />
-        <ShoppingListItem
+        <WishListItem
           itemId={2}
           listTitle="Proudspire Manor"
           description="This item has a really really really really really long description for testing purposes"
@@ -81,26 +81,26 @@ export const EditableWithListItems: ShoppingListStory = {
   },
 }
 
-export const NotEditableNoListItems: ShoppingListStory = {
+export const NotEditableNoListItems: WishListStory = {
   args: {
     listId: 32,
     title: 'All Items',
   },
 }
 
-export const NotEditableWithListItems: ShoppingListStory = {
+export const NotEditableWithListItems: WishListStory = {
   args: {
     ...NotEditableNoListItems.args,
     children: (
       <>
-        <ShoppingListItem
+        <WishListItem
           itemId={1}
           listTitle="All Items"
           description="Steel Ingot"
           quantity={5}
           unitWeight={1.0}
         />
-        <ShoppingListItem
+        <WishListItem
           itemId={2}
           listTitle="All Items"
           description="This item has a really really really really really long description for testing purposes"

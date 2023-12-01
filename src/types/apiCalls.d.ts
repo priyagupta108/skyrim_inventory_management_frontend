@@ -1,9 +1,9 @@
 export type HttpVerb = 'get' | 'post' | 'patch' | 'delete'
 
-export type Resource = 'games' | 'shoppingLists' | 'shoppingListItems'
+export type Resource = 'games' | 'wishLists' | 'wishListItems'
 
 export interface ApiCalls {
   games: HttpVerb[]
-  shoppingLists: HttpVerb[]
-  shoppingListItems: HttpVerb[]
+  wishLists: HttpVerb[]
+  wishListItems: HttpVerb[]
 }

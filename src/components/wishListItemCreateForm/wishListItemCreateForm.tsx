@@ -7,16 +7,16 @@ import {
 } from 'react'
 import classNames from 'classnames'
 import AnimateHeight from 'react-animate-height'
-import { RequestShoppingListItem } from '../../types/apiData'
-import { useShoppingListsContext, useColorScheme } from '../../hooks/contexts'
+import { RequestWishListItem } from '../../types/apiData'
+import { useWishListsContext, useColorScheme } from '../../hooks/contexts'
 import styles from './wishListItemCreateForm.module.css'
 
 interface CreateFormProps {
   listId: number
 }
 
-const ShoppingListItemCreateForm = ({ listId }: CreateFormProps) => {
-  const { createShoppingListItem } = useShoppingListsContext()
+const WishListItemCreateForm = ({ listId }: CreateFormProps) => {
+  const { createWishListItem } = useWishListsContext()
   const [expanded, setExpanded] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -43,12 +43,12 @@ const ShoppingListItemCreateForm = ({ listId }: CreateFormProps) => {
     setExpanded(!expanded)
   }
 
-  const extractItem = (formData: FormData): RequestShoppingListItem => {
+  const extractItem = (formData: FormData): RequestWishListItem => {
     const attributes = Object.fromEntries(
       Array.from(formData.entries()).filter(([_, value]) => !!value)
     ) as Record<string, string>
 
-    const returnValue: RequestShoppingListItem = {
+    const returnValue: RequestWishListItem = {
       description: attributes.description?.trim(),
       quantity: Number(attributes.quantity),
     }
@@ -70,7 +70,7 @@ const ShoppingListItemCreateForm = ({ listId }: CreateFormProps) => {
 
     const collapseForm = () => setExpanded(false)
 
-    createShoppingListItem(listId, attributes, collapseForm, collapseForm)
+    createWishListItem(listId, attributes, collapseForm, collapseForm)
   }
 
   useEffect(() => {
@@ -91,14 +91,14 @@ const ShoppingListItemCreateForm = ({ listId }: CreateFormProps) => {
         <button
           className={styles.trigger}
           aria-expanded={expanded}
-          aria-controls={`addItemToShoppingList${listId}`}
+          aria-controls={`addItemToWishList${listId}`}
           onClick={toggleForm}
         >
           Add item to list...
         </button>
       </div>
       <AnimateHeight
-        id={`addItemToShoppingList${listId}`}
+        id={`addItemToWishList${listId}`}
         duration={200}
         height={expanded ? 'auto' : 0}
       >
@@ -168,4 +168,4 @@ const ShoppingListItemCreateForm = ({ listId }: CreateFormProps) => {
   )
 }
 
-export default ShoppingListItemCreateForm
+export default WishListItemCreateForm

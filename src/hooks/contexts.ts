@@ -3,7 +3,7 @@ import { ColorContext } from '../contexts/colorContext'
 import { GamesContext } from '../contexts/gamesContext'
 import { LoginContext } from '../contexts/loginContext'
 import { PageContext } from '../contexts/pageContext'
-import { ShoppingListsContext } from '../contexts/wishListsContext'
+import { WishListsContext } from '../contexts/wishListsContext'
 
 const useCustomContext = <T>(cxt: React.Context<T>, msg: string) => {
   const context = useContext(cxt)
@@ -31,10 +31,10 @@ export const useGamesContext = () =>
     'useGamesContext must be used within a GamesProvider'
   )
 
-export const useShoppingListsContext = () =>
+export const useWishListsContext = () =>
   useCustomContext(
-    ShoppingListsContext,
-    'useShoppingListsContext must be used within a ShoppingListsProvider'
+    WishListsContext,
+    'useWishListsContext must be used within a WishListsProvider'
   )
 
 export const usePageContext = () =>

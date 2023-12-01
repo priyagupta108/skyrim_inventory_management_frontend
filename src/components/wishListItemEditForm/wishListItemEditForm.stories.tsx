@@ -1,26 +1,26 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 import {
   gamesContextValue,
-  shoppingListsContextValue,
+  wishListsContextValue,
 } from '../../support/data/contextValues'
 import { GREEN, YELLOW } from '../../utils/colorSchemes'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
-import ShoppingListItemEditForm from './wishListItemEditForm'
+import { WishListsContext } from '../../contexts/wishListsContext'
+import WishListItemEditForm from './wishListItemEditForm'
 
-type EditFormStory = StoryObj<typeof ShoppingListItemEditForm>
+type EditFormStory = StoryObj<typeof WishListItemEditForm>
 
-const meta: Meta<typeof ShoppingListItemEditForm> = {
-  title: 'ShoppingListItemEditForm',
-  component: ShoppingListItemEditForm,
+const meta: Meta<typeof WishListItemEditForm> = {
+  title: 'WishListItemEditForm',
+  component: WishListItemEditForm,
   decorators: [
     (Story) => (
       <PageProvider>
         <GamesContext.Provider value={gamesContextValue}>
-          <ShoppingListsContext.Provider value={shoppingListsContextValue}>
+          <WishListsContext.Provider value={wishListsContextValue}>
             <Story />
-          </ShoppingListsContext.Provider>
+          </WishListsContext.Provider>
         </GamesContext.Provider>
       </PageProvider>
     ),

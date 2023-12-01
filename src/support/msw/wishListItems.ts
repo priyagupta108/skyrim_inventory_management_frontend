@@ -1,11 +1,11 @@
 import { http } from 'msw'
-import { allShoppingLists, shoppingListsForGame } from '../data/wishLists'
-import { allShoppingListItems } from '../data/wishListItems'
-import { newShoppingListItem } from './helpers/data'
-import { type RequestShoppingListItem } from '../../types/apiData'
+import { allWishLists, wishListsForGame } from '../data/wishLists'
+import { allWishListItems } from '../data/wishListItems'
+import { newWishListItem } from './helpers/data'
+import { type RequestWishListItem } from '../../types/apiData'
 
 const BASE_URI = 'http://localhost:3000'
-const listIds = allShoppingLists.map(({ id }) => id)
+const listIds = allWishLists.map(({ id }) => id)
 
 /**
  *
@@ -14,17 +14,17 @@ const listIds = allShoppingLists.map(({ id }) => id)
  */
 
 // Handles 201 and 404 responses
-export const postShoppingListItemsSuccess = http.post(
+export const postWishListItemsSuccess = http.post(
   `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
   async ({ request, params }) => {
     const listId = Number(params.listId)
 
     if (listIds.indexOf(listId) < 0) return new Response(null, { status: 404 })
 
-    const attributes = await request.json() as RequestShoppingListItem
+    const attributes = await request.json() as RequestWishListItem
 
     return new Response(
-      JSON.stringify(newShoppingListItem(attributes, listId)),
+      JSON.stringify(newWishListItem(attributes, listId)),
       { status: 201 }
     )
   }
@@ -32,7 +32,7 @@ export const postShoppingListItemsSuccess = http.post(
 
 // Returns the same validation errors regardless of request body
 // submitted
-export const postShoppingListItemsUnprocessable = http.post(
+export const postWishListItemsUnprocessable = http.post(
   `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
   (_) => {
     return new Response(
@@ -47,7 +47,7 @@ export const postShoppingListItemsUnprocessable = http.post(
   }
 )
 
-export const postShoppingListItemsServerError = http.post(
+export const postWishListItemsServerError = http.post(
   `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
   (_) => {
     return new Response(
@@ -65,16 +65,16 @@ export const postShoppingListItemsServerError = http.post(
  *
  */
 
-export const incrementShoppingListItemSuccess = http.patch(
+export const incrementWishListItemSuccess = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
   ({ params }) => {
     const itemId: number = Number(params.id)
-    const item = allShoppingListItems.find(({ id }) => id === itemId)
-    const list = allShoppingLists.find(({ id }) => id === item?.list_id)
+    const item = allWishListItems.find(({ id }) => id === itemId)
+    const list = allWishLists.find(({ id }) => id === item?.list_id)
 
     if (!item || !list) return new Response(null, { status: 404 })
 
-    const allItems = shoppingListsForGame(list.game_id).flatMap(
+    const allItems = wishListsForGame(list.game_id).flatMap(
       ({ list_items }) =>
         list_items.filter(({ description }) => description === item.description)
     )
@@ -86,16 +86,16 @@ export const incrementShoppingListItemSuccess = http.patch(
   }
 )
 
-export const decrementShoppingListItemSuccess = http.patch(
+export const decrementWishListItemSuccess = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
   ({ request, params }) => {
     const itemId: number = Number(params.id)
-    const item = allShoppingListItems.find(({ id }) => id === itemId)
-    const list = allShoppingLists.find(({ id }) => id === item?.list_id)
+    const item = allWishListItems.find(({ id }) => id === itemId)
+    const list = allWishLists.find(({ id }) => id === item?.list_id)
 
     if (!item || !list) return new Response(null, { status: 404 })
 
-    const allItems = shoppingListsForGame(list.game_id).flatMap(
+    const allItems = wishListsForGame(list.game_id).flatMap(
       ({ list_items }) =>
         list_items.filter(({ description }) => description === item.description)
     )
@@ -106,7 +106,7 @@ export const decrementShoppingListItemSuccess = http.patch(
   }
 )
 
-// Logic for updating shopping list items is too complex to model in an
+// Logic for updating wish list items is too complex to model in an
 // MSW handler. This handler is written under the assumption that only
 // the list item's "notes" have been updated in the request. Updates to
 // the other values are not supported by this handler. In particular,
@@ -117,18 +117,18 @@ export const decrementShoppingListItemSuccess = http.patch(
 // the list item being updated has no "notes" value other than that of the
 // list item being updated - i.e., none of its other associated list items, if
 // any, have notes. If they did, that, too, would further complicate things.
-export const updateShoppingListItemSuccess = http.patch(
+export const updateWishListItemSuccess = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
   async ({ request, params }) => {
     const itemId: number = Number(params.id)
-    const item = allShoppingListItems.find(({ id }) => id === itemId)
-    const list = allShoppingLists.find(({ id }) => id === item?.list_id)
+    const item = allWishListItems.find(({ id }) => id === itemId)
+    const list = allWishLists.find(({ id }) => id === item?.list_id)
 
     if (!item || !list) return new Response(null, { status: 404 })
 
-    const json = await request.json() as RequestShoppingListItem
+    const json = await request.json() as RequestWishListItem
 
-    const allItems = shoppingListsForGame(list.game_id).flatMap(
+    const allItems = wishListsForGame(list.game_id).flatMap(
       ({ list_items }) =>
         list_items.filter(({ description }) => description === item.description)
     )
@@ -140,7 +140,7 @@ export const updateShoppingListItemSuccess = http.patch(
 )
 
 // Returns the same validation errors regardless of request body
-export const updateShoppingListItemUnprocessable = http.patch(
+export const updateWishListItemUnprocessable = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
   (_) => {
     return new Response(
@@ -155,7 +155,7 @@ export const updateShoppingListItemUnprocessable = http.patch(
   }
 )
 
-export const updateShoppingListItemServerError = http.patch(
+export const updateWishListItemServerError = http.patch(
   `${BASE_URI}/shopping_list_items/:id`,
   (_) => {
     return new Response(
@@ -178,21 +178,21 @@ export const updateShoppingListItemServerError = http.patch(
 //       from the regular list AND the aggregate list regardless
 //       of whether there are other matching items. This function
 //       does not match the complexity of back-end behaviour.
-export const deleteShoppingListItemSuccess = http.delete(
+export const deleteWishListItemSuccess = http.delete(
   `${BASE_URI}/shopping_list_items/:id`,
   ({ request, params }) => {
     const itemId = Number(params.id)
-    const item = allShoppingListItems.find(({ id }) => id === itemId)
+    const item = allWishListItems.find(({ id }) => id === itemId)
 
     if (!item) return new Response(null, { status: 404 })
 
     const listId = item.list_id
-    const regList = allShoppingLists.find(({ id }) => id === listId)
+    const regList = allWishLists.find(({ id }) => id === listId)
 
     if (!regList) return new Response(null, { status: 404 })
 
     const aggListId = regList.aggregate_list_id
-    const aggList = allShoppingLists.find(({ id }) => id === aggListId)
+    const aggList = allWishLists.find(({ id }) => id === aggListId)
 
     if (!aggList) return new Response(null, { status: 404 })
 
@@ -208,7 +208,7 @@ export const deleteShoppingListItemSuccess = http.delete(
   }
 )
 
-export const deleteShoppingListItemServerError = http.delete(
+export const deleteWishListItemServerError = http.delete(
   `${BASE_URI}/shopping_list_items/:id`,
   (_) => {
     return new Response(

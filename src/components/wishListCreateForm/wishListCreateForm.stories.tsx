@@ -2,25 +2,25 @@ import { type Meta, type StoryObj } from '@storybook/react'
 import {
   gamesContextValue,
   gamesContextValueLoading,
-  shoppingListsContextValue,
+  wishListsContextValue,
 } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
-import ShoppingListCreateForm from './wishListCreateForm'
+import { WishListsContext } from '../../contexts/wishListsContext'
+import WishListCreateForm from './wishListCreateForm'
 
-type CreateFormStory = StoryObj<typeof ShoppingListCreateForm>
+type CreateFormStory = StoryObj<typeof WishListCreateForm>
 
-const meta: Meta<typeof ShoppingListCreateForm> = {
-  title: 'ShoppingListCreateForm',
-  component: ShoppingListCreateForm,
+const meta: Meta<typeof WishListCreateForm> = {
+  title: 'WishListCreateForm',
+  component: WishListCreateForm,
   decorators: [
     (Story, { parameters }) => (
       <PageProvider>
         <GamesContext.Provider value={parameters.gamesContextValue}>
-          <ShoppingListsContext.Provider value={shoppingListsContextValue}>
+          <WishListsContext.Provider value={wishListsContextValue}>
             <Story />
-          </ShoppingListsContext.Provider>
+          </WishListsContext.Provider>
         </GamesContext.Provider>
       </PageProvider>
     ),

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ShoppingList > displaying a list > when the list is not editable > matches snapshot 1`] = `
+exports[`WishList > displaying a list > when the list is not editable > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -20,7 +20,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
           >
             <button
               class="_icon_ec6c68"
-              data-testid="destroyShoppingList3"
+              data-testid="destroyWishList3"
             >
               <svg
                 aria-hidden="true"
@@ -40,7 +40,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
             </button>
             <button
               class="_icon_ec6c68"
-              data-testid="editShoppingList3"
+              data-testid="editWishList3"
             >
               <svg
                 aria-hidden="true"
@@ -62,7 +62,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
           <h3
             class="_title_ec6c68"
           >
-            My Shopping List
+            My Wish List
           </h3>
         </div>
         <div
@@ -85,7 +85,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
                   class="_triggerContainer_8112da"
                 >
                   <button
-                    aria-controls="addItemToShoppingList3"
+                    aria-controls="addItemToWishList3"
                     aria-expanded="false"
                     class="_trigger_8112da"
                   >
@@ -95,7 +95,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
                 <div
                   aria-hidden="true"
                   class="rah-static rah-static--height-zero "
-                  id="addItemToShoppingList3"
+                  id="addItemToWishList3"
                   style="height: 0px; overflow: hidden;"
                 >
                   <div
@@ -191,7 +191,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
         >
           <button
             class="_icon_ec6c68"
-            data-testid="destroyShoppingList3"
+            data-testid="destroyWishList3"
           >
             <svg
               aria-hidden="true"
@@ -211,7 +211,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
           </button>
           <button
             class="_icon_ec6c68"
-            data-testid="editShoppingList3"
+            data-testid="editWishList3"
           >
             <svg
               aria-hidden="true"
@@ -233,7 +233,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
         <h3
           class="_title_ec6c68"
         >
-          My Shopping List
+          My Wish List
         </h3>
       </div>
       <div
@@ -256,7 +256,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
                 class="_triggerContainer_8112da"
               >
                 <button
-                  aria-controls="addItemToShoppingList3"
+                  aria-controls="addItemToWishList3"
                   aria-expanded="false"
                   class="_trigger_8112da"
                 >
@@ -266,7 +266,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
               <div
                 aria-hidden="true"
                 class="rah-static rah-static--height-zero "
-                id="addItemToShoppingList3"
+                id="addItemToWishList3"
                 style="height: 0px; overflow: hidden;"
               >
                 <div
@@ -399,7 +399,7 @@ exports[`ShoppingList > displaying a list > when the list is not editable > matc
 }
 `;
 
-exports[`ShoppingList > displaying a list > when there are list items > matches snapshot 1`] = `
+exports[`WishList > displaying a list > when there are list items > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -419,7 +419,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
           >
             <button
               class="_icon_ec6c68"
-              data-testid="destroyShoppingList4"
+              data-testid="destroyWishList4"
             >
               <svg
                 aria-hidden="true"
@@ -439,7 +439,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
             </button>
             <button
               class="_icon_ec6c68"
-              data-testid="editShoppingList4"
+              data-testid="editWishList4"
             >
               <svg
                 aria-hidden="true"
@@ -461,7 +461,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
           <h3
             class="_title_ec6c68"
           >
-            My Shopping List
+            My Wish List
           </h3>
         </div>
         <div
@@ -484,7 +484,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                   class="_triggerContainer_8112da"
                 >
                   <button
-                    aria-controls="addItemToShoppingList4"
+                    aria-controls="addItemToWishList4"
                     aria-expanded="false"
                     class="_trigger_8112da"
                   >
@@ -494,7 +494,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                 <div
                   aria-hidden="true"
                   class="rah-static rah-static--height-zero "
-                  id="addItemToShoppingList4"
+                  id="addItemToWishList4"
                   style="height: 0px; overflow: hidden;"
                 >
                   <div
@@ -573,7 +573,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                 style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
               >
                 <div
-                  aria-controls="shoppingListItem1Details"
+                  aria-controls="wishListItem1Details"
                   aria-expanded="false"
                   class="_trigger_54cfce"
                 >
@@ -585,7 +585,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                     >
                       <button
                         class="_icon_54cfce"
-                        data-testid="destroyShoppingListItem1"
+                        data-testid="destroyWishListItem1"
                       >
                         <svg
                           aria-hidden="true"
@@ -605,7 +605,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                       </button>
                       <button
                         class="_icon_54cfce"
-                        data-testid="editShoppingListItem1"
+                        data-testid="editWishListItem1"
                       >
                         <svg
                           aria-hidden="true"
@@ -635,7 +635,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                   >
                     <button
                       class="_icon_54cfce"
-                      data-testid="incrementShoppingListItem1"
+                      data-testid="incrementWishListItem1"
                     >
                       <svg
                         aria-hidden="true"
@@ -660,7 +660,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                     </span>
                     <button
                       class="_icon_54cfce"
-                      data-testid="decrementShoppingListItem1"
+                      data-testid="decrementWishListItem1"
                     >
                       <svg
                         aria-hidden="true"
@@ -683,7 +683,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                 <div
                   aria-hidden="true"
                   class="rah-static rah-static--height-zero "
-                  id="shoppingListItem1Details"
+                  id="wishListItem1Details"
                   style="height: 0px; overflow: hidden;"
                 >
                   <div
@@ -721,7 +721,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                 style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
               >
                 <div
-                  aria-controls="shoppingListItem2Details"
+                  aria-controls="wishListItem2Details"
                   aria-expanded="false"
                   class="_trigger_54cfce"
                 >
@@ -733,7 +733,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                     >
                       <button
                         class="_icon_54cfce"
-                        data-testid="destroyShoppingListItem2"
+                        data-testid="destroyWishListItem2"
                       >
                         <svg
                           aria-hidden="true"
@@ -753,7 +753,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                       </button>
                       <button
                         class="_icon_54cfce"
-                        data-testid="editShoppingListItem2"
+                        data-testid="editWishListItem2"
                       >
                         <svg
                           aria-hidden="true"
@@ -783,7 +783,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                   >
                     <button
                       class="_icon_54cfce"
-                      data-testid="incrementShoppingListItem2"
+                      data-testid="incrementWishListItem2"
                     >
                       <svg
                         aria-hidden="true"
@@ -808,7 +808,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                     </span>
                     <button
                       class="_icon_54cfce"
-                      data-testid="decrementShoppingListItem2"
+                      data-testid="decrementWishListItem2"
                     >
                       <svg
                         aria-hidden="true"
@@ -831,7 +831,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                 <div
                   aria-hidden="true"
                   class="rah-static rah-static--height-zero "
-                  id="shoppingListItem2Details"
+                  id="wishListItem2Details"
                   style="height: 0px; overflow: hidden;"
                 >
                   <div
@@ -886,7 +886,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
         >
           <button
             class="_icon_ec6c68"
-            data-testid="destroyShoppingList4"
+            data-testid="destroyWishList4"
           >
             <svg
               aria-hidden="true"
@@ -906,7 +906,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
           </button>
           <button
             class="_icon_ec6c68"
-            data-testid="editShoppingList4"
+            data-testid="editWishList4"
           >
             <svg
               aria-hidden="true"
@@ -928,7 +928,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
         <h3
           class="_title_ec6c68"
         >
-          My Shopping List
+          My Wish List
         </h3>
       </div>
       <div
@@ -951,7 +951,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                 class="_triggerContainer_8112da"
               >
                 <button
-                  aria-controls="addItemToShoppingList4"
+                  aria-controls="addItemToWishList4"
                   aria-expanded="false"
                   class="_trigger_8112da"
                 >
@@ -961,7 +961,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
               <div
                 aria-hidden="true"
                 class="rah-static rah-static--height-zero "
-                id="addItemToShoppingList4"
+                id="addItemToWishList4"
                 style="height: 0px; overflow: hidden;"
               >
                 <div
@@ -1040,7 +1040,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
               style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
             >
               <div
-                aria-controls="shoppingListItem1Details"
+                aria-controls="wishListItem1Details"
                 aria-expanded="false"
                 class="_trigger_54cfce"
               >
@@ -1052,7 +1052,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                   >
                     <button
                       class="_icon_54cfce"
-                      data-testid="destroyShoppingListItem1"
+                      data-testid="destroyWishListItem1"
                     >
                       <svg
                         aria-hidden="true"
@@ -1072,7 +1072,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                     </button>
                     <button
                       class="_icon_54cfce"
-                      data-testid="editShoppingListItem1"
+                      data-testid="editWishListItem1"
                     >
                       <svg
                         aria-hidden="true"
@@ -1102,7 +1102,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                 >
                   <button
                     class="_icon_54cfce"
-                    data-testid="incrementShoppingListItem1"
+                    data-testid="incrementWishListItem1"
                   >
                     <svg
                       aria-hidden="true"
@@ -1127,7 +1127,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                   </span>
                   <button
                     class="_icon_54cfce"
-                    data-testid="decrementShoppingListItem1"
+                    data-testid="decrementWishListItem1"
                   >
                     <svg
                       aria-hidden="true"
@@ -1150,7 +1150,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
               <div
                 aria-hidden="true"
                 class="rah-static rah-static--height-zero "
-                id="shoppingListItem1Details"
+                id="wishListItem1Details"
                 style="height: 0px; overflow: hidden;"
               >
                 <div
@@ -1188,7 +1188,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
               style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
             >
               <div
-                aria-controls="shoppingListItem2Details"
+                aria-controls="wishListItem2Details"
                 aria-expanded="false"
                 class="_trigger_54cfce"
               >
@@ -1200,7 +1200,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                   >
                     <button
                       class="_icon_54cfce"
-                      data-testid="destroyShoppingListItem2"
+                      data-testid="destroyWishListItem2"
                     >
                       <svg
                         aria-hidden="true"
@@ -1220,7 +1220,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                     </button>
                     <button
                       class="_icon_54cfce"
-                      data-testid="editShoppingListItem2"
+                      data-testid="editWishListItem2"
                     >
                       <svg
                         aria-hidden="true"
@@ -1250,7 +1250,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                 >
                   <button
                     class="_icon_54cfce"
-                    data-testid="incrementShoppingListItem2"
+                    data-testid="incrementWishListItem2"
                   >
                     <svg
                       aria-hidden="true"
@@ -1275,7 +1275,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
                   </span>
                   <button
                     class="_icon_54cfce"
-                    data-testid="decrementShoppingListItem2"
+                    data-testid="decrementWishListItem2"
                   >
                     <svg
                       aria-hidden="true"
@@ -1298,7 +1298,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
               <div
                 aria-hidden="true"
                 class="rah-static rah-static--height-zero "
-                id="shoppingListItem2Details"
+                id="wishListItem2Details"
                 style="height: 0px; overflow: hidden;"
               >
                 <div
@@ -1390,7 +1390,7 @@ exports[`ShoppingList > displaying a list > when there are list items > matches 
 }
 `;
 
-exports[`ShoppingList > displaying a list > when there are no list items > matches snapshot 1`] = `
+exports[`WishList > displaying a list > when there are no list items > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -1410,7 +1410,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
           >
             <button
               class="_icon_ec6c68"
-              data-testid="destroyShoppingList4"
+              data-testid="destroyWishList4"
             >
               <svg
                 aria-hidden="true"
@@ -1430,7 +1430,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
             </button>
             <button
               class="_icon_ec6c68"
-              data-testid="editShoppingList4"
+              data-testid="editWishList4"
             >
               <svg
                 aria-hidden="true"
@@ -1452,7 +1452,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
           <h3
             class="_title_ec6c68"
           >
-            My Shopping List
+            My Wish List
           </h3>
         </div>
         <div
@@ -1475,7 +1475,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
                   class="_triggerContainer_8112da"
                 >
                   <button
-                    aria-controls="addItemToShoppingList4"
+                    aria-controls="addItemToWishList4"
                     aria-expanded="false"
                     class="_trigger_8112da"
                   >
@@ -1485,7 +1485,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
                 <div
                   aria-hidden="true"
                   class="rah-static rah-static--height-zero "
-                  id="addItemToShoppingList4"
+                  id="addItemToWishList4"
                   style="height: 0px; overflow: hidden;"
                 >
                   <div
@@ -1581,7 +1581,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
         >
           <button
             class="_icon_ec6c68"
-            data-testid="destroyShoppingList4"
+            data-testid="destroyWishList4"
           >
             <svg
               aria-hidden="true"
@@ -1601,7 +1601,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
           </button>
           <button
             class="_icon_ec6c68"
-            data-testid="editShoppingList4"
+            data-testid="editWishList4"
           >
             <svg
               aria-hidden="true"
@@ -1623,7 +1623,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
         <h3
           class="_title_ec6c68"
         >
-          My Shopping List
+          My Wish List
         </h3>
       </div>
       <div
@@ -1646,7 +1646,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
                 class="_triggerContainer_8112da"
               >
                 <button
-                  aria-controls="addItemToShoppingList4"
+                  aria-controls="addItemToWishList4"
                   aria-expanded="false"
                   class="_trigger_8112da"
                 >
@@ -1656,7 +1656,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
               <div
                 aria-hidden="true"
                 class="rah-static rah-static--height-zero "
-                id="addItemToShoppingList4"
+                id="addItemToWishList4"
                 style="height: 0px; overflow: hidden;"
               >
                 <div
@@ -1789,7 +1789,7 @@ exports[`ShoppingList > displaying a list > when there are no list items > match
 }
 `;
 
-exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
+exports[`WishList > displaying the edit form > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -1809,7 +1809,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
           >
             <button
               class="_icon_ec6c68"
-              data-testid="destroyShoppingList3"
+              data-testid="destroyWishList3"
             >
               <svg
                 aria-hidden="true"
@@ -1829,7 +1829,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
             </button>
             <button
               class="_icon_ec6c68"
-              data-testid="editShoppingList3"
+              data-testid="editWishList3"
             >
               <svg
                 aria-hidden="true"
@@ -1862,7 +1862,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
               style="width: -58px;"
               title="Title can only contain alphanumeric characters, spaces, hyphens, commas, and apostrophes"
               type="text"
-              value="My Shopping List"
+              value="My Wish List"
             />
             <button
               class="_submit_8f85e1"
@@ -1907,7 +1907,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
                   class="_triggerContainer_8112da"
                 >
                   <button
-                    aria-controls="addItemToShoppingList3"
+                    aria-controls="addItemToWishList3"
                     aria-expanded="false"
                     class="_trigger_8112da"
                   >
@@ -1917,7 +1917,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
                 <div
                   aria-hidden="true"
                   class="rah-static rah-static--height-zero "
-                  id="addItemToShoppingList3"
+                  id="addItemToWishList3"
                   style="height: 0px; overflow: hidden;"
                 >
                   <div
@@ -2013,7 +2013,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
         >
           <button
             class="_icon_ec6c68"
-            data-testid="destroyShoppingList3"
+            data-testid="destroyWishList3"
           >
             <svg
               aria-hidden="true"
@@ -2033,7 +2033,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
           </button>
           <button
             class="_icon_ec6c68"
-            data-testid="editShoppingList3"
+            data-testid="editWishList3"
           >
             <svg
               aria-hidden="true"
@@ -2066,7 +2066,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
             style="width: -58px;"
             title="Title can only contain alphanumeric characters, spaces, hyphens, commas, and apostrophes"
             type="text"
-            value="My Shopping List"
+            value="My Wish List"
           />
           <button
             class="_submit_8f85e1"
@@ -2111,7 +2111,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
                 class="_triggerContainer_8112da"
               >
                 <button
-                  aria-controls="addItemToShoppingList3"
+                  aria-controls="addItemToWishList3"
                   aria-expanded="false"
                   class="_trigger_8112da"
                 >
@@ -2121,7 +2121,7 @@ exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
               <div
                 aria-hidden="true"
                 class="rah-static rah-static--height-zero "
-                id="addItemToShoppingList3"
+                id="addItemToWishList3"
                 style="height: 0px; overflow: hidden;"
               >
                 <div

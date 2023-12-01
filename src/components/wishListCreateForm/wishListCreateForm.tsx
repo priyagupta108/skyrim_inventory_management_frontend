@@ -5,26 +5,26 @@ import {
   type FormEventHandler,
   type CSSProperties,
 } from 'react'
-import { type RequestShoppingList } from '../../types/apiData'
+import { type RequestWishList } from '../../types/apiData'
 import { DONE } from '../../utils/loadingStates'
 import { BLUE } from '../../utils/colorSchemes'
 import {
   usePageContext,
   useGamesContext,
-  useShoppingListsContext,
+  useWishListsContext,
 } from '../../hooks/contexts'
 import styles from './wishListCreateForm.module.css'
 
-const ShoppingListCreateForm = () => {
+const WishListCreateForm = () => {
   const { apiCallsInProgress } = usePageContext()
   const { gamesLoadingState } = useGamesContext()
-  const { shoppingListsLoadingState, createShoppingList } =
-    useShoppingListsContext()
+  const { wishListsLoadingState, createWishList } =
+    useWishListsContext()
 
   const [disabled, setDisabled] = useState(
     gamesLoadingState !== DONE ||
-      shoppingListsLoadingState !== DONE ||
-      !!apiCallsInProgress.shoppingLists.length
+      wishListsLoadingState !== DONE ||
+      !!apiCallsInProgress.wishLists.length
   )
 
   const formRef = useRef<HTMLFormElement>(null)
@@ -37,12 +37,12 @@ const ShoppingListCreateForm = () => {
     '--button-hover-color': BLUE.hoverColorLight,
   } as CSSProperties
 
-  const extractAttributes = (formData: FormData): RequestShoppingList => {
+  const extractAttributes = (formData: FormData): RequestWishList => {
     const values = Object.fromEntries(Array.from(formData.entries())) as Record<
       string,
       string
     >
-    const attributes: RequestShoppingList = {}
+    const attributes: RequestWishList = {}
 
     if (values.title) attributes.title = values.title.trim()
 
@@ -66,20 +66,20 @@ const ShoppingListCreateForm = () => {
       inputRef.current?.focus()
     }
 
-    createShoppingList(attributes, clearForm, focusInput)
+    createWishList(attributes, clearForm, focusInput)
   }
 
   useEffect(() => {
     if (
       gamesLoadingState === DONE &&
-      shoppingListsLoadingState === DONE &&
-      !apiCallsInProgress.shoppingLists.length
+      wishListsLoadingState === DONE &&
+      !apiCallsInProgress.wishLists.length
     ) {
       setDisabled(false)
     } else {
       setDisabled(true)
     }
-  }, [gamesLoadingState, shoppingListsLoadingState, apiCallsInProgress])
+  }, [gamesLoadingState, wishListsLoadingState, apiCallsInProgress])
 
   return (
     <form
@@ -108,4 +108,4 @@ const ShoppingListCreateForm = () => {
   )
 }
 
-export default ShoppingListCreateForm
+export default WishListCreateForm

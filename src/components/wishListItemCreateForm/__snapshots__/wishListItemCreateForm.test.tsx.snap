@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ShoppingListItemCreateForm > matches snapshot 1`] = `
+exports[`WishListItemCreateForm > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -13,7 +13,7 @@ exports[`ShoppingListItemCreateForm > matches snapshot 1`] = `
           class="_triggerContainer_8112da"
         >
           <button
-            aria-controls="addItemToShoppingList4"
+            aria-controls="addItemToWishList4"
             aria-expanded="false"
             class="_trigger_8112da"
           >
@@ -23,7 +23,7 @@ exports[`ShoppingListItemCreateForm > matches snapshot 1`] = `
         <div
           aria-hidden="true"
           class="rah-static rah-static--height-zero "
-          id="addItemToShoppingList4"
+          id="addItemToWishList4"
           style="height: 0px; overflow: hidden;"
         >
           <div
@@ -108,7 +108,7 @@ exports[`ShoppingListItemCreateForm > matches snapshot 1`] = `
         class="_triggerContainer_8112da"
       >
         <button
-          aria-controls="addItemToShoppingList4"
+          aria-controls="addItemToWishList4"
           aria-expanded="false"
           class="_trigger_8112da"
         >
@@ -118,7 +118,7 @@ exports[`ShoppingListItemCreateForm > matches snapshot 1`] = `
       <div
         aria-hidden="true"
         class="rah-static rah-static--height-zero "
-        id="addItemToShoppingList4"
+        id="addItemToWishList4"
         style="height: 0px; overflow: hidden;"
       >
         <div

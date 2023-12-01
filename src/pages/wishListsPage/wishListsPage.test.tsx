@@ -20,34 +20,34 @@ import {
   postGamesSuccess,
   postGamesUnprocessable,
   postGamesServerError,
-  postShoppingListsSuccess,
-  postShoppingListsServerError,
-  postShoppingListsUnprocessable,
+  postWishListsSuccess,
+  postWishListsServerError,
+  postWishListsUnprocessable,
   getGamesAllSuccess,
-  getShoppingListsSuccess,
-  getShoppingListsEmptySuccess,
-  patchShoppingListSuccess,
-  patchShoppingListUnprocessable,
-  patchShoppingListServerError,
-  deleteShoppingListSuccess,
-  deleteShoppingListServerError,
-  incrementShoppingListItemSuccess,
-  decrementShoppingListItemSuccess,
-  updateShoppingListItemSuccess,
-  updateShoppingListItemUnprocessable,
-  updateShoppingListItemServerError,
-  postShoppingListItemsSuccess,
-  postShoppingListItemsUnprocessable,
-  postShoppingListItemsServerError,
-  deleteShoppingListItemSuccess,
-  deleteShoppingListItemServerError,
+  getWishListsSuccess,
+  getWishListsEmptySuccess,
+  patchWishListSuccess,
+  patchWishListUnprocessable,
+  patchWishListServerError,
+  deleteWishListSuccess,
+  deleteWishListServerError,
+  incrementWishListItemSuccess,
+  decrementWishListItemSuccess,
+  updateWishListItemSuccess,
+  updateWishListItemUnprocessable,
+  updateWishListItemServerError,
+  postWishListItemsSuccess,
+  postWishListItemsUnprocessable,
+  postWishListItemsServerError,
+  deleteWishListItemSuccess,
+  deleteWishListItemServerError,
   getGamesEmptySuccess,
 } from '../../support/msw/handlers'
 import { gamesContextValue } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesProvider, GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsProvider } from '../../contexts/wishListsContext'
-import ShoppingListsPage from './wishListsPage'
+import { WishListsProvider } from '../../contexts/wishListsContext'
+import WishListsPage from './wishListsPage'
 
 /**
  *
@@ -71,16 +71,16 @@ import ShoppingListsPage from './wishListsPage'
  *
  */
 
-describe('ShoppingListsPage', () => {
-  describe('viewing shopping lists', () => {
+describe('WishListsPage', () => {
+  describe('viewing wish lists', () => {
     describe('when loading', () => {
       test('displays the loading component', () => {
         const wrapper = renderAuthLoading(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>
         )
@@ -92,9 +92,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthLoading(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>
         )
@@ -106,24 +106,24 @@ describe('ShoppingListsPage', () => {
     describe('when the game is set in the query string', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess
+        getWishListsSuccess
       )
 
       beforeAll(() => mockServer.listen())
       beforeEach(() => mockServer.resetHandlers())
       afterAll(() => mockServer.close())
 
-      describe('when the game has shopping lists', () => {
-        test('displays the shopping lists', async () => {
+      describe('when the game has wish lists', () => {
+        test('displays the wish lists', async () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesProvider>
             </PageProvider>,
-            'http://localhost:5173/shopping_lists?gameId=77'
+            'http://localhost:5173/wish_lists?gameId=77'
           )
 
           await waitFor(() => {
@@ -146,15 +146,15 @@ describe('ShoppingListsPage', () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesProvider>
             </PageProvider>,
-            'http://localhost:5173/shopping_lists?gameId=77'
+            'http://localhost:5173/wish_lists?gameId=77'
           )
 
-          // Wait for games/shopping lists to load
+          // Wait for games/wish lists to load
           await waitFor(() => {
             expect(wrapper.getByText('Honeyside')).toBeTruthy()
             expect(wrapper).toMatchSnapshot()
@@ -162,17 +162,17 @@ describe('ShoppingListsPage', () => {
         })
       })
 
-      describe('when the game has no shopping lists', () => {
-        test('renders a message that the game has no shopping lists', async () => {
+      describe('when the game has no wish lists', () => {
+        test('renders a message that the game has no wish lists', async () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesProvider>
             </PageProvider>,
-            'http://localhost:5173/shopping_lists?gameId=51'
+            'http://localhost:5173/wish_lists?gameId=51'
           )
 
           await waitFor(() => {
@@ -187,7 +187,7 @@ describe('ShoppingListsPage', () => {
     describe('when no game is set in the query string', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess
+        getWishListsSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -198,16 +198,16 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>
         )
 
         await waitFor(() => {
           expect(wrapper.getByText('All Items')).toBeTruthy()
-          expect(wrapper.getByText('My Shopping List 1')).toBeTruthy()
+          expect(wrapper.getByText('My Wish List 1')).toBeTruthy()
           expect(wrapper.getByTestId('selectedOption').textContent).toEqual(
             'My Game 1'
           )
@@ -218,7 +218,7 @@ describe('ShoppingListsPage', () => {
     describe('when an invalid value is set in the query string', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess
+        getWishListsSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -229,17 +229,17 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists?gameId=uhoh'
+          'http://localhost:5173/wish_lists?gameId=uhoh'
         )
 
         await waitFor(() => {
           expect(wrapper.getByText('All Items')).toBeTruthy()
-          expect(wrapper.getByText('My Shopping List 1')).toBeTruthy()
+          expect(wrapper.getByText('My Wish List 1')).toBeTruthy()
           expect(wrapper.getByTestId('selectedOption').textContent).toEqual(
             'My Game 1'
           )
@@ -250,7 +250,7 @@ describe('ShoppingListsPage', () => {
     describe('when the game does not exist', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess
+        getWishListsSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -261,12 +261,12 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists?gameId=23'
+          'http://localhost:5173/wish_lists?gameId=23'
         )
 
         await waitFor(() => {
@@ -290,12 +290,12 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists'
+          'http://localhost:5173/wish_lists'
         )
 
         await waitFor(() => {
@@ -313,12 +313,12 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists'
+          'http://localhost:5173/wish_lists'
         )
 
         await waitFor(() => {
@@ -333,12 +333,12 @@ describe('ShoppingListsPage', () => {
     })
   })
 
-  describe('creating a game from the shopping lists page', () => {
+  describe('creating a game from the wish lists page', () => {
     describe('when successful', () => {
       const mockServer = setupServer(
         getGamesEmptySuccess,
         postGamesSuccess,
-        getShoppingListsEmptySuccess
+        getWishListsEmptySuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -349,12 +349,12 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists'
+          'http://localhost:5173/wish_lists'
         )
 
         const link = await wrapper.findByText('Create a game')
@@ -369,12 +369,12 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists'
+          'http://localhost:5173/wish_lists'
         )
 
         const link = await wrapper.findByText('Create a game')
@@ -425,12 +425,12 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists'
+          'http://localhost:5173/wish_lists'
         )
 
         const link = await wrapper.findByText('Create a game')
@@ -468,12 +468,12 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists'
+          'http://localhost:5173/wish_lists'
         )
 
         const link = await wrapper.findByText('Create a game')
@@ -502,19 +502,19 @@ describe('ShoppingListsPage', () => {
   })
 
   describe('changing games', () => {
-    const mockServer = setupServer(getGamesAllSuccess, getShoppingListsSuccess)
+    const mockServer = setupServer(getGamesAllSuccess, getWishListsSuccess)
 
     beforeAll(() => mockServer.listen())
     beforeEach(() => mockServer.resetHandlers())
     afterAll(() => mockServer.close())
 
-    test.skip("displays the new game's shopping lists", async () => {
+    test.skip("displays the new game's wish lists", async () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesProvider>
-            <ShoppingListsProvider>
-              <ShoppingListsPage />
-            </ShoppingListsProvider>
+            <WishListsProvider>
+              <WishListsPage />
+            </WishListsProvider>
           </GamesProvider>
         </PageProvider>
       )
@@ -534,12 +534,12 @@ describe('ShoppingListsPage', () => {
     })
   })
 
-  describe('creating a shopping list', () => {
+  describe('creating a wish list', () => {
     describe('when successful', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess,
-        postShoppingListsSuccess
+        getWishListsSuccess,
+        postWishListsSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -551,9 +551,9 @@ describe('ShoppingListsPage', () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesProvider>
             </PageProvider>
           )
@@ -581,9 +581,9 @@ describe('ShoppingListsPage', () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesProvider>
             </PageProvider>
           )
@@ -614,12 +614,12 @@ describe('ShoppingListsPage', () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesProvider>
             </PageProvider>,
-            'http://localhost:5173/shopping_lists?gameId=51'
+            'http://localhost:5173/wish_lists?gameId=51'
           )
 
           const input = wrapper.getByPlaceholderText('Title')
@@ -650,8 +650,8 @@ describe('ShoppingListsPage', () => {
     describe('when the response is a 422', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess,
-        postShoppingListsUnprocessable
+        getWishListsSuccess,
+        postWishListsUnprocessable
       )
 
       beforeAll(() => mockServer.listen())
@@ -662,9 +662,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>
         )
@@ -702,8 +702,8 @@ describe('ShoppingListsPage', () => {
     describe('when the response is a 500 error', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess,
-        postShoppingListsServerError
+        getWishListsSuccess,
+        postWishListsServerError
       )
 
       beforeAll(() => mockServer.listen())
@@ -714,9 +714,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>
         )
@@ -744,12 +744,12 @@ describe('ShoppingListsPage', () => {
     })
   })
 
-  describe('destroying a shopping list', () => {
+  describe('destroying a wish list', () => {
     describe('when successful', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess,
-        deleteShoppingListSuccess
+        getWishListsSuccess,
+        deleteWishListSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -757,7 +757,7 @@ describe('ShoppingListsPage', () => {
       afterAll(() => mockServer.close())
 
       describe('when the user confirms deletion', () => {
-        describe('when the game has no other regular shopping lists', () => {
+        describe('when the game has no other regular wish lists', () => {
           const ogConfirm = window.confirm
 
           afterEach(() => {
@@ -768,18 +768,18 @@ describe('ShoppingListsPage', () => {
             const wrapper = renderAuthenticated(
               <PageProvider>
                 <GamesProvider>
-                  <ShoppingListsProvider>
-                    <ShoppingListsPage />
-                  </ShoppingListsProvider>
+                  <WishListsProvider>
+                    <WishListsPage />
+                  </WishListsProvider>
                 </GamesProvider>
               </PageProvider>,
-              'http://localhost:5173/shopping_lists?gameId=32'
+              'http://localhost:5173/wish_lists?gameId=32'
             )
 
             window.confirm = vitest.fn().mockImplementation(() => true)
 
             const destroyIcon = await wrapper.findByTestId(
-              'destroyShoppingList2'
+              'destroyWishList2'
             )
 
             act(() => {
@@ -803,18 +803,18 @@ describe('ShoppingListsPage', () => {
             const wrapper = renderAuthenticated(
               <PageProvider>
                 <GamesProvider>
-                  <ShoppingListsProvider>
-                    <ShoppingListsPage />
-                  </ShoppingListsProvider>
+                  <WishListsProvider>
+                    <WishListsPage />
+                  </WishListsProvider>
                 </GamesProvider>
               </PageProvider>,
-              'http://localhost:5173/shopping_lists?gameId=32'
+              'http://localhost:5173/wish_lists?gameId=32'
             )
 
             window.confirm = vitest.fn().mockImplementation(() => true)
 
             const destroyIcon = await wrapper.findByTestId(
-              'destroyShoppingList2'
+              'destroyWishList2'
             )
 
             act(() => {
@@ -835,7 +835,7 @@ describe('ShoppingListsPage', () => {
           })
         })
 
-        describe('when the game has other regular shopping lists', () => {
+        describe('when the game has other regular wish lists', () => {
           const ogConfirm = window.confirm
 
           afterEach(() => {
@@ -846,18 +846,18 @@ describe('ShoppingListsPage', () => {
             const wrapper = renderAuthenticated(
               <PageProvider>
                 <GamesProvider>
-                  <ShoppingListsProvider>
-                    <ShoppingListsPage />
-                  </ShoppingListsProvider>
+                  <WishListsProvider>
+                    <WishListsPage />
+                  </WishListsProvider>
                 </GamesProvider>
               </PageProvider>,
-              'http://localhost:5173/shopping_lists?gameId=77'
+              'http://localhost:5173/wish_lists?gameId=77'
             )
 
             window.confirm = vitest.fn().mockImplementation(() => true)
 
             const destroyIcon = await wrapper.findByTestId(
-              'destroyShoppingList6'
+              'destroyWishList6'
             )
 
             act(() => {
@@ -880,18 +880,18 @@ describe('ShoppingListsPage', () => {
             const wrapper = renderAuthenticated(
               <PageProvider>
                 <GamesProvider>
-                  <ShoppingListsProvider>
-                    <ShoppingListsPage />
-                  </ShoppingListsProvider>
+                  <WishListsProvider>
+                    <WishListsPage />
+                  </WishListsProvider>
                 </GamesProvider>
               </PageProvider>,
-              'http://localhost:5173/shopping_lists?gameId=77'
+              'http://localhost:5173/wish_lists?gameId=77'
             )
 
             window.confirm = vitest.fn().mockImplementation(() => true)
 
             const destroyIcon = await wrapper.findByTestId(
-              'destroyShoppingList6'
+              'destroyWishList6'
             )
 
             act(() => {
@@ -924,17 +924,17 @@ describe('ShoppingListsPage', () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesProvider>
             </PageProvider>,
-            'http://localhost:5173/shopping_lists?gameId=32'
+            'http://localhost:5173/wish_lists?gameId=32'
           )
 
           window.confirm = vitest.fn().mockImplementation(() => false)
 
-          const destroyIcon = await wrapper.findByTestId('destroyShoppingList2')
+          const destroyIcon = await wrapper.findByTestId('destroyWishList2')
 
           act(() => fireEvent.click(destroyIcon))
 
@@ -949,17 +949,17 @@ describe('ShoppingListsPage', () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesProvider>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesProvider>
             </PageProvider>,
-            'http://localhost:5173/shopping_lists?gameId=32'
+            'http://localhost:5173/wish_lists?gameId=32'
           )
 
           window.confirm = vitest.fn().mockImplementation(() => false)
 
-          const destroyIcon = await wrapper.findByTestId('destroyShoppingList2')
+          const destroyIcon = await wrapper.findByTestId('destroyWishList2')
 
           act(() => fireEvent.click(destroyIcon))
 
@@ -978,8 +978,8 @@ describe('ShoppingListsPage', () => {
       const ogConfirm = window.confirm
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess,
-        deleteShoppingListServerError
+        getWishListsSuccess,
+        deleteWishListServerError
       )
 
       beforeAll(() => mockServer.listen())
@@ -995,17 +995,17 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists?gameId=32'
+          'http://localhost:5173/wish_lists?gameId=32'
         )
 
         window.confirm = vitest.fn().mockImplementation(() => true)
 
-        const destroyIcon = await wrapper.findByTestId('destroyShoppingList2')
+        const destroyIcon = await wrapper.findByTestId('destroyWishList2')
 
         act(() => fireEvent.click(destroyIcon))
 
@@ -1026,12 +1026,12 @@ describe('ShoppingListsPage', () => {
     })
   })
 
-  describe('editing a shopping list', () => {
+  describe('editing a wish list', () => {
     describe('when successful', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess,
-        patchShoppingListSuccess
+        getWishListsSuccess,
+        patchWishListSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -1042,15 +1042,15 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists?gameId=77'
+          'http://localhost:5173/wish_lists?gameId=77'
         )
 
-        const editIcon = await wrapper.findByTestId('editShoppingList6')
+        const editIcon = await wrapper.findByTestId('editWishList6')
 
         act(() => fireEvent.click(editIcon))
 
@@ -1080,8 +1080,8 @@ describe('ShoppingListsPage', () => {
     describe('when there is an Unprocessable Entity response', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess,
-        patchShoppingListUnprocessable
+        getWishListsSuccess,
+        patchWishListUnprocessable
       )
 
       beforeAll(() => mockServer.listen())
@@ -1092,15 +1092,15 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists?gameId=77'
+          'http://localhost:5173/wish_lists?gameId=77'
         )
 
-        const editIcon = await wrapper.findByTestId('editShoppingList6')
+        const editIcon = await wrapper.findByTestId('editWishList6')
 
         act(() => fireEvent.click(editIcon))
 
@@ -1140,8 +1140,8 @@ describe('ShoppingListsPage', () => {
     describe('when there is an internal server error response', () => {
       const mockServer = setupServer(
         getGamesAllSuccess,
-        getShoppingListsSuccess,
-        patchShoppingListServerError
+        getWishListsSuccess,
+        patchWishListServerError
       )
 
       beforeAll(() => mockServer.listen())
@@ -1152,15 +1152,15 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesProvider>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesProvider>
           </PageProvider>,
-          'http://localhost:5173/shopping_lists?gameId=77'
+          'http://localhost:5173/wish_lists?gameId=77'
         )
 
-        const editIcon = await wrapper.findByTestId('editShoppingList6')
+        const editIcon = await wrapper.findByTestId('editWishList6')
 
         act(() => fireEvent.click(editIcon))
 
@@ -1193,8 +1193,8 @@ describe('ShoppingListsPage', () => {
   describe('adding a list item', () => {
     describe('when successful', () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        postShoppingListItemsSuccess
+        getWishListsSuccess,
+        postWishListItemsSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -1205,9 +1205,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
@@ -1238,8 +1238,8 @@ describe('ShoppingListsPage', () => {
 
     describe('when there is an unprocessable entity error', () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        postShoppingListItemsUnprocessable
+        getWishListsSuccess,
+        postWishListItemsUnprocessable
       )
 
       beforeAll(() => mockServer.listen())
@@ -1250,9 +1250,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
@@ -1291,8 +1291,8 @@ describe('ShoppingListsPage', () => {
 
     describe('when there is an internal server error', async () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        postShoppingListItemsServerError
+        getWishListsSuccess,
+        postWishListItemsServerError
       )
 
       beforeAll(() => mockServer.listen())
@@ -1303,9 +1303,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
@@ -1340,7 +1340,7 @@ describe('ShoppingListsPage', () => {
   describe('destroying a list item', () => {
     describe('when the user cancels', () => {
       const ogConfirm = window.confirm
-      const mockServer = setupServer(getShoppingListsSuccess)
+      const mockServer = setupServer(getWishListsSuccess)
 
       beforeAll(() => mockServer.listen())
       beforeEach(() => mockServer.resetHandlers())
@@ -1355,9 +1355,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
@@ -1365,7 +1365,7 @@ describe('ShoppingListsPage', () => {
         window.confirm = vitest.fn().mockImplementation(() => false)
 
         const destroyIcon = await wrapper.findByTestId(
-          'destroyShoppingListItem3'
+          'destroyWishListItem3'
         )
 
         act(() => fireEvent.click(destroyIcon))
@@ -1385,8 +1385,8 @@ describe('ShoppingListsPage', () => {
     describe('when successful', () => {
       const ogConfirm = window.confirm
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        deleteShoppingListItemSuccess
+        getWishListsSuccess,
+        deleteWishListItemSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -1402,9 +1402,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
@@ -1412,7 +1412,7 @@ describe('ShoppingListsPage', () => {
         window.confirm = vitest.fn().mockImplementation(() => true)
 
         const destroyIcon = await wrapper.findByTestId(
-          'destroyShoppingListItem3'
+          'destroyWishListItem3'
         )
 
         act(() => fireEvent.click(destroyIcon))
@@ -1439,8 +1439,8 @@ describe('ShoppingListsPage', () => {
     describe('when there is an internal server error', async () => {
       const ogConfirm = window.confirm
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        deleteShoppingListItemServerError
+        getWishListsSuccess,
+        deleteWishListItemServerError
       )
 
       beforeAll(() => mockServer.listen())
@@ -1456,9 +1456,9 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
@@ -1466,7 +1466,7 @@ describe('ShoppingListsPage', () => {
         window.confirm = vitest.fn().mockImplementation(() => true)
 
         const destroyIcon = await wrapper.findByTestId(
-          'destroyShoppingListItem3'
+          'destroyWishListItem3'
         )
 
         act(() => fireEvent.click(destroyIcon))
@@ -1486,8 +1486,8 @@ describe('ShoppingListsPage', () => {
   describe('incrementing list item quantity', () => {
     describe('when successful', () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        incrementShoppingListItemSuccess
+        getWishListsSuccess,
+        incrementWishListItemSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -1498,15 +1498,15 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
 
         const incrementIcon = await wrapper.findByTestId(
-          'incrementShoppingListItem3'
+          'incrementWishListItem3'
         )
 
         act(() => fireEvent.click(incrementIcon))
@@ -1519,8 +1519,8 @@ describe('ShoppingListsPage', () => {
 
     describe('when there is a server error', () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        updateShoppingListItemServerError
+        getWishListsSuccess,
+        updateWishListItemServerError
       )
 
       beforeAll(() => mockServer.listen())
@@ -1531,15 +1531,15 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
 
         const incrementIcon = await wrapper.findByTestId(
-          'incrementShoppingListItem3'
+          'incrementWishListItem3'
         )
 
         act(() => fireEvent.click(incrementIcon))
@@ -1560,8 +1560,8 @@ describe('ShoppingListsPage', () => {
     describe('when successful', () => {
       describe('when decrementing a quantity greater than 1', () => {
         const mockServer = setupServer(
-          getShoppingListsSuccess,
-          decrementShoppingListItemSuccess
+          getWishListsSuccess,
+          decrementWishListItemSuccess
         )
 
         beforeAll(() => mockServer.listen())
@@ -1572,15 +1572,15 @@ describe('ShoppingListsPage', () => {
           const wrapper = renderAuthenticated(
             <PageProvider>
               <GamesContext.Provider value={gamesContextValue}>
-                <ShoppingListsProvider>
-                  <ShoppingListsPage />
-                </ShoppingListsProvider>
+                <WishListsProvider>
+                  <WishListsPage />
+                </WishListsProvider>
               </GamesContext.Provider>
             </PageProvider>
           )
 
           const decrementIcon = await wrapper.findByTestId(
-            'decrementShoppingListItem1'
+            'decrementWishListItem1'
           )
 
           act(() => fireEvent.click(decrementIcon))
@@ -1595,8 +1595,8 @@ describe('ShoppingListsPage', () => {
         describe('when the user confirms deletion', () => {
           const ogConfirm = window.confirm
           const mockServer = setupServer(
-            getShoppingListsSuccess,
-            deleteShoppingListItemSuccess
+            getWishListsSuccess,
+            deleteWishListItemSuccess
           )
 
           beforeAll(() => mockServer.listen())
@@ -1612,16 +1612,16 @@ describe('ShoppingListsPage', () => {
             const wrapper = renderAuthenticated(
               <PageProvider>
                 <GamesContext.Provider value={gamesContextValue}>
-                  <ShoppingListsProvider>
-                    <ShoppingListsPage />
-                  </ShoppingListsProvider>
+                  <WishListsProvider>
+                    <WishListsPage />
+                  </WishListsProvider>
                 </GamesContext.Provider>
               </PageProvider>
             )
 
             window.confirm = vitest.fn().mockImplementation(() => true)
             const decrementIcon = await wrapper.findByTestId(
-              'decrementShoppingListItem3'
+              'decrementWishListItem3'
             )
 
             act(() => fireEvent.click(decrementIcon))
@@ -1640,7 +1640,7 @@ describe('ShoppingListsPage', () => {
 
         describe('when the user cancels deletion', () => {
           const ogConfirm = window.confirm
-          const mockServer = setupServer(getShoppingListsSuccess)
+          const mockServer = setupServer(getWishListsSuccess)
 
           beforeAll(() => mockServer.listen())
           beforeEach(() => mockServer.resetHandlers())
@@ -1655,16 +1655,16 @@ describe('ShoppingListsPage', () => {
             const wrapper = renderAuthenticated(
               <PageProvider>
                 <GamesContext.Provider value={gamesContextValue}>
-                  <ShoppingListsProvider>
-                    <ShoppingListsPage />
-                  </ShoppingListsProvider>
+                  <WishListsProvider>
+                    <WishListsPage />
+                  </WishListsProvider>
                 </GamesContext.Provider>
               </PageProvider>
             )
 
             window.confirm = vitest.fn().mockImplementation(() => false)
             const decrementIcon = await wrapper.findByTestId(
-              'decrementShoppingListItem3'
+              'decrementWishListItem3'
             )
 
             act(() => fireEvent.click(decrementIcon))
@@ -1685,8 +1685,8 @@ describe('ShoppingListsPage', () => {
 
     describe('when there is a server error', () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        updateShoppingListItemServerError
+        getWishListsSuccess,
+        updateWishListItemServerError
       )
 
       beforeAll(() => mockServer.listen())
@@ -1697,15 +1697,15 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
 
         const decrementIcon = await wrapper.findByTestId(
-          'decrementShoppingListItem1'
+          'decrementWishListItem1'
         )
 
         act(() => fireEvent.click(decrementIcon))
@@ -1725,8 +1725,8 @@ describe('ShoppingListsPage', () => {
   describe('editing a list item', () => {
     describe('when successful', () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        updateShoppingListItemSuccess
+        getWishListsSuccess,
+        updateWishListItemSuccess
       )
 
       beforeAll(() => mockServer.listen())
@@ -1737,20 +1737,20 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
 
-        const editIcon = await wrapper.findByTestId('editShoppingListItem3')
+        const editIcon = await wrapper.findByTestId('editWishListItem3')
 
         act(() => fireEvent.click(editIcon))
 
         const notesFields = wrapper.getAllByLabelText('Notes')
         const editNotesField = notesFields[notesFields.length - 1] // the modal is below all the new item forms
-        const form = wrapper.getByTestId('editShoppingListItem3Form')
+        const form = wrapper.getByTestId('editWishListItem3Form')
 
         fireEvent.change(editNotesField, { target: { value: 'Hello world' } })
 
@@ -1770,8 +1770,8 @@ describe('ShoppingListsPage', () => {
 
     describe('when there is a 422 response', () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        updateShoppingListItemUnprocessable
+        getWishListsSuccess,
+        updateWishListItemUnprocessable
       )
 
       beforeAll(() => mockServer.listen())
@@ -1782,20 +1782,20 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
 
-        const editIcon = await wrapper.findByTestId('editShoppingListItem3')
+        const editIcon = await wrapper.findByTestId('editWishListItem3')
 
         act(() => fireEvent.click(editIcon))
 
         const notesFields = wrapper.getAllByLabelText('Notes')
         const editNotesField = notesFields[notesFields.length - 1] // the modal is below all the new item forms
-        const form = wrapper.getByTestId('editShoppingListItem3Form')
+        const form = wrapper.getByTestId('editWishListItem3Form')
 
         fireEvent.change(editNotesField, { target: { value: 'Hello world' } })
 
@@ -1822,8 +1822,8 @@ describe('ShoppingListsPage', () => {
 
     describe('when there is a server error', () => {
       const mockServer = setupServer(
-        getShoppingListsSuccess,
-        updateShoppingListItemServerError
+        getWishListsSuccess,
+        updateWishListItemServerError
       )
 
       beforeAll(() => mockServer.listen())
@@ -1834,20 +1834,20 @@ describe('ShoppingListsPage', () => {
         const wrapper = renderAuthenticated(
           <PageProvider>
             <GamesContext.Provider value={gamesContextValue}>
-              <ShoppingListsProvider>
-                <ShoppingListsPage />
-              </ShoppingListsProvider>
+              <WishListsProvider>
+                <WishListsPage />
+              </WishListsProvider>
             </GamesContext.Provider>
           </PageProvider>
         )
 
-        const editIcon = await wrapper.findByTestId('editShoppingListItem3')
+        const editIcon = await wrapper.findByTestId('editWishListItem3')
 
         act(() => fireEvent.click(editIcon))
 
         const notesFields = wrapper.getAllByLabelText('Notes')
         const editNotesField = notesFields[notesFields.length - 1] // the modal is below all the new item forms
-        const form = wrapper.getByTestId('editShoppingListItem3Form')
+        const form = wrapper.getByTestId('editWishListItem3Form')
 
         fireEvent.change(editNotesField, { target: { value: 'Hello world' } })
 

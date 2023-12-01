@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ShoppingListsPage > viewing shopping lists > when loading > matches snapshot 1`] = `
+exports[`WishListsPage > viewing wish lists > when loading > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -423,7 +423,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
 }
 `;
 
-exports[`ShoppingListsPage > viewing shopping lists > when the game is set in the query string > when the game has shopping lists > matches snapshot 1`] = `
+exports[`WishListsPage > viewing wish lists > when the game is set in the query string > when the game has wish lists > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -519,7 +519,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
             class="_root_da4596"
           >
             <div
-              class="_shoppingList_da4596"
+              class="_wishList_da4596"
             >
               <div
                 class="_root_ec6c68"
@@ -554,7 +554,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         style="--main-color: #ffcb32; --title-text-color: #4c3900; --border-color: #cc9800; --body-background-color: #fff2cc; --body-text-color: #7f5700; --hover-color: #ffc519;"
                       >
                         <div
-                          aria-controls="shoppingListItem6Details"
+                          aria-controls="wishListItem6Details"
                           aria-expanded="false"
                           class="_trigger_54cfce"
                         >
@@ -580,7 +580,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         <div
                           aria-hidden="true"
                           class="rah-static rah-static--height-zero "
-                          id="shoppingListItem6Details"
+                          id="wishListItem6Details"
                           style="height: 0px; overflow: hidden;"
                         >
                           <div
@@ -608,7 +608,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         style="--main-color: #ffcb32; --title-text-color: #4c3900; --border-color: #cc9800; --body-background-color: #fff2cc; --body-text-color: #7f5700; --hover-color: #ffc519;"
                       >
                         <div
-                          aria-controls="shoppingListItem9Details"
+                          aria-controls="wishListItem9Details"
                           aria-expanded="false"
                           class="_trigger_54cfce"
                         >
@@ -634,7 +634,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         <div
                           aria-hidden="true"
                           class="rah-static rah-static--height-zero "
-                          id="shoppingListItem9Details"
+                          id="wishListItem9Details"
                           style="height: 0px; overflow: hidden;"
                         >
                           <div
@@ -663,7 +663,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               </div>
             </div>
             <div
-              class="_shoppingList_da4596"
+              class="_wishList_da4596"
             >
               <div
                 class="_root_ec6c68"
@@ -680,7 +680,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                   >
                     <button
                       class="_icon_ec6c68"
-                      data-testid="destroyShoppingList4"
+                      data-testid="destroyWishList4"
                     >
                       <svg
                         aria-hidden="true"
@@ -700,7 +700,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                     </button>
                     <button
                       class="_icon_ec6c68"
-                      data-testid="editShoppingList4"
+                      data-testid="editWishList4"
                     >
                       <svg
                         aria-hidden="true"
@@ -745,7 +745,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           class="_triggerContainer_8112da"
                         >
                           <button
-                            aria-controls="addItemToShoppingList4"
+                            aria-controls="addItemToWishList4"
                             aria-expanded="false"
                             class="_trigger_8112da"
                           >
@@ -755,7 +755,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         <div
                           aria-hidden="true"
                           class="rah-static rah-static--height-zero "
-                          id="addItemToShoppingList4"
+                          id="addItemToWishList4"
                           style="height: 0px; overflow: hidden;"
                         >
                           <div
@@ -834,7 +834,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         style="--main-color: #ec658b; --title-text-color: #fff; --border-color: #b93258; --body-background-color: #fad8e2; --body-text-color: #451221; --hover-color: #ea527d;"
                       >
                         <div
-                          aria-controls="shoppingListItem8Details"
+                          aria-controls="wishListItem8Details"
                           aria-expanded="false"
                           class="_trigger_54cfce"
                         >
@@ -846,7 +846,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             >
                               <button
                                 class="_icon_54cfce"
-                                data-testid="destroyShoppingListItem8"
+                                data-testid="destroyWishListItem8"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -866,7 +866,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                               </button>
                               <button
                                 class="_icon_54cfce"
-                                data-testid="editShoppingListItem8"
+                                data-testid="editWishListItem8"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -896,7 +896,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           >
                             <button
                               class="_icon_54cfce"
-                              data-testid="incrementShoppingListItem8"
+                              data-testid="incrementWishListItem8"
                             >
                               <svg
                                 aria-hidden="true"
@@ -921,7 +921,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             </span>
                             <button
                               class="_icon_54cfce"
-                              data-testid="decrementShoppingListItem8"
+                              data-testid="decrementWishListItem8"
                             >
                               <svg
                                 aria-hidden="true"
@@ -944,7 +944,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         <div
                           aria-hidden="true"
                           class="rah-static rah-static--height-zero "
-                          id="shoppingListItem8Details"
+                          id="wishListItem8Details"
                           style="height: 0px; overflow: hidden;"
                         >
                           <div
@@ -982,7 +982,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         style="--main-color: #ec658b; --title-text-color: #fff; --border-color: #b93258; --body-background-color: #fad8e2; --body-text-color: #451221; --hover-color: #ea527d;"
                       >
                         <div
-                          aria-controls="shoppingListItem5Details"
+                          aria-controls="wishListItem5Details"
                           aria-expanded="false"
                           class="_trigger_54cfce"
                         >
@@ -994,7 +994,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             >
                               <button
                                 class="_icon_54cfce"
-                                data-testid="destroyShoppingListItem5"
+                                data-testid="destroyWishListItem5"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -1014,7 +1014,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                               </button>
                               <button
                                 class="_icon_54cfce"
-                                data-testid="editShoppingListItem5"
+                                data-testid="editWishListItem5"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -1044,7 +1044,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           >
                             <button
                               class="_icon_54cfce"
-                              data-testid="incrementShoppingListItem5"
+                              data-testid="incrementWishListItem5"
                             >
                               <svg
                                 aria-hidden="true"
@@ -1069,7 +1069,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             </span>
                             <button
                               class="_icon_54cfce"
-                              data-testid="decrementShoppingListItem5"
+                              data-testid="decrementWishListItem5"
                             >
                               <svg
                                 aria-hidden="true"
@@ -1092,7 +1092,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         <div
                           aria-hidden="true"
                           class="rah-static rah-static--height-zero "
-                          id="shoppingListItem5Details"
+                          id="wishListItem5Details"
                           style="height: 0px; overflow: hidden;"
                         >
                           <div
@@ -1131,7 +1131,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               </div>
             </div>
             <div
-              class="_shoppingList_da4596"
+              class="_wishList_da4596"
             >
               <div
                 class="_root_ec6c68"
@@ -1148,7 +1148,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                   >
                     <button
                       class="_icon_ec6c68"
-                      data-testid="destroyShoppingList5"
+                      data-testid="destroyWishList5"
                     >
                       <svg
                         aria-hidden="true"
@@ -1168,7 +1168,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                     </button>
                     <button
                       class="_icon_ec6c68"
-                      data-testid="editShoppingList5"
+                      data-testid="editWishList5"
                     >
                       <svg
                         aria-hidden="true"
@@ -1213,7 +1213,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           class="_triggerContainer_8112da"
                         >
                           <button
-                            aria-controls="addItemToShoppingList5"
+                            aria-controls="addItemToWishList5"
                             aria-expanded="false"
                             class="_trigger_8112da"
                           >
@@ -1223,7 +1223,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         <div
                           aria-hidden="true"
                           class="rah-static rah-static--height-zero "
-                          id="addItemToShoppingList5"
+                          id="addItemToWishList5"
                           style="height: 0px; overflow: hidden;"
                         >
                           <div
@@ -1302,7 +1302,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         style="--main-color: #4e8fb7; --title-text-color: #fff; --border-color: #1b5c84; --body-background-color: #d2e3ed; --body-text-color: #0d2e42; --hover-color: #3881ae;"
                       >
                         <div
-                          aria-controls="shoppingListItem7Details"
+                          aria-controls="wishListItem7Details"
                           aria-expanded="false"
                           class="_trigger_54cfce"
                         >
@@ -1314,7 +1314,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             >
                               <button
                                 class="_icon_54cfce"
-                                data-testid="destroyShoppingListItem7"
+                                data-testid="destroyWishListItem7"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -1334,7 +1334,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                               </button>
                               <button
                                 class="_icon_54cfce"
-                                data-testid="editShoppingListItem7"
+                                data-testid="editWishListItem7"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -1364,7 +1364,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           >
                             <button
                               class="_icon_54cfce"
-                              data-testid="incrementShoppingListItem7"
+                              data-testid="incrementWishListItem7"
                             >
                               <svg
                                 aria-hidden="true"
@@ -1389,7 +1389,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             </span>
                             <button
                               class="_icon_54cfce"
-                              data-testid="decrementShoppingListItem7"
+                              data-testid="decrementWishListItem7"
                             >
                               <svg
                                 aria-hidden="true"
@@ -1412,7 +1412,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         <div
                           aria-hidden="true"
                           class="rah-static rah-static--height-zero "
-                          id="shoppingListItem7Details"
+                          id="wishListItem7Details"
                           style="height: 0px; overflow: hidden;"
                         >
                           <div
@@ -1451,7 +1451,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
               </div>
             </div>
             <div
-              class="_shoppingList_da4596"
+              class="_wishList_da4596"
             >
               <div
                 class="_root_ec6c68"
@@ -1468,7 +1468,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                   >
                     <button
                       class="_icon_ec6c68"
-                      data-testid="destroyShoppingList6"
+                      data-testid="destroyWishList6"
                     >
                       <svg
                         aria-hidden="true"
@@ -1488,7 +1488,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                     </button>
                     <button
                       class="_icon_ec6c68"
-                      data-testid="editShoppingList6"
+                      data-testid="editWishList6"
                     >
                       <svg
                         aria-hidden="true"
@@ -1533,7 +1533,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           class="_triggerContainer_8112da"
                         >
                           <button
-                            aria-controls="addItemToShoppingList6"
+                            aria-controls="addItemToWishList6"
                             aria-expanded="false"
                             class="_trigger_8112da"
                           >
@@ -1543,7 +1543,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         <div
                           aria-hidden="true"
                           class="rah-static rah-static--height-zero "
-                          id="addItemToShoppingList6"
+                          id="addItemToWishList6"
                           style="height: 0px; overflow: hidden;"
                         >
                           <div
@@ -1843,7 +1843,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
           class="_root_da4596"
         >
           <div
-            class="_shoppingList_da4596"
+            class="_wishList_da4596"
           >
             <div
               class="_root_ec6c68"
@@ -1878,7 +1878,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       style="--main-color: #ffcb32; --title-text-color: #4c3900; --border-color: #cc9800; --body-background-color: #fff2cc; --body-text-color: #7f5700; --hover-color: #ffc519;"
                     >
                       <div
-                        aria-controls="shoppingListItem6Details"
+                        aria-controls="wishListItem6Details"
                         aria-expanded="false"
                         class="_trigger_54cfce"
                       >
@@ -1904,7 +1904,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       <div
                         aria-hidden="true"
                         class="rah-static rah-static--height-zero "
-                        id="shoppingListItem6Details"
+                        id="wishListItem6Details"
                         style="height: 0px; overflow: hidden;"
                       >
                         <div
@@ -1932,7 +1932,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       style="--main-color: #ffcb32; --title-text-color: #4c3900; --border-color: #cc9800; --body-background-color: #fff2cc; --body-text-color: #7f5700; --hover-color: #ffc519;"
                     >
                       <div
-                        aria-controls="shoppingListItem9Details"
+                        aria-controls="wishListItem9Details"
                         aria-expanded="false"
                         class="_trigger_54cfce"
                       >
@@ -1958,7 +1958,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       <div
                         aria-hidden="true"
                         class="rah-static rah-static--height-zero "
-                        id="shoppingListItem9Details"
+                        id="wishListItem9Details"
                         style="height: 0px; overflow: hidden;"
                       >
                         <div
@@ -1987,7 +1987,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
             </div>
           </div>
           <div
-            class="_shoppingList_da4596"
+            class="_wishList_da4596"
           >
             <div
               class="_root_ec6c68"
@@ -2004,7 +2004,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                 >
                   <button
                     class="_icon_ec6c68"
-                    data-testid="destroyShoppingList4"
+                    data-testid="destroyWishList4"
                   >
                     <svg
                       aria-hidden="true"
@@ -2024,7 +2024,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                   </button>
                   <button
                     class="_icon_ec6c68"
-                    data-testid="editShoppingList4"
+                    data-testid="editWishList4"
                   >
                     <svg
                       aria-hidden="true"
@@ -2069,7 +2069,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         class="_triggerContainer_8112da"
                       >
                         <button
-                          aria-controls="addItemToShoppingList4"
+                          aria-controls="addItemToWishList4"
                           aria-expanded="false"
                           class="_trigger_8112da"
                         >
@@ -2079,7 +2079,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       <div
                         aria-hidden="true"
                         class="rah-static rah-static--height-zero "
-                        id="addItemToShoppingList4"
+                        id="addItemToWishList4"
                         style="height: 0px; overflow: hidden;"
                       >
                         <div
@@ -2158,7 +2158,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       style="--main-color: #ec658b; --title-text-color: #fff; --border-color: #b93258; --body-background-color: #fad8e2; --body-text-color: #451221; --hover-color: #ea527d;"
                     >
                       <div
-                        aria-controls="shoppingListItem8Details"
+                        aria-controls="wishListItem8Details"
                         aria-expanded="false"
                         class="_trigger_54cfce"
                       >
@@ -2170,7 +2170,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           >
                             <button
                               class="_icon_54cfce"
-                              data-testid="destroyShoppingListItem8"
+                              data-testid="destroyWishListItem8"
                             >
                               <svg
                                 aria-hidden="true"
@@ -2190,7 +2190,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             </button>
                             <button
                               class="_icon_54cfce"
-                              data-testid="editShoppingListItem8"
+                              data-testid="editWishListItem8"
                             >
                               <svg
                                 aria-hidden="true"
@@ -2220,7 +2220,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         >
                           <button
                             class="_icon_54cfce"
-                            data-testid="incrementShoppingListItem8"
+                            data-testid="incrementWishListItem8"
                           >
                             <svg
                               aria-hidden="true"
@@ -2245,7 +2245,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           </span>
                           <button
                             class="_icon_54cfce"
-                            data-testid="decrementShoppingListItem8"
+                            data-testid="decrementWishListItem8"
                           >
                             <svg
                               aria-hidden="true"
@@ -2268,7 +2268,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       <div
                         aria-hidden="true"
                         class="rah-static rah-static--height-zero "
-                        id="shoppingListItem8Details"
+                        id="wishListItem8Details"
                         style="height: 0px; overflow: hidden;"
                       >
                         <div
@@ -2306,7 +2306,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       style="--main-color: #ec658b; --title-text-color: #fff; --border-color: #b93258; --body-background-color: #fad8e2; --body-text-color: #451221; --hover-color: #ea527d;"
                     >
                       <div
-                        aria-controls="shoppingListItem5Details"
+                        aria-controls="wishListItem5Details"
                         aria-expanded="false"
                         class="_trigger_54cfce"
                       >
@@ -2318,7 +2318,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           >
                             <button
                               class="_icon_54cfce"
-                              data-testid="destroyShoppingListItem5"
+                              data-testid="destroyWishListItem5"
                             >
                               <svg
                                 aria-hidden="true"
@@ -2338,7 +2338,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             </button>
                             <button
                               class="_icon_54cfce"
-                              data-testid="editShoppingListItem5"
+                              data-testid="editWishListItem5"
                             >
                               <svg
                                 aria-hidden="true"
@@ -2368,7 +2368,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         >
                           <button
                             class="_icon_54cfce"
-                            data-testid="incrementShoppingListItem5"
+                            data-testid="incrementWishListItem5"
                           >
                             <svg
                               aria-hidden="true"
@@ -2393,7 +2393,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           </span>
                           <button
                             class="_icon_54cfce"
-                            data-testid="decrementShoppingListItem5"
+                            data-testid="decrementWishListItem5"
                           >
                             <svg
                               aria-hidden="true"
@@ -2416,7 +2416,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       <div
                         aria-hidden="true"
                         class="rah-static rah-static--height-zero "
-                        id="shoppingListItem5Details"
+                        id="wishListItem5Details"
                         style="height: 0px; overflow: hidden;"
                       >
                         <div
@@ -2455,7 +2455,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
             </div>
           </div>
           <div
-            class="_shoppingList_da4596"
+            class="_wishList_da4596"
           >
             <div
               class="_root_ec6c68"
@@ -2472,7 +2472,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                 >
                   <button
                     class="_icon_ec6c68"
-                    data-testid="destroyShoppingList5"
+                    data-testid="destroyWishList5"
                   >
                     <svg
                       aria-hidden="true"
@@ -2492,7 +2492,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                   </button>
                   <button
                     class="_icon_ec6c68"
-                    data-testid="editShoppingList5"
+                    data-testid="editWishList5"
                   >
                     <svg
                       aria-hidden="true"
@@ -2537,7 +2537,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         class="_triggerContainer_8112da"
                       >
                         <button
-                          aria-controls="addItemToShoppingList5"
+                          aria-controls="addItemToWishList5"
                           aria-expanded="false"
                           class="_trigger_8112da"
                         >
@@ -2547,7 +2547,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       <div
                         aria-hidden="true"
                         class="rah-static rah-static--height-zero "
-                        id="addItemToShoppingList5"
+                        id="addItemToWishList5"
                         style="height: 0px; overflow: hidden;"
                       >
                         <div
@@ -2626,7 +2626,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       style="--main-color: #4e8fb7; --title-text-color: #fff; --border-color: #1b5c84; --body-background-color: #d2e3ed; --body-text-color: #0d2e42; --hover-color: #3881ae;"
                     >
                       <div
-                        aria-controls="shoppingListItem7Details"
+                        aria-controls="wishListItem7Details"
                         aria-expanded="false"
                         class="_trigger_54cfce"
                       >
@@ -2638,7 +2638,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           >
                             <button
                               class="_icon_54cfce"
-                              data-testid="destroyShoppingListItem7"
+                              data-testid="destroyWishListItem7"
                             >
                               <svg
                                 aria-hidden="true"
@@ -2658,7 +2658,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             </button>
                             <button
                               class="_icon_54cfce"
-                              data-testid="editShoppingListItem7"
+                              data-testid="editWishListItem7"
                             >
                               <svg
                                 aria-hidden="true"
@@ -2688,7 +2688,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         >
                           <button
                             class="_icon_54cfce"
-                            data-testid="incrementShoppingListItem7"
+                            data-testid="incrementWishListItem7"
                           >
                             <svg
                               aria-hidden="true"
@@ -2713,7 +2713,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           </span>
                           <button
                             class="_icon_54cfce"
-                            data-testid="decrementShoppingListItem7"
+                            data-testid="decrementWishListItem7"
                           >
                             <svg
                               aria-hidden="true"
@@ -2736,7 +2736,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       <div
                         aria-hidden="true"
                         class="rah-static rah-static--height-zero "
-                        id="shoppingListItem7Details"
+                        id="wishListItem7Details"
                         style="height: 0px; overflow: hidden;"
                       >
                         <div
@@ -2775,7 +2775,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
             </div>
           </div>
           <div
-            class="_shoppingList_da4596"
+            class="_wishList_da4596"
           >
             <div
               class="_root_ec6c68"
@@ -2792,7 +2792,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                 >
                   <button
                     class="_icon_ec6c68"
-                    data-testid="destroyShoppingList6"
+                    data-testid="destroyWishList6"
                   >
                     <svg
                       aria-hidden="true"
@@ -2812,7 +2812,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                   </button>
                   <button
                     class="_icon_ec6c68"
-                    data-testid="editShoppingList6"
+                    data-testid="editWishList6"
                   >
                     <svg
                       aria-hidden="true"
@@ -2857,7 +2857,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                         class="_triggerContainer_8112da"
                       >
                         <button
-                          aria-controls="addItemToShoppingList6"
+                          aria-controls="addItemToWishList6"
                           aria-expanded="false"
                           class="_trigger_8112da"
                         >
@@ -2867,7 +2867,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                       <div
                         aria-hidden="true"
                         class="rah-static rah-static--height-zero "
-                        id="addItemToShoppingList6"
+                        id="addItemToWishList6"
                         style="height: 0px; overflow: hidden;"
                       >
                         <div

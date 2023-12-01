@@ -10,32 +10,32 @@ import {
 import AnimateHeight from 'react-animate-height'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
-import { type RequestShoppingList } from '../../types/apiData'
+import { type RequestWishList } from '../../types/apiData'
 import {
   useColorScheme,
   usePageContext,
-  useShoppingListsContext,
+  useWishListsContext,
 } from '../../hooks/contexts'
 import useComponentVisible from '../../hooks/useComponentVisible'
 import useSize from '../../hooks/useSize'
-import ShoppingListItemCreateForm from '../wishListItemCreateForm/wishListItemCreateForm'
+import WishListItemCreateForm from '../wishListItemCreateForm/wishListItemCreateForm'
 import ListEditForm from '../listEditForm/listEditForm'
 import styles from './wishList.module.css'
 
-interface ShoppingListProps {
+interface WishListProps {
   listId: number
   title: string
   editable?: boolean
   children?: ReactElement | ReactElement[] | null
 }
 
-const ShoppingList = ({
+const WishList = ({
   listId,
   title,
   editable = false,
   children,
-}: ShoppingListProps) => {
-  const { updateShoppingList, destroyShoppingList } = useShoppingListsContext()
+}: WishListProps) => {
+  const { updateWishList, destroyWishList } = useWishListsContext()
   const { setFlashProps } = usePageContext()
   const [expanded, setExpanded] = useState(false)
   const [maxEditFormWidth, setMaxEditFormWidth] = useState(0)
@@ -104,7 +104,7 @@ const ShoppingList = ({
     const confirmed = window.confirm(confirmation)
 
     if (confirmed) {
-      destroyShoppingList(listId)
+      destroyWishList(listId)
     } else {
       setFlashProps({
         hidden: false,
@@ -116,7 +116,7 @@ const ShoppingList = ({
 
   const extractAttributes = (
     formData: FormData
-  ): RequestShoppingList | null => {
+  ): RequestWishList | null => {
     const attributes = Object.fromEntries(
       Array.from(formData.entries())
     ) as Record<string, string>
@@ -139,7 +139,7 @@ const ShoppingList = ({
     const onSuccess = () => setIsComponentVisible(false)
 
     if (attributes) {
-      updateShoppingList(listId, attributes, onSuccess)
+      updateWishList(listId, attributes, onSuccess)
     } else {
       setIsComponentVisible(false)
     }
@@ -168,14 +168,14 @@ const ShoppingList = ({
             <button
               className={styles.icon}
               onClick={destroy}
-              data-testid={`destroyShoppingList${listId}`}
+              data-testid={`destroyWishList${listId}`}
             >
               <FontAwesomeIcon className={styles.fa} icon={faXmark} />
             </button>
             <button
               ref={triggerRef}
               className={styles.icon}
-              data-testid={`editShoppingList${listId}`}
+              data-testid={`editWishList${listId}`}
             >
               <FontAwesomeIcon className={styles.fa} icon={faPenToSquare} />
             </button>
@@ -199,7 +199,7 @@ const ShoppingList = ({
         height={expanded ? 'auto' : 0}
       >
         <div className={styles.details}>
-          {editable && <ShoppingListItemCreateForm listId={listId} />}
+          {editable && <WishListItemCreateForm listId={listId} />}
           {/* We only want to display the "This wish list has no list items"
           message if there is no list item creation form */}
           {children || editable ? (
@@ -215,4 +215,4 @@ const ShoppingList = ({
   )
 }
 
-export default ShoppingList
+export default WishList

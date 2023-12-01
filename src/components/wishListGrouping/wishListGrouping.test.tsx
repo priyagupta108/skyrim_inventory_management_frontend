@@ -2,23 +2,23 @@ import { describe, test, expect } from 'vitest'
 import { renderAuthenticated } from '../../support/testUtils'
 import {
   gamesContextValue,
-  shoppingListsContextValue,
-  shoppingListsContextValueEmpty,
+  wishListsContextValue,
+  wishListsContextValueEmpty,
 } from '../../support/data/contextValues'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
-import ShoppingListGrouping from './wishListGrouping'
+import { WishListsContext } from '../../contexts/wishListsContext'
+import WishListGrouping from './wishListGrouping'
 
-describe('ShoppingListGrouping', () => {
-  describe('when there are shopping lists', () => {
+describe('WishListGrouping', () => {
+  describe('when there are wish lists', () => {
     test('displays each list', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListGrouping />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListGrouping />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -43,83 +43,83 @@ describe('ShoppingListGrouping', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListGrouping />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListGrouping />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
 
-      expect(wrapper.getByTestId('destroyShoppingList4')).toBeTruthy()
-      expect(wrapper.getByTestId('destroyShoppingList5')).toBeTruthy()
-      expect(wrapper.getByTestId('destroyShoppingList6')).toBeTruthy()
+      expect(wrapper.getByTestId('destroyWishList4')).toBeTruthy()
+      expect(wrapper.getByTestId('destroyWishList5')).toBeTruthy()
+      expect(wrapper.getByTestId('destroyWishList6')).toBeTruthy()
 
       // The aggregate list should not be editable
-      expect(wrapper.queryByTestId('destroyShoppingList3')).toBeFalsy()
+      expect(wrapper.queryByTestId('destroyWishList3')).toBeFalsy()
     })
 
     test('displays the destroy icon for editable list items only', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListGrouping />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListGrouping />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
 
-      expect(wrapper.queryByTestId('destroyShoppingListItem6')).toBeFalsy()
-      expect(wrapper.queryByTestId('destroyShoppingListItem9')).toBeFalsy()
-      expect(wrapper.getByTestId('destroyShoppingListItem7')).toBeTruthy()
-      expect(wrapper.getByTestId('destroyShoppingListItem8')).toBeTruthy()
-      expect(wrapper.getByTestId('destroyShoppingListItem5')).toBeTruthy()
+      expect(wrapper.queryByTestId('destroyWishListItem6')).toBeFalsy()
+      expect(wrapper.queryByTestId('destroyWishListItem9')).toBeFalsy()
+      expect(wrapper.getByTestId('destroyWishListItem7')).toBeTruthy()
+      expect(wrapper.getByTestId('destroyWishListItem8')).toBeTruthy()
+      expect(wrapper.getByTestId('destroyWishListItem5')).toBeTruthy()
     })
 
     test('displays the edit icon for editable lists only', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListGrouping />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListGrouping />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
 
-      expect(wrapper.getByTestId('editShoppingList4')).toBeTruthy()
-      expect(wrapper.getByTestId('editShoppingList5')).toBeTruthy()
-      expect(wrapper.getByTestId('editShoppingList6')).toBeTruthy()
+      expect(wrapper.getByTestId('editWishList4')).toBeTruthy()
+      expect(wrapper.getByTestId('editWishList5')).toBeTruthy()
+      expect(wrapper.getByTestId('editWishList6')).toBeTruthy()
 
       // The aggregate list should not be editable
-      expect(wrapper.queryByTestId('editShoppingList3')).toBeFalsy()
+      expect(wrapper.queryByTestId('editWishList3')).toBeFalsy()
     })
 
     test('displays the edit icon for editable list items only', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListGrouping />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListGrouping />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
 
-      expect(wrapper.queryByTestId('editShoppingListItem6')).toBeFalsy()
-      expect(wrapper.queryByTestId('editShoppingListItem9')).toBeFalsy()
-      expect(wrapper.getByTestId('editShoppingListItem7')).toBeTruthy()
-      expect(wrapper.getByTestId('editShoppingListItem8')).toBeTruthy()
-      expect(wrapper.getByTestId('editShoppingListItem5')).toBeTruthy()
+      expect(wrapper.queryByTestId('editWishListItem6')).toBeFalsy()
+      expect(wrapper.queryByTestId('editWishListItem9')).toBeFalsy()
+      expect(wrapper.getByTestId('editWishListItem7')).toBeTruthy()
+      expect(wrapper.getByTestId('editWishListItem8')).toBeTruthy()
+      expect(wrapper.getByTestId('editWishListItem5')).toBeTruthy()
     })
 
     test('matches snapshot', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
-              <ShoppingListGrouping />
-            </ShoppingListsContext.Provider>
+            <WishListsContext.Provider value={wishListsContextValue}>
+              <WishListGrouping />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -128,16 +128,16 @@ describe('ShoppingListGrouping', () => {
     })
   })
 
-  describe('when there are no shopping lists', () => {
+  describe('when there are no wish lists', () => {
     test('displays a message that there are no lists for this game', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider
-              value={shoppingListsContextValueEmpty}
+            <WishListsContext.Provider
+              value={wishListsContextValueEmpty}
             >
-              <ShoppingListGrouping />
-            </ShoppingListsContext.Provider>
+              <WishListGrouping />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )
@@ -149,11 +149,11 @@ describe('ShoppingListGrouping', () => {
       const wrapper = renderAuthenticated(
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider
-              value={shoppingListsContextValueEmpty}
+            <WishListsContext.Provider
+              value={wishListsContextValueEmpty}
             >
-              <ShoppingListGrouping />
-            </ShoppingListsContext.Provider>
+              <WishListGrouping />
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       )

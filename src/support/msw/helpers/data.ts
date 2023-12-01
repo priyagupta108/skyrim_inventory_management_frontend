@@ -1,33 +1,33 @@
 import {
-  type RequestShoppingListItem,
-  type RequestShoppingList,
-  type ResponseShoppingListItem,
-  type ResponseShoppingList,
+  type RequestWishListItem,
+  type RequestWishList,
+  type ResponseWishListItem,
+  type ResponseWishList,
 } from '../../../types/apiData'
 import { allGames } from '../../data/games'
 import {
-  allShoppingLists,
-  shoppingListsForGame,
+  allWishLists,
+  wishListsForGame,
 } from '../../data/wishLists'
 
 const gameIds = allGames.map(({ id }) => id)
 
 /**
  *
- * Shopping List Creation
+ * Wish List Creation
  *
  */
 
-export const newShoppingList = (
-  attributes: RequestShoppingList,
+export const newWishList = (
+  attributes: RequestWishList,
   gameId: number
-): ResponseShoppingList[] => {
+): ResponseWishList[] => {
   if (gameIds.indexOf(gameId) < 0)
     throw new Error(
       'Cannot generate shopping list for game that does not exist in test data'
     )
 
-  const existingLists = shoppingListsForGame(gameId)
+  const existingLists = wishListsForGame(gameId)
 
   if (!existingLists.length)
     throw new Error(
@@ -40,7 +40,7 @@ export const newShoppingList = (
       game_id: gameId,
       aggregate: false,
       aggregate_list_id: existingLists[0].id,
-      title: attributes.title || 'New Shopping List',
+      title: attributes.title || 'New Wish List',
       list_items: [],
       created_at: new Date(),
       updated_at: new Date(),
@@ -48,16 +48,16 @@ export const newShoppingList = (
   ]
 }
 
-export const newShoppingListWithAggregate = (
-  attributes: RequestShoppingList,
+export const newWishListWithAggregate = (
+  attributes: RequestWishList,
   gameId: number
-): ResponseShoppingList[] => {
+): ResponseWishList[] => {
   if (gameIds.indexOf(gameId) < 0)
     throw new Error(
-      'Cannot generate shopping list for game that does not exist in test data'
+      'Cannot generate wish list for game that does not exist in test data'
     )
 
-  const existingLists = shoppingListsForGame(gameId)
+  const existingLists = wishListsForGame(gameId)
 
   if (existingLists.length)
     throw new Error(
@@ -80,7 +80,7 @@ export const newShoppingListWithAggregate = (
       game_id: gameId,
       aggregate: false,
       aggregate_list_id: 93,
-      title: attributes.title || 'My Shopping List 1',
+      title: attributes.title || 'My Wish List 1',
       list_items: [],
       created_at: new Date(),
       updated_at: new Date(),
@@ -90,24 +90,24 @@ export const newShoppingListWithAggregate = (
 
 /**
  *
- * Shopping list item creation
+ * Wish list item creation
  *
  */
 
-export const newShoppingListItem = (
-  attributes: RequestShoppingListItem,
+export const newWishListItem = (
+  attributes: RequestWishListItem,
   listId: number
 ) => {
-  const list = allShoppingLists.find(({ id }) => id === listId)
+  const list = allWishLists.find(({ id }) => id === listId)
 
   if (!list)
-    throw new Error(`No shopping list with ID ${listId} in the test data`)
+    throw new Error(`No wish list with ID ${listId} in the test data`)
 
-  const shoppingList = { ...list }
-  const allLists = shoppingListsForGame(shoppingList.game_id)
+  const wishList = { ...list }
+  const allLists = wishListsForGame(wishList.game_id)
   const aggregateList = { ...allLists[0] }
 
-  const newItem: ResponseShoppingListItem = {
+  const newItem: ResponseWishListItem = {
     id: 42,
     list_id: listId,
     description: 'Dummy description for TypeScript',
@@ -119,14 +119,14 @@ export const newShoppingListItem = (
     ...attributes,
   }
 
-  const newAggregateListItem: ResponseShoppingListItem = {
+  const newAggregateListItem: ResponseWishListItem = {
     ...newItem,
     id: 43,
     list_id: aggregateList.id,
   }
 
   aggregateList.list_items = [newAggregateListItem, ...aggregateList.list_items]
-  shoppingList.list_items = [newItem, ...shoppingList.list_items]
+  wishList.list_items = [newItem, ...wishList.list_items]
 
-  return [aggregateList, shoppingList]
+  return [aggregateList, wishList]
 }

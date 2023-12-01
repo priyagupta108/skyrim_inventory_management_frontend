@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ShoppingListItem > displaying the list item > when the list item is editable > matches snapshot 1`] = `
+exports[`WishListItem > displaying the list item > when the list item is editable > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -10,7 +10,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
         style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
       >
         <div
-          aria-controls="shoppingListItem2Details"
+          aria-controls="wishListItem2Details"
           aria-expanded="false"
           class="_trigger_54cfce"
         >
@@ -22,7 +22,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
             >
               <button
                 class="_icon_54cfce"
-                data-testid="destroyShoppingListItem2"
+                data-testid="destroyWishListItem2"
               >
                 <svg
                   aria-hidden="true"
@@ -42,7 +42,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
               </button>
               <button
                 class="_icon_54cfce"
-                data-testid="editShoppingListItem2"
+                data-testid="editWishListItem2"
               >
                 <svg
                   aria-hidden="true"
@@ -72,7 +72,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
           >
             <button
               class="_icon_54cfce"
-              data-testid="incrementShoppingListItem2"
+              data-testid="incrementWishListItem2"
             >
               <svg
                 aria-hidden="true"
@@ -97,7 +97,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
             </span>
             <button
               class="_icon_54cfce"
-              data-testid="decrementShoppingListItem2"
+              data-testid="decrementWishListItem2"
             >
               <svg
                 aria-hidden="true"
@@ -120,7 +120,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
         <div
           aria-hidden="true"
           class="rah-static rah-static--height-zero "
-          id="shoppingListItem2Details"
+          id="wishListItem2Details"
           style="height: 0px; overflow: hidden;"
         >
           <div
@@ -161,7 +161,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
       style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
     >
       <div
-        aria-controls="shoppingListItem2Details"
+        aria-controls="wishListItem2Details"
         aria-expanded="false"
         class="_trigger_54cfce"
       >
@@ -173,7 +173,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
           >
             <button
               class="_icon_54cfce"
-              data-testid="destroyShoppingListItem2"
+              data-testid="destroyWishListItem2"
             >
               <svg
                 aria-hidden="true"
@@ -193,7 +193,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
             </button>
             <button
               class="_icon_54cfce"
-              data-testid="editShoppingListItem2"
+              data-testid="editWishListItem2"
             >
               <svg
                 aria-hidden="true"
@@ -223,7 +223,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
         >
           <button
             class="_icon_54cfce"
-            data-testid="incrementShoppingListItem2"
+            data-testid="incrementWishListItem2"
           >
             <svg
               aria-hidden="true"
@@ -248,7 +248,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
           </span>
           <button
             class="_icon_54cfce"
-            data-testid="decrementShoppingListItem2"
+            data-testid="decrementWishListItem2"
           >
             <svg
               aria-hidden="true"
@@ -271,7 +271,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
       <div
         aria-hidden="true"
         class="rah-static rah-static--height-zero "
-        id="shoppingListItem2Details"
+        id="wishListItem2Details"
         style="height: 0px; overflow: hidden;"
       >
         <div
@@ -359,7 +359,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is edi
 }
 `;
 
-exports[`ShoppingListItem > displaying the list item > when the list item is not editable > matches snapshot 1`] = `
+exports[`WishListItem > displaying the list item > when the list item is not editable > matches snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -369,7 +369,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is not
         style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
       >
         <div
-          aria-controls="shoppingListItem2Details"
+          aria-controls="wishListItem2Details"
           aria-expanded="false"
           class="_trigger_54cfce"
         >
@@ -395,7 +395,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is not
         <div
           aria-hidden="true"
           class="rah-static rah-static--height-zero "
-          id="shoppingListItem2Details"
+          id="wishListItem2Details"
           style="height: 0px; overflow: hidden;"
         >
           <div
@@ -426,7 +426,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is not
       style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
     >
       <div
-        aria-controls="shoppingListItem2Details"
+        aria-controls="wishListItem2Details"
         aria-expanded="false"
         class="_trigger_54cfce"
       >
@@ -452,7 +452,7 @@ exports[`ShoppingListItem > displaying the list item > when the list item is not
       <div
         aria-hidden="true"
         class="rah-static rah-static--height-zero "
-        id="shoppingListItem2Details"
+        id="wishListItem2Details"
         style="height: 0px; overflow: hidden;"
       >
         <div

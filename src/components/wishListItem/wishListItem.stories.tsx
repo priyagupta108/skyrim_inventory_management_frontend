@@ -2,27 +2,27 @@ import { type Meta, type StoryObj } from '@storybook/react'
 import {
   loginContextValue,
   gamesContextValue,
-  shoppingListsContextValue,
+  wishListsContextValue,
 } from '../../support/data/contextValues'
 import colorSchemes from '../../utils/colorSchemes'
 import { LoginContext } from '../../contexts/loginContext'
 import { PageProvider } from '../../contexts/pageContext'
 import { GamesContext } from '../../contexts/gamesContext'
-import { ShoppingListsContext } from '../../contexts/wishListsContext'
+import { WishListsContext } from '../../contexts/wishListsContext'
 import { ColorProvider } from '../../contexts/colorContext'
-import ShoppingListItem from './wishListItem'
+import WishListItem from './wishListItem'
 
-type ListItemStory = StoryObj<typeof ShoppingListItem>
+type ListItemStory = StoryObj<typeof WishListItem>
 
-const meta: Meta<typeof ShoppingListItem> = {
-  title: 'ShoppingListItem',
-  component: ShoppingListItem,
+const meta: Meta<typeof WishListItem> = {
+  title: 'WishListItem',
+  component: WishListItem,
   decorators: [
     (Story) => (
       <LoginContext.Provider value={loginContextValue}>
         <PageProvider>
           <GamesContext.Provider value={gamesContextValue}>
-            <ShoppingListsContext.Provider value={shoppingListsContextValue}>
+            <WishListsContext.Provider value={wishListsContextValue}>
               <ColorProvider
                 colorScheme={
                   colorSchemes[Math.floor(Math.random() * colorSchemes.length)]
@@ -30,7 +30,7 @@ const meta: Meta<typeof ShoppingListItem> = {
               >
                 <Story />
               </ColorProvider>
-            </ShoppingListsContext.Provider>
+            </WishListsContext.Provider>
           </GamesContext.Provider>
         </PageProvider>
       </LoginContext.Provider>
