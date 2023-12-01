@@ -1,7 +1,7 @@
 import { ApiResponse, type HTTPHeaders } from '../http'
 import {
   type ErrorObject,
-  type ResponseShoppingList,
+  type ResponseWishList,
 } from '../../../types/apiData'
 import { UnauthorizedResponse } from './shared'
 
@@ -11,7 +11,7 @@ import { UnauthorizedResponse } from './shared'
  *
  */
 
-class PostShoppingListsSuccessResponse extends ApiResponse {
+class PostWishListsSuccessResponse extends ApiResponse {
   status: 201
 
   constructor(
@@ -22,7 +22,7 @@ class PostShoppingListsSuccessResponse extends ApiResponse {
   }
 }
 
-class PostShoppingListsNotFoundResponse extends ApiResponse {
+class PostWishListsNotFoundResponse extends ApiResponse {
   status: 404
 
   constructor(
@@ -33,7 +33,7 @@ class PostShoppingListsNotFoundResponse extends ApiResponse {
   }
 }
 
-class PostShoppingListsErrorResponse extends ApiResponse {
+class PostWishListsErrorResponse extends ApiResponse {
   status: 422 | 500
 
   constructor(
@@ -44,14 +44,14 @@ class PostShoppingListsErrorResponse extends ApiResponse {
   }
 }
 
-export type PostShoppingListsResponse =
+export type PostWishListsResponse =
   | UnauthorizedResponse
-  | PostShoppingListsSuccessResponse
-  | PostShoppingListsNotFoundResponse
-  | PostShoppingListsErrorResponse
+  | PostWishListsSuccessResponse
+  | PostWishListsNotFoundResponse
+  | PostWishListsErrorResponse
 
-export type PostShoppingListsReturnValue =
-  | { status: 201; json: ResponseShoppingList[] }
+export type PostWishListsReturnValue =
+  | { status: 201; json: ResponseWishList[] }
   | { status: 422 | 500; json: ErrorObject }
 
 /**
@@ -60,7 +60,7 @@ export type PostShoppingListsReturnValue =
  *
  */
 
-class GetShoppingListsSuccessResponse extends ApiResponse {
+class GetWishListsSuccessResponse extends ApiResponse {
   status: 200
 
   constructor(
@@ -71,7 +71,7 @@ class GetShoppingListsSuccessResponse extends ApiResponse {
   }
 }
 
-class GetShoppingListsNotFoundResponse extends ApiResponse {
+class GetWishListsNotFoundResponse extends ApiResponse {
   status: 404
 
   constructor(
@@ -82,7 +82,7 @@ class GetShoppingListsNotFoundResponse extends ApiResponse {
   }
 }
 
-class GetShoppingListsServerErrorResponse extends ApiResponse {
+class GetWishListsServerErrorResponse extends ApiResponse {
   status: 500
 
   constructor(
@@ -93,14 +93,14 @@ class GetShoppingListsServerErrorResponse extends ApiResponse {
   }
 }
 
-export type GetShoppingListsResponse =
+export type GetWishListsResponse =
   | UnauthorizedResponse
-  | GetShoppingListsSuccessResponse
-  | GetShoppingListsNotFoundResponse
-  | GetShoppingListsServerErrorResponse
+  | GetWishListsSuccessResponse
+  | GetWishListsNotFoundResponse
+  | GetWishListsServerErrorResponse
 
-export type GetShoppingListsReturnValue =
-  | { status: 200; json: ResponseShoppingList[] }
+export type GetWishListsReturnValue =
+  | { status: 200; json: ResponseWishList[] }
   | { status: 500; json: ErrorObject }
 
 /**
@@ -109,7 +109,7 @@ export type GetShoppingListsReturnValue =
  *
  */
 
-class PatchShoppingListSuccessResponse extends ApiResponse {
+class PatchWishListSuccessResponse extends ApiResponse {
   status: 200
 
   constructor(
@@ -120,7 +120,7 @@ class PatchShoppingListSuccessResponse extends ApiResponse {
   }
 }
 
-class PatchShoppingListNotFoundResponse extends ApiResponse {
+class PatchWishListNotFoundResponse extends ApiResponse {
   status: 404
 
   constructor(
@@ -131,7 +131,7 @@ class PatchShoppingListNotFoundResponse extends ApiResponse {
   }
 }
 
-class PatchShoppingListErrorResponse extends ApiResponse {
+class PatchWishListErrorResponse extends ApiResponse {
   status: 405 | 422 | 500
 
   constructor(
@@ -146,14 +146,14 @@ class PatchShoppingListErrorResponse extends ApiResponse {
   }
 }
 
-export type PatchShoppingListResponse =
+export type PatchWishListResponse =
   | UnauthorizedResponse
-  | PatchShoppingListSuccessResponse
-  | PatchShoppingListNotFoundResponse
-  | PatchShoppingListErrorResponse
+  | PatchWishListSuccessResponse
+  | PatchWishListNotFoundResponse
+  | PatchWishListErrorResponse
 
-export type PatchShoppingListReturnValue =
-  | { status: 200; json: ResponseShoppingList }
+export type PatchWishListReturnValue =
+  | { status: 200; json: ResponseWishList }
   | { status: 405 | 422 | 500; json: ErrorObject }
 
 /**
@@ -162,7 +162,7 @@ export type PatchShoppingListReturnValue =
  *
  */
 
-class DeleteShoppingListSuccessResponse extends ApiResponse {
+class DeleteWishListSuccessResponse extends ApiResponse {
   status: 200
 
   constructor(
@@ -173,7 +173,7 @@ class DeleteShoppingListSuccessResponse extends ApiResponse {
   }
 }
 
-class DeleteShoppingListNotFoundResponse extends ApiResponse {
+class DeleteWishListNotFoundResponse extends ApiResponse {
   status: 404
 
   constructor(
@@ -184,7 +184,7 @@ class DeleteShoppingListNotFoundResponse extends ApiResponse {
   }
 }
 
-class DeleteShoppingListErrorResponse extends ApiResponse {
+class DeleteWishListErrorResponse extends ApiResponse {
   status: 405 | 500
 
   constructor(
@@ -195,17 +195,17 @@ class DeleteShoppingListErrorResponse extends ApiResponse {
   }
 }
 
-interface DeleteShoppingListSuccessResponseBody {
+interface DeleteWishListSuccessResponseBody {
   deleted: number[]
-  aggregate?: ResponseShoppingList
+  aggregate?: ResponseWishList
 }
 
-export type DeleteShoppingListResponse =
+export type DeleteWishListResponse =
   | UnauthorizedResponse
-  | DeleteShoppingListSuccessResponse
-  | DeleteShoppingListNotFoundResponse
-  | DeleteShoppingListErrorResponse
+  | DeleteWishListSuccessResponse
+  | DeleteWishListNotFoundResponse
+  | DeleteWishListErrorResponse
 
-export type DeleteShoppingListReturnValue =
-  | { status: 200; json: DeleteShoppingListSuccessResponseBody }
+export type DeleteWishListReturnValue =
+  | { status: 200; json: DeleteWishListSuccessResponseBody }
   | { status: 405 | 500; json: ErrorObject }

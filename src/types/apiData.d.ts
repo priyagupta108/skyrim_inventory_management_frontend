@@ -31,39 +31,39 @@ export interface ResponseGame {
 
 /**
  *
- * Shopping Lists
+ * Wish Lists
  *
  */
 
-export interface RequestShoppingList {
+export interface RequestWishList {
   title?: string
 }
 
-export interface ResponseShoppingList {
+export interface ResponseWishList {
   id: number
   game_id: number
   aggregate_list_id: number | null
   aggregate: boolean
   title: string
-  list_items: ResponseShoppingListItem[]
+  list_items: ResponseWishListItem[]
   created_at: Date
   updated_at: Date
 }
 
 /**
  *
- * Shopping List Items
+ * Wish List Items
  *
  */
 
-export interface RequestShoppingListItem {
+export interface RequestWishListItem {
   quantity?: number
   description?: string
   unit_weight?: number | null
   notes?: string | null
 }
 
-export interface ResponseShoppingListItem {
+export interface ResponseWishListItem {
   id: number
   list_id: number
   description: string

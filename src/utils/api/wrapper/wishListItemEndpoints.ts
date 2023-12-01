@@ -1,13 +1,13 @@
-import { type RequestShoppingListItem } from '../../../types/apiData'
+import { type RequestWishListItem } from '../../../types/apiData'
 import { BASE_URI, combinedHeaders } from '../sharedUtils'
 import {
-  type PostShoppingListItemsResponse,
-  type PostShoppingListItemsReturnValue,
-  type PatchShoppingListItemResponse,
-  type PatchShoppingListItemReturnValue,
-  type DeleteShoppingListItemResponse,
-  type DeleteShoppingListItemReturnValue,
-} from '../returnValues/shoppingListItems'
+  type PostWishListItemsResponse,
+  type PostWishListItemsReturnValue,
+  type PatchWishListItemResponse,
+  type PatchWishListItemReturnValue,
+  type DeleteWishListItemResponse,
+  type DeleteWishListItemReturnValue,
+} from '../returnValues/wishListItems'
 import {
   AuthorizationError,
   NotFoundError,
@@ -22,11 +22,11 @@ import {
  *
  */
 
-export const postShoppingListItems = (
+export const postWishListItems = (
   listId: number,
-  attributes: RequestShoppingListItem,
+  attributes: RequestWishListItem,
   token: string
-): Promise<PostShoppingListItemsReturnValue> | never => {
+): Promise<PostWishListItemsReturnValue> | never => {
   const uri = `${BASE_URI}/shopping_lists/${listId}/shopping_list_items`
   const headers = combinedHeaders(token)
 
@@ -35,7 +35,7 @@ export const postShoppingListItems = (
     body: JSON.stringify(attributes),
     headers,
   }).then((res) => {
-    const response = res as PostShoppingListItemsResponse
+    const response = res as PostWishListItemsResponse
 
     if (response.status === 401) throw new AuthorizationError()
     if (response.status === 404) throw new NotFoundError()
@@ -61,11 +61,11 @@ export const postShoppingListItems = (
  *
  */
 
-export const patchShoppingListItem = (
+export const patchWishListItem = (
   itemId: number,
-  attributes: RequestShoppingListItem,
+  attributes: RequestWishListItem,
   token: string
-): Promise<PatchShoppingListItemReturnValue> | never => {
+): Promise<PatchWishListItemReturnValue> | never => {
   const uri = `${BASE_URI}/shopping_list_items/${itemId}`
   const headers = combinedHeaders(token)
 
@@ -74,7 +74,7 @@ export const patchShoppingListItem = (
     body: JSON.stringify(attributes),
     headers,
   }).then((res) => {
-    const response = res as PatchShoppingListItemResponse
+    const response = res as PatchWishListItemResponse
 
     if (response.status === 401) throw new AuthorizationError()
     if (response.status === 404) throw new NotFoundError()
@@ -100,15 +100,15 @@ export const patchShoppingListItem = (
  *
  */
 
-export const deleteShoppingListItem = (
+export const deleteWishListItem = (
   itemId: number,
   token: string
-): Promise<DeleteShoppingListItemReturnValue> | never => {
+): Promise<DeleteWishListItemReturnValue> | never => {
   const uri = `${BASE_URI}/shopping_list_items/${itemId}`
   const headers = combinedHeaders(token)
 
   return fetch(uri, { method: 'DELETE', headers }).then((res) => {
-    const response = res as DeleteShoppingListItemResponse
+    const response = res as DeleteWishListItemResponse
 
     if (response.status === 401) throw new AuthorizationError()
     if (response.status === 404) throw new NotFoundError()
