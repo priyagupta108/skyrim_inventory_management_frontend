@@ -142,7 +142,7 @@ describe('ShoppingListGrouping', () => {
         </PageProvider>
       )
 
-      expect(wrapper.getByText('This game has no shopping lists.')).toBeTruthy()
+      expect(wrapper.getByText('This game has no wish lists.')).toBeTruthy()
     })
 
     test('matches snapshot', () => {

@@ -52,14 +52,14 @@ import ShoppingListsPage from './shoppingListsPage'
 /**
  *
  * Not able to be tested:
- * - 404 responses when creating a shopping list
+ * - 404 responses when creating a wish list
  *   - This would be a difficult state to arrive at. You would have to have multiple tabs open
- *     and delete a game from the games page in one tab and then create a shopping list in
+ *     and delete a game from the games page in one tab and then create a wish list in
  *     another tab while it is set to that game without refreshing. In the test environment, these
  *     conditions are hard to create since there would first be a 404 error when fetching the
- *     shopping lists in the first place.
- * - 404 response when editing/destroying a shopping list or managing its items
- * - 405 response when editing/destroying a shopping list or managing its items
+ *     wish lists in the first place.
+ * - 404 response when editing/destroying a wish list or managing its items
+ * - 405 response when editing/destroying a wish list or managing its items
  *   - This response from the API occurs when the client makes a PUT, PATCH, or DELETE request
  *     on an aggregate list. In the UI, aggregate lists are always uneditable and won't have a
  *     way to update them or manage items, so the only way to get this response would be to
@@ -68,7 +68,6 @@ import ShoppingListsPage from './shoppingListsPage'
  * - Flash warning being shown and no request made if, somehow, the user submits the create form
  *   before an active game has been set
  * - New list items get added to the correct list
- * -
  *
  */
 
@@ -178,7 +177,7 @@ describe('ShoppingListsPage', () => {
 
           await waitFor(() => {
             expect(
-              wrapper.getByText('This game has no shopping lists.')
+              wrapper.getByText('This game has no wish lists.')
             ).toBeTruthy()
           })
         })
@@ -303,7 +302,7 @@ describe('ShoppingListsPage', () => {
           expect(wrapper.queryByTestId('pulseLoader')).toBeFalsy()
           expect(
             wrapper.getByText(
-              /You need a game to use the shopping lists feature\./
+              /You need a game to use the wish lists feature\./
             )
           ).toBeTruthy()
           expect(wrapper.getByText('Create a game')).toBeTruthy()
@@ -325,7 +324,7 @@ describe('ShoppingListsPage', () => {
         await waitFor(() => {
           expect(
             wrapper.getByText(
-              /You need a game to use the shopping lists feature\./
+              /You need a game to use the wish lists feature\./
             )
           ).toBeTruthy()
           expect(wrapper.getByText('Create a game')).toBeTruthy()
@@ -399,11 +398,11 @@ describe('ShoppingListsPage', () => {
           // expect(wrapper.getByText(/New Name/)).toBeTruthy()
           expect(
             wrapper.queryByText(
-              /You need a game to use the shopping lists feature\./
+              /You need a game to use the wish lists feature\./
             )
           ).toBeFalsy()
           expect(
-            wrapper.getByText('This game has no shopping lists.')
+            wrapper.getByText('This game has no wish lists.')
           ).toBeTruthy()
           expect(
             wrapper.getByText('Success! Your game has been created.')
@@ -572,7 +571,7 @@ describe('ShoppingListsPage', () => {
 
           await waitFor(() => {
             expect(
-              wrapper.getByText('Success! Your shopping list has been created.')
+              wrapper.getByText('Success! Your wish list has been created.')
             ).toBeTruthy()
             expect(wrapper.getByText('Smithing Materials')).toBeTruthy()
           })
@@ -602,10 +601,10 @@ describe('ShoppingListsPage', () => {
 
           await waitFor(() => {
             expect(
-              wrapper.getByText('Success! Your shopping list has been created.')
+              wrapper.getByText('Success! Your wish list has been created.')
             ).toBeTruthy()
             expect(wrapper.getByText('All Items')).toBeTruthy()
-            expect(wrapper.getByText('My Shopping List 1')).toBeTruthy()
+            expect(wrapper.getByText('My Wish List 1')).toBeTruthy()
           })
         })
       })
@@ -636,12 +635,12 @@ describe('ShoppingListsPage', () => {
 
           await waitFor(() => {
             expect(
-              wrapper.getByText('Success! Your shopping list has been created.')
+              wrapper.getByText('Success! Your wish list has been created.')
             ).toBeTruthy()
             expect(wrapper.getByText('All Items')).toBeTruthy()
             expect(wrapper.getByText('Smithing Materials')).toBeTruthy()
             expect(
-              wrapper.queryByText('This game has no shopping lists.')
+              wrapper.queryByText('This game has no wish lists.')
             ).toBeFalsy()
           })
         })
@@ -684,7 +683,7 @@ describe('ShoppingListsPage', () => {
         await waitFor(() => {
           expect(
             wrapper.getByText(
-              '2 error(s) prevented your shopping list from being saved:'
+              '2 error(s) prevented your wish list from being saved:'
             )
           ).toBeTruthy()
           expect(
@@ -788,14 +787,14 @@ describe('ShoppingListsPage', () => {
             })
 
             expect(window.confirm).toHaveBeenCalledWith(
-              'Are you sure you want to delete the list "My Shopping List 1"? You will also lose any list items on the list. This action cannot be undone.'
+              'Are you sure you want to delete the list "My Wish List 1"? You will also lose any list items on the list. This action cannot be undone.'
             )
 
             await waitFor(() => {
               expect(wrapper.queryByText('All Items')).toBeFalsy()
-              expect(wrapper.queryByText('My Shopping List 1')).toBeFalsy()
+              expect(wrapper.queryByText('My Wish List 1')).toBeFalsy()
               expect(
-                wrapper.getByText('This game has no shopping lists.')
+                wrapper.getByText('This game has no wish lists.')
               ).toBeTruthy()
             })
           })
@@ -823,13 +822,13 @@ describe('ShoppingListsPage', () => {
             })
 
             expect(window.confirm).toHaveBeenCalledWith(
-              'Are you sure you want to delete the list "My Shopping List 1"? You will also lose any list items on the list. This action cannot be undone.'
+              'Are you sure you want to delete the list "My Wish List 1"? You will also lose any list items on the list. This action cannot be undone.'
             )
 
             await waitFor(() => {
               expect(
                 wrapper.getByText(
-                  'Success! Your shopping list has been deleted.'
+                  'Success! Your wish list has been deleted.'
                 )
               ).toBeTruthy()
             })
@@ -906,7 +905,7 @@ describe('ShoppingListsPage', () => {
             await waitFor(() => {
               expect(
                 wrapper.getByText(
-                  'Success! Your shopping list has been deleted.'
+                  'Success! Your wish list has been deleted.'
                 )
               ).toBeTruthy()
             })
@@ -942,7 +941,7 @@ describe('ShoppingListsPage', () => {
           expect(window.confirm).toHaveBeenCalled()
 
           await waitFor(() => {
-            expect(wrapper.getByText('My Shopping List 1')).toBeTruthy()
+            expect(wrapper.getByText('My Wish List 1')).toBeTruthy()
           })
         })
 
@@ -968,7 +967,7 @@ describe('ShoppingListsPage', () => {
 
           await waitFor(() => {
             expect(
-              wrapper.getByText('OK, your shopping list will not be destroyed.')
+              wrapper.getByText('OK, your wish list will not be destroyed.')
             ).toBeTruthy()
           })
         })
@@ -1011,12 +1010,12 @@ describe('ShoppingListsPage', () => {
         act(() => fireEvent.click(destroyIcon))
 
         expect(window.confirm).toHaveBeenCalledWith(
-          'Are you sure you want to delete the list "My Shopping List 1"? You will also lose any list items on the list. This action cannot be undone.'
+          'Are you sure you want to delete the list "My Wish List 1"? You will also lose any list items on the list. This action cannot be undone.'
         )
 
         await waitFor(() => {
           expect(wrapper.getByText('All Items')).toBeTruthy()
-          expect(wrapper.getByText('My Shopping List 1')).toBeTruthy()
+          expect(wrapper.getByText('My Wish List 1')).toBeTruthy()
           expect(
             wrapper.getByText(
               "Oops! Something unexpected went wrong. We're sorry! Please try again later."
@@ -1123,7 +1122,7 @@ describe('ShoppingListsPage', () => {
           // The flash component should be shown
           expect(
             wrapper.getByText(
-              '2 error(s) prevented your shopping list from being saved:'
+              '2 error(s) prevented your wish list from being saved:'
             )
           ).toBeTruthy()
           expect(
@@ -1214,7 +1213,7 @@ describe('ShoppingListsPage', () => {
         )
 
         const form = (
-          await wrapper.findAllByLabelText('Shopping list item creation form')
+          await wrapper.findAllByLabelText('Wish list item creation form')
         )[0]
         const descField = (await wrapper.findAllByLabelText('Description'))[0]
         const quantityField = (await wrapper.findAllByLabelText('Quantity'))[0]
@@ -1230,7 +1229,7 @@ describe('ShoppingListsPage', () => {
           expect(wrapper.getAllByText('Dwarven metal ingots').length).toEqual(2)
           expect(
             wrapper.getByText(
-              'Success! Your shopping list item has been created.'
+              'Success! Your wish list item has been created.'
             )
           ).toBeTruthy()
         })
@@ -1259,7 +1258,7 @@ describe('ShoppingListsPage', () => {
         )
 
         const form = (
-          await wrapper.findAllByLabelText('Shopping list item creation form')
+          await wrapper.findAllByLabelText('Wish list item creation form')
         )[0]
         const descField = (await wrapper.findAllByLabelText('Description'))[0]
         const quantityField = (await wrapper.findAllByLabelText('Quantity'))[0]
@@ -1277,7 +1276,7 @@ describe('ShoppingListsPage', () => {
           ).toBeFalsy()
           expect(
             wrapper.getByText(
-              '2 error(s) prevented your shopping list item from being saved:'
+              '2 error(s) prevented your wish list item from being saved:'
             )
           ).toBeTruthy()
           expect(
@@ -1312,7 +1311,7 @@ describe('ShoppingListsPage', () => {
         )
 
         const form = (
-          await wrapper.findAllByLabelText('Shopping list item creation form')
+          await wrapper.findAllByLabelText('Wish list item creation form')
         )[0]
         const descField = (await wrapper.findAllByLabelText('Description'))[0]
         const quantityField = (await wrapper.findAllByLabelText('Quantity'))[0]
@@ -1376,7 +1375,7 @@ describe('ShoppingListsPage', () => {
           expect(wrapper.getAllByText('Iron ingot').length).toEqual(2)
           expect(
             wrapper.getByText(
-              'OK, your shopping list item will not be deleted.'
+              'OK, your wish list item will not be deleted.'
             )
           ).toBeTruthy()
         })
@@ -1430,7 +1429,7 @@ describe('ShoppingListsPage', () => {
           // Should show a flash success message
           expect(
             wrapper.getByText(
-              'Success! Your shopping list item has been deleted.'
+              'Success! Your wish list item has been deleted.'
             )
           ).toBeTruthy()
         })
@@ -1632,7 +1631,7 @@ describe('ShoppingListsPage', () => {
               expect(wrapper.queryAllByText('Iron ingot').length).toBeFalsy()
               expect(
                 wrapper.getByText(
-                  'Success! Your shopping list item has been deleted.'
+                  'Success! Your wish list item has been deleted.'
                 )
               ).toBeTruthy()
             })
@@ -1675,7 +1674,7 @@ describe('ShoppingListsPage', () => {
               expect(wrapper.getAllByText('Iron ingot').length).toEqual(2)
               expect(
                 wrapper.getByText(
-                  'OK, your shopping list item will not be deleted.'
+                  'OK, your wish list item will not be deleted.'
                 )
               ).toBeTruthy()
             })
@@ -1761,7 +1760,7 @@ describe('ShoppingListsPage', () => {
 
         expect(
           wrapper.getByText(
-            'Success! Your shopping list item has been updated.'
+            'Success! Your wish list item has been updated.'
           )
         ).toBeTruthy()
         expect(wrapper.getByText('Hello world')).toBeTruthy()
@@ -1805,7 +1804,7 @@ describe('ShoppingListsPage', () => {
         await waitFor(() => {
           expect(
             wrapper.getByText(
-              '2 error(s) prevented your shopping list item from being saved:'
+              '2 error(s) prevented your wish list item from being saved:'
             )
           ).toBeTruthy()
           expect(

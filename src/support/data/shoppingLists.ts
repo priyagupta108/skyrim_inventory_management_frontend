@@ -33,7 +33,7 @@ export const allShoppingLists: ShoppingList[] = [
     game_id: 32,
     aggregate_list_id: 1,
     aggregate: false,
-    title: 'My Shopping List 1',
+    title: 'My Wish List 1',
     list_items: shoppingListItemsOnList(2),
     created_at: new Date('2023-01-02T03:54:02'),
     updated_at: new Date('2023-01-02T03:54:02'),

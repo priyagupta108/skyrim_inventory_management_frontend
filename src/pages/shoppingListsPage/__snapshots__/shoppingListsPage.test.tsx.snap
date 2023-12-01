@@ -17,7 +17,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
             <h2
               class="_title_03d657"
             >
-              Your Shopping Lists
+              Your Wish Lists
             </h2>
             <div
               class="_root_0a8ecf _select_03d657 _disabled_0a8ecf"
@@ -200,7 +200,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when loading > matches sna
           <h2
             class="_title_03d657"
           >
-            Your Shopping Lists
+            Your Wish Lists
           </h2>
           <div
             class="_root_0a8ecf _select_03d657 _disabled_0a8ecf"
@@ -440,7 +440,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
             <h2
               class="_title_03d657"
             >
-              Your Shopping Lists
+              Your Wish Lists
             </h2>
             <div
               class="_root_0a8ecf _select_03d657"
@@ -762,7 +762,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             style="display: none;"
                           >
                             <form
-                              aria-label="Shopping list item creation form"
+                              aria-label="Wish list item creation form"
                               class="_form_003550"
                             >
                               <label
@@ -1230,7 +1230,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             style="display: none;"
                           >
                             <form
-                              aria-label="Shopping list item creation form"
+                              aria-label="Wish list item creation form"
                               class="_form_003550"
                             >
                               <label
@@ -1550,7 +1550,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                             style="display: none;"
                           >
                             <form
-                              aria-label="Shopping list item creation form"
+                              aria-label="Wish list item creation form"
                               class="_form_003550"
                             >
                               <label
@@ -1764,7 +1764,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
           <h2
             class="_title_03d657"
           >
-            Your Shopping Lists
+            Your Wish Lists
           </h2>
           <div
             class="_root_0a8ecf _select_03d657"
@@ -2086,7 +2086,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           style="display: none;"
                         >
                           <form
-                            aria-label="Shopping list item creation form"
+                            aria-label="Wish list item creation form"
                             class="_form_003550"
                           >
                             <label
@@ -2554,7 +2554,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           style="display: none;"
                         >
                           <form
-                            aria-label="Shopping list item creation form"
+                            aria-label="Wish list item creation form"
                             class="_form_003550"
                           >
                             <label
@@ -2874,7 +2874,7 @@ exports[`ShoppingListsPage > viewing shopping lists > when the game is set in th
                           style="display: none;"
                         >
                           <form
-                            aria-label="Shopping list item creation form"
+                            aria-label="Wish list item creation form"
                             class="_form_003550"
                           >
                             <label

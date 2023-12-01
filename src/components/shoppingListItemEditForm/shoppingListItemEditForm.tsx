@@ -69,7 +69,7 @@ const ShoppingListItemEditForm = ({
       setFlashProps({
         hidden: false,
         type: 'success',
-        message: 'Success! Your shopping list item has been updated.',
+        message: 'Success! Your wish list item has been updated.',
       })
     }
 

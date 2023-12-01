@@ -15,7 +15,7 @@ const ShoppingListsPage = () => {
   const { shoppingListsLoadingState } = useShoppingListsContext()
 
   return (
-    <DashboardLayout title="Your Shopping Lists" includeGameSelector>
+    <DashboardLayout title="Your Wish Lists" includeGameSelector>
       <>
         <ShoppingListCreateForm />
         {shoppingListsLoadingState === LOADING && (

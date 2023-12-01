@@ -106,7 +106,7 @@ const ShoppingListItemCreateForm = ({ listId }: CreateFormProps) => {
           className={styles.form}
           ref={formRef}
           onSubmit={createItem}
-          aria-label="Shopping list item creation form"
+          aria-label="Wish list item creation form"
         >
           <label className={styles.label}>
             Description
