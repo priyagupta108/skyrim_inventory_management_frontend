@@ -24,7 +24,7 @@ import {
   patchShoppingListServerError,
   deleteShoppingListSuccess,
   deleteShoppingListServerError,
-} from './shoppingLists'
+} from './wishLists'
 import {
   postShoppingListItemsSuccess,
   postShoppingListItemsUnprocessable,
@@ -36,7 +36,7 @@ import {
   updateShoppingListItemServerError,
   deleteShoppingListItemSuccess,
   deleteShoppingListItemServerError,
-} from './shoppingListItems'
+} from './wishListItems'
 
 export {
   postGamesSuccess,

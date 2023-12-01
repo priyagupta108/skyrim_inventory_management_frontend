@@ -3,7 +3,7 @@ import { ColorContext } from '../contexts/colorContext'
 import { GamesContext } from '../contexts/gamesContext'
 import { LoginContext } from '../contexts/loginContext'
 import { PageContext } from '../contexts/pageContext'
-import { ShoppingListsContext } from '../contexts/shoppingListsContext'
+import { ShoppingListsContext } from '../contexts/wishListsContext'
 
 const useCustomContext = <T>(cxt: React.Context<T>, msg: string) => {
   const context = useContext(cxt)

@@ -1,0 +1,2255 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ShoppingList > displaying a list > when the list is not editable > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_root_ec6c68"
+        style="--scheme-color: #00a323; --border-color: #00821c; --text-color-primary: #fff; --text-color-secondary: #fff; --hover-color: #00921f; --scheme-color-lighter: #32b54e; --scheme-color-lightest: #ccecd3; --max-title-width: -16px;"
+      >
+        <div
+          aria-controls="list3Details"
+          aria-expanded="false"
+          class="_trigger_ec6c68"
+          role="button"
+        >
+          <span
+            class="_icons_ec6c68"
+          >
+            <button
+              class="_icon_ec6c68"
+              data-testid="destroyShoppingList3"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-xmark _fa_ec6c68"
+                data-icon="xmark"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <button
+              class="_icon_ec6c68"
+              data-testid="editShoppingList3"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-pen-to-square _fa_ec6c68"
+                data-icon="pen-to-square"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </span>
+          <h3
+            class="_title_ec6c68"
+          >
+            My Shopping List
+          </h3>
+        </div>
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero "
+          id="list3Details"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="display: none;"
+          >
+            <div
+              class="_details_ec6c68"
+            >
+              <div
+                class="_root_8112da _collapsed_8112da"
+                style="--base-color: #32b54e; --hover-color: #19ac38; --body-color: #ccecd3; --border-color: #00821c; --text-color-main: #fff; --text-color-secondary: #00410e;"
+              >
+                <div
+                  class="_triggerContainer_8112da"
+                >
+                  <button
+                    aria-controls="addItemToShoppingList3"
+                    aria-expanded="false"
+                    class="_trigger_8112da"
+                  >
+                    Add item to list...
+                  </button>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="rah-static rah-static--height-zero "
+                  id="addItemToShoppingList3"
+                  style="height: 0px; overflow: hidden;"
+                >
+                  <div
+                    style="display: none;"
+                  >
+                    <form
+                      aria-label="Wish list item creation form"
+                      class="_form_8112da"
+                    >
+                      <label
+                        class="_label_8112da"
+                      >
+                        Description
+                        <input
+                          class="_input_8112da"
+                          name="description"
+                          placeholder="Description"
+                          required=""
+                          type="text"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Quantity
+                        <input
+                          class="_input_8112da"
+                          inputmode="numeric"
+                          min="1"
+                          name="quantity"
+                          pattern="^[0-9]*$"
+                          placeholder="Quantity"
+                          required=""
+                          step="1"
+                          type="number"
+                          value="1"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Unit Weight
+                        <input
+                          class="_input_8112da"
+                          inputmode="decimal"
+                          min="0"
+                          name="unit_weight"
+                          placeholder="Unit Weight"
+                          step="0.1"
+                          type="number"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Notes
+                        <input
+                          class="_input_8112da"
+                          name="notes"
+                          placeholder="Notes"
+                          type="text"
+                        />
+                      </label>
+                      <button
+                        class="_submit_8112da"
+                        type="submit"
+                      >
+                        Add to List
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_root_ec6c68"
+      style="--scheme-color: #00a323; --border-color: #00821c; --text-color-primary: #fff; --text-color-secondary: #fff; --hover-color: #00921f; --scheme-color-lighter: #32b54e; --scheme-color-lightest: #ccecd3; --max-title-width: -16px;"
+    >
+      <div
+        aria-controls="list3Details"
+        aria-expanded="false"
+        class="_trigger_ec6c68"
+        role="button"
+      >
+        <span
+          class="_icons_ec6c68"
+        >
+          <button
+            class="_icon_ec6c68"
+            data-testid="destroyShoppingList3"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-xmark _fa_ec6c68"
+              data-icon="xmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <button
+            class="_icon_ec6c68"
+            data-testid="editShoppingList3"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-pen-to-square _fa_ec6c68"
+              data-icon="pen-to-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </span>
+        <h3
+          class="_title_ec6c68"
+        >
+          My Shopping List
+        </h3>
+      </div>
+      <div
+        aria-hidden="true"
+        class="rah-static rah-static--height-zero "
+        id="list3Details"
+        style="height: 0px; overflow: hidden;"
+      >
+        <div
+          style="display: none;"
+        >
+          <div
+            class="_details_ec6c68"
+          >
+            <div
+              class="_root_8112da _collapsed_8112da"
+              style="--base-color: #32b54e; --hover-color: #19ac38; --body-color: #ccecd3; --border-color: #00821c; --text-color-main: #fff; --text-color-secondary: #00410e;"
+            >
+              <div
+                class="_triggerContainer_8112da"
+              >
+                <button
+                  aria-controls="addItemToShoppingList3"
+                  aria-expanded="false"
+                  class="_trigger_8112da"
+                >
+                  Add item to list...
+                </button>
+              </div>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="addItemToShoppingList3"
+                style="height: 0px; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <form
+                    aria-label="Wish list item creation form"
+                    class="_form_8112da"
+                  >
+                    <label
+                      class="_label_8112da"
+                    >
+                      Description
+                      <input
+                        class="_input_8112da"
+                        name="description"
+                        placeholder="Description"
+                        required=""
+                        type="text"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Quantity
+                      <input
+                        class="_input_8112da"
+                        inputmode="numeric"
+                        min="1"
+                        name="quantity"
+                        pattern="^[0-9]*$"
+                        placeholder="Quantity"
+                        required=""
+                        step="1"
+                        type="number"
+                        value="1"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Unit Weight
+                      <input
+                        class="_input_8112da"
+                        inputmode="decimal"
+                        min="0"
+                        name="unit_weight"
+                        placeholder="Unit Weight"
+                        step="0.1"
+                        type="number"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Notes
+                      <input
+                        class="_input_8112da"
+                        name="notes"
+                        placeholder="Notes"
+                        type="text"
+                      />
+                    </label>
+                    <button
+                      class="_submit_8112da"
+                      type="submit"
+                    >
+                      Add to List
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`ShoppingList > displaying a list > when there are list items > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_root_ec6c68"
+        style="--scheme-color: #00a323; --border-color: #00821c; --text-color-primary: #fff; --text-color-secondary: #fff; --hover-color: #00921f; --scheme-color-lighter: #32b54e; --scheme-color-lightest: #ccecd3; --max-title-width: -16px;"
+      >
+        <div
+          aria-controls="list4Details"
+          aria-expanded="false"
+          class="_trigger_ec6c68"
+          role="button"
+        >
+          <span
+            class="_icons_ec6c68"
+          >
+            <button
+              class="_icon_ec6c68"
+              data-testid="destroyShoppingList4"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-xmark _fa_ec6c68"
+                data-icon="xmark"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <button
+              class="_icon_ec6c68"
+              data-testid="editShoppingList4"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-pen-to-square _fa_ec6c68"
+                data-icon="pen-to-square"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </span>
+          <h3
+            class="_title_ec6c68"
+          >
+            My Shopping List
+          </h3>
+        </div>
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero "
+          id="list4Details"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="display: none;"
+          >
+            <div
+              class="_details_ec6c68"
+            >
+              <div
+                class="_root_8112da _collapsed_8112da"
+                style="--base-color: #32b54e; --hover-color: #19ac38; --body-color: #ccecd3; --border-color: #00821c; --text-color-main: #fff; --text-color-secondary: #00410e;"
+              >
+                <div
+                  class="_triggerContainer_8112da"
+                >
+                  <button
+                    aria-controls="addItemToShoppingList4"
+                    aria-expanded="false"
+                    class="_trigger_8112da"
+                  >
+                    Add item to list...
+                  </button>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="rah-static rah-static--height-zero "
+                  id="addItemToShoppingList4"
+                  style="height: 0px; overflow: hidden;"
+                >
+                  <div
+                    style="display: none;"
+                  >
+                    <form
+                      aria-label="Wish list item creation form"
+                      class="_form_8112da"
+                    >
+                      <label
+                        class="_label_8112da"
+                      >
+                        Description
+                        <input
+                          class="_input_8112da"
+                          name="description"
+                          placeholder="Description"
+                          required=""
+                          type="text"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Quantity
+                        <input
+                          class="_input_8112da"
+                          inputmode="numeric"
+                          min="1"
+                          name="quantity"
+                          pattern="^[0-9]*$"
+                          placeholder="Quantity"
+                          required=""
+                          step="1"
+                          type="number"
+                          value="1"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Unit Weight
+                        <input
+                          class="_input_8112da"
+                          inputmode="decimal"
+                          min="0"
+                          name="unit_weight"
+                          placeholder="Unit Weight"
+                          step="0.1"
+                          type="number"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Notes
+                        <input
+                          class="_input_8112da"
+                          name="notes"
+                          placeholder="Notes"
+                          type="text"
+                        />
+                      </label>
+                      <button
+                        class="_submit_8112da"
+                        type="submit"
+                      >
+                        Add to List
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="_root_54cfce"
+                style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
+              >
+                <div
+                  aria-controls="shoppingListItem1Details"
+                  aria-expanded="false"
+                  class="_trigger_54cfce"
+                >
+                  <span
+                    class="_descriptionContainer_54cfce _descriptionContainerEditable_54cfce"
+                  >
+                    <span
+                      class="_editIcons_54cfce"
+                    >
+                      <button
+                        class="_icon_54cfce"
+                        data-testid="destroyShoppingListItem1"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-xmark _fa_54cfce"
+                          data-icon="xmark"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 384 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        class="_icon_54cfce"
+                        data-testid="editShoppingListItem1"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-pen-to-square _fa_54cfce"
+                          data-icon="pen-to-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </button>
+                    </span>
+                    <h3
+                      class="_description_54cfce"
+                    >
+                      List Item 1
+                    </h3>
+                  </span>
+                  <span
+                    class="_quantityEditable_54cfce"
+                  >
+                    <button
+                      class="_icon_54cfce"
+                      data-testid="incrementShoppingListItem1"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-chevron-up _fa_54cfce"
+                        data-icon="chevron-up"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                    <span
+                      class="_quantityContent_54cfce"
+                    >
+                      4
+                    </span>
+                    <button
+                      class="_icon_54cfce"
+                      data-testid="decrementShoppingListItem1"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-chevron-down _fa_54cfce"
+                        data-icon="chevron-down"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="rah-static rah-static--height-zero "
+                  id="shoppingListItem1Details"
+                  style="height: 0px; overflow: hidden;"
+                >
+                  <div
+                    style="display: none;"
+                  >
+                    <div
+                      class="_details_54cfce"
+                    >
+                      <h4
+                        class="_label_54cfce"
+                      >
+                        Unit Weight:
+                      </h4>
+                      <p
+                        class="_value_54cfce"
+                      >
+                        -
+                      </p>
+                      <h4
+                        class="_label_54cfce"
+                      >
+                        Notes:
+                      </h4>
+                      <p
+                        class="_value_54cfce"
+                      >
+                        -
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="_root_54cfce"
+                style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
+              >
+                <div
+                  aria-controls="shoppingListItem2Details"
+                  aria-expanded="false"
+                  class="_trigger_54cfce"
+                >
+                  <span
+                    class="_descriptionContainer_54cfce _descriptionContainerEditable_54cfce"
+                  >
+                    <span
+                      class="_editIcons_54cfce"
+                    >
+                      <button
+                        class="_icon_54cfce"
+                        data-testid="destroyShoppingListItem2"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-xmark _fa_54cfce"
+                          data-icon="xmark"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 384 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        class="_icon_54cfce"
+                        data-testid="editShoppingListItem2"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-pen-to-square _fa_54cfce"
+                          data-icon="pen-to-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </button>
+                    </span>
+                    <h3
+                      class="_description_54cfce"
+                    >
+                      List Item 2
+                    </h3>
+                  </span>
+                  <span
+                    class="_quantityEditable_54cfce"
+                  >
+                    <button
+                      class="_icon_54cfce"
+                      data-testid="incrementShoppingListItem2"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-chevron-up _fa_54cfce"
+                        data-icon="chevron-up"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                    <span
+                      class="_quantityContent_54cfce"
+                    >
+                      1
+                    </span>
+                    <button
+                      class="_icon_54cfce"
+                      data-testid="decrementShoppingListItem2"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-chevron-down _fa_54cfce"
+                        data-icon="chevron-down"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="rah-static rah-static--height-zero "
+                  id="shoppingListItem2Details"
+                  style="height: 0px; overflow: hidden;"
+                >
+                  <div
+                    style="display: none;"
+                  >
+                    <div
+                      class="_details_54cfce"
+                    >
+                      <h4
+                        class="_label_54cfce"
+                      >
+                        Unit Weight:
+                      </h4>
+                      <p
+                        class="_value_54cfce"
+                      >
+                        -
+                      </p>
+                      <h4
+                        class="_label_54cfce"
+                      >
+                        Notes:
+                      </h4>
+                      <p
+                        class="_value_54cfce"
+                      >
+                        -
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_root_ec6c68"
+      style="--scheme-color: #00a323; --border-color: #00821c; --text-color-primary: #fff; --text-color-secondary: #fff; --hover-color: #00921f; --scheme-color-lighter: #32b54e; --scheme-color-lightest: #ccecd3; --max-title-width: -16px;"
+    >
+      <div
+        aria-controls="list4Details"
+        aria-expanded="false"
+        class="_trigger_ec6c68"
+        role="button"
+      >
+        <span
+          class="_icons_ec6c68"
+        >
+          <button
+            class="_icon_ec6c68"
+            data-testid="destroyShoppingList4"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-xmark _fa_ec6c68"
+              data-icon="xmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <button
+            class="_icon_ec6c68"
+            data-testid="editShoppingList4"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-pen-to-square _fa_ec6c68"
+              data-icon="pen-to-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </span>
+        <h3
+          class="_title_ec6c68"
+        >
+          My Shopping List
+        </h3>
+      </div>
+      <div
+        aria-hidden="true"
+        class="rah-static rah-static--height-zero "
+        id="list4Details"
+        style="height: 0px; overflow: hidden;"
+      >
+        <div
+          style="display: none;"
+        >
+          <div
+            class="_details_ec6c68"
+          >
+            <div
+              class="_root_8112da _collapsed_8112da"
+              style="--base-color: #32b54e; --hover-color: #19ac38; --body-color: #ccecd3; --border-color: #00821c; --text-color-main: #fff; --text-color-secondary: #00410e;"
+            >
+              <div
+                class="_triggerContainer_8112da"
+              >
+                <button
+                  aria-controls="addItemToShoppingList4"
+                  aria-expanded="false"
+                  class="_trigger_8112da"
+                >
+                  Add item to list...
+                </button>
+              </div>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="addItemToShoppingList4"
+                style="height: 0px; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <form
+                    aria-label="Wish list item creation form"
+                    class="_form_8112da"
+                  >
+                    <label
+                      class="_label_8112da"
+                    >
+                      Description
+                      <input
+                        class="_input_8112da"
+                        name="description"
+                        placeholder="Description"
+                        required=""
+                        type="text"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Quantity
+                      <input
+                        class="_input_8112da"
+                        inputmode="numeric"
+                        min="1"
+                        name="quantity"
+                        pattern="^[0-9]*$"
+                        placeholder="Quantity"
+                        required=""
+                        step="1"
+                        type="number"
+                        value="1"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Unit Weight
+                      <input
+                        class="_input_8112da"
+                        inputmode="decimal"
+                        min="0"
+                        name="unit_weight"
+                        placeholder="Unit Weight"
+                        step="0.1"
+                        type="number"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Notes
+                      <input
+                        class="_input_8112da"
+                        name="notes"
+                        placeholder="Notes"
+                        type="text"
+                      />
+                    </label>
+                    <button
+                      class="_submit_8112da"
+                      type="submit"
+                    >
+                      Add to List
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div
+              class="_root_54cfce"
+              style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
+            >
+              <div
+                aria-controls="shoppingListItem1Details"
+                aria-expanded="false"
+                class="_trigger_54cfce"
+              >
+                <span
+                  class="_descriptionContainer_54cfce _descriptionContainerEditable_54cfce"
+                >
+                  <span
+                    class="_editIcons_54cfce"
+                  >
+                    <button
+                      class="_icon_54cfce"
+                      data-testid="destroyShoppingListItem1"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-xmark _fa_54cfce"
+                        data-icon="xmark"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      class="_icon_54cfce"
+                      data-testid="editShoppingListItem1"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-pen-to-square _fa_54cfce"
+                        data-icon="pen-to-square"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                  <h3
+                    class="_description_54cfce"
+                  >
+                    List Item 1
+                  </h3>
+                </span>
+                <span
+                  class="_quantityEditable_54cfce"
+                >
+                  <button
+                    class="_icon_54cfce"
+                    data-testid="incrementShoppingListItem1"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-chevron-up _fa_54cfce"
+                      data-icon="chevron-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                  <span
+                    class="_quantityContent_54cfce"
+                  >
+                    4
+                  </span>
+                  <button
+                    class="_icon_54cfce"
+                    data-testid="decrementShoppingListItem1"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-chevron-down _fa_54cfce"
+                      data-icon="chevron-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </span>
+              </div>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="shoppingListItem1Details"
+                style="height: 0px; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <div
+                    class="_details_54cfce"
+                  >
+                    <h4
+                      class="_label_54cfce"
+                    >
+                      Unit Weight:
+                    </h4>
+                    <p
+                      class="_value_54cfce"
+                    >
+                      -
+                    </p>
+                    <h4
+                      class="_label_54cfce"
+                    >
+                      Notes:
+                    </h4>
+                    <p
+                      class="_value_54cfce"
+                    >
+                      -
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="_root_54cfce"
+              style="--main-color: #32b54e; --title-text-color: #fff; --border-color: #00821c; --body-background-color: #ccecd3; --body-text-color: #00410e; --hover-color: #19ac38;"
+            >
+              <div
+                aria-controls="shoppingListItem2Details"
+                aria-expanded="false"
+                class="_trigger_54cfce"
+              >
+                <span
+                  class="_descriptionContainer_54cfce _descriptionContainerEditable_54cfce"
+                >
+                  <span
+                    class="_editIcons_54cfce"
+                  >
+                    <button
+                      class="_icon_54cfce"
+                      data-testid="destroyShoppingListItem2"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-xmark _fa_54cfce"
+                        data-icon="xmark"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      class="_icon_54cfce"
+                      data-testid="editShoppingListItem2"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-pen-to-square _fa_54cfce"
+                        data-icon="pen-to-square"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                  <h3
+                    class="_description_54cfce"
+                  >
+                    List Item 2
+                  </h3>
+                </span>
+                <span
+                  class="_quantityEditable_54cfce"
+                >
+                  <button
+                    class="_icon_54cfce"
+                    data-testid="incrementShoppingListItem2"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-chevron-up _fa_54cfce"
+                      data-icon="chevron-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                  <span
+                    class="_quantityContent_54cfce"
+                  >
+                    1
+                  </span>
+                  <button
+                    class="_icon_54cfce"
+                    data-testid="decrementShoppingListItem2"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-chevron-down _fa_54cfce"
+                      data-icon="chevron-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </span>
+              </div>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="shoppingListItem2Details"
+                style="height: 0px; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <div
+                    class="_details_54cfce"
+                  >
+                    <h4
+                      class="_label_54cfce"
+                    >
+                      Unit Weight:
+                    </h4>
+                    <p
+                      class="_value_54cfce"
+                    >
+                      -
+                    </p>
+                    <h4
+                      class="_label_54cfce"
+                    >
+                      Notes:
+                    </h4>
+                    <p
+                      class="_value_54cfce"
+                    >
+                      -
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`ShoppingList > displaying a list > when there are no list items > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_root_ec6c68"
+        style="--scheme-color: #00a323; --border-color: #00821c; --text-color-primary: #fff; --text-color-secondary: #fff; --hover-color: #00921f; --scheme-color-lighter: #32b54e; --scheme-color-lightest: #ccecd3; --max-title-width: -16px;"
+      >
+        <div
+          aria-controls="list4Details"
+          aria-expanded="false"
+          class="_trigger_ec6c68"
+          role="button"
+        >
+          <span
+            class="_icons_ec6c68"
+          >
+            <button
+              class="_icon_ec6c68"
+              data-testid="destroyShoppingList4"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-xmark _fa_ec6c68"
+                data-icon="xmark"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <button
+              class="_icon_ec6c68"
+              data-testid="editShoppingList4"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-pen-to-square _fa_ec6c68"
+                data-icon="pen-to-square"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </span>
+          <h3
+            class="_title_ec6c68"
+          >
+            My Shopping List
+          </h3>
+        </div>
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero "
+          id="list4Details"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="display: none;"
+          >
+            <div
+              class="_details_ec6c68"
+            >
+              <div
+                class="_root_8112da _collapsed_8112da"
+                style="--base-color: #32b54e; --hover-color: #19ac38; --body-color: #ccecd3; --border-color: #00821c; --text-color-main: #fff; --text-color-secondary: #00410e;"
+              >
+                <div
+                  class="_triggerContainer_8112da"
+                >
+                  <button
+                    aria-controls="addItemToShoppingList4"
+                    aria-expanded="false"
+                    class="_trigger_8112da"
+                  >
+                    Add item to list...
+                  </button>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="rah-static rah-static--height-zero "
+                  id="addItemToShoppingList4"
+                  style="height: 0px; overflow: hidden;"
+                >
+                  <div
+                    style="display: none;"
+                  >
+                    <form
+                      aria-label="Wish list item creation form"
+                      class="_form_8112da"
+                    >
+                      <label
+                        class="_label_8112da"
+                      >
+                        Description
+                        <input
+                          class="_input_8112da"
+                          name="description"
+                          placeholder="Description"
+                          required=""
+                          type="text"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Quantity
+                        <input
+                          class="_input_8112da"
+                          inputmode="numeric"
+                          min="1"
+                          name="quantity"
+                          pattern="^[0-9]*$"
+                          placeholder="Quantity"
+                          required=""
+                          step="1"
+                          type="number"
+                          value="1"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Unit Weight
+                        <input
+                          class="_input_8112da"
+                          inputmode="decimal"
+                          min="0"
+                          name="unit_weight"
+                          placeholder="Unit Weight"
+                          step="0.1"
+                          type="number"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Notes
+                        <input
+                          class="_input_8112da"
+                          name="notes"
+                          placeholder="Notes"
+                          type="text"
+                        />
+                      </label>
+                      <button
+                        class="_submit_8112da"
+                        type="submit"
+                      >
+                        Add to List
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_root_ec6c68"
+      style="--scheme-color: #00a323; --border-color: #00821c; --text-color-primary: #fff; --text-color-secondary: #fff; --hover-color: #00921f; --scheme-color-lighter: #32b54e; --scheme-color-lightest: #ccecd3; --max-title-width: -16px;"
+    >
+      <div
+        aria-controls="list4Details"
+        aria-expanded="false"
+        class="_trigger_ec6c68"
+        role="button"
+      >
+        <span
+          class="_icons_ec6c68"
+        >
+          <button
+            class="_icon_ec6c68"
+            data-testid="destroyShoppingList4"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-xmark _fa_ec6c68"
+              data-icon="xmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <button
+            class="_icon_ec6c68"
+            data-testid="editShoppingList4"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-pen-to-square _fa_ec6c68"
+              data-icon="pen-to-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </span>
+        <h3
+          class="_title_ec6c68"
+        >
+          My Shopping List
+        </h3>
+      </div>
+      <div
+        aria-hidden="true"
+        class="rah-static rah-static--height-zero "
+        id="list4Details"
+        style="height: 0px; overflow: hidden;"
+      >
+        <div
+          style="display: none;"
+        >
+          <div
+            class="_details_ec6c68"
+          >
+            <div
+              class="_root_8112da _collapsed_8112da"
+              style="--base-color: #32b54e; --hover-color: #19ac38; --body-color: #ccecd3; --border-color: #00821c; --text-color-main: #fff; --text-color-secondary: #00410e;"
+            >
+              <div
+                class="_triggerContainer_8112da"
+              >
+                <button
+                  aria-controls="addItemToShoppingList4"
+                  aria-expanded="false"
+                  class="_trigger_8112da"
+                >
+                  Add item to list...
+                </button>
+              </div>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="addItemToShoppingList4"
+                style="height: 0px; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <form
+                    aria-label="Wish list item creation form"
+                    class="_form_8112da"
+                  >
+                    <label
+                      class="_label_8112da"
+                    >
+                      Description
+                      <input
+                        class="_input_8112da"
+                        name="description"
+                        placeholder="Description"
+                        required=""
+                        type="text"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Quantity
+                      <input
+                        class="_input_8112da"
+                        inputmode="numeric"
+                        min="1"
+                        name="quantity"
+                        pattern="^[0-9]*$"
+                        placeholder="Quantity"
+                        required=""
+                        step="1"
+                        type="number"
+                        value="1"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Unit Weight
+                      <input
+                        class="_input_8112da"
+                        inputmode="decimal"
+                        min="0"
+                        name="unit_weight"
+                        placeholder="Unit Weight"
+                        step="0.1"
+                        type="number"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Notes
+                      <input
+                        class="_input_8112da"
+                        name="notes"
+                        placeholder="Notes"
+                        type="text"
+                      />
+                    </label>
+                    <button
+                      class="_submit_8112da"
+                      type="submit"
+                    >
+                      Add to List
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`ShoppingList > displaying the edit form > matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_root_ec6c68"
+        style="--scheme-color: #00a323; --border-color: #00821c; --text-color-primary: #fff; --text-color-secondary: #fff; --hover-color: #00921f; --scheme-color-lighter: #32b54e; --scheme-color-lightest: #ccecd3; --max-title-width: -16px;"
+      >
+        <div
+          aria-controls="list3Details"
+          aria-expanded="false"
+          class="_trigger_ec6c68"
+          role="button"
+        >
+          <span
+            class="_icons_ec6c68"
+          >
+            <button
+              class="_icon_ec6c68"
+              data-testid="destroyShoppingList3"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-xmark _fa_ec6c68"
+                data-icon="xmark"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <button
+              class="_icon_ec6c68"
+              data-testid="editShoppingList3"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-pen-to-square _fa_ec6c68"
+                data-icon="pen-to-square"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </span>
+          <form
+            aria-label="List title edit form"
+            class="_form_ec6c68 _root_8f85e1"
+            style="--scheme-color: #00a323; --text-color: #fff; --border-color: #00821c; --icon-hover-color: #ccecd3; --max-width: 16px;"
+          >
+            <input
+              aria-label="title"
+              class="_input_8f85e1"
+              data-testid="editListTitle"
+              name="title"
+              pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+              style="width: -58px;"
+              title="Title can only contain alphanumeric characters, spaces, hyphens, commas, and apostrophes"
+              type="text"
+              value="My Shopping List"
+            />
+            <button
+              class="_submit_8f85e1"
+              name="submit"
+              type="submit"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-square-check _fa_8f85e1"
+                data-icon="square-check"
+                data-prefix="far"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero "
+          id="list3Details"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="display: none;"
+          >
+            <div
+              class="_details_ec6c68"
+            >
+              <div
+                class="_root_8112da _collapsed_8112da"
+                style="--base-color: #32b54e; --hover-color: #19ac38; --body-color: #ccecd3; --border-color: #00821c; --text-color-main: #fff; --text-color-secondary: #00410e;"
+              >
+                <div
+                  class="_triggerContainer_8112da"
+                >
+                  <button
+                    aria-controls="addItemToShoppingList3"
+                    aria-expanded="false"
+                    class="_trigger_8112da"
+                  >
+                    Add item to list...
+                  </button>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="rah-static rah-static--height-zero "
+                  id="addItemToShoppingList3"
+                  style="height: 0px; overflow: hidden;"
+                >
+                  <div
+                    style="display: none;"
+                  >
+                    <form
+                      aria-label="Wish list item creation form"
+                      class="_form_8112da"
+                    >
+                      <label
+                        class="_label_8112da"
+                      >
+                        Description
+                        <input
+                          class="_input_8112da"
+                          name="description"
+                          placeholder="Description"
+                          required=""
+                          type="text"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Quantity
+                        <input
+                          class="_input_8112da"
+                          inputmode="numeric"
+                          min="1"
+                          name="quantity"
+                          pattern="^[0-9]*$"
+                          placeholder="Quantity"
+                          required=""
+                          step="1"
+                          type="number"
+                          value="1"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Unit Weight
+                        <input
+                          class="_input_8112da"
+                          inputmode="decimal"
+                          min="0"
+                          name="unit_weight"
+                          placeholder="Unit Weight"
+                          step="0.1"
+                          type="number"
+                        />
+                      </label>
+                      <label
+                        class="_label_8112da"
+                      >
+                        Notes
+                        <input
+                          class="_input_8112da"
+                          name="notes"
+                          placeholder="Notes"
+                          type="text"
+                        />
+                      </label>
+                      <button
+                        class="_submit_8112da"
+                        type="submit"
+                      >
+                        Add to List
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_root_ec6c68"
+      style="--scheme-color: #00a323; --border-color: #00821c; --text-color-primary: #fff; --text-color-secondary: #fff; --hover-color: #00921f; --scheme-color-lighter: #32b54e; --scheme-color-lightest: #ccecd3; --max-title-width: -16px;"
+    >
+      <div
+        aria-controls="list3Details"
+        aria-expanded="false"
+        class="_trigger_ec6c68"
+        role="button"
+      >
+        <span
+          class="_icons_ec6c68"
+        >
+          <button
+            class="_icon_ec6c68"
+            data-testid="destroyShoppingList3"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-xmark _fa_ec6c68"
+              data-icon="xmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <button
+            class="_icon_ec6c68"
+            data-testid="editShoppingList3"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-pen-to-square _fa_ec6c68"
+              data-icon="pen-to-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </span>
+        <form
+          aria-label="List title edit form"
+          class="_form_ec6c68 _root_8f85e1"
+          style="--scheme-color: #00a323; --text-color: #fff; --border-color: #00821c; --icon-hover-color: #ccecd3; --max-width: 16px;"
+        >
+          <input
+            aria-label="title"
+            class="_input_8f85e1"
+            data-testid="editListTitle"
+            name="title"
+            pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+            style="width: -58px;"
+            title="Title can only contain alphanumeric characters, spaces, hyphens, commas, and apostrophes"
+            type="text"
+            value="My Shopping List"
+          />
+          <button
+            class="_submit_8f85e1"
+            name="submit"
+            type="submit"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-square-check _fa_8f85e1"
+              data-icon="square-check"
+              data-prefix="far"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+      <div
+        aria-hidden="true"
+        class="rah-static rah-static--height-zero "
+        id="list3Details"
+        style="height: 0px; overflow: hidden;"
+      >
+        <div
+          style="display: none;"
+        >
+          <div
+            class="_details_ec6c68"
+          >
+            <div
+              class="_root_8112da _collapsed_8112da"
+              style="--base-color: #32b54e; --hover-color: #19ac38; --body-color: #ccecd3; --border-color: #00821c; --text-color-main: #fff; --text-color-secondary: #00410e;"
+            >
+              <div
+                class="_triggerContainer_8112da"
+              >
+                <button
+                  aria-controls="addItemToShoppingList3"
+                  aria-expanded="false"
+                  class="_trigger_8112da"
+                >
+                  Add item to list...
+                </button>
+              </div>
+              <div
+                aria-hidden="true"
+                class="rah-static rah-static--height-zero "
+                id="addItemToShoppingList3"
+                style="height: 0px; overflow: hidden;"
+              >
+                <div
+                  style="display: none;"
+                >
+                  <form
+                    aria-label="Wish list item creation form"
+                    class="_form_8112da"
+                  >
+                    <label
+                      class="_label_8112da"
+                    >
+                      Description
+                      <input
+                        class="_input_8112da"
+                        name="description"
+                        placeholder="Description"
+                        required=""
+                        type="text"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Quantity
+                      <input
+                        class="_input_8112da"
+                        inputmode="numeric"
+                        min="1"
+                        name="quantity"
+                        pattern="^[0-9]*$"
+                        placeholder="Quantity"
+                        required=""
+                        step="1"
+                        type="number"
+                        value="1"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Unit Weight
+                      <input
+                        class="_input_8112da"
+                        inputmode="decimal"
+                        min="0"
+                        name="unit_weight"
+                        placeholder="Unit Weight"
+                        step="0.1"
+                        type="number"
+                      />
+                    </label>
+                    <label
+                      class="_label_8112da"
+                    >
+                      Notes
+                      <input
+                        class="_input_8112da"
+                        name="notes"
+                        placeholder="Notes"
+                        type="text"
+                      />
+                    </label>
+                    <button
+                      class="_submit_8112da"
+                      type="submit"
+                    >
+                      Add to List
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

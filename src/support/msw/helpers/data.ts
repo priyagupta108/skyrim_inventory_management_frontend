@@ -8,7 +8,7 @@ import { allGames } from '../../data/games'
 import {
   allShoppingLists,
   shoppingListsForGame,
-} from '../../data/shoppingLists'
+} from '../../data/wishLists'
 
 const gameIds = allGames.map(({ id }) => id)
 

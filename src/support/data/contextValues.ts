@@ -1,10 +1,10 @@
 import { type GamesContextType } from '../../contexts/gamesContext'
 import { type LoginContextType } from '../../contexts/loginContext'
-import { type ShoppingListsContextType } from '../../contexts/shoppingListsContext'
+import { type ShoppingListsContextType } from '../../contexts/wishListsContext'
 import { DONE, ERROR, LOADING } from '../../utils/loadingStates'
 import { testUser } from './users'
 import { allGames, emptyGames } from './games'
-import { emptyShoppingLists, shoppingListsForGame } from './shoppingLists'
+import { emptyShoppingLists, shoppingListsForGame } from './wishLists'
 
 const noop = () => {}
 
