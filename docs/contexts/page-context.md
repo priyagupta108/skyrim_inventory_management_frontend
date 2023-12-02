@@ -43,8 +43,8 @@ The `PageProvider` exposes seven values to its consumers:
 - `modalProps` (an object of type `ModalProps`)
 - `setModalProps` (a function taking a `ModalProps` object as an argument)
 - `apiCallsInProgress` (an [`ApiCalls`](/src/types/apiCalls.d.ts) object indicating which API calls are in progress)
-- `addApiCall` (a function that takes a resource name (currently "games", "shoppingLists", and "shoppingListItems") and HTTP verb ("get", "patch", "post", "delete") as arguments and adds the specified API call to the `apiCallsInProgress` object)
-- `removeApiCall` (a function that takes a resource name (currently "games", "shoppingLists", and "shoppingListItems") and HTTP verb ("get", "patch", "post", "delete") as arguments and removes the specified API call, if present, from the `apiCallsInProgress` object)
+- `addApiCall` (a function that takes a resource name (currently "games", "wishLists", and "wishListItems") and HTTP verb ("get", "patch", "post", "delete") as arguments and adds the specified API call to the `apiCallsInProgress` object)
+- `removeApiCall` (a function that takes a resource name (currently "games", "wishLists", and "wishListItems") and HTTP verb ("get", "patch", "post", "delete") as arguments and removes the specified API call, if present, from the `apiCallsInProgress` object)
 
 Of these, the first five are implemented as state variables within the context provider. Because of required values in the `FlashMessageProps` type, there is a default value of `flashProps` that includes an empty string as the message, a type of `'info'`, and, most importantly, `hidden: true`. Likewise, the default value of `modalProps` has `hidden` set to `true` and `children` set to an empty fragment, `<></>`.
 
@@ -54,7 +54,7 @@ With the flash message, the `PageProvider` ensures that it is hidden after a per
 
 ### In-progress API Calls
 
-Sometimes, to avoid race conditions between API calls, it is best to disable a component when an API call is in progress. For that purpose, we can use the `apiCallsInProgress` object from the `PageProvider`. This object has a key for each resource type ("games", "shoppingLists", and "shoppingListItems"). Each key corresponds to an array of lower-case HTTP verbs indicating which API calls are in progress for that resource type. We found it advantageous to have a separate array for each resource type, since many components should be disabled when, for example, any request is made for a `shoppingList` resource, but requests made for other resources don't matter.
+Sometimes, to avoid race conditions between API calls, it is best to disable a component when an API call is in progress. For that purpose, we can use the `apiCallsInProgress` object from the `PageProvider`. This object has a key for each resource type ("games", "wishLists", and "wishListItems"). Each key corresponds to an array of lower-case HTTP verbs indicating which API calls are in progress for that resource type. We found it advantageous to have a separate array for each resource type, since many components should be disabled when, for example, any request is made for a `wishList` resource, but requests made for other resources don't matter.
 
 The `apiCallsInProgress` object can be updated using the `addApiCall` and `removeApiCall` functions. Remember that, when you add an API call, it must be removed when the API call completes. This will not happen automatically.
 

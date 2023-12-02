@@ -26,8 +26,8 @@ const defaultModalProps: ModalProps = {
 
 const defaultApiCallStatus: ApiCalls = {
   games: [],
-  shoppingLists: [],
-  shoppingListItems: [],
+  wishLists: [],
+  wishListItems: [],
 }
 
 const PageContext = createContext<PageContextType>({

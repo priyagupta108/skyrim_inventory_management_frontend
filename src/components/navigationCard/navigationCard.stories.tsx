@@ -25,6 +25,6 @@ export default meta
 export const Default: NavigationCardStory = {
   args: {
     href: '#',
-    children: 'Your Shopping Lists',
+    children: 'Your Wish Lists',
   },
 }

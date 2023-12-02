@@ -5,12 +5,12 @@ import { type RelativePath } from '../types/navigation'
 import { LoginProvider } from '../contexts/loginContext'
 import { GamesProvider } from '../contexts/gamesContext'
 import { PageProvider } from '../contexts/pageContext'
-import { ShoppingListsProvider } from '../contexts/shoppingListsContext'
+import { WishListsProvider } from '../contexts/wishListsContext'
 import HomePage from '../pages/homePage/homePage'
 import NotFoundPage from '../pages/notFoundPage/notFoundPage'
 import DashboardPage from '../pages/dashboardPage/dashboardPage'
 import GamesPage from '../pages/gamesPage/gamesPage'
-import ShoppingListsPage from '../pages/shoppingListsPage/shoppingListsPage'
+import WishListsPage from '../pages/wishListsPage/wishListsPage'
 import paths from './paths'
 
 const siteTitle = 'Skyrim Inventory Management |'
@@ -73,13 +73,13 @@ const pages: Page[] = [
     jsx: (
       <PageProvider>
         <GamesProvider>
-          <ShoppingListsProvider>
-            <ShoppingListsPage />
-          </ShoppingListsProvider>
+          <WishListsProvider>
+            <WishListsPage />
+          </WishListsProvider>
         </GamesProvider>
       </PageProvider>
     ),
-    path: paths.dashboard.shoppingLists,
+    path: paths.dashboard.wishLists,
   },
 ]
 

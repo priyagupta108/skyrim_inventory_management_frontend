@@ -1,10 +1,10 @@
 import { type GamesContextType } from '../../contexts/gamesContext'
 import { type LoginContextType } from '../../contexts/loginContext'
-import { type ShoppingListsContextType } from '../../contexts/shoppingListsContext'
+import { type WishListsContextType } from '../../contexts/wishListsContext'
 import { DONE, ERROR, LOADING } from '../../utils/loadingStates'
 import { testUser } from './users'
 import { allGames, emptyGames } from './games'
-import { emptyShoppingLists, shoppingListsForGame } from './shoppingLists'
+import { emptyWishLists, wishListsForGame } from './wishLists'
 
 const noop = () => {}
 
@@ -81,50 +81,50 @@ export const gamesContextValueError: GamesContextType = {
 
 /**
  *
- * Default values for Shopping Lists context
+ * Default values for Wish Lists context
  *
  */
 
-export const shoppingListsContextValueEmpty: ShoppingListsContextType = {
-  shoppingLists: emptyShoppingLists,
-  shoppingListsLoadingState: DONE,
-  createShoppingList: noop,
-  updateShoppingList: noop,
-  destroyShoppingList: noop,
-  createShoppingListItem: noop,
-  updateShoppingListItem: noop,
-  destroyShoppingListItem: noop,
+export const wishListsContextValueEmpty: WishListsContextType = {
+  wishLists: emptyWishLists,
+  wishListsLoadingState: DONE,
+  createWishList: noop,
+  updateWishList: noop,
+  destroyWishList: noop,
+  createWishListItem: noop,
+  updateWishListItem: noop,
+  destroyWishListItem: noop,
 }
 
-export const shoppingListsContextValue: ShoppingListsContextType = {
-  shoppingLists: shoppingListsForGame(77),
-  shoppingListsLoadingState: DONE,
-  createShoppingList: noop,
-  updateShoppingList: noop,
-  destroyShoppingList: noop,
-  createShoppingListItem: noop,
-  updateShoppingListItem: noop,
-  destroyShoppingListItem: noop,
+export const wishListsContextValue: WishListsContextType = {
+  wishLists: wishListsForGame(77),
+  wishListsLoadingState: DONE,
+  createWishList: noop,
+  updateWishList: noop,
+  destroyWishList: noop,
+  createWishListItem: noop,
+  updateWishListItem: noop,
+  destroyWishListItem: noop,
 }
 
-export const shoppingListsContextValueLoading: ShoppingListsContextType = {
-  shoppingLists: emptyShoppingLists,
-  shoppingListsLoadingState: LOADING,
-  createShoppingList: noop,
-  updateShoppingList: noop,
-  destroyShoppingList: noop,
-  createShoppingListItem: noop,
-  updateShoppingListItem: noop,
-  destroyShoppingListItem: noop,
+export const wishListsContextValueLoading: WishListsContextType = {
+  wishLists: emptyWishLists,
+  wishListsLoadingState: LOADING,
+  createWishList: noop,
+  updateWishList: noop,
+  destroyWishList: noop,
+  createWishListItem: noop,
+  updateWishListItem: noop,
+  destroyWishListItem: noop,
 }
 
-export const shoppingListsContextValueError: ShoppingListsContextType = {
-  shoppingLists: emptyShoppingLists,
-  shoppingListsLoadingState: ERROR,
-  createShoppingList: noop,
-  updateShoppingList: noop,
-  destroyShoppingList: noop,
-  createShoppingListItem: noop,
-  updateShoppingListItem: noop,
-  destroyShoppingListItem: noop,
+export const wishListsContextValueError: WishListsContextType = {
+  wishLists: emptyWishLists,
+  wishListsLoadingState: ERROR,
+  createWishList: noop,
+  updateWishList: noop,
+  destroyWishList: noop,
+  createWishListItem: noop,
+  updateWishListItem: noop,
+  destroyWishListItem: noop,
 }

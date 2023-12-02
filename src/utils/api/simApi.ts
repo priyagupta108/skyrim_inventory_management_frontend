@@ -5,27 +5,27 @@ import {
   deleteGame,
 } from './wrapper/gameEndpoints'
 import {
-  postShoppingLists,
-  getShoppingLists,
-  patchShoppingList,
-  deleteShoppingList,
-} from './wrapper/shoppingListEndpoints'
+  postWishLists,
+  getWishLists,
+  patchWishList,
+  deleteWishList,
+} from './wrapper/wishListEndpoints'
 import {
-  postShoppingListItems,
-  patchShoppingListItem,
-  deleteShoppingListItem,
-} from './wrapper/shoppinglistItemEndpoints'
+  postWishListItems,
+  patchWishListItem,
+  deleteWishListItem,
+} from './wrapper/wishListItemEndpoints'
 
 export {
   postGames,
   getGames,
   patchGame,
   deleteGame,
-  postShoppingLists,
-  getShoppingLists,
-  patchShoppingList,
-  deleteShoppingList,
-  postShoppingListItems,
-  patchShoppingListItem,
-  deleteShoppingListItem,
+  postWishLists,
+  getWishLists,
+  patchWishList,
+  deleteWishList,
+  postWishListItems,
+  patchWishListItem,
+  deleteWishListItem,
 }
