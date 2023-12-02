@@ -7,7 +7,7 @@ import { UnauthorizedResponse } from './shared'
 
 /**
  *
- * Types used for POST /games/:game_id/shopping_lists endpoint
+ * Types used for POST /games/:game_id/wish_lists endpoint
  *
  */
 
@@ -56,7 +56,7 @@ export type PostWishListsReturnValue =
 
 /**
  *
- * Types used for GET /games/:game_id/shopping_lists endpoint
+ * Types used for GET /games/:game_id/wish_lists endpoint
  *
  */
 
@@ -105,7 +105,7 @@ export type GetWishListsReturnValue =
 
 /**
  *
- * Types used for PATCH /shopping_lists/:id endpoint
+ * Types used for PATCH /wish_lists/:id endpoint
  *
  */
 
@@ -158,7 +158,7 @@ export type PatchWishListReturnValue =
 
 /**
  *
- * Types used for DELETE /shopping_lists/:id endpoint
+ * Types used for DELETE /wish_lists/:id endpoint
  *
  */
 

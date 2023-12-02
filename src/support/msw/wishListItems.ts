@@ -9,13 +9,13 @@ const listIds = allWishLists.map(({ id }) => id)
 
 /**
  *
- * POST /shopping_lists/:list_id/list_items
+ * POST /wish_lists/:list_id/list_items
  *
  */
 
 // Handles 201 and 404 responses
 export const postWishListItemsSuccess = http.post(
-  `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
+  `${BASE_URI}/wish_lists/:listId/wish_list_items`,
   async ({ request, params }) => {
     const listId = Number(params.listId)
 
@@ -33,7 +33,7 @@ export const postWishListItemsSuccess = http.post(
 // Returns the same validation errors regardless of request body
 // submitted
 export const postWishListItemsUnprocessable = http.post(
-  `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
+  `${BASE_URI}/wish_lists/:listId/wish_list_items`,
   (_) => {
     return new Response(
       JSON.stringify({
@@ -48,7 +48,7 @@ export const postWishListItemsUnprocessable = http.post(
 )
 
 export const postWishListItemsServerError = http.post(
-  `${BASE_URI}/shopping_lists/:listId/shopping_list_items`,
+  `${BASE_URI}/wish_lists/:listId/wish_list_items`,
   (_) => {
     return new Response(
       JSON.stringify({
@@ -61,12 +61,12 @@ export const postWishListItemsServerError = http.post(
 
 /**
  *
- * PATCH /shopping_list_items/:id
+ * PATCH /wish_list_items/:id
  *
  */
 
 export const incrementWishListItemSuccess = http.patch(
-  `${BASE_URI}/shopping_list_items/:id`,
+  `${BASE_URI}/wish_list_items/:id`,
   ({ params }) => {
     const itemId: number = Number(params.id)
     const item = allWishListItems.find(({ id }) => id === itemId)
@@ -87,7 +87,7 @@ export const incrementWishListItemSuccess = http.patch(
 )
 
 export const decrementWishListItemSuccess = http.patch(
-  `${BASE_URI}/shopping_list_items/:id`,
+  `${BASE_URI}/wish_list_items/:id`,
   ({ request, params }) => {
     const itemId: number = Number(params.id)
     const item = allWishListItems.find(({ id }) => id === itemId)
@@ -118,7 +118,7 @@ export const decrementWishListItemSuccess = http.patch(
 // list item being updated - i.e., none of its other associated list items, if
 // any, have notes. If they did, that, too, would further complicate things.
 export const updateWishListItemSuccess = http.patch(
-  `${BASE_URI}/shopping_list_items/:id`,
+  `${BASE_URI}/wish_list_items/:id`,
   async ({ request, params }) => {
     const itemId: number = Number(params.id)
     const item = allWishListItems.find(({ id }) => id === itemId)
@@ -141,7 +141,7 @@ export const updateWishListItemSuccess = http.patch(
 
 // Returns the same validation errors regardless of request body
 export const updateWishListItemUnprocessable = http.patch(
-  `${BASE_URI}/shopping_list_items/:id`,
+  `${BASE_URI}/wish_list_items/:id`,
   (_) => {
     return new Response(
       JSON.stringify({
@@ -156,7 +156,7 @@ export const updateWishListItemUnprocessable = http.patch(
 )
 
 export const updateWishListItemServerError = http.patch(
-  `${BASE_URI}/shopping_list_items/:id`,
+  `${BASE_URI}/wish_list_items/:id`,
   (_) => {
     return new Response(
       JSON.stringify({
@@ -169,7 +169,7 @@ export const updateWishListItemServerError = http.patch(
 
 /**
  *
- * DELETE /shopping_list_items/:id
+ * DELETE /wish_list_items/:id
  *
  */
 
@@ -179,7 +179,7 @@ export const updateWishListItemServerError = http.patch(
 //       of whether there are other matching items. This function
 //       does not match the complexity of back-end behaviour.
 export const deleteWishListItemSuccess = http.delete(
-  `${BASE_URI}/shopping_list_items/:id`,
+  `${BASE_URI}/wish_list_items/:id`,
   ({ request, params }) => {
     const itemId = Number(params.id)
     const item = allWishListItems.find(({ id }) => id === itemId)
@@ -209,7 +209,7 @@ export const deleteWishListItemSuccess = http.delete(
 )
 
 export const deleteWishListItemServerError = http.delete(
-  `${BASE_URI}/shopping_list_items/:id`,
+  `${BASE_URI}/wish_list_items/:id`,
   (_) => {
     return new Response(
       JSON.stringify({ errors: ['Something went horribly wrong'] }),

@@ -18,7 +18,7 @@ import {
 
 /**
  *
- * POST /shopping_lists/:list_id/list_items endpoint
+ * POST /wish_lists/:list_id/list_items endpoint
  *
  */
 
@@ -27,7 +27,7 @@ export const postWishListItems = (
   attributes: RequestWishListItem,
   token: string
 ): Promise<PostWishListItemsReturnValue> | never => {
-  const uri = `${BASE_URI}/shopping_lists/${listId}/shopping_list_items`
+  const uri = `${BASE_URI}/wish_lists/${listId}/wish_list_items`
   const headers = combinedHeaders(token)
 
   return fetch(uri, {
@@ -57,7 +57,7 @@ export const postWishListItems = (
 
 /**
  *
- * PATCH /shopping_list_items/:id endpoint
+ * PATCH /wish_list_items/:id endpoint
  *
  */
 
@@ -66,7 +66,7 @@ export const patchWishListItem = (
   attributes: RequestWishListItem,
   token: string
 ): Promise<PatchWishListItemReturnValue> | never => {
-  const uri = `${BASE_URI}/shopping_list_items/${itemId}`
+  const uri = `${BASE_URI}/wish_list_items/${itemId}`
   const headers = combinedHeaders(token)
 
   return fetch(uri, {
@@ -96,7 +96,7 @@ export const patchWishListItem = (
 
 /**
  *
- * DELETE /shopping_list_items/:id endpoint
+ * DELETE /wish_list_items/:id endpoint
  *
  */
 
@@ -104,7 +104,7 @@ export const deleteWishListItem = (
   itemId: number,
   token: string
 ): Promise<DeleteWishListItemReturnValue> | never => {
-  const uri = `${BASE_URI}/shopping_list_items/${itemId}`
+  const uri = `${BASE_URI}/wish_list_items/${itemId}`
   const headers = combinedHeaders(token)
 
   return fetch(uri, { method: 'DELETE', headers }).then((res) => {

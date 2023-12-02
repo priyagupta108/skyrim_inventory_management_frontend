@@ -11,13 +11,13 @@ const listIds = allWishLists.map(({ id }) => id)
 
 /**
  *
- * POST /games/:game_id/shopping_lists
+ * POST /games/:game_id/wish_lists
  *
  */
 
 // Handles both 201 and 404 responses
 export const postWishListsSuccess = http.post(
-  `${BASE_URI}/games/:gameId/shopping_lists`,
+  `${BASE_URI}/games/:gameId/wish_lists`,
   async ({ request, params }) => {
     const gameId = Number(params.gameId)
 
@@ -36,7 +36,7 @@ export const postWishListsSuccess = http.post(
 // Returns the same validation errors regardless of request body
 // submitted
 export const postWishListsUnprocessable = http.post(
-  `${BASE_URI}/games/:gameId/shopping_lists`,
+  `${BASE_URI}/games/:gameId/wish_lists`,
   (_) => {
     return new Response(
       JSON.stringify({
@@ -51,7 +51,7 @@ export const postWishListsUnprocessable = http.post(
 )
 
 export const postWishListsServerError = http.post(
-  `${BASE_URI}/games/:gameId/shopping_lists`,
+  `${BASE_URI}/games/:gameId/wish_lists`,
   (_) => {
     return new Response(
       JSON.stringify({
@@ -64,13 +64,13 @@ export const postWishListsServerError = http.post(
 
 /**
  *
- * GET /shopping_lists/:id
+ * GET /wish_lists/:id
  *
  */
 
 // Covers both success and 404 cases
 export const getWishListsSuccess = http.get(
-  `${BASE_URI}/games/:gameId/shopping_lists`,
+  `${BASE_URI}/games/:gameId/wish_lists`,
   ({ params }) => {
     const gameId = Number(params.gameId)
 
@@ -81,7 +81,7 @@ export const getWishListsSuccess = http.get(
 )
 
 export const getWishListsEmptySuccess = http.get(
-  `${BASE_URI}/games/:gameId/shopping_lists`,
+  `${BASE_URI}/games/:gameId/wish_lists`,
   (_) => {
     return new Response(JSON.stringify([]), { status: 200 })
   }
@@ -89,13 +89,13 @@ export const getWishListsEmptySuccess = http.get(
 
 /**
  *
- * PATCH /shopping_lists/:id
+ * PATCH /wish_lists/:id
  *
  */
 
 // Covers both success and 404 cases
 export const patchWishListSuccess = http.patch(
-  `${BASE_URI}/shopping_lists/:id`,
+  `${BASE_URI}/wish_lists/:id`,
   async ({ request, params }) => {
     const listId = Number(params.id)
 
@@ -111,7 +111,7 @@ export const patchWishListSuccess = http.patch(
 // Returns the same validation errors regardless of request
 // body submitted
 export const patchWishListUnprocessable = http.patch(
-  `${BASE_URI}/shopping_lists/:id`,
+  `${BASE_URI}/wish_lists/:id`,
   (_) => {
     return new Response(
       JSON.stringify({
@@ -126,7 +126,7 @@ export const patchWishListUnprocessable = http.patch(
 )
 
 export const patchWishListServerError = http.patch(
-  `${BASE_URI}/shopping_lists/:id`,
+  `${BASE_URI}/wish_lists/:id`,
   (_) => {
     return new Response(
       JSON.stringify({
@@ -139,13 +139,13 @@ export const patchWishListServerError = http.patch(
 
 /**
  *
- * DELETE /shopping_lists/:id
+ * DELETE /wish_lists/:id
  *
  */
 
 // Covers both success and 404 cases
 export const deleteWishListSuccess = http.delete(
-  `${BASE_URI}/shopping_lists/:listId`,
+  `${BASE_URI}/wish_lists/:listId`,
   ({ params }) => {
     const listId = Number(params.listId)
     const list = allWishLists.find(({ id }) => id === listId)
@@ -171,7 +171,7 @@ export const deleteWishListSuccess = http.delete(
 )
 
 export const deleteWishListServerError = http.delete(
-  `${BASE_URI}/shopping_lists/:listId`,
+  `${BASE_URI}/wish_lists/:listId`,
   (_) => {
     return new Response(
       JSON.stringify({
