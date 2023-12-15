@@ -37,7 +37,7 @@ exports[`Modal > matches snapshot 1`] = `
                     <input
                       class="_input_31bf4a"
                       name="name"
-                      pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                      pattern="^\\s*[A-Za-z0-9 \\-',]*\\s*$"
                       placeholder="Name"
                       title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
                       type="text"
@@ -107,7 +107,7 @@ exports[`Modal > matches snapshot 1`] = `
                   <input
                     class="_input_31bf4a"
                     name="name"
-                    pattern="^\\\\s*[A-Za-z0-9 \\\\-',]*\\\\s*$"
+                    pattern="^\\s*[A-Za-z0-9 \\-',]*\\s*$"
                     placeholder="Name"
                     title="Name can contain only alphanumeric characters, spaces, commas, hyphens, and apostrophes"
                     type="text"
