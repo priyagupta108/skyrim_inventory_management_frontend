@@ -4895,6 +4895,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^20.11.19":
+  version: 20.11.19
+  resolution: "@types/node@npm:20.11.19"
+  dependencies:
+    undici-types: ~5.26.4
+  checksum: 259d16643ba611ade617a8212e594a3ac014727457507389bbf7213971346ab052d870f1e6e2df0afd0876ecd7874f578bccb130be01e069263cfc7136ddc0c1
+  languageName: node
+  linkType: hard
+
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
@@ -11711,7 +11720,7 @@ __metadata:
     "@storybook/testing-library": ^0.2.2
     "@testing-library/react": ^14.2.1
     "@types/jsdom": ^21.1.6
-    "@types/node": ^20.11.16
+    "@types/node": ^20.11.19
     "@types/react": ^18.2.55
     "@types/react-dom": ^18.2.18
     "@types/react-router-dom": ^5.3.3
