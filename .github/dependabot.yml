@@ -21,12 +21,12 @@ updates:
     # together using `npx storybook@latest upgrade && yarn dedupe`. Updates
     # are issued very frequently so this should be done once a week or so.
     ignore:
-      - dependency_name: "storybook"
-      - dependency_name: "@storybook/addon-actions"
-      - dependency_name: "@storybook/addon-essentials"
-      - dependency_name: "@storybook/addon-interactions"
-      - dependency_name: "@storybook/addon-links"
-      - dependency_name: "@storybook/addon-mdx-gfm"
-      - dependency_name: "@storybook/cli"
-      - dependency_name: "@storybook/react"
-      - dependency_name: "@storybook/react-vite"
+      - dependency-name: "storybook"
+      - dependency-name: "@storybook/addon-actions"
+      - dependency-name: "@storybook/addon-essentials"
+      - dependency-name: "@storybook/addon-interactions"
+      - dependency-name: "@storybook/addon-links"
+      - dependency-name: "@storybook/addon-mdx-gfm"
+      - dependency-name: "@storybook/cli"
+      - dependency-name: "@storybook/react"
+      - dependency-name: "@storybook/react-vite"
