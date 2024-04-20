@@ -24,5 +24,3 @@ jobs:
       run: yarn build-storybook
     - name: Run tests
       run: yarn test
-      env:
-        FORCE_COLOR: true
