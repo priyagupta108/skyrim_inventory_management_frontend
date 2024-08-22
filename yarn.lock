@@ -11775,13 +11775,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-spinners@npm:^0.13.8":
-  version: 0.13.8
-  resolution: "react-spinners@npm:0.13.8"
+"react-spinners@npm:^0.14.1":
+  version: 0.14.1
+  resolution: "react-spinners@npm:0.14.1"
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: cb58f916bbf00c4f7fc33c1a75a8c0f91a98a42af26944340a0e29e4b3a97937a03f0292bc444eb5f5f0bea099344b580f9c04a81524246dadbf0571bdb57e62
+  checksum: 42da89561e8ebcd2576f5ea96a6ac6a5288783d271769901edd00f03f66565ea1be79f5519766d6fe576a6f2c6a29bd2ae5bedaf9e90b1765adfd9ea7f30a78e
   languageName: node
   linkType: hard
 
@@ -12519,7 +12519,7 @@ __metadata:
     react-firebase-hooks: ^5.1.1
     react-helmet-async: ^2.0.5
     react-router-dom: ^6.26.1
-    react-spinners: ^0.13.8
+    react-spinners: ^0.14.1
     storybook: ^7.6.17
     storybook-addon-mock: ^4.3.0
     typescript: ^5.4.5
