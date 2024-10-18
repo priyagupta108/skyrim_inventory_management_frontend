@@ -22,5 +22,7 @@ jobs:
       run: yarn format
     - name: build storybook
       run: yarn build-storybook
+    - name: run storybook visual tests
+      run: yarn chromatic
     - name: Run tests
       run: yarn test
