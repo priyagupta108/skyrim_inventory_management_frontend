@@ -1288,16 +1288,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chromatic-com/storybook@npm:^1.9.0":
-  version: 1.9.0
-  resolution: "@chromatic-com/storybook@npm:1.9.0"
+"@chromatic-com/storybook@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "@chromatic-com/storybook@npm:3.2.2"
   dependencies:
-    chromatic: ^11.4.0
+    chromatic: ^11.15.0
     filesize: ^10.0.12
     jsonfile: ^6.1.0
     react-confetti: ^6.1.0
     strip-ansi: ^7.1.0
-  checksum: 12ada9213a48e1145311e43cd2f972e312c77c978e3610eabbd698793011aeafe2a9256dd62c06492cbed7bc2b7c274f3a10887016c3333380b66180e40782cf
+  peerDependencies:
+    storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+  checksum: 8f1d03b32e131d391d41913b346d3898e5f2661c54dbe057f05fb1bce2d9b94581942bc5f90efe599b819d1f05d92c50a9be1e0cba2962be797f9a9551b568da
   languageName: node
   linkType: hard
 
@@ -4539,7 +4541,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^11.12.6, chromatic@npm:^11.4.0":
+"chromatic@npm:^11.12.6":
   version: 11.12.6
   resolution: "chromatic@npm:11.12.6"
   peerDependencies:
@@ -4555,6 +4557,25 @@ __metadata:
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
   checksum: 020bf394c169719bffb59509388df3677384ec9c29219343778f202ac5f6ef3fc331c73efefdc3c70cda09f9e26e4d4f6e6567a18bff25b74eeea90b9b1e9dee
+  languageName: node
+  linkType: hard
+
+"chromatic@npm:^11.15.0":
+  version: 11.16.3
+  resolution: "chromatic@npm:11.16.3"
+  peerDependencies:
+    "@chromatic-com/cypress": ^0.*.* || ^1.0.0
+    "@chromatic-com/playwright": ^0.*.* || ^1.0.0
+  peerDependenciesMeta:
+    "@chromatic-com/cypress":
+      optional: true
+    "@chromatic-com/playwright":
+      optional: true
+  bin:
+    chroma: dist/bin.js
+    chromatic: dist/bin.js
+    chromatic-cli: dist/bin.js
+  checksum: 979b0fa5d10d482c5a1eab6b61b2c8dd15d61e09f62b0fadb7e9f4484b40be1cbeafe347bb3a0f593308a72b60ae005062db043d23112a63cb9e9afb0b7320d1
   languageName: node
   linkType: hard
 
@@ -9153,7 +9174,7 @@ __metadata:
   resolution: "skyrim_inventory_management_frontend@workspace:."
   dependencies:
     "@babel/core": ^7.25.2
-    "@chromatic-com/storybook": ^1.9.0
+    "@chromatic-com/storybook": ^3.2.2
     "@fortawesome/fontawesome-svg-core": ^6.6.0
     "@fortawesome/free-regular-svg-icons": ^6.6.0
     "@fortawesome/free-solid-svg-icons": ^6.6.0
